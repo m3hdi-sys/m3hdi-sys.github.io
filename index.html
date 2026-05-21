@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mehdi BEN MOULAY | Cyber OS</title>
+    <link id="favicon" rel="icon" type="image/svg+xml" href="">
+    <style>
+        :root {
+            --text-main: #00ff41;
+            --text-muted: #008f11;
+            --bg-dark: #050505;
+            --bg-panel: rgba(0, 20, 0, 0.75);
+            --border-color: rgba(0, 255, 65, 0.4);
+            --border-active: #00ff41;
+            --alert: #ff003c;
+            --amber: #ffb000;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            height: 100vh; overflow: hidden;
+            background-image: 
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            transition: filter 0.3s ease, background 0.3s ease;
+        }
+
+        /* --- STADES D'INFECTION CONTINUS --- */
+        @keyframes subtle-flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.85; }
+            100% { opacity: 1; }
+        }
+        @keyframes severe-jitter {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            20% { transform: translate(-1px, -2px) rotate(-1deg); }
+            40% { transform: translate(-3px, 0px) rotate(1deg); }
+            60% { transform: translate(2px, 2px) rotate(0deg); }
+            80% { transform: translate(1px, -1px) rotate(1deg); }
+            100% { transform: translate(-1px, 2px) rotate(-1deg); }
+        }
+        @keyframes color-corruption {
+            0% { filter: hue-rotate(-15deg) contrast(1.2); }
+            50% { filter: hue-rotate(-25deg) contrast(1.5) brightness(1.2); }
+            100% { filter: hue-rotate(-15deg) contrast(1.2); }
+        }
+
+        body.infection-stage-1 { 
+            animation: color-corruption 2s infinite, subtle-flicker 0.15s infinite; 
+        }
+        body.infection-stage-2 { 
+            animation: severe-jitter 0.25s infinite, color-corruption 0.5s infinite; 
+            filter: hue-rotate(-45deg) saturate(2.5) contrast(1.8) blur(0.5px); 
+        }
+        body.infection-stage-2 #data-viewer {
+            box-shadow: inset 0 0 80px rgba(255,0,0,0.2);
+            border-color: var(--alert);
+        }
+        
+        .shake-impact { animation: shake-impact-anim 0.4s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake-impact-anim {
+            10%, 90% { transform: translate3d(-3px, 0, 0); }
+            20%, 80% { transform: translate3d(5px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-10px, 0, 0); }
+            40%, 60% { transform: translate3d(10px, 0, 0); }
+        }
+
+        /* Effets d'écran de base */
+        .scanline {
+            position: fixed; top: 0; left: 0; width: 100%; height: 5px;
+            background: rgba(0, 255, 65, 0.3); box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+            animation: scan 6s linear infinite; pointer-events: none; z-index: 999;
+        }
+        @keyframes scan { 0% { transform: translateY(-10vh); } 100% { transform: translateY(110vh); } }
+        
+        .crt-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0) 60%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none; z-index: 998;
+        }
+
+        /* Alertes Cyber aléatoires */
+        #alert-container { position: fixed; top: 50px; right: 20px; z-index: 9999; display: flex; flex-direction: column; gap: 10px; pointer-events: none; }
+        .cyber-alert {
+            background: rgba(255, 0, 60, 0.85); color: #fff; border-left: 4px solid #fff; padding: 12px 20px;
+            font-weight: bold; font-size: 0.85rem; box-shadow: 0 0 15px rgba(255, 0, 60, 0.5);
+            animation: slideIn 0.4s cubic-bezier(0.25, 1, 0.5, 1), fadeOut 0.5s ease-in 3.5s forwards;
+        }
+        @keyframes slideIn { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        @keyframes fadeOut { to { opacity: 0; transform: translateY(-15px); } }
+
+        /* Glitch Effect */
+        .glitch { position: relative; display: inline-block; }
+        .glitch::before, .glitch::after {
+            content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg-dark); opacity: 0.8;
+        }
+        .glitch::before { left: 2px; text-shadow: -2px 0 var(--alert); clip: rect(24px, 550px, 90px, 0); animation: glitch-anim 3s infinite linear alternate-reverse; }
+        .glitch::after { left: -2px; text-shadow: -2px 0 #00f0ff; clip: rect(85px, 550px, 140px, 0); animation: glitch-anim 2.5s infinite linear alternate-reverse; }
+        @keyframes glitch-anim { 0%, 5%, 100% { clip: rect(0, 0, 0, 0); } 1% { clip: rect(10px, 9999px, 30px, 0); } 3% { clip: rect(20px, 9999px, 40px, 0); } }
+
+        /* Boot & Overlays */
+        #boot-screen, #security-prompt { 
+            position: fixed; top:0; left:0; width: 100%; height: 100vh; background: var(--bg-dark);
+            display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 10000;
+        }
+        #boot-screen { padding: 2rem; font-size: 1.2rem; align-items: flex-start; max-width: 800px; margin: 0 auto; background: transparent;}
+        
+        .cursor { display: inline-block; animation: blink 1s step-end infinite; font-weight: bold; }
+        @keyframes blink { 50% { opacity: 0; } }
+        .hidden { display: none !important; }
+
+        /* Security PIN Prompt */
+        .auth-box { border: 1px solid var(--alert); background: rgba(255, 0, 60, 0.1); padding: 2rem; text-align: center; box-shadow: 0 0 20px rgba(255, 0, 60, 0.3);}
+        .auth-box h2 { color: var(--alert); margin-bottom: 1rem; border: none; }
+        .auth-box input { background: #000; border: 1px solid var(--text-main); color: var(--text-main); padding: 10px; font-size: 1.2rem; text-align: center; width: 100px; outline: none; margin-bottom: 1rem; letter-spacing: 5px; }
+        .auth-box button { background: var(--alert); color: #fff; border: none; padding: 10px 20px; font-weight: bold; cursor: pointer; transition: 0.3s; margin: 5px;}
+        .auth-box button:hover { background: #fff; color: var(--alert); }
+        .auth-box .cancel-btn { background: #333; color: #fff; }
+        #auth-msg { margin-top: 10px; font-weight: bold; height: 20px; }
+
+        /* INFECTION MALWARE SCREEN */
+        #malware-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; z-index: 20000;
+            background: rgba(180, 0, 0, 0.95); color: #000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            text-align: center; animation: pulse-bg 1.5s infinite alternate;
+        }
+        @keyframes pulse-bg { from { background: rgba(180, 0, 0, 0.95); } to { background: rgba(255, 0, 0, 1); } }
+        #malware-screen h1 { font-size: 4rem; color: #000; text-shadow: 2px 2px #fff; margin-bottom: 0; }
+        .skull-ascii { font-family: monospace; font-size: 1.2rem; line-height: 1.2; font-weight: bold; margin-bottom: 1rem; }
+        .emergency-console { background: #000; color: var(--text-main); padding: 20px; border: 2px dashed #fff; margin-top: 2rem; width: 80%; max-width: 600px; text-align: left;}
+        .emergency-console input { background: transparent; border: none; border-bottom: 1px solid var(--text-main); color: #fff; width: 60%; padding: 5px; font-family: inherit; font-size: 1rem; outline: none;}
+
+        /* Monitoring Bar */
+        #monitoring-bar {
+            position: fixed; top: 0; left: 0; width: 100%; height: 35px;
+            background: #000; border-bottom: 1px solid var(--text-muted);
+            padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.85rem; z-index: 100; font-weight: bold;
+        }
+        .monitor-stat { display: flex; gap: 20px; }
+
+        /* Layout Principal du Dashboard */
+        #dashboard {
+            display: flex; height: calc(100vh - 35px); margin-top: 35px;
+            max-width: 1400px; margin-left: auto; margin-right: auto; padding: 20px; gap: 20px; position: relative; z-index: 10;
+        }
+
+        /* Panneau Latéral (Menu) */
+        #sidebar { width: 300px; display: flex; flex-direction: column; gap: 15px; }
+        .sys-identity { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 15px; text-align: center; }
+        .sys-identity h1 { font-size: 1.5rem; margin-bottom: 5px; text-shadow: 0 0 10px rgba(0,255,65,0.5); }
+        .sys-identity p { color: var(--text-muted); font-size: 0.85rem; border-top: 1px dashed var(--border-color); margin-top: 10px; padding-top: 10px;}
+        .social-links { margin-top: 15px; display: flex; justify-content: center; gap: 15px; font-weight: bold; font-size: 0.9rem;}
+        .social-links a { color: var(--text-main); text-decoration: none; transition: 0.3s; }
+        .social-links a:hover { background: var(--text-main); color: var(--bg-dark); }
+
+        .nav-btn {
+            background: var(--bg-panel); border: 1px solid var(--border-color); color: var(--text-main);
+            padding: 15px; text-align: left; font-family: inherit; font-size: 1rem; cursor: pointer;
+            transition: 0.2s; position: relative; overflow: hidden;
+        }
+        .nav-btn::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: transparent; transition: 0.2s; }
+        .nav-btn:hover { background: rgba(0, 255, 65, 0.1); border-color: var(--text-main); box-shadow: inset 0 0 10px rgba(0,255,65,0.2); }
+        .nav-btn.active { border-color: var(--border-active); background: rgba(0, 255, 65, 0.05); }
+        .nav-btn.active::before { background: var(--border-active); }
+        
+        .locked-btn { border-color: var(--alert); color: var(--alert); }
+        .locked-btn:hover { background: rgba(255,0,60,0.1); border-color: var(--alert); box-shadow: inset 0 0 10px rgba(255,0,60,0.2); }
+
+        /* Zone de contenu principale (Viewer) */
+        #data-viewer {
+            flex-grow: 1; background: var(--bg-panel); border: 1px solid var(--border-color);
+            position: relative; display: flex; flex-direction: column; transition: 0.3s;
+        }
+        .viewer-header {
+            background: #000; padding: 10px 20px; border-bottom: 1px solid var(--border-color);
+            font-weight: bold; font-size: 0.9rem; color: var(--text-muted); display: flex; justify-content: space-between;
+        }
+        .viewer-content { padding: 30px; overflow-y: auto; flex-grow: 1; }
+        
+        /* Effet de Décryptage */
+        #decrypt-overlay {
+            position: absolute; top: 40px; left: 0; width: 100%; height: calc(100% - 40px);
+            background: #000; z-index: 50; display: flex; flex-direction: column; justify-content: center; align-items: center;
+        }
+        .matrix-text { font-size: 1.5rem; word-break: break-all; padding: 20px; color: var(--text-muted); opacity: 0.5; text-align: center;}
+
+        /* Styles spécifiques aux contenus */
+        h2 { font-size: 1.4rem; border-bottom: 1px dashed var(--text-muted); padding-bottom: 10px; margin-bottom: 20px; color: #fff;}
+        .data-block { background: rgba(0,255,65,0.05); border: 1px solid var(--border-color); padding: 15px; margin-bottom: 20px;}
+        .data-block p { margin-bottom: 8px; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        
+        .hack-card { border: 1px solid var(--text-muted); padding: 1.5rem; transition: 0.3s; background: rgba(0,0,0,0.5);}
+        .hack-card:hover { border-color: var(--text-main); }
+        .hack-card h3 { font-size: 1.1rem; margin-bottom: 10px; color: #fff; }
+        .status { padding: 2px 6px; font-size: 0.8rem; font-weight: bold; color: #000; background: var(--text-main); margin-bottom: 10px; display: inline-block;}
+        
+        .clearance-level { color: var(--alert); font-weight: bold; display: block; margin-bottom: 5px; }
+        
+        .sys-logs { border-left: 2px solid var(--text-main); padding-left: 15px; }
+        .log-entry { margin-bottom: 15px; }
+        .log-time { color: var(--text-muted); }
+        .log-type { color: var(--amber); font-weight: bold; }
+        .log-type.exec { color: #38bdf8; }
+
+        #term-output { height: 300px; overflow-y: auto; margin-bottom: 10px; padding-right: 10px;}
+        .term-input-line { display: flex; align-items: center; border-top: 1px dashed var(--text-muted); padding-top: 10px; }
+        .prompt { font-weight: bold; margin-right: 10px; }
+        #term-input { background: transparent; border: none; color: var(--text-main); font-family: inherit; font-size: 1rem; width: 100%; outline: none; }
+
+        @media (max-width: 900px) {
+            #dashboard { flex-direction: column; overflow-y: auto; height: auto;}
+            #sidebar { width: 100%; flex-direction: row; flex-wrap: wrap; }
+            .sys-identity { width: 100%; }
+            .nav-btn { flex: 1; min-width: 140px; text-align: center; padding: 10px;}
+            #data-viewer { min-height: 600px; }
+            body { overflow-y: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scanline"></div>
+    <div class="crt-overlay"></div>
+    <div id="alert-container"></div>
+
+    <div id="monitoring-bar" class="hidden">
+        <div class="monitor-stat">
+            <span>SYS_UPTIME: <span id="sys-uptime">00:00:00</span></span>
+            <span>CPU: [<span id="sys-cpu">12</span>%]</span>
+        </div>
+        <div class="monitor-stat">
+            <span id="threat-indicator" style="color: var(--text-main);">THREAT_LEVEL: LOW</span>
+            <span id="shield-indicator">SHIELD: ACTIVE</span>
+        </div>
+    </div>
+
+    <div id="boot-screen">
+        <div id="boot-text"></div>
+        <div class="cursor">_</div>
+    </div>
+
+    <div id="security-prompt" class="hidden">
+        <div class="auth-box">
+            <h2>RESTRICTED AREA</h2>
+            <p style="margin-bottom: 15px;">Veuillez entrer le code d'habilitation.</p>
+            <input type="password" id="pin-input" maxlength="4" placeholder="****">
+            <br>
+            <button onclick="checkPin()">VERIFIER</button>
+            <button class="cancel-btn" onclick="closeSecurity()">ANNULER</button>
+            <p id="auth-msg"></p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 15px;">Hint: Année de certification Orion.</p>
+        </div>
+    </div>
+
+    <div id="malware-screen" class="hidden">
+        <div class="skull-ascii">
+            .d8888b.<br>
+           d88P  Y88b<br>
+           888    888<br>
+           888    888<br>
+           888    888<br>
+           "88b  d88P<br>
+            "Y8888P" 
+        </div>
+        <h1>SYSTEM COMPROMISED</h1>
+        <p style="font-weight: bold; font-size: 1.2rem;">RANSOMWARE DEPLOYED. MULTIPLE BREACHES DETECTED.</p>
+        
+        <div class="emergency-console">
+            <p style="color: var(--alert); font-weight: bold; margin-bottom: 10px;">>_ ROOT ACCESS REVOKED.</p>
+            <p>>_ Initiate counter-measure to regain control.</p>
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 15px;">(Hint: execute 'purge_malware.sh')</p>
+            <span class="prompt" style="color: #fff;">emergency@sys:~$</span>
+            <input type="text" id="override-input" autocomplete="off">
+            <p id="override-msg" style="color: var(--alert); margin-top: 10px;"></p>
+        </div>
+    </div>
+
+    <div id="dashboard" class="hidden">
+        
+        <aside id="sidebar">
+            <div class="sys-identity">
+                <h1 class="glitch" data-text="MEHDI B.">MEHDI B.</h1>
+                <div style="font-weight: bold; color: #fff;">OPÉRATEUR CYBER</div>
+                <p>Identifiant : root@cmd-center</p>
+                <div class="social-links">
+                    <a href="https://github.com/m3hdi-sys" target="_blank">[GIT]</a>
+                    <a href="https://www.linkedin.com/in/mehdi-ben-moulay/" target="_blank">[LNK]</a>
+                    <a href="https://tryhackme.com/p/M3hD1" target="_blank">[THM]</a>
+                </div>
+            </div>
+
+            <button class="nav-btn active" onclick="loadNode('node-profile', this)">[01] DOSSIER_OPÉRATEUR</button>
+            <button class="nav-btn" onclick="loadNode('node-missions', this)">[02] MISSIONS_CLASSÉES</button>
+            <button class="nav-btn" onclick="loadNode('node-logs', this)">[03] JOURNAUX_SYSTÈME</button>
+            <button class="nav-btn" onclick="loadNode('node-terminal', this)">[04] TERMINAL_D'ACCÈS</button>
+            <button id="btn-secret" class="nav-btn locked-btn" onclick="openSecurity()">[05] ARCHIVES_SECRÈTES 🔒</button>
+        </aside>
+
+        <main id="data-viewer">
+            <div class="viewer-header">
+                <span id="viewer-title">/root/dossier_operateur.dat</span>
+                <span id="viewer-status">SECURE CONNECTION</span>
+            </div>
+
+            <div id="decrypt-overlay" class="hidden">
+                <h3 style="color: #fff; margin-bottom: 10px;">DÉCRYPTAGE EN COURS...</h3>
+                <div class="matrix-text" id="matrix-code"></div>
+            </div>
+
+            <div class="viewer-content">
+                
+                <div id="node-profile" class="data-node">
+                    <h2>> Extraction des données personnelles</h2>
+                    <div class="data-block">
+                        <p><b>SPÉCIALITÉ :</b> IT Infrastructure & Cyber Defense 🛡️</p>
+                        <p><b>DESCRIPTION :</b> Déploiement d'architectures réseaux sécurisées (pfSense, Proxmox, VPN), automatisation de workflows critiques (N8N) et analyse forensic militaire.</p>
+                    </div>
+                    <div class="data-block">
+                        <p>>_ <b>STATUT ACTUEL :</b> Administrateur Systèmes & Réseaux (BTS SIO SISR)</p>
+                        <p>>_ <b>BASE OPÉRATIONNELLE :</b> Paris / Sartrouville, FR</p>
+                        <p>>_ <b>CARACTÉRISTIQUES :</b> Rigueur tactique, travail en équipe, gestion d'incidents critiques.</p>
+                    </div>
+                    
+                    <h2 style="margin-top: 30px;">> Niveau d'Habilitation (Clearances)</h2>
+                    <div class="grid-2">
+                        <div class="hack-card" style="border-color: var(--alert);">
+                            <span class="clearance-level">LEVEL : ALPHA</span>
+                            <p style="color: #fff;">Attestation SensCyber</p>
+                            <small class="log-time">Cybermalveillance.gouv.fr (2026)</small>
+                        </div>
+                        <div class="hack-card" style="border-color: var(--alert);">
+                            <span class="clearance-level">LEVEL : OMEGA</span>
+                            <p style="color: #fff;">Journée d'Immersion Orion</p>
+                            <small class="log-time">Les Invalides, Paris (2026)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="node-missions" class="data-node hidden">
+                    <h2>> Accès aux missions classifiées</h2>
+                    <div class="grid-2">
+                        <div class="hack-card">
+                            <h3>[OP] SECURE_TUNNEL</h3>
+                            <span class="status">VERIFIED</span>
+                            <p>Déploiement VPN Site-to-Site (Cisco Packet Tracer). Config IPsec (AES, IKE) et routage OSPF.</p>
+                        </div>
+                        <div class="hack-card">
+                            <h3>[OP] CYBER_FORENSIC</h3>
+                            <span class="status">RESOLVED</span>
+                            <p>Enquêtes numériques CyberSup. Collecte avancée en source ouverte (OSINT) et analyse d'images (GEOINT).</p>
+                        </div>
+                        <div class="hack-card">
+                            <h3>[OP] INFRA_AUTOMATION</h3>
+                            <span class="status">ACTIVE</span>
+                            <p>Création de workflows (N8N) pour l'optimisation des serveurs de l'infrastructure Io.sys 2.21.</p>
+                        </div>
+                        <div class="hack-card">
+                            <h3>[OP] ECO_SHIELD</h3>
+                            <span class="status">ARCHIVED</span>
+                            <p>Projet CATI (CY Cergy). Veille technologique et numérique pour la préservation de l'écosystème.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="node-logs" class="data-node hidden">
+                    <h2>> Journaux de déploiement (Expériences)</h2>
+                    <div class="sys-logs">
+                        <div class="log-entry">
+                            <span class="log-time">[2025-2026]</span> <span class="log-type exec">[EXEC] Io.sys 2.21</span> 
+                            <p>Alternance : Automatisation des tâches via algorithmes N8N. Installation, configuration et gestion d'infrastructures serveurs et stockage.</p>
+                        </div>
+                        <div class="log-entry">
+                            <span class="log-time">[Juil-Aout 25]</span> <span class="log-type">[INFO] Monoprix</span> 
+                            <p>Logistique : Gestion rigoureuse des stocks et relation civile sous rythme soutenu.</p>
+                        </div>
+                        <div class="log-entry">
+                            <span class="log-time">[Mars 2020]</span> <span class="log-type">[INIT] INPI</span> 
+                            <p>Immersion système : Découverte des fondations du métier d'ingénieur réseau.</p>
+                        </div>
+                    </div>
+                    
+                    <h2 style="margin-top: 30px;">> Arsenal Technique Validé</h2>
+                    <div class="data-block">
+                        <p><b>[SYSTEMES] :</b> Windows Server 11, Linux Debian, VMware, Hyper-V, Proxmox.</p>
+                        <p><b>[RESEAUX] :</b> TCP/IP, OSI, VLAN, pfSense, VPN IPsec/OSPF.</p>
+                        <p><b>[DEV & OPS] :</b> Python, JavaScript, SQL, PHP, N8N, IA Appliquée.</p>
+                    </div>
+                </div>
+
+                <div id="node-terminal" class="data-node hidden">
+                    <h2>> Interface de Commande Directe</h2>
+                    <div style="color: var(--text-muted); margin-bottom: 10px;">Type 'help' to list available commands. Type 'clear' to reset.</div>
+                    
+                    <div id="term-output">
+                        <p>Terminal Cyber Defense v2.21 ready. Waiting for input...</p>
+                    </div>
+                    <div class="term-input-line">
+                        <span class="prompt">guest@cmd-center:~$</span>
+                        <input type="text" id="term-input" autocomplete="off">
+                    </div>
+                </div>
+
+                <div id="node-secret" class="data-node hidden">
+                    <h2 style="color: var(--text-main);">> ARCHIVES DÉBLOQUÉES</h2>
+                    <div class="data-block" style="border-color: var(--text-main);">
+                        <p style="font-size: 1.2rem; font-weight: bold; color: #fff; margin-bottom: 15px;">[+] ACCÈS AUTORISÉ : LEVEL OMEGA</p>
+                        <p>Contre-mesure exécutée avec succès. Le système est de nouveau intègre.</p>
+                        <p>Voici le dossier classifié contenant l'ensemble des données certifiées de l'opérateur (Curriculum Vitae).</p>
+                        <br><br>
+                        <a href="Mehdi_Ben_Moulay_CV.pdf" target="_blank" style="display: inline-block; background: var(--text-main); color: #000; padding: 12px 25px; text-decoration: none; font-weight: bold; border: 1px solid #fff; box-shadow: 0 0 15px rgba(0,255,65,0.4); transition: 0.3s;" onmouseover="this.style.background='#fff'; this.style.color='var(--alert)';" onmouseout="this.style.background='var(--text-main)'; this.style.color='#000';">
+                            [ TÉLÉCHARGER LE DOSSIER (PDF) ]
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- ANIMATION FAVICON ---
+            let favInterval;
+            const favicon = document.getElementById('favicon');
+            const frame1 = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23050505' rx='4'/><text x='2' y='22' fill='%2300ff41' font-family='monospace' font-size='20' font-weight='bold'>%3E_</text></svg>";
+            const frame2 = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23050505' rx='4'/><text x='2' y='22' fill='%2300ff41' font-family='monospace' font-size='20' font-weight='bold'>%3E</text></svg>";
+            const frameInfected = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23ff003c' rx='4'/><text x='2' y='22' fill='%23000000' font-family='monospace' font-size='20' font-weight='bold'>X_X</text></svg>";
+            
+            function startFaviconAnimation() {
+                let toggle = true;
+                clearInterval(favInterval);
+                favInterval = setInterval(() => {
+                    favicon.setAttribute('href', toggle ? frame1 : frame2);
+                    toggle = !toggle;
+                }, 600);
+            }
+            startFaviconAnimation();
+            
+            // --- BOOT SEQUENCE ---
+            const bootTextLines = [
+                "Initializing OS core...",
+                "Loading tactical modules...",
+                "Bypassing external firewalls...",
+                "Decrypting operator interface...",
+                "Access Granted. Welcome to Command Center."
+            ];
+            const bootContainer = document.getElementById('boot-text');
+            let lineIndex = 0;
+            function typeLine() {
+                if (lineIndex < bootTextLines.length) {
+                    const p = document.createElement('p');
+                    p.textContent = "> " + bootTextLines[lineIndex];
+                    bootContainer.appendChild(p);
+                    lineIndex++;
+                    setTimeout(typeLine, Math.random() * 150 + 50);
+                } else {
+                    setTimeout(() => {
+                        document.getElementById('boot-screen').classList.add('hidden');
+                        document.getElementById('dashboard').classList.remove('hidden');
+                        document.getElementById('monitoring-bar').classList.remove('hidden');
+                        startMonitoring();
+                        startAlertSystem();
+                    }, 500);
+                }
+            }
+            setTimeout(typeLine, 300);
+
+            function startMonitoring() {
+                let seconds = 0;
+                setInterval(() => {
+                    seconds++;
+                    const h = String(Math.floor(seconds / 3600)).padStart(2, '0');
+                    const m = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
+                    const s = String(seconds % 60).padStart(2, '0');
+                    document.getElementById('sys-uptime').innerText = `${h}:${m}:${s}`;
+                    document.getElementById('sys-cpu').innerText = Math.floor(Math.random() * 15) + 5;
+                }, 1000);
+            }
+
+            function startAlertSystem() {
+                const alerts = ["WARNING: Tentative de scan réseau détectée.", "INFO: Synchronisation des bases [OK].", "SYSTEM: Vérification pare-feu pfSense terminée.", "ALERT: Ping suspect sur le port 22.", "INFO: Scripts N8N opérationnels."];
+                function spawnAlert() {
+                    const container = document.getElementById('alert-container');
+                    if (!container) return;
+                    const msg = alerts[Math.floor(Math.random() * alerts.length)];
+                    const alertEl = document.createElement('div');
+                    alertEl.className = 'cyber-alert';
+                    if (msg.startsWith("INFO") || msg.startsWith("SYSTEM")) {
+                        alertEl.style.background = "rgba(0, 143, 17, 0.85)"; 
+                        alertEl.style.boxShadow = "0 0 15px rgba(0, 255, 65, 0.4)";
+                    }
+                    alertEl.innerText = msg;
+                    container.appendChild(alertEl);
+                    setTimeout(() => { if(alertEl.parentNode) alertEl.parentNode.removeChild(alertEl); }, 4000);
+                    setTimeout(spawnAlert, Math.random() * 10000 + 8000);
+                }
+                setTimeout(spawnAlert, 5000);
+            }
+
+            window.loadNode = function(nodeId, btnElement) {
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                if(btnElement) btnElement.classList.add('active');
+
+                const titles = {
+                    'node-profile': '/root/dossier_operateur.dat',
+                    'node-missions': '/root/missions_classees.log',
+                    'node-logs': '/var/sys/journaux_deploiement.txt',
+                    'node-terminal': '/bin/bash_secure',
+                    'node-secret': '/root/CLASSIFIED/archives.dat'
+                };
+                document.getElementById('viewer-title').innerText = titles[nodeId] || '/root/unknown';
+
+                document.querySelectorAll('.data-node').forEach(node => node.classList.add('hidden'));
+
+                const overlay = document.getElementById('decrypt-overlay');
+                const matrixText = document.getElementById('matrix-code');
+                overlay.classList.remove('hidden');
+
+                const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*X";
+                let scrambleInterval = setInterval(() => {
+                    let str = "";
+                    for(let i=0; i<150; i++) str += chars[Math.floor(Math.random() * chars.length)];
+                    matrixText.innerText = str;
+                }, 40);
+
+                setTimeout(() => {
+                    clearInterval(scrambleInterval);
+                    overlay.classList.add('hidden');
+                    document.getElementById(nodeId).classList.remove('hidden');
+                    if(nodeId === 'node-terminal') document.getElementById('term-input').focus();
+                }, 600);
+            };
+
+            // --- SYSTÈME DE SÉCURITÉ & INFECTION MALWARE CONTINU ---
+            let failedAttempts = 0;
+            const correctPin = "2026";
+            
+            window.openSecurity = function() {
+                document.getElementById('security-prompt').classList.remove('hidden');
+                document.getElementById('pin-input').value = '';
+                document.getElementById('auth-msg').innerText = '';
+                document.getElementById('pin-input').focus();
+            };
+
+            window.closeSecurity = function() {
+                document.getElementById('security-prompt').classList.add('hidden');
+            };
+
+            window.checkPin = function() {
+                const input = document.getElementById('pin-input').value;
+                const msg = document.getElementById('auth-msg');
+                const body = document.body;
+
+                if (input === correctPin) {
+                    // Succès du code du premier coup
+                    failedAttempts = 0;
+                    body.className = '';
+                    document.getElementById('threat-indicator').innerText = 'THREAT_LEVEL: LOW';
+                    document.getElementById('threat-indicator').style.color = 'var(--text-main)';
+                    
+                    closeSecurity();
+                    
+                    const btnSecret = document.getElementById('btn-secret');
+                    btnSecret.classList.remove('locked-btn');
+                    btnSecret.innerText = "[05] ARCHIVES_SECRÈTES (UNLOCKED)";
+                    btnSecret.onclick = function() { loadNode('node-secret', this); };
+                    
+                    loadNode('node-secret', btnSecret);
+                } else {
+                    // Echec du code
+                    failedAttempts++;
+                    
+                    // L'impact secoue l'écran au moment de la validation
+                    body.classList.remove('shake-impact');
+                    void body.offsetWidth; // Force le reflow pour relancer l'animation
+                    body.classList.add('shake-impact');
+
+                    if (failedAttempts === 1) {
+                        msg.style.color = "var(--amber)";
+                        msg.innerText = "ACCESS DENIED. 2 ATTEMPTS REMAINING.";
+                        
+                        // Déclenche l'effet de scintillement constant
+                        body.classList.add('infection-stage-1');
+                        
+                        document.getElementById('threat-indicator').innerText = 'THREAT_LEVEL: ELEVATED';
+                        document.getElementById('threat-indicator').style.color = 'var(--amber)';
+                    } 
+                    else if (failedAttempts === 2) {
+                        msg.style.color = "var(--alert)";
+                        msg.innerText = "ACCESS DENIED. 1 ATTEMPT REMAINING. MALWARE DETECTED.";
+                        
+                        // Déclenche l'effet de tremblement continu + couleurs corrompues
+                        body.classList.remove('infection-stage-1');
+                        body.classList.add('infection-stage-2');
+                        
+                        document.getElementById('threat-indicator').innerText = 'THREAT_LEVEL: HIGH';
+                        document.getElementById('threat-indicator').style.color = 'var(--alert)';
+                    } 
+                    else if (failedAttempts >= 3) {
+                        // INFECTION TOTALE ! (Écran Rouge)
+                        closeSecurity();
+                        document.getElementById('malware-screen').classList.remove('hidden');
+                        document.getElementById('override-input').value = '';
+                        document.getElementById('override-input').focus();
+                        
+                        clearInterval(favInterval);
+                        favicon.setAttribute('href', frameInfected);
+                    }
+                }
+            };
+
+            document.getElementById('pin-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') checkPin();
+            });
+
+            document.getElementById('override-input').addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const cmd = this.value.toLowerCase().trim();
+                    const overrideMsg = document.getElementById('override-msg');
+                    
+                    if (cmd === 'purge_malware.sh') {
+                        overrideMsg.style.color = "#00ff41";
+                        overrideMsg.innerText = "EXECUTING COUNTER-MEASURE... PURGING MALWARE... SUCCESS.";
+                        
+                        setTimeout(() => {
+                            // Nettoyage complet
+                            document.getElementById('malware-screen').classList.add('hidden');
+                            document.body.className = ''; // Supprime tous les effets continus
+                            failedAttempts = 0;
+                            
+                            startFaviconAnimation();
+                            
+                            document.getElementById('threat-indicator').innerText = 'THREAT_LEVEL: LOW';
+                            document.getElementById('threat-indicator').style.color = 'var(--text-main)';
+                            
+                            // Déblocage des archives
+                            const btnSecret = document.getElementById('btn-secret');
+                            btnSecret.classList.remove('locked-btn');
+                            btnSecret.innerText = "[05] ARCHIVES_SECRÈTES (UNLOCKED)";
+                            btnSecret.onclick = function() { loadNode('node-secret', this); };
+                            loadNode('node-secret', btnSecret);
+                            
+                        }, 1500);
+                    } else {
+                        overrideMsg.style.color = "#fff";
+                        overrideMsg.innerText = `Command '${cmd}' not recognized. Try 'purge_malware.sh'`;
+                        this.value = '';
+                    }
+                }
+            });
+
+            // --- TERMINAL NORMAL ---
+            const termInput = document.getElementById('term-input');
+            const termOutput = document.getElementById('term-output');
+
+            termInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const cmd = this.value.toLowerCase().trim();
+                    const promptLine = document.createElement('p');
+                    promptLine.innerHTML = `<span class="prompt">guest@cmd-center:~$</span> ${this.value}`;
+                    termOutput.appendChild(promptLine);
+
+                    const responseLine = document.createElement('p');
+                    responseLine.style.color = "#ccc";
+
+                    switch(cmd) {
+                        case 'help': responseLine.innerHTML = "Commandes: <br>- <b>whoami</b><br>- <b>status</b><br>- <b>clear</b>"; break;
+                        case 'whoami': responseLine.innerText = "Mehdi BEN MOULAY - Administrateur Système en Cyber-Défense."; break;
+                        case 'status': responseLine.innerText = "ALL SYSTEMS NOMINAL. Pare-feu actif."; break;
+                        case 'clear': termOutput.innerHTML = ''; break;
+                        case 'kakarotto': responseLine.innerText = "Mon nom est Kakarotto, le saiyen legendaire."; responseLine.style.color = "var(--amber)"; break;
+                        case '': break;
+                        default: responseLine.innerText = `bash: ${cmd}: command not found`; responseLine.style.color = "var(--alert)";
+                    }
+
+                    if (cmd !== 'clear' && cmd !== '') termOutput.appendChild(responseLine);
+                    this.value = '';
+                    termOutput.parentElement.scrollTop = termOutput.parentElement.scrollHeight;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
