@@ -91,17 +91,17 @@
         }
         .monitor-val { color: var(--text-main); font-weight: bold; }
 
-        /* Fixation stricte de la taille du Dashboard */
+        /* --- LE DASHBOARD EST MAINTENANT À 100% DE LARGEUR --- */
         #dashboard {
             display: flex; height: calc(100vh - 35px); margin-top: 35px;
-            max-width: 1500px; margin-left: auto; margin-right: auto; padding: 20px; gap: 20px; position: relative; z-index: 10;
+            max-width: 100%; width: 100%; padding: 20px 40px; gap: 20px; position: relative; z-index: 10;
         }
 
         /* --- PANNEAU LATÉRAL --- */
         #sidebar { 
-            flex: 0 0 320px; /* Taille fixe, ne rétrécit jamais */
+            flex: 0 0 320px; 
             display: flex; flex-direction: column; gap: 15px; 
-            overflow-y: auto; /* Scroll interne si écran trop petit */
+            overflow-y: auto; 
             padding-right: 5px;
         }
         .sys-identity { background: var(--bg-panel); border: 1px solid var(--border-color); padding: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
@@ -127,15 +127,15 @@
 
         /* --- ZONE DE CONTENU PRINCIPALE (FIXE & STABLE) --- */
         #data-viewer {
-            flex: 1; /* Prend tout l'espace restant */
-            min-height: 0; /* Important pour que le flexbox ne déborde pas */
+            flex: 1; 
+            min-height: 0; 
             background: var(--bg-panel); border: 1px solid var(--border-color);
             display: flex; flex-direction: column; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
         .viewer-header { background: #000; border-bottom: 1px solid var(--border-color); padding: 10px 20px; font-size: 0.85rem; display: flex; justify-content: space-between; color: #888; flex-shrink: 0;}
-        .viewer-content { padding: 30px; overflow-y: auto; flex: 1; /* Remplit le viewer et permet le scroll interne */ }
+        .viewer-content { padding: 30px; overflow-y: auto; flex: 1; }
 
-        .data-node { display: flex; flex-direction: column; height: 100%; } /* Stabilité des sous-noeuds */
+        .data-node { display: flex; flex-direction: column; height: 100%; } 
 
         h2 { font-size: 1.2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; margin-bottom: 20px; color: #fff; letter-spacing: 1px;}
         .data-block { background: rgba(0,0,0,0.4); border: 1px dashed var(--border-color); padding: 20px; margin-bottom: 20px; }
@@ -230,7 +230,7 @@
 
         /* --- RESPONSIVE MOBILE & TABLETTE --- */
         @media (max-width: 900px) {
-            body { overflow-y: auto; height: auto; } /* Permet le scroll sur toute la page en mobile */
+            body { overflow-y: auto; height: auto; }
             #dashboard { flex-direction: column; height: auto; margin-top: 40px; padding: 10px; }
             #sidebar { flex: none; width: 100%; overflow-y: visible; padding-right: 0;}
             #data-viewer { min-height: 70vh; flex: none; }
@@ -339,7 +339,7 @@
                 <div id="node-profile" class="data-node">
                     <h2>> PROFIL OPÉRATIONNEL</h2>
                     <div class="data-block">
-                        <p><b>RÉSUMÉ :</b> Technicien informatique spécialisé en administration systèmes et ingénierie réseaux. Passionné par l'infrastructure IT, le déploiement sécurisé et l'automatisation de processus.</p>
+                        <p><b>RÉSUMÉ :</b> Technicien informatique spécialisé en administration systèmes et ingénierie réseaux. Passionné par l'infrastructure IT, le déploiement sécurisé (VPN, routage) et l'automatisation de processus.</p>
                         <p><b>FORMATION :</b> 1ère année BTS SIO (option Solutions d'Infrastructure, Systèmes et Réseaux).</p>
                         <p><b>SAVOIR-ÊTRE :</b> Rigueur d'exécution, esprit d'analyse méthodologique, et forte capacité à travailler en équipe.</p>
                     </div>
@@ -410,7 +410,7 @@
                     </div>
                 </div>
 
-                <div id="node-terminal" class="data-node hidden">
+                <div id="node-terminal" class="data-node hidden" style="height: 100%;">
                     <div class="terminal-container">
                         <div class="term-main" id="term-click-area">
                             <div id="term-output">
@@ -440,7 +440,7 @@
                             </ul>
                             <div style="margin-top: 20px; padding: 15px; border: 1px dashed var(--alert); background: rgba(255,0,0,0.05); color: #ccc; font-size: 0.8rem;">
                                 <span style="color:var(--alert); font-weight:bold;">[?] INDICE SYSTÈME</span><br><br>
-                                Les clés de sécurité sont souvent stockées en clair par les opérateurs distraits dans le dossier local. Utilisez <b>ls</b> et <b>cat</b>.
+                                Les clés de sécurité sont souvent stockées en clair par les opérateurs distraits dans le dossier root. Utilisez <b>ls</b> et <b>cat</b>.
                             </div>
                         </div>
                     </div>
@@ -482,7 +482,7 @@
             }
             startFaviconAnimation();
             
-            // --- BOOT SEQUENCE SECURISÉE ---
+            // --- BOOT SEQUENCE SECURISÉE ET RAPIDE ---
             let bootFinished = false;
             const bootTextLines = [
                 "> Chargement du noyau système...",
@@ -630,18 +630,16 @@
 
                     if (failedAttempts === 1) {
                         msg.style.color = "var(--amber)";
-                        msg.innerHTML = "ERREUR. 2 TENTATIVES RESTANTES.<br><span style='color:#888; font-size:0.8rem; font-weight:normal; margin-top:10px; display:block;'>Astuce : Le code est dans un fichier local. Utilisez le TERMINAL BASH (ls/cat).</span>";
+                        msg.innerHTML = "ERREUR. 2 TENTATIVES RESTANTES.<br><span style='color:#888; font-size:0.8rem; font-weight:normal; margin-top:10px; display:block;'>Astuce : Le code est stocké dans un fichier local. Utilisez le TERMINAL BASH pour chercher.</span>";
                         
-                        // Stade 1 : Léger changement de chaîne TV toutes les 4s
                         body.className = 'infection-stage-1';
                         threatInd.innerText = 'MOYENNE';
                         threatInd.style.color = 'var(--amber)';
                     } 
                     else if (failedAttempts === 2) {
                         msg.style.color = "var(--alert)";
-                        msg.innerHTML = "ERREUR. 1 TENTATIVE RESTANTE.<br><span style='color:#ccc; font-size:0.8rem; font-weight:normal; margin-top:10px; display:block;'>ATTENTION : INSTABILITÉ DU SYSTÈME DÉTECTÉE.</span>";
+                        msg.innerHTML = "ERREUR. 1 TENTATIVE RESTANTE.<br><span style='color:#ccc; font-size:0.8rem; font-weight:normal; margin-top:10px; display:block;'>ATTENTION : LE SYSTÈME DEVIENT INSTABLE.</span>";
                         
-                        // Stade 2 : Lourd changement de chaîne TV toutes les 2.5s
                         body.className = 'infection-stage-2';
                         
                         threatInd.innerText = 'ÉLEVÉE';
@@ -756,6 +754,15 @@
                     responseLine.style.color = "#ccc";
 
                     switch(baseCmd) {
+                        case 'help': 
+                            responseLine.innerHTML = `Commandes disponibles:<br>
+                            &nbsp;&nbsp;<b>ls</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lister le contenu du répertoire<br>
+                            &nbsp;&nbsp;<b>cat [file]</b>&nbsp;Lire un fichier texte<br>
+                            &nbsp;&nbsp;<b>pwd</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Afficher le chemin du répertoire actuel<br>
+                            &nbsp;&nbsp;<b>whoami</b>&nbsp;&nbsp;&nbsp;&nbsp;Afficher l'identité de session<br>
+                            &nbsp;&nbsp;<b>neofetch</b>&nbsp;&nbsp;Afficher les spécifications système<br>
+                            &nbsp;&nbsp;<b>clear</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Nettoyer la console`; 
+                            break;
                         case 'ls':
                             responseLine.innerHTML = "infos_profil.dat&nbsp;&nbsp;&nbsp;&nbsp;projets_tech.log&nbsp;&nbsp;&nbsp;&nbsp;<span style='color:#fff; font-weight:bold;'>auth_key.txt</span>";
                             break;
@@ -807,7 +814,7 @@
                 }
             });
             
-            document.getElementById('term-click-area').addEventListener('click', () => {
+            document.getElementById('node-terminal').addEventListener('click', () => {
                 termInput.focus();
             });
         });
