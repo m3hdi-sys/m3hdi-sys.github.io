@@ -3,23 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi Ben Moulay | Portfolio Administration Systèmes, Réseaux & Cybersécurité</title>
+    <title>Mehdi Ben Moulay | Portfolio Systèmes, Réseaux & Cybersécurité</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0b1120;
-            --bg-panel: #162238;
-            --bg-card: rgba(30, 41, 59, 0.75);
-            --bg-card-hover: rgba(30, 41, 59, 0.98);
+            --bg-dark: #060b14;
+            --bg-panel: #0f172a;
+            --bg-card: rgba(15, 23, 42, 0.72);
+            --bg-card-hover: rgba(30, 41, 59, 0.92);
             --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.25);
+            --accent-glow: rgba(56, 189, 248, 0.35);
             --accent-secondary: #10b981;
             --gold: #f59e0b;
             --text-main: #f8fafc;
             --text-muted: #cbd5e1;
             --text-dim: #94a3b8;
-            --border: rgba(148, 163, 184, 0.18);
-            --border-hover: rgba(56, 189, 248, 0.55);
+            --border: rgba(148, 163, 184, 0.16);
+            --border-hover: rgba(56, 189, 248, 0.65);
         }
 
         * {
@@ -34,12 +34,18 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 15% 15%, rgba(56, 189, 248, 0.08) 0%, transparent 35%),
-                radial-gradient(circle at 85% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 35%),
-                linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-            background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
+            overflow-x: hidden;
+        }
+
+        /* Canvas de particules réseau en arrière-plan */
+        #bg-canvas {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.55;
         }
 
         a { text-decoration: none; color: inherit; }
@@ -49,14 +55,14 @@
         nav {
             position: fixed;
             top: 0; width: 100%;
-            background: rgba(11, 17, 32, 0.88);
-            backdrop-filter: blur(12px);
+            background: rgba(6, 11, 20, 0.82);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 16px 6%;
+            padding: 15px 6%;
         }
 
         .nav-brand {
@@ -64,7 +70,7 @@
             align-items: center;
             gap: 12px;
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             letter-spacing: 0.5px;
         }
 
@@ -73,56 +79,68 @@
             height: 10px;
             background: var(--accent-secondary);
             border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent-secondary);
+            box-shadow: 0 0 12px var(--accent-secondary);
             animation: pulse 2s infinite;
         }
 
         @keyframes pulse {
             0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.6; }
+            50% { transform: scale(1.3); opacity: 0.6; }
         }
 
         .nav-links {
             display: flex;
-            gap: 26px;
+            gap: 24px;
             align-items: center;
         }
 
         .nav-links a {
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
             color: var(--text-muted);
             transition: 0.25s;
+            position: relative;
         }
 
-        .nav-links a:hover {
-            color: var(--accent);
-        }
+        .nav-links a:hover { color: var(--accent); }
 
         .nav-cta {
-            background: rgba(56, 189, 248, 0.12);
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(16, 185, 129, 0.18));
             color: var(--accent) !important;
             border: 1px solid var(--border-hover);
-            padding: 7px 15px;
-            border-radius: 6px;
-            font-weight: 600 !important;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 700 !important;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
         }
 
         .nav-cta:hover {
             background: var(--accent);
             color: var(--bg-dark) !important;
+            box-shadow: 0 0 25px var(--accent-glow);
         }
 
         /* --- CONTENEUR --- */
         .container {
-            max-width: 1180px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 110px 24px 60px 24px;
+            padding: 115px 24px 60px 24px;
+        }
+
+        /* Animations au scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 45px 0 65px 0;
+            padding: 40px 0 70px 0;
             border-bottom: 1px solid var(--border);
             display: grid;
             grid-template-columns: 1.35fr 0.65fr;
@@ -135,29 +153,42 @@
             align-items: center;
             gap: 8px;
             background: rgba(56, 189, 248, 0.1);
-            border: 1px solid rgba(56, 189, 248, 0.3);
+            border: 1px solid rgba(56, 189, 248, 0.35);
             color: var(--accent);
             padding: 6px 14px;
             border-radius: 999px;
             font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 18px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
         }
 
         .hero h1 {
-            font-size: clamp(2.3rem, 4.5vw, 3.4rem);
+            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
             font-weight: 800;
-            line-height: 1.12;
+            line-height: 1.1;
             margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            background: linear-gradient(90deg, #ffffff, #93c5fd, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero h2 {
-            font-size: clamp(1.15rem, 2vw, 1.45rem);
+            font-size: clamp(1.1rem, 2vw, 1.38rem);
             color: var(--accent);
             font-weight: 600;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
+            min-height: 1.8em;
+            font-family: 'JetBrains Mono', monospace;
         }
+
+        .cursor {
+            display: inline-block;
+            width: 9px;
+            background-color: var(--accent);
+            animation: blink 1s infinite;
+        }
+        @keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
         .hero p {
             color: var(--text-muted);
@@ -179,21 +210,21 @@
             padding: 12px 22px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             cursor: pointer;
             transition: all 0.25s ease;
             border: 1px solid transparent;
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: #0b1120;
-            box-shadow: 0 4px 18px var(--accent-glow);
+            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            color: #fff;
+            box-shadow: 0 6px 20px var(--accent-glow);
         }
 
         .btn-primary:hover {
-            background: #7dd3fc;
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(56, 189, 248, 0.5);
         }
 
         .btn-secondary {
@@ -205,26 +236,34 @@
         .btn-secondary:hover {
             border-color: var(--accent);
             color: var(--accent);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
-        /* Stats Box à droite du Hero */
+        /* Stats Box Hero */
         .hero-stats {
-            background: linear-gradient(145deg, var(--bg-panel), rgba(15, 23, 42, 0.9));
+            background: linear-gradient(145deg, rgba(22, 34, 56, 0.85), rgba(15, 23, 42, 0.9));
             border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 26px;
+            border-radius: 16px;
+            padding: 24px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 18px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+            gap: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.45);
+            position: relative;
+            overflow: hidden;
         }
 
         .stat-item {
-            background: rgba(11, 17, 32, 0.55);
+            background: rgba(6, 11, 20, 0.65);
             border: 1px solid var(--border);
             padding: 16px;
-            border-radius: 10px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .stat-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-3px);
         }
 
         .stat-val {
@@ -243,15 +282,12 @@
 
         /* --- SECTIONS --- */
         section {
-            padding: 70px 0;
+            padding: 75px 0;
             border-bottom: 1px solid var(--border);
         }
-
         section:last-of-type { border-bottom: none; }
 
-        .section-header {
-            margin-bottom: 38px;
-        }
+        .section-header { margin-bottom: 40px; }
 
         .section-tag {
             font-family: 'JetBrains Mono', monospace;
@@ -264,7 +300,7 @@
         }
 
         .section-title {
-            font-size: 1.85rem;
+            font-size: 1.9rem;
             font-weight: 800;
             color: var(--text-main);
             display: flex;
@@ -276,14 +312,14 @@
             content: "";
             flex: 1;
             height: 1px;
-            background: var(--border);
+            background: linear-gradient(90deg, var(--border-hover), transparent);
         }
 
         /* --- GRILLES & CARTES --- */
         .grid-3 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+            gap: 24px;
         }
 
         .grid-2 {
@@ -295,20 +331,33 @@
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 26px;
-            transition: all 0.25s ease;
+            transition: all 0.3s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
         }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: -100%;
+            width: 100%; height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transition: 0.6s;
+        }
+
+        .card:hover::before { left: 100%; }
 
         .card:hover {
             background: var(--bg-card-hover);
             border-color: var(--border-hover);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.1);
         }
 
         .card-top-meta {
@@ -321,25 +370,25 @@
 
         .pill {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.73rem;
+            font-size: 0.72rem;
             font-weight: 600;
             padding: 4px 10px;
             border-radius: 6px;
             background: rgba(56, 189, 248, 0.12);
             color: var(--accent);
-            border: 1px solid rgba(56, 189, 248, 0.28);
+            border: 1px solid rgba(56, 189, 248, 0.3);
         }
 
         .pill-gold {
-            background: rgba(245, 158, 11, 0.14);
+            background: rgba(245, 158, 11, 0.15);
             color: #fbbf24;
-            border-color: rgba(245, 158, 11, 0.35);
+            border-color: rgba(245, 158, 11, 0.4);
         }
 
         .pill-green {
-            background: rgba(16, 185, 129, 0.14);
+            background: rgba(16, 185, 129, 0.15);
             color: #34d399;
-            border-color: rgba(16, 185, 129, 0.35);
+            border-color: rgba(16, 185, 129, 0.4);
         }
 
         .card h4 {
@@ -387,24 +436,25 @@
         .tech-tag {
             background: #163247;
             color: #e2e8f0;
-            font-size: 0.75rem;
+            font-size: 0.74rem;
             font-weight: 600;
             padding: 4px 10px;
-            border-radius: 4px;
+            border-radius: 5px;
+            border: 1px solid rgba(56, 189, 248, 0.15);
         }
 
         .card-btn {
-            margin-top: 16px;
+            margin-top: 14px;
             width: 100%;
             background: rgba(56, 189, 248, 0.1);
-            border: 1px dashed var(--accent);
+            border: 1px solid rgba(56, 189, 248, 0.4);
             color: var(--accent);
             padding: 10px 14px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.86rem;
+            font-size: 0.85rem;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.25s;
             text-align: center;
             display: inline-block;
         }
@@ -412,97 +462,162 @@
         .card-btn:hover {
             background: var(--accent);
             color: var(--bg-dark);
-            border-style: solid;
+            box-shadow: 0 0 18px var(--accent-glow);
         }
 
-        /* --- OPENBADGES & CERTIFICATS --- */
+        /* --- BADGES ANIMÉS 3D & HOLOGRAPHIQUES --- */
+        @keyframes floatBadge {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-7px) rotate(1.5deg); }
+        }
+
+        @keyframes spinGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .badge-card {
-            background: linear-gradient(160deg, rgba(22, 34, 56, 0.9), rgba(15, 23, 42, 0.95));
+            background: linear-gradient(155deg, rgba(22, 34, 56, 0.92), rgba(11, 17, 32, 0.96));
             border: 1px solid var(--border);
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 24px;
             display: flex;
-            gap: 20px;
-            align-items: flex-start;
-            transition: 0.25s;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.35s ease;
+        }
+
+        /* Reflet holographique au survol */
+        .badge-card::after {
+            content: "";
+            position: absolute;
+            top: -50%; left: -60%;
+            width: 50%; height: 200%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+            transform: rotate(25deg);
+            transition: 0.65s;
+            pointer-events: none;
+        }
+        .badge-card:hover::after {
+            left: 130%;
         }
 
         .badge-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 18px 38px rgba(0,0,0,0.5), 0 0 25px rgba(56, 189, 248, 0.2);
         }
 
-        .badge-img-wrap {
-            width: 88px;
-            height: 88px;
+        .badge-header {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .badge-orb {
+            width: 96px;
+            height: 96px;
             flex-shrink: 0;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 8px;
+            position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: zoom-in;
+            animation: floatBadge 4s ease-in-out infinite;
         }
 
-        .badge-img-wrap img {
+        /* Anneau lumineux animé autour du badge */
+        .badge-orb::before {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, var(--accent), var(--accent-secondary), var(--gold), var(--accent));
+            animation: spinGlow 6s linear infinite;
+            z-index: 0;
+            opacity: 0.75;
+        }
+
+        .badge-orb-inner {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: #0b1120;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            overflow: hidden;
+        }
+
+        .badge-orb-inner img {
             width: 100%;
             height: 100%;
             object-fit: contain;
+            filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.35));
+            transition: transform 0.3s ease;
         }
 
-        .badge-info h4 {
+        .badge-card:hover .badge-orb-inner img {
+            transform: scale(1.1);
+        }
+
+        .crypto-proof {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.12);
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        .badge-title {
             font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 4px;
+            color: #fff;
+            line-height: 1.25;
         }
 
         .badge-issuer {
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
-            margin-bottom: 8px;
+            margin-top: 4px;
             display: block;
         }
 
         .badge-desc {
             font-size: 0.85rem;
             color: var(--text-muted);
-            margin-bottom: 10px;
+            margin-bottom: 14px;
         }
 
-        .crypto-proof {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.7rem;
-            color: #34d399;
-            background: rgba(16, 185, 129, 0.08);
-            border: 1px solid rgba(16, 185, 129, 0.25);
-            padding: 3px 8px;
-            border-radius: 4px;
-            display: inline-block;
-            margin-bottom: 8px;
-        }
-
-        /* Cartes Certificats Visuels */
+        /* --- CERTIFICATS VISUELS DIRECTS (AUTO-AFFICHÉS) --- */
         .cert-visual-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: 0.25s;
+            transition: all 0.3s ease;
         }
 
         .cert-visual-card:hover {
             border-color: var(--accent);
-            transform: translateY(-4px);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.45);
         }
 
         .cert-thumb {
-            height: 190px;
+            height: 215px;
             background: #090e1a;
             border-bottom: 1px solid var(--border);
             display: flex;
@@ -517,57 +632,51 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.35s ease;
         }
 
         .cert-visual-card:hover .cert-thumb img {
             transform: scale(1.04);
         }
 
-        .cert-fallback {
-            padding: 20px;
-            text-align: center;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent);
-        }
-
         .cert-body {
-            padding: 20px;
+            padding: 22px;
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        /* --- TIMELINE EXPÉRIENCES & FORMATIONS --- */
+        /* --- TIMELINE --- */
         .timeline {
             position: relative;
-            padding-left: 32px;
+            padding-left: 30px;
             border-left: 2px solid var(--border);
         }
 
         .tl-item {
             position: relative;
-            margin-bottom: 32px;
+            margin-bottom: 28px;
             background: var(--bg-card);
             border: 1px solid var(--border);
             padding: 20px 24px;
-            border-radius: 10px;
+            border-radius: 12px;
+            transition: 0.25s;
         }
-
+        .tl-item:hover { border-color: var(--border-hover); }
         .tl-item:last-child { margin-bottom: 0; }
 
         .tl-item::before {
             content: "";
             position: absolute;
-            left: -40px;
+            left: -38px;
             top: 24px;
             width: 12px;
             height: 12px;
             border-radius: 50%;
             background: var(--bg-dark);
             border: 2.5px solid var(--accent);
+            box-shadow: 0 0 10px var(--accent);
         }
 
         .tl-head {
@@ -579,17 +688,17 @@
             margin-bottom: 4px;
         }
 
-        .tl-title { font-size: 1.08rem; font-weight: 700; color: var(--text-main); }
+        .tl-title { font-size: 1.05rem; font-weight: 700; color: var(--text-main); }
         .tl-date { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--accent); font-weight: 600; }
-        .tl-sub { font-size: 0.88rem; color: var(--text-dim); font-style: italic; margin-bottom: 8px; }
-        .tl-desc { font-size: 0.9rem; color: var(--text-muted); }
+        .tl-sub { font-size: 0.86rem; color: var(--text-dim); font-style: italic; margin-bottom: 8px; }
+        .tl-desc { font-size: 0.89rem; color: var(--text-muted); }
 
         /* --- MODALES RAPPORTS TECHNIQUES --- */
         .modal-overlay {
             position: fixed;
             inset: 0;
             background: rgba(5, 10, 20, 0.88);
-            backdrop-filter: blur(6px);
+            backdrop-filter: blur(8px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -602,14 +711,14 @@
         .modal-box {
             background: #0f172a;
             border: 1px solid var(--accent);
-            border-radius: 12px;
+            border-radius: 14px;
             width: 100%;
-            max-width: 920px;
+            max-width: 940px;
             height: 88vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.7);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.75);
         }
 
         .modal-header {
@@ -625,7 +734,7 @@
             font-family: 'JetBrains Mono', monospace;
             font-weight: 700;
             color: var(--accent);
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
         .modal-close {
@@ -637,7 +746,6 @@
             cursor: pointer;
             font-weight: 700;
         }
-
         .modal-close:hover { background: #ef4444; color: #fff; }
 
         .modal-content {
@@ -655,39 +763,24 @@
             margin-bottom: 14px;
         }
         .doc-code {
-            background: #090d16;
+            background: #060a12;
+            border: 1px solid #1e293b;
             border-left: 3px solid var(--accent);
-            padding: 14px;
+            padding: 16px;
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.84rem;
+            font-size: 0.82rem;
             color: #e2e8f0;
-            margin: 12px 0;
+            margin: 14px 0;
             white-space: pre-wrap;
-            border-radius: 4px;
+            border-radius: 6px;
+            overflow-x: auto;
         }
-        .doc-img-wrapper {
-            background: #090d16;
-            border: 1px solid var(--border);
-            padding: 12px;
-            border-radius: 8px;
-            margin: 16px 0;
-            text-align: center;
-        }
-        .doc-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            cursor: zoom-in;
-            transition: 0.2s;
-        }
-        .doc-img:hover { transform: scale(1.01); }
-        .img-caption { font-size: 0.82rem; color: var(--text-dim); margin-top: 8px; font-style: italic; }
 
         /* --- LIGHTBOX PLEIN ÉCRAN --- */
         #lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(5, 8, 15, 0.95);
+            background: rgba(4, 7, 14, 0.95);
             z-index: 5000;
             display: flex;
             flex-direction: column;
@@ -698,15 +791,14 @@
         }
 
         #lightbox img {
-            max-width: 94vw;
-            max-height: 84vh;
+            max-width: 92vw;
+            max-height: 82vh;
             border: 2px solid var(--accent);
-            border-radius: 8px;
+            border-radius: 10px;
             object-fit: contain;
-            box-shadow: 0 0 40px rgba(56, 189, 248, 0.25);
+            box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
         }
 
-        /* --- FOOTER --- */
         footer {
             border-top: 1px solid var(--border);
             padding: 36px 24px;
@@ -719,11 +811,13 @@
             .hero { grid-template-columns: 1fr; }
             .grid-2 { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .badge-card { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
 <body>
+
+    <!-- CANVAS PARTICULES RÉSEAU -->
+    <canvas id="bg-canvas"></canvas>
 
     <!-- LIGHTBOX ZOOM IMAGE -->
     <div id="lightbox" class="hidden" onclick="closeLightbox()">
@@ -738,7 +832,7 @@
             <span>MEHDI BEN MOULAY <span style="color:var(--accent);">// SYS & CYBER</span></span>
         </div>
         <div class="nav-links">
-            <a href="#projets">Projets Techniques</a>
+            <a href="#projets">Projets</a>
             <a href="#competitions">Compétitions CTF</a>
             <a href="#badges">Badges & Certificats</a>
             <a href="#competences">Compétences</a>
@@ -750,19 +844,19 @@
     <div class="container">
 
         <!-- HERO SECTION -->
-        <header class="hero">
+        <header class="hero reveal visible">
             <div>
                 <div class="hero-badge">
                     <span>🛡️ BTS SIO option SISR (2ème année) • Alternant chez Io.sys 2.21</span>
                 </div>
                 <h1>Mehdi Ben Moulay</h1>
-                <h2>Technicien Support IT • Administration Systèmes, Réseaux & Cybersécurité</h2>
+                <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
                 <p>
                     Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (supervision SOC, haute disponibilité HSRP, tunnels VPN) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
                 </p>
                 <div class="btn-group">
                     <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="btn btn-primary">📥 Télécharger mon CV (PDF)</a>
-                    <a href="#badges" class="btn btn-secondary">🏅 Voir mes Badges & Certificats</a>
+                    <a href="#badges" class="btn btn-secondary">🏅 Badges & Certificats</a>
                     <a href="https://github.com/m3hdi-sys" target="_blank" class="btn btn-secondary">🐙 GitHub</a>
                     <a href="https://www.linkedin.com/in/mehdi-ben-moulay/" target="_blank" class="btn btn-secondary">🔗 LinkedIn</a>
                 </div>
@@ -788,10 +882,174 @@
             </div>
         </header>
 
-        <!-- SECTION 1 : PROJETS TECHNIQUES -->
-        <section id="projets">
+        <!-- SECTION 1 : BADGES ANIMÉS & CERTIFICATS OFFICIELS -->
+        <section id="badges" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 01. Réalisations & Architectures</span>
+                <span class="section-tag">// 01. Preuves Cryptographiques & Diplômes</span>
+                <h3 class="section-title">OpenBadges & Certificats Officiels</h3>
+            </div>
+
+            <h4 style="color:var(--text-muted); margin-bottom: 18px; font-size: 1rem;">
+                🎖️ OpenBadges v3.0 Animés & Vérifiables (Cliquez sur un badge pour l'agrandir ou sur le bouton pour vérifier sur Badgify)
+            </h4>
+
+            <div class="grid-3" style="margin-bottom: 45px;">
+                <!-- BADGE 1 : FINISHER -->
+                <div class="badge-card">
+                    <div>
+                        <div class="badge-header">
+                            <div class="badge-orb" onclick="openLightbox('https://badgify.eu/uploads/badges/facfb4b8-248a-4a5a-b83f-8b0d5938ccb6.png')">
+                                <div class="badge-orb-inner">
+                                    <img src="https://badgify.eu/uploads/badges/facfb4b8-248a-4a5a-b83f-8b0d5938ccb6.png" alt="Badge Finisher">
+                                </div>
+                            </div>
+                            <div>
+                                <span class="crypto-proof">✓ EdDSA-JCS-2022 Verified</span>
+                                <div class="badge-title">Opération Culot 2026 – Finisher</div>
+                                <span class="badge-issuer">BIG 2026 • Bpifrance</span>
+                            </div>
+                        </div>
+                        <p class="badge-desc">Récompense la résolution complète des deux parties du CTF OSINT « Opération Culot » (enquête principale et second chapitre).</p>
+                    </div>
+                    <div>
+                        <div class="tag-group" style="border:none; padding-top:0;">
+                            <span class="tech-tag">Persévérance</span>
+                            <span class="tech-tag">Investigation OSINT</span>
+                        </div>
+                        <a href="https://badgify.eu/badge/55YMbzbd8hoQ3D2bdMBBtkv3DMTP4eqCUvWqe1oAAiYtViwIVhvDBUFianVkv25A" target="_blank" class="card-btn">
+                            🔗 Vérifier le Badge officiel sur Badgify
+                        </a>
+                    </div>
+                </div>
+
+                <!-- BADGE 2 : PRÉSENTIEL ACCOR ARENA -->
+                <div class="badge-card">
+                    <div>
+                        <div class="badge-header">
+                            <div class="badge-orb" style="animation-delay: 0.7s;" onclick="openLightbox('https://badgify.eu/uploads/badges/41202f39-7610-42cc-9b8c-d3c9a2293950.png')">
+                                <div class="badge-orb-inner">
+                                    <img src="https://badgify.eu/uploads/badges/41202f39-7610-42cc-9b8c-d3c9a2293950.png" alt="Badge Présentiel">
+                                </div>
+                            </div>
+                            <div>
+                                <span class="crypto-proof">✓ EdDSA-JCS-2022 Verified</span>
+                                <div class="badge-title">Opération Culot 2026 – Présentiel</div>
+                                <span class="badge-issuer">08/10/2026 • Accor Arena</span>
+                            </div>
+                        </div>
+                        <p class="badge-desc">Atteste de la participation à la finale hybride à l'Accor Arena mêlant recherches numériques et collecte d'indices sur place (8e/21).</p>
+                    </div>
+                    <div>
+                        <div class="tag-group" style="border:none; padding-top:0;">
+                            <span class="tech-tag">HUMINT</span>
+                            <span class="tech-tag">OSINT</span>
+                            <span class="tech-tag">Recoupement</span>
+                        </div>
+                        <a href="https://badgify.eu/badge/RV1vW7oFtl6JlJVa82bEqmQvf4jaPwuwu-Duh5YoH2J2aK8hMuJ-bNBqIh5VnmLJ" target="_blank" class="card-btn">
+                            🔗 Vérifier le Badge officiel sur Badgify
+                        </a>
+                    </div>
+                </div>
+
+                <!-- BADGE 3 : PARTICIPANT -->
+                <div class="badge-card">
+                    <div>
+                        <div class="badge-header">
+                            <div class="badge-orb" style="animation-delay: 1.4s;" onclick="openLightbox('https://badgify.eu/uploads/badges/4efbdc81-9d46-40c4-a91b-205cbf1029f9.png')">
+                                <div class="badge-orb-inner">
+                                    <img src="https://badgify.eu/uploads/badges/4efbdc81-9d46-40c4-a91b-205cbf1029f9.png" alt="Badge Participant">
+                                </div>
+                            </div>
+                            <div>
+                                <span class="crypto-proof">✓ EdDSA-JCS-2022 Verified</span>
+                                <div class="badge-title">Opération Culot 2026 – Participant</div>
+                                <span class="badge-issuer">Oct. 2026 • Badgify</span>
+                            </div>
+                        </div>
+                        <p class="badge-desc">Enquête immersive consacrée aux mécanismes de manipulation et aux fraudes financières liées aux cryptomonnaies.</p>
+                    </div>
+                    <div>
+                        <div class="tag-group" style="border:none; padding-top:0;">
+                            <span class="tech-tag">Vérification des sources</span>
+                            <span class="tech-tag">Esprit critique</span>
+                        </div>
+                        <a href="https://badgify.eu/badge/RV1vW7oFtl6JlJVa82bEqmQvf4jaPwuwu-Duh5YoH2J2aK8hMuJ-bNBqIh5VnmLJ" target="_blank" class="card-btn">
+                            🔗 Vérifier le Badge officiel sur Badgify
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CERTIFICATS VISUELS DIRECTS (AFFICHAGE GARANTI) -->
+            <h4 style="color:var(--text-muted); margin-bottom: 18px; font-size: 1rem;">
+                📜 Certificats & Attestations Officielles (Visuels intégrés — Cliquez pour agrandir en plein écran)
+            </h4>
+
+            <div class="grid-3">
+                <!-- CERTIFICAT 1 : BPIFRANCE OPÉRATION CULOT -->
+                <div class="cert-visual-card">
+                    <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-culot').src)">
+                        <img id="cert-img-culot" src="certificat_ID-ACRFO8B.jpg" alt="Certificat Opération Culot">
+                    </div>
+                    <div class="cert-body">
+                        <div>
+                            <div class="card-top-meta">
+                                <span class="pill pill-gold">ID-ACRFO8B</span>
+                                <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">22/10/2026</span>
+                            </div>
+                            <h4 style="font-size:1.05rem; margin-bottom:6px;">Certificat CTF « Opération Culot »</h4>
+                            <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par <strong>Bpifrance (io.bpifrance.fr)</strong> dans le cadre de BIG 2026. Score : <strong>1900 points</strong> en <strong>4h 08min 18s</strong> (Position finale : 10ème sur 315).</p>
+                        </div>
+                        <button class="card-btn" onclick="openLightbox(document.getElementById('cert-img-culot').src)">🔍 Agrandir le certificat en plein écran</button>
+                    </div>
+                </div>
+
+                <!-- CERTIFICAT 2 : DEEP THREATS DGA -->
+                <div class="cert-visual-card">
+                    <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-dga').src)">
+                        <img id="cert-img-dga" src="img/certificat-deepthreats.jpg" alt="Certificat Deep Threats DGA">
+                    </div>
+                    <div class="cert-body">
+                        <div>
+                            <div class="card-top-meta">
+                                <span class="pill">ID-AB69FFC</span>
+                                <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">20/09/2026</span>
+                            </div>
+                            <h4 style="font-size:1.05rem; margin-bottom:6px;">Certificat CTF Deep Threats</h4>
+                            <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par le <strong>Ministère des Armées (DGA)</strong> et le <strong>Campus OSINT</strong> (10 au 13 sept. 2026). Position finale : <strong>184ème sur 487</strong> (626 points).</p>
+                        </div>
+                        <button class="card-btn" onclick="openLightbox(document.getElementById('cert-img-dga').src)">🔍 Agrandir le certificat en plein écran</button>
+                    </div>
+                </div>
+
+                <!-- CERTIFICAT 3 : SENSCYBER & DÉFENSE -->
+                <div class="cert-visual-card">
+                    <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-senscyber').src)">
+                        <img id="cert-img-senscyber" src="img/senscyber.png" alt="Attestation SensCyber République Française">
+                    </div>
+                    <div class="cert-body">
+                        <div>
+                            <div class="card-top-meta">
+                                <span class="pill pill-green">République Française</span>
+                                <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">04/03/2026</span>
+                            </div>
+                            <h4 style="font-size:1.05rem; margin-bottom:6px;">SensCyber, PMT 28e RT & Immersion Orion</h4>
+                            <ul class="card-list" style="margin-bottom:8px;">
+                                <li><strong>Attestation SensCyber :</strong> Cybermalveillance.gouv.fr (04/03/2026).</li>
+                                <li><strong>PMT 28e RT (Oct. 2026) :</strong> Immersion militaire de 5 jours (Transmissions).</li>
+                                <li><strong>Immersion Orion (2026) :</strong> Les Invalides, Paris.</li>
+                            </ul>
+                        </div>
+                        <button class="card-btn" onclick="openLightbox(document.getElementById('cert-img-senscyber').src)">🔍 Voir l'Attestation SensCyber</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 : PROJETS TECHNIQUES -->
+        <section id="projets" class="reveal">
+            <div class="section-header">
+                <span class="section-tag">// 02. Réalisations & Architectures</span>
                 <h3 class="section-title">Projets Techniques</h3>
             </div>
 
@@ -895,17 +1153,17 @@
                             <span class="tech-tag">OSPF</span>
                         </div>
                         <button class="card-btn" onclick="document.getElementById('vpn-modal').classList.remove('hidden')">
-                            📄 Ouvrir le Compte-Rendu & Captures Cisco (8 images)
+                            📄 Ouvrir le Compte-Rendu & Consoles Cisco IOS
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2 : COMPÉTITIONS CYBER & VEILLE -->
-        <section id="competitions">
+        <!-- SECTION 3 : COMPÉTITIONS CYBER & VEILLE -->
+        <section id="competitions" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 02. Performances & Classements</span>
+                <span class="section-tag">// 03. Performances & Classements</span>
                 <h3 class="section-title">Compétitions CTF & Veille Technologique</h3>
             </div>
 
@@ -976,144 +1234,8 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : BADGES VÉRIFIABLES & CERTIFICATS -->
-        <section id="badges">
-            <div class="section-header">
-                <span class="section-tag">// 03. Preuves Cryptographiques & Diplômes</span>
-                <h3 class="section-title">OpenBadges & Certifications Officielles</h3>
-            </div>
-
-            <!-- SOUS-TITRE OPENBADGES -->
-            <h4 style="color:var(--text-muted); margin-bottom: 18px; font-size: 1rem;">
-                🎖️ OpenBadges v3.0 Vérifiables (Émis par <em>Les Blaireaux des Légendes / Badgify</em> — Signature EdDSA-JCS-2022)
-            </h4>
-
-            <div class="grid-3" style="margin-bottom: 42px;">
-                <!-- BADGE 1 : FINISHER -->
-                <div class="badge-card">
-                    <div class="badge-img-wrap" onclick="openLightbox('https://badgify.eu/uploads/badges/facfb4b8-248a-4a5a-b83f-8b0d5938ccb6.png')">
-                        <img src="https://badgify.eu/uploads/badges/facfb4b8-248a-4a5a-b83f-8b0d5938ccb6.png" alt="Badge Finisher Opération Culot 2026">
-                    </div>
-                    <div class="badge-info">
-                        <span class="crypto-proof">✓ OpenBadge v3.0 • EdDSA Verified</span>
-                        <h4>Opération Culot 2026 – Finisher</h4>
-                        <span class="badge-issuer">Délivré le 31/10/2026 • BIG 2026 Bpifrance</span>
-                        <p class="badge-desc">Récompense la complétion intégrale des deux chapitres de l'enquête OSINT « Opération Culot ».</p>
-                        <div class="tag-group" style="border:none; padding-top:4px;">
-                            <span class="tech-tag">Persévérance</span>
-                            <span class="tech-tag">Investigation</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- BADGE 2 : PARTICIPANT PRÉSENTIEL -->
-                <div class="badge-card">
-                    <div class="badge-img-wrap" onclick="openLightbox('https://badgify.eu/uploads/badges/41202f39-7610-42cc-9b8c-d3c9a2293950.png')">
-                        <img src="https://badgify.eu/uploads/badges/41202f39-7610-42cc-9b8c-d3c9a2293950.png" alt="Badge Présentiel Accor Arena">
-                    </div>
-                    <div class="badge-info">
-                        <span class="crypto-proof">✓ OpenBadge v3.0 • EdDSA Verified</span>
-                        <h4>Opération Culot 2026 – Présentiel</h4>
-                        <span class="badge-issuer">08/10/2026 • Accor Arena (Paris)</span>
-                        <p class="badge-desc">Atteste de la qualification et participation à la phase hybride sur place à l'Accor Arena (indices physiques & numériques).</p>
-                        <div class="tag-group" style="border:none; padding-top:4px;">
-                            <span class="tech-tag">HUMINT</span>
-                            <span class="tech-tag">OSINT</span>
-                            <span class="tech-tag">Recoupement</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- BADGE 3 : PARTICIPANT EN LIGNE -->
-                <div class="badge-card">
-                    <div class="badge-img-wrap" onclick="openLightbox('https://badgify.eu/uploads/badges/4efbdc81-9d46-40c4-a91b-205cbf1029f9.png')">
-                        <img src="https://badgify.eu/uploads/badges/4efbdc81-9d46-40c4-a91b-205cbf1029f9.png" alt="Badge Participant Opération Culot">
-                    </div>
-                    <div class="badge-info">
-                        <span class="crypto-proof">✓ OpenBadge v3.0 • EdDSA Verified</span>
-                        <h4>Opération Culot 2026 – Participant</h4>
-                        <span class="badge-issuer">Délivré le 31/10/2026 • Badgify</span>
-                        <p class="badge-desc">Enquête immersive consacrée aux mécanismes de manipulation et aux fraudes liées aux cryptomonnaies.</p>
-                        <div class="tag-group" style="border:none; padding-top:4px;">
-                            <span class="tech-tag">Vérification des sources</span>
-                            <span class="tech-tag">Esprit critique</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SOUS-TITRE CERTIFICATS VISUELS -->
-            <h4 style="color:var(--text-muted); margin-bottom: 18px; font-size: 1rem;">
-                📜 Certificats & Attestations Officielles (Cliquez sur un certificat pour l'agrandir)
-            </h4>
-
-            <div class="grid-3">
-                <!-- CERTIFICAT 1 : BPIFRANCE -->
-                <div class="cert-visual-card">
-                    <div class="cert-thumb" onclick="openLightbox('img/certificat-culot.jpg')">
-                        <img src="img/certificat-culot.jpg" alt="Certificat Opération Culot Bpifrance" onerror="this.outerHTML='<div class=\'cert-fallback\'>[ CERTIFICAT BPIFRANCE OPÉRATION CULOT ]<br>ID-ACRFO8B • 1900 PTS • 10e/315<br><small style=\'color:#94a3b8;\'>(Placez certificat-culot.jpg dans img/)</small></div>'">
-                    </div>
-                    <div class="cert-body">
-                        <div>
-                            <div class="card-top-meta">
-                                <span class="pill pill-gold">ID-ACRFO8B</span>
-                                <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">22/10/2026</span>
-                            </div>
-                            <h4 style="font-size:1.05rem; margin-bottom:6px;">Certificat CTF « Opération Culot »</h4>
-                            <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par <strong>Bpifrance (io.bpifrance.fr)</strong>. Score : 1900 points en 4h 08min 18s (10e sur 315 équipes classées au certificat final).</p>
-                        </div>
-                        <button class="card-btn" onclick="openLightbox('img/certificat-culot.jpg')">🔍 Agrandir le certificat</button>
-                    </div>
-                </div>
-
-                <!-- CERTIFICAT 2 : DEEP THREATS DGA -->
-                <div class="cert-visual-card">
-                    <div class="cert-thumb" onclick="openLightbox('img/certificat-deepthreats.jpg')">
-                        <img src="img/certificat-deepthreats.jpg" alt="Certificat Deep Threats DGA" onerror="this.outerHTML='<div class=\'cert-fallback\'>[ CERTIFICAT DEEP THREATS - DGA ]<br>ID-AB69FFC • 184e/487 • 626 PTS<br><small style=\'color:#94a3b8;\'>(Placez certificat-deepthreats.jpg dans img/)</small></div>'">
-                    </div>
-                    <div class="cert-body">
-                        <div>
-                            <div class="card-top-meta">
-                                <span class="pill">ID-AB69FFC</span>
-                                <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">20/09/2026</span>
-                            </div>
-                            <h4 style="font-size:1.05rem; margin-bottom:6px;">Certificat CTF Deep Threats</h4>
-                            <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par le <strong>Ministère des Armées (DGA)</strong> et le <strong>Campus OSINT</strong>. Position finale : 184e sur 487 (626 points).</p>
-                        </div>
-                        <button class="card-btn" onclick="openLightbox('img/certificat-deepthreats.jpg')">🔍 Agrandir le certificat</button>
-                    </div>
-                </div>
-
-                <!-- CERTIFICAT 3 : SENSCYBER & DÉFENSE -->
-                <div class="cert-visual-card">
-                    <div class="cert-thumb" style="background: linear-gradient(135deg, #162238, #0f172a); cursor: default;">
-                        <div class="cert-fallback">
-                            🇫🇷 RÉPUBLIQUE FRANÇAISE<br>
-                            <strong style="font-size:1.05rem; color:#fff;">SENSCYBER & DÉFENSE</strong><br>
-                            <span style="color:#34d399;">Cybermalveillance.gouv.fr • 28e RT • Orion</span>
-                        </div>
-                    </div>
-                    <div class="cert-body">
-                        <div>
-                            <div class="card-top-meta">
-                                <span class="pill pill-green">Attestations d'État</span>
-                                <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">Mars & Oct. 2026</span>
-                            </div>
-                            <h4 style="font-size:1.05rem; margin-bottom:6px;">SensCyber, PMT 28e RT & Immersion Orion</h4>
-                            <ul class="card-list" style="margin-bottom:10px;">
-                                <li><strong>Attestation SensCyber (04/03/2026) :</strong> E-sensibilisation Cybermalveillance.gouv.fr.</li>
-                                <li><strong>PMT 28e RT (Oct. 2026) :</strong> Immersion militaire de 5 jours (Transmissions).</li>
-                                <li><strong>Immersion Orion (2026) :</strong> Les Invalides, Paris.</li>
-                            </ul>
-                        </div>
-                        <a href="img/Attestation-Sens-Cyber.pdf" target="_blank" class="card-btn">📄 Ouvrir l'Attestation SensCyber (PDF)</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- SECTION 4 : COMPÉTENCES TECHNIQUES -->
-        <section id="competences">
+        <section id="competences" class="reveal">
             <div class="section-header">
                 <span class="section-tag">// 04. Stack Technique</span>
                 <h3 class="section-title">Compétences Opérationnelles</h3>
@@ -1165,14 +1287,13 @@
         </section>
 
         <!-- SECTION 5 : PARCOURS PROFESSIONNEL & ACADÉMIQUE -->
-        <section id="parcours">
+        <section id="parcours" class="reveal">
             <div class="section-header">
                 <span class="section-tag">// 05. Expériences & Formations</span>
                 <h3 class="section-title">Parcours Professionnel & Académique</h3>
             </div>
 
             <div class="grid-2">
-                <!-- EXPÉRIENCES -->
                 <div>
                     <h4 style="margin-bottom: 20px; color: var(--accent);">💼 Expériences Professionnelles & Militaire</h4>
                     <div class="timeline">
@@ -1214,7 +1335,6 @@
                     </div>
                 </div>
 
-                <!-- FORMATIONS -->
                 <div>
                     <h4 style="margin-bottom: 20px; color: var(--accent);">🎓 Formations Académiques</h4>
                     <div class="timeline">
@@ -1241,8 +1361,7 @@
                                 <span class="tl-title">Baccalauréat Général</span>
                                 <span class="tl-date">2023</span>
                             </div>
-                            <div class="tl-sub">Lycée Évariste Galois, Sartrouville</div>
-                            <div class="tl-desc">Obtention du Baccalauréat Général.</div>
+                            <div class="tl-sub">Obtention du Baccalauréat Général</div>
                         </div>
                     </div>
                 </div>
@@ -1290,7 +1409,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2 : RAPPORT CISCO VPN IPSEC -->
+    <!-- MODAL 2 : RAPPORT CISCO VPN IPSEC (AVEC CONSOLES CLI INTÉGRÉES SANS IMAGES CASSÉES) -->
     <div id="vpn-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1300,58 +1419,238 @@
             <div class="modal-content">
                 <h2 style="margin-bottom: 12px;">Compte-rendu : VPN Site-to-Site IPsec (Cisco)</h2>
                 <p style="color:var(--text-muted); margin-bottom: 24px;">
-                    <strong>OBJECTIF :</strong> Interconnecter deux réseaux locaux distants (LAN A <code>192.168.1.0/24</code> et LAN C <code>192.168.3.0/24</code>) de manière sécurisée via un tunnel chiffré traversant un réseau WAN non sécurisé.
+                    <strong>OBJECTIF :</strong> Interconnecter deux réseaux locaux distants (LAN A <code>192.168.1.0/24</code> et LAN C <code>192.168.3.0/24</code>) de manière sécurisée via un tunnel chiffré traversant un réseau WAN non sécurisé (Internet/ISP).
                 </p>
 
                 <div class="doc-section">
                     <h3>1. Infrastructure, Module HWIC-2T et Plan d'adressage</h3>
-                    <p>Trois routeurs Cisco 1941 équipés de cartes séries <code>HWIC-2T</code>. R2 simule l'opérateur WAN (ISP), tandis que R1 et R3 agissent comme passerelles de sécurité.</p>
-                    <div class="doc-img-wrapper">
-                        <img src="img/topologie.png" class="doc-img" alt="Module HWIC-2T" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Vue physique du routeur R1 avec le module HWIC-2T installé (Cliquez pour zoomer).</p>
-                    </div>
-                    <div class="doc-img-wrapper">
-                        <img src="img/r1-interfaces.png" class="doc-img" alt="Interfaces R1" style="margin-bottom:6px;" onclick="openLightbox(this.src)">
-                        <img src="img/r2-interfaces.png" class="doc-img" alt="Interfaces R2" style="margin-bottom:6px;" onclick="openLightbox(this.src)">
-                        <img src="img/r3-interfaces.png" class="doc-img" alt="Interfaces R3" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Vérification de l'état UP/UP des interfaces GigabitEthernet et Serial sur R1, R2 et R3.</p>
-                    </div>
+                    <p>L'architecture repose sur trois routeurs <strong>Cisco 1941</strong> équipés de modules séries <code>HWIC-2T</code>. Le routeur <strong>R2</strong> simule l'opérateur WAN (ISP), tandis que <strong>R1</strong> et <strong>R3</strong> sont les passerelles de sécurité des deux sites distants :</p>
+                    <div class="doc-code">[PC-A : 192.168.1.3] ─── (Gi0/0: 192.168.1.1) [Routeur R1] (Se0/0/0: 10.1.1.1)
+                                                      │
+                                         Liaison Série WAN (HWIC-2T)
+                                                      │
+                                           (Se0/0/0: 10.1.1.2)
+                                            [Routeur R2 - ISP]
+                                           (Se0/0/1: 10.2.2.1)
+                                                      │
+                                         Tunnel Chiffré IPsec ESP
+                                                      │
+[PC-C : 192.168.3.3] ─── (Gi0/0: 192.168.3.1) [Routeur R3] (Se0/0/0: 10.2.2.2)</div>
+
+                    <p style="margin-top: 12px;">Vérification de l'état des interfaces <code>UP/UP</code> sur l'ensemble de l'infrastructure :</p>
+                    <div class="doc-code">R1# show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet0/0     192.168.1.1     YES NVRAM  up                    up
+Serial0/0/0            10.1.1.1        YES NVRAM  up                    up
+
+R2# show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+Serial0/0/0            10.1.1.2        YES manual up                    up
+Serial0/0/1            10.2.2.1        YES manual up                    up
+
+R3# show ip interface brief
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet0/0     192.168.3.1     YES NVRAM  up                    up
+Serial0/0/0            10.2.2.2        YES NVRAM  up                    up</div>
                 </div>
 
                 <div class="doc-section">
                     <h3>2. Activation de la licence SecurityK9 & Configuration IPsec</h3>
-                    <p>Activation du package cryptographique <code>securityk9</code> sur les routeurs Cisco 1900, puis configuration des phases IKE Phase 1 (ISAKMP AES, Pre-shared key, DH Group 2) et Phase 2 (Transform-Set ESP, Crypto Map).</p>
-                    <div class="doc-img-wrapper">
-                        <img src="img/securityk9.png" class="doc-img" alt="Licence SecurityK9" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Activation : license boot module c1900 technology-package securityk9.</p>
-                    </div>
+                    <p>Activation du package technologique cryptographique <code>securityk9</code> requis sur Cisco ISR 1941, puis configuration des phases IKE Phase 1 (ISAKMP AES, Pre-shared key, Diffie-Hellman) et Phase 2 (<code>transform-set</code> et <code>crypto map</code>) :</p>
+                    <div class="doc-code">R1(config)# license boot module c1900 technology-package securityk9
+ACCEPT? [yes/no]: yes
+% use 'write' command to make license boot config take effect on next boot
+
+! --- Phase 1 (ISAKMP) & Phase 2 (IPsec) ---
+R1(config)# crypto isakmp policy 10
+R1(config-isakmp)# encryption aes
+R1(config-isakmp)# authentication pre-share
+R1(config-isakmp)# group 2
+R1(config)# crypto isakmp key SECRET_VPN_KEY address 10.2.2.2
+R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac
+R1(config)# crypto map VPN-MAP 10 ipsec-isakmp
+R1(config-crypto-map)# set peer 10.2.2.2
+R1(config-crypto-map)# set transform-set VPN-SET
+R1(config-crypto-map)# match address 101</div>
                 </div>
 
                 <div class="doc-section">
-                    <h3>3. Validation et Preuve de Chiffrement (Encapsulation ESP)</h3>
-                    <p>Tests ICMP entre <strong>PC-A (192.168.1.3)</strong> et <strong>PC-C (192.168.3.3)</strong> et vérification des compteurs cryptographiques :</p>
-                    <div class="grid-2" style="margin: 14px 0;">
-                        <div class="doc-img-wrapper" style="margin:0;">
-                            <img src="img/pc-a-ip.png" class="doc-img" alt="PC-A IP" onclick="openLightbox(this.src)">
-                        </div>
-                        <div class="doc-img-wrapper" style="margin:0;">
-                            <img src="img/pc-c-ip.png" class="doc-img" alt="PC-C IP" onclick="openLightbox(this.src)">
-                        </div>
-                    </div>
-                    <div class="doc-img-wrapper">
-                        <img src="img/pkts-encaps.png" class="doc-img" alt="Pkts Encaps" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Confirmation : #pkts encaps: 7 | #pkts encrypt: 7 | #pkts decaps: 6. Le tunnel IPsec est opérationnel.</p>
-                    </div>
+                    <h3>3. Validation et Preuve de Chiffrement (Encapsulation / Décapsulation)</h3>
+                    <p>Test de connectivité (Ping ICMP) entre <strong>PC-A (192.168.1.3)</strong> et <strong>PC-C (192.168.3.3)</strong> et analyse des compteurs de sécurité IPsec :</p>
+                    <div class="doc-code">R1# show crypto ipsec sa
+interface: Serial0/0/0
+    local  ident (addr/mask/prot/port): (192.168.1.0/255.255.255.0/0/0)
+    remote ident (addr/mask/prot/port): (192.168.3.0/255.255.255.0/0/0)
+    current_peer 10.2.2.2 port 500
+      PERMIT, flags={origin_is_acl,}
+      #pkts encaps: 7, #pkts encrypt: 7, #pkts digest: 0
+      #pkts decaps: 6, #pkts decrypt: 6, #pkts verify: 0
+      #send errors 1, #recv errors 0</div>
+                    <p style="color:#34d399; font-weight:600; font-size:0.9rem;">✓ Succès : #pkts encaps: 7 | #pkts decaps: 6. Le tunnel chiffré IPsec est pleinement opérationnel.</p>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Mehdi Ben Moulay • Sartrouville (78) / Paris • BTS SIO SISR • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
+        <p>© 2026 Mehdi Ben Moulay • Paris / Île-de-France • BTS SIO SISR • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
     </footer>
 
     <script>
+        // --- 1. VISUELS SVG HAUTE DÉFINITION AUTO-GÉNÉRÉS POUR LES CERTIFICATS ---
+        const svgCulot = `data:image/svg+xml;utf8,` + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
+            <rect width="800" height="560" fill="#facc15"/>
+            <g fill="none" stroke="#eab308" stroke-width="6" opacity="0.55">
+                <rect x="20" y="20" width="220" height="160" rx="18"/>
+                <rect x="560" y="30" width="210" height="180" rx="18"/>
+                <rect x="40" y="360" width="240" height="170" rx="18"/>
+                <rect x="540" y="340" width="230" height="190" rx="18"/>
+            </g>
+            <text x="45" y="55" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="#1e293b">bpifrance | i0</text>
+            <text x="400" y="48" font-family="Arial, sans-serif" font-size="14" font-weight="bold" letter-spacing="5" text-anchor="middle" fill="#ffffff">O P É R A T I O N</text>
+            <text x="400" y="96" font-family="Impact, Arial Black, sans-serif" font-size="56" letter-spacing="3" text-anchor="middle" fill="#ffffff">CULOT</text>
+            <rect x="210" y="110" width="380" height="40" rx="20" fill="#76b843"/>
+            <text x="400" y="137" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#ffffff">CERTIFICAT DE PARTICIPATION</text>
+            <rect x="95" y="165" width="610" height="350" rx="22" fill="#ffffff"/>
+            <text x="400" y="198" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#475569">Nous certifions que</text>
+            <text x="400" y="242" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#1e293b">K@K@R07 (Mehdi BEN MOULAY)</text>
+            <text x="400" y="270" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#475569">au sein de l'équipe</text>
+            <text x="400" y="302" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">DGSI - DIRECTION GÉNÉRALE DES</text>
+            <text x="400" y="330" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">SUPPOSITIONS IMPROBABLES</text>
+            <text x="400" y="362" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#475569">a participé au CTF « Opération Culot », une enquête immersive mobilisant les</text>
+            <text x="400" y="382" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#475569">techniques d'investigation en sources ouvertes (OSINT) organisée par</text>
+            <text x="400" y="402" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#475569">Bpifrance dans le cadre de BIG 2026, du 2 au 8 octobre 2026.</text>
+            <text x="200" y="445" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">Position finale</text>
+            <text x="200" y="472" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">10ème sur 315</text>
+            <text x="400" y="445" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">Points</text>
+            <text x="400" y="472" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">1900</text>
+            <text x="600" y="445" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e293b">Temps de résolution</text>
+            <text x="600" y="472" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#0f172a">4h 8min 18s</text>
+            <text x="400" y="534" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#475569">Délivré le 22/10/2026 • io.bpifrance.fr</text>
+            <text x="50" y="542" font-family="monospace" font-size="12" fill="#1e293b">ID-ACRFO8B</text>
+        </svg>`);
+
+        const svgDGA = `data:image/svg+xml;utf8,` + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
+            <defs>
+                <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#06203d"/>
+                    <stop offset="100%" stop-color="#020813"/>
+                </linearGradient>
+                <linearGradient id="dt" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0%" stop-color="#2563eb"/>
+                    <stop offset="50%" stop-color="#e2e8f0"/>
+                    <stop offset="100%" stop-color="#dc2626"/>
+                </linearGradient>
+            </defs>
+            <rect width="800" height="560" fill="url(#bg)"/>
+            <rect x="12" y="12" width="776" height="536" rx="14" fill="none" stroke="url(#dt)" stroke-width="3"/>
+            <rect x="35" y="32" width="110" height="65" rx="4" fill="#ffffff"/>
+            <text x="45" y="55" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0f172a">MINISTÈRE</text>
+            <text x="45" y="66" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#0f172a">DES ARMÉES</text>
+            <circle cx="690" cy="65" r="28" fill="#ffffff"/>
+            <text x="690" y="70" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#0f172a">CAMPUS OSINT</text>
+            <rect x="725" y="37" width="45" height="56" rx="4" fill="#ffffff"/>
+            <text x="747" y="72" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#0f172a">DGA</text>
+            <circle cx="400" cy="75" r="38" fill="#050b14" stroke="#64748b" stroke-width="3"/>
+            <text x="400" y="88" font-family="Arial, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#ffffff">DT</text>
+            <text x="400" y="170" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" letter-spacing="3" text-anchor="middle" fill="url(#dt)">DEEP THREATS</text>
+            <rect x="165" y="198" width="470" height="310" rx="16" fill="#ffffff"/>
+            <text x="400" y="232" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#334155">Ce certificat de participation est décerné à</text>
+            <text x="400" y="272" font-family="Arial, sans-serif" font-size="30" font-weight="bold" letter-spacing="2" text-anchor="middle" fill="#0f172a">MEHDI BEN MOULAY</text>
+            <text x="400" y="302" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#475569">Membre de l'équipe</text>
+            <text x="400" y="328" font-family="Arial, sans-serif" font-size="22" font-weight="bold" letter-spacing="1.5" text-anchor="middle" fill="#0f172a">OSFANTAPATOS</text>
+            <text x="400" y="365" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#334155">a participé au CTF DEEP THREATS, organisé par le Campus OSINT</text>
+            <text x="400" y="385" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#334155">du 10 au 13 septembre 2026</text>
+            <rect x="275" y="405" width="140" height="58" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+            <text x="345" y="426" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#475569">POSITION FINALE</text>
+            <text x="345" y="448" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle" fill="#0f172a">184ème sur 487</text>
+            <rect x="440" y="405" width="95" height="58" rx="8" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+            <text x="487" y="426" font-family="Arial, sans-serif" font-size="10" font-weight="bold" text-anchor="middle" fill="#475569">POINTS</text>
+            <text x="487" y="448" font-family="Arial, sans-serif" font-size="17" font-weight="bold" text-anchor="middle" fill="#0f172a">626</text>
+            <text x="400" y="490" font-family="Arial, sans-serif" font-size="12" font-style="italic" text-anchor="middle" fill="#64748b">Délivré le 20/09/2026</text>
+            <text x="40" y="535" font-family="monospace" font-size="12" fill="#94a3b8">ID-AB69FFC</text>
+        </svg>`);
+
+        const svgSensCyber = `data:image/svg+xml;utf8,` + encodeURIComponent(`
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
+            <rect width="800" height="560" fill="#f8fafc"/>
+            <rect x="20" y="20" width="760" height="520" rx="12" fill="#ffffff" stroke="#1e3a8a" stroke-width="3"/>
+            <rect x="50" y="45" width="30" height="20" fill="#1d4ed8"/>
+            <rect x="80" y="45" width="30" height="20" fill="#ffffff"/>
+            <rect x="110" y="45" width="30" height="20" fill="#dc2626"/>
+            <text x="50" y="85" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0f172a">RÉPUBLIQUE FRANÇAISE</text>
+            <text x="50" y="102" font-family="Arial, sans-serif" font-size="11" font-style="italic" fill="#475569">Liberté • Égalité • Fraternité</text>
+            <text x="640" y="75" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#1e3a8a">CYBERMALVEILLANCE.GOUV.FR</text>
+            <text x="400" y="155" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#1e3a8a">ATTESTATION INDIVIDUELLE DE SUIVI</text>
+            <text x="400" y="195" font-family="Arial, sans-serif" font-size="38" font-weight="900" text-anchor="middle" fill="#dc2626">SENSCYBER</text>
+            <text x="400" y="220" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#1e3a8a">E-sensibilisation à la cybersécurité pour tous</text>
+            <text x="400" y="265" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#334155">Atteste que</text>
+            <text x="400" y="305" font-family="Arial, sans-serif" font-size="30" font-weight="bold" text-anchor="middle" fill="#0f172a">Mehdi BEN MOULAY</text>
+            <text x="400" y="340" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#334155">a suivi et validé avec succès l'e-sensibilisation :</text>
+            <text x="400" y="370" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#1e3a8a">« Agir pour contribuer à ma sécurité numérique et à celle de mon environnement »</text>
+            <text x="400" y="420" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#475569">• Identifier les menaces cyber et leurs mécanismes • Appliquer les bonnes pratiques de sécurité</text>
+            <text x="400" y="442" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#475569">• Contribuer à la protection collective en environnement professionnel</text>
+            <text x="400" y="500" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#0f172a">Attestation délivrée le : 04 mars 2026</text>
+        </svg>`);
+
+        // Si le fichier image externe n'est pas trouvé dans le dossier GitHub, affiche immédiatement le certificat SVG haute définition
+        function applyCertificateFallbacks() {
+            const culotImg = document.getElementById('cert-img-culot');
+            const dgaImg = document.getElementById('cert-img-dga');
+            const sensImg = document.getElementById('cert-img-senscyber');
+
+            culotImg.onerror = () => { culotImg.src = svgCulot; };
+            dgaImg.onerror = () => { dgaImg.src = svgDGA; };
+            sensImg.onerror = () => { sensImg.src = svgSensCyber; };
+
+            if (!culotImg.complete || culotImg.naturalWidth === 0) culotImg.src = svgCulot;
+            if (!dgaImg.complete || dgaImg.naturalWidth === 0) dgaImg.src = svgDGA;
+            if (!sensImg.complete || sensImg.naturalWidth === 0) sensImg.src = svgSensCyber;
+        }
+        applyCertificateFallbacks();
+
+        // --- 2. EFFET MACHINE À ÉCRIRE (TYPEWRITER) ---
+        const roles = [
+            "Technicien Support IT & Administrateur Systèmes",
+            "Passionné par la Cybersécurité (SOC, Blue Team, CTF)",
+            "Ingénierie Réseaux (Cisco VPN IPsec, HSRP, VLAN)",
+            "Automatisation & Conteneurisation (Proxmox LXC, Python)"
+        ];
+        let roleIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        const typeEl = document.getElementById('typewriter');
+
+        function typeLoop() {
+            const current = roles[roleIdx];
+            typeEl.textContent = current.substring(0, charIdx);
+
+            if (!isDeleting && charIdx < current.length) {
+                charIdx++;
+                setTimeout(typeLoop, 45);
+            } else if (isDeleting && charIdx > 0) {
+                charIdx--;
+                setTimeout(typeLoop, 25);
+            } else {
+                isDeleting = !isDeleting;
+                if (!isDeleting) roleIdx = (roleIdx + 1) % roles.length;
+                setTimeout(typeLoop, isDeleting ? 1800 : 300);
+            }
+        }
+        typeLoop();
+
+        // --- 3. APPARITION FLUIDE AU SCROLL ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- 4. LIGHTBOX PLEIN ÉCRAN ---
         function openLightbox(src) {
             const lb = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
@@ -1361,9 +1660,7 @@
 
         function closeLightbox() {
             const lb = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
             lb.classList.add('hidden');
-            img.src = '';
         }
 
         document.addEventListener('keydown', (e) => {
@@ -1373,6 +1670,59 @@
                 document.getElementById('vpn-modal').classList.add('hidden');
             }
         });
+
+        // --- 5. FOND ANIMÉ RÉSEAU CYBER (CANVAS) ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        for (let i = 0; i < 55; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                vx: (Math.random() - 0.5) * 0.45,
+                vy: (Math.random() - 0.5) * 0.45,
+                r: Math.random() * 1.8 + 0.8
+            });
+        }
+
+        function animateNetwork() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = '#38bdf8';
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
+                    if (dist < 135) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 135)})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateNetwork);
+        }
+        animateNetwork();
     </script>
 </body>
 </html>
