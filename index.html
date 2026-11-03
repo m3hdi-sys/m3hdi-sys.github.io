@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi Ben Moulay | Portfolio Systèmes, Réseaux & Cybersécurité</title>
+    <title>Mehdi BEN MOULAY | Portfolio Systèmes, Réseaux & Cybersécurité</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -37,15 +37,14 @@
             overflow-x: hidden;
         }
 
-        /* Canvas de particules réseau en arrière-plan */
+        /* Canvas interactif en arrière-plan */
         #bg-canvas {
             position: fixed;
             inset: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 0;
             pointer-events: none;
-            opacity: 0.55;
         }
 
         a { text-decoration: none; color: inherit; }
@@ -99,7 +98,6 @@
             font-weight: 500;
             color: var(--text-muted);
             transition: 0.25s;
-            position: relative;
         }
 
         .nav-links a:hover { color: var(--accent); }
@@ -125,6 +123,8 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 115px 24px 60px 24px;
+            position: relative;
+            z-index: 2;
         }
 
         /* Animations au scroll */
@@ -140,11 +140,11 @@
 
         /* --- HERO SECTION --- */
         .hero {
-            padding: 40px 0 70px 0;
+            padding: 35px 0 70px 0;
             border-bottom: 1px solid var(--border);
             display: grid;
-            grid-template-columns: 1.35fr 0.65fr;
-            gap: 40px;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 36px;
             align-items: center;
         }
 
@@ -164,7 +164,7 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+            font-size: clamp(2.4rem, 4.5vw, 3.5rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 12px;
@@ -174,7 +174,7 @@
         }
 
         .hero h2 {
-            font-size: clamp(1.1rem, 2vw, 1.38rem);
+            font-size: clamp(1.05rem, 1.8vw, 1.32rem);
             color: var(--accent);
             font-weight: 600;
             margin-bottom: 18px;
@@ -192,9 +192,9 @@
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1rem;
-            margin-bottom: 28px;
-            max-width: 680px;
+            font-size: 0.98rem;
+            margin-bottom: 26px;
+            max-width: 650px;
         }
 
         .btn-group {
@@ -207,10 +207,10 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 22px;
+            padding: 12px 20px;
             border-radius: 8px;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             cursor: pointer;
             transition: all 0.25s ease;
             border: 1px solid transparent;
@@ -239,45 +239,102 @@
             transform: translateY(-3px);
         }
 
-        /* Stats Box Hero */
-        .hero-stats {
-            background: linear-gradient(145deg, rgba(22, 34, 56, 0.85), rgba(15, 23, 42, 0.9));
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 24px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.45);
-            position: relative;
+        /* --- TERMINAL INTERACTIF À DROITE DU HERO --- */
+        .cyber-terminal {
+            background: rgba(9, 14, 26, 0.92);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 14px;
+            box-shadow: 0 20px 45px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.12);
             overflow: hidden;
+            font-family: 'JetBrains Mono', monospace;
+            backdrop-filter: blur(12px);
         }
 
-        .stat-item {
-            background: rgba(6, 11, 20, 0.65);
-            border: 1px solid var(--border);
-            padding: 16px;
-            border-radius: 12px;
-            transition: 0.3s;
+        .term-topbar {
+            background: #162238;
+            padding: 10px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
         }
 
-        .stat-item:hover {
-            border-color: var(--accent);
-            transform: translateY(-3px);
+        .term-dots {
+            display: flex;
+            gap: 7px;
         }
 
-        .stat-val {
-            font-size: 1.55rem;
-            font-weight: 800;
+        .term-dot {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .term-title {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        .term-quick-btns {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 10px 14px;
+            background: rgba(15, 23, 42, 0.7);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .term-chip {
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
             color: var(--accent);
             font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            padding: 4px 9px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.2s;
         }
 
-        .stat-label {
+        .term-chip:hover {
+            background: var(--accent);
+            color: #060b14;
+            font-weight: 700;
+        }
+
+        .term-body {
+            padding: 16px;
+            height: 235px;
+            overflow-y: auto;
             font-size: 0.78rem;
-            color: var(--text-dim);
-            margin-top: 4px;
-            font-weight: 500;
+            color: #cbd5e1;
+            line-height: 1.55;
+        }
+
+        .term-input-row {
+            display: flex;
+            align-items: center;
+            padding: 10px 16px;
+            border-top: 1px solid var(--border);
+            background: rgba(6, 11, 20, 0.85);
+        }
+
+        .term-prompt {
+            color: #34d399;
+            font-size: 0.78rem;
+            font-weight: 700;
+            margin-right: 8px;
+            white-space: nowrap;
+        }
+
+        #hero-term-input {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: #fff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            width: 100%;
         }
 
         /* --- SECTIONS --- */
@@ -489,7 +546,6 @@
             transition: all 0.35s ease;
         }
 
-        /* Reflet holographique au survol */
         .badge-card::after {
             content: "";
             position: absolute;
@@ -529,7 +585,6 @@
             animation: floatBadge 4s ease-in-out infinite;
         }
 
-        /* Anneau lumineux animé autour du badge */
         .badge-orb::before {
             content: "";
             position: absolute;
@@ -599,7 +654,7 @@
             margin-bottom: 14px;
         }
 
-        /* --- CERTIFICATS VISUELS DIRECTS (AUTO-AFFICHÉS) --- */
+        /* --- CERTIFICATS VISUELS DIRECTS --- */
         .cert-visual-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -799,15 +854,33 @@
             box-shadow: 0 0 40px rgba(56, 189, 248, 0.3);
         }
 
+        /* --- FOOTER AVEC BADGE VIBE CODÉ --- */
         footer {
             border-top: 1px solid var(--border);
-            padding: 36px 24px;
+            padding: 40px 24px;
             text-align: center;
             color: var(--text-dim);
             font-size: 0.88rem;
+            position: relative;
+            z-index: 2;
         }
 
-        @media (max-width: 900px) {
+        .vibe-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+            padding: 6px 16px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(16, 185, 129, 0.14));
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--text-main);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.15);
+        }
+
+        @media (max-width: 950px) {
             .hero { grid-template-columns: 1fr; }
             .grid-2 { grid-template-columns: 1fr; }
             .nav-links { display: none; }
@@ -816,7 +889,7 @@
 </head>
 <body>
 
-    <!-- CANVAS PARTICULES RÉSEAU -->
+    <!-- CANVAS INTERACTIF RÉSEAU & ONDES RADAR -->
     <canvas id="bg-canvas"></canvas>
 
     <!-- LIGHTBOX ZOOM IMAGE -->
@@ -829,12 +902,12 @@
     <nav>
         <div class="nav-brand">
             <span class="status-dot"></span>
-            <span>MEHDI BEN MOULAY <span style="color:var(--accent);">// SYS & CYBER</span></span>
+            <span>Mehdi BEN MOULAY <span style="color:var(--accent);">// SYS & CYBER</span></span>
         </div>
         <div class="nav-links">
+            <a href="#badges">Badges & Certificats</a>
             <a href="#projets">Projets</a>
             <a href="#competitions">Compétitions CTF</a>
-            <a href="#badges">Badges & Certificats</a>
             <a href="#competences">Compétences</a>
             <a href="#parcours">Parcours</a>
             <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="nav-cta">📄 CV PDF</a>
@@ -849,7 +922,7 @@
                 <div class="hero-badge">
                     <span>🛡️ BTS SIO option SISR (2ème année) • Alternant chez Io.sys 2.21</span>
                 </div>
-                <h1>Mehdi Ben Moulay</h1>
+                <h1>Mehdi BEN MOULAY</h1>
                 <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
                 <p>
                     Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (supervision SOC, haute disponibilité HSRP, tunnels VPN) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
@@ -862,22 +935,36 @@
                 </div>
             </div>
 
-            <div class="hero-stats">
-                <div class="stat-item">
-                    <div class="stat-val">8e / 21</div>
-                    <div class="stat-label">Finale Présentiel Accor Arena (CTF Bpifrance)</div>
+            <!-- CONSOLE INTERACTIVE À LA PLACE DES 4 CARRÉS -->
+            <div class="cyber-terminal">
+                <div class="term-topbar">
+                    <div class="term-dots">
+                        <span class="term-dot" style="background:#ef4444;"></span>
+                        <span class="term-dot" style="background:#f59e0b;"></span>
+                        <span class="term-dot" style="background:#10b981;"></span>
+                    </div>
+                    <span class="term-title">mehdi@sys-node:~ (Console Interactive)</span>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-val">7e / 655</div>
-                    <div class="stat-label">Classement Speed Runner (1900 pts • 0 hint)</div>
+                <div class="term-quick-btns">
+                    <button class="term-chip" onclick="runTermCmd('status')">$ status</button>
+                    <button class="term-chip" onclick="runTermCmd('ctf')">$ ctf --rank</button>
+                    <button class="term-chip" onclick="runTermCmd('lxc')">$ lxc --list</button>
+                    <button class="term-chip" onclick="runTermCmd('pmt')">$ pmt --info</button>
+                    <button class="term-chip" onclick="runTermCmd('clear')">$ clear</button>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-val">5 LXC</div>
-                    <div class="stat-label">Cluster Proxmox VE piloté en ChatOps (Python/SSH)</div>
+                <div class="term-body" id="hero-term-output">
+                    <div style="color:#38bdf8;">[SYS] Connexion établie sur le nœud Mehdi BEN MOULAY.</div>
+                    <div style="color:#94a3b8; margin-bottom:8px;">Cliquez sur une commande ci-dessus ou tapez <span style="color:#fff;">help</span> :</div>
+                    <div><span style="color:#34d399;">mehdi@sys-node:~$</span> status</div>
+                    <div style="color:#e2e8f0; margin-bottom:8px;">
+                        • Formation : BTS SIO SISR (Ingetis, Paris)<br>
+                        • Poste : Alternant Technicien IT @ Io.sys 2.21<br>
+                        • Focus : Admin Sys/Réseaux, Proxmox LXC & SOC Wazuh
+                    </div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-val">28e RT</div>
-                    <div class="stat-label">Immersion PMT (5 jours) Transmissions Militaires</div>
+                <div class="term-input-row">
+                    <span class="term-prompt">mehdi@sys-node:~$</span>
+                    <input type="text" id="hero-term-input" placeholder="Tapez help, ctf, lxc, pmt..." autocomplete="off">
                 </div>
             </div>
         </header>
@@ -980,16 +1067,16 @@
                 </div>
             </div>
 
-            <!-- CERTIFICATS VISUELS DIRECTS (AFFICHAGE GARANTI) -->
+            <!-- CERTIFICATS VISUELS DIRECTS -->
             <h4 style="color:var(--text-muted); margin-bottom: 18px; font-size: 1rem;">
-                📜 Certificats & Attestations Officielles (Visuels intégrés — Cliquez pour agrandir en plein écran)
+                📜 Certificats & Attestations Officielles (Visuels haute définition intégrés — Cliquez pour agrandir)
             </h4>
 
             <div class="grid-3">
                 <!-- CERTIFICAT 1 : BPIFRANCE OPÉRATION CULOT -->
                 <div class="cert-visual-card">
                     <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-culot').src)">
-                        <img id="cert-img-culot" src="certificat_ID-ACRFO8B.jpg" alt="Certificat Opération Culot">
+                        <img id="cert-img-culot" src="" alt="Certificat Opération Culot">
                     </div>
                     <div class="cert-body">
                         <div>
@@ -1007,7 +1094,7 @@
                 <!-- CERTIFICAT 2 : DEEP THREATS DGA -->
                 <div class="cert-visual-card">
                     <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-dga').src)">
-                        <img id="cert-img-dga" src="img/certificat-deepthreats.jpg" alt="Certificat Deep Threats DGA">
+                        <img id="cert-img-dga" src="" alt="Certificat Deep Threats DGA">
                     </div>
                     <div class="cert-body">
                         <div>
@@ -1025,7 +1112,7 @@
                 <!-- CERTIFICAT 3 : SENSCYBER & DÉFENSE -->
                 <div class="cert-visual-card">
                     <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-senscyber').src)">
-                        <img id="cert-img-senscyber" src="img/senscyber.png" alt="Attestation SensCyber République Française">
+                        <img id="cert-img-senscyber" src="" alt="Attestation SensCyber République Française">
                     </div>
                     <div class="cert-body">
                         <div>
@@ -1409,7 +1496,7 @@
         </div>
     </div>
 
-    <!-- MODAL 2 : RAPPORT CISCO VPN IPSEC (AVEC CONSOLES CLI INTÉGRÉES SANS IMAGES CASSÉES) -->
+    <!-- MODAL 2 : RAPPORT CISCO VPN IPSEC -->
     <div id="vpn-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1493,11 +1580,14 @@ interface: Serial0/0/0
     </div>
 
     <footer>
-        <p>© 2026 Mehdi Ben Moulay • Paris / Île-de-France • BTS SIO SISR • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
+        <p>© 2026 Mehdi BEN MOULAY • Paris / Île-de-France • BTS SIO SISR • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
+        <div class="vibe-badge">
+            <span>⚡ Portfolio Vibe Codé avec passion par <strong>Mehdi BEN MOULAY</strong></span>
+        </div>
     </footer>
 
     <script>
-        // --- 1. VISUELS SVG HAUTE DÉFINITION AUTO-GÉNÉRÉS POUR LES CERTIFICATS ---
+        // --- 1. VISUELS SVG HAUTE DÉFINITION INTÉGRÉS POUR LES CERTIFICATS ---
         const svgCulot = `data:image/svg+xml;utf8,` + encodeURIComponent(`
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560">
             <rect width="800" height="560" fill="#facc15"/>
@@ -1514,7 +1604,7 @@ interface: Serial0/0/0
             <text x="400" y="137" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#ffffff">CERTIFICAT DE PARTICIPATION</text>
             <rect x="95" y="165" width="610" height="350" rx="22" fill="#ffffff"/>
             <text x="400" y="198" font-family="Arial, sans-serif" font-size="16" text-anchor="middle" fill="#475569">Nous certifions que</text>
-            <text x="400" y="242" font-family="Arial, sans-serif" font-size="36" font-weight="bold" text-anchor="middle" fill="#1e293b">K@K@R07 (Mehdi BEN MOULAY)</text>
+            <text x="400" y="242" font-family="Arial, sans-serif" font-size="34" font-weight="bold" text-anchor="middle" fill="#1e293b">K@K@R07 (Mehdi BEN MOULAY)</text>
             <text x="400" y="270" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#475569">au sein de l'équipe</text>
             <text x="400" y="302" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">DGSI - DIRECTION GÉNÉRALE DES</text>
             <text x="400" y="330" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">SUPPOSITIONS IMPROBABLES</text>
@@ -1558,7 +1648,7 @@ interface: Serial0/0/0
             <text x="400" y="170" font-family="Arial Black, sans-serif" font-size="48" font-weight="900" letter-spacing="3" text-anchor="middle" fill="url(#dt)">DEEP THREATS</text>
             <rect x="165" y="198" width="470" height="310" rx="16" fill="#ffffff"/>
             <text x="400" y="232" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#334155">Ce certificat de participation est décerné à</text>
-            <text x="400" y="272" font-family="Arial, sans-serif" font-size="30" font-weight="bold" letter-spacing="2" text-anchor="middle" fill="#0f172a">MEHDI BEN MOULAY</text>
+            <text x="400" y="272" font-family="Arial, sans-serif" font-size="28" font-weight="bold" letter-spacing="1.5" text-anchor="middle" fill="#0f172a">Mehdi BEN MOULAY</text>
             <text x="400" y="302" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#475569">Membre de l'équipe</text>
             <text x="400" y="328" font-family="Arial, sans-serif" font-size="22" font-weight="bold" letter-spacing="1.5" text-anchor="middle" fill="#0f172a">OSFANTAPATOS</text>
             <text x="400" y="365" font-family="Arial, sans-serif" font-size="13.5" text-anchor="middle" fill="#334155">a participé au CTF DEEP THREATS, organisé par le Campus OSINT</text>
@@ -1595,38 +1685,60 @@ interface: Serial0/0/0
             <text x="400" y="500" font-family="Arial, sans-serif" font-size="15" font-weight="bold" text-anchor="middle" fill="#0f172a">Attestation délivrée le : 04 mars 2026</text>
         </svg>`);
 
-        // Si le fichier image externe n'est pas trouvé dans le dossier GitHub, affiche immédiatement le certificat SVG haute définition
-        function applyCertificateFallbacks() {
-            const culotImg = document.getElementById('cert-img-culot');
-            const dgaImg = document.getElementById('cert-img-dga');
-            const sensImg = document.getElementById('cert-img-senscyber');
+        document.getElementById('cert-img-culot').src = svgCulot;
+        document.getElementById('cert-img-dga').src = svgDGA;
+        document.getElementById('cert-img-senscyber').src = svgSensCyber;
 
-            culotImg.onerror = () => { culotImg.src = svgCulot; };
-            dgaImg.onerror = () => { dgaImg.src = svgDGA; };
-            sensImg.onerror = () => { sensImg.src = svgSensCyber; };
+        // --- 2. CONSOLE INTERACTIVE DU HERO ---
+        const termOutput = document.getElementById('hero-term-output');
+        const termInput = document.getElementById('hero-term-input');
 
-            if (!culotImg.complete || culotImg.naturalWidth === 0) culotImg.src = svgCulot;
-            if (!dgaImg.complete || dgaImg.naturalWidth === 0) dgaImg.src = svgDGA;
-            if (!sensImg.complete || sensImg.naturalWidth === 0) sensImg.src = svgSensCyber;
-        }
-        applyCertificateFallbacks();
+        const cmdResponses = {
+            'help': `Commandes disponibles : <span style="color:#38bdf8;">status</span>, <span style="color:#38bdf8;">ctf</span>, <span style="color:#38bdf8;">lxc</span>, <span style="color:#38bdf8;">pmt</span>, <span style="color:#38bdf8;">clear</span>`,
+            'status': `• Opérateur : <strong>Mehdi BEN MOULAY</strong><br>• Formation : BTS SIO SISR (Ingetis, Paris)<br>• Alternance : Io.sys 2.21<br>• Spécialités : Admin Sys/Réseaux, Proxmox LXC & SOC Wazuh`,
+            'ctf': `🏆 <strong>Palmarès CTF 2026 :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• DGA Deep Threats : 184e/491 (626 pts)<br>• CTF GMP & CTF CyberSup Puteaux`,
+            'lxc': `🖥️ <strong>Cluster Proxmox VE (5 conteneurs LXC actifs) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord ChatOps (Python Asyncio)<br>• CT 107, 108, 110, 111 : Instances isolées + Backups .tar.gz`,
+            'pmt': `🎖️ <strong>Immersion Militaire (Octobre 2026) :</strong><br>• 28e Régiment de Transmissions (5 jours)<br>• Systèmes d'information et communications tactiques`
+        };
 
-        // --- 2. EFFET MACHINE À ÉCRIRE (TYPEWRITER) ---
+        window.runTermCmd = function(raw) {
+            const cmd = raw.trim().toLowerCase().split(' ')[0];
+            if (cmd === 'clear') {
+                termOutput.innerHTML = `<div style="color:#94a3b8;">Console nettoyée. Tapez <span style="color:#fff;">help</span>.</div>`;
+                return;
+            }
+            const line = document.createElement('div');
+            line.innerHTML = `<span style="color:#34d399;">mehdi@sys-node:~$</span> ${raw}`;
+            termOutput.appendChild(line);
+
+            const resp = document.createElement('div');
+            resp.style.marginBottom = '8px';
+            resp.style.color = '#e2e8f0';
+            resp.innerHTML = cmdResponses[cmd] || `<span style="color:#f87171;">Commande inconnue : ${cmd}. Tapez 'help'.</span>`;
+            termOutput.appendChild(resp);
+            termOutput.scrollTop = termOutput.scrollHeight;
+        };
+
+        termInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && termInput.value.trim() !== '') {
+                runTermCmd(termInput.value);
+                termInput.value = '';
+            }
+        });
+
+        // --- 3. EFFET MACHINE À ÉCRIRE ---
         const roles = [
             "Technicien Support IT & Administrateur Systèmes",
             "Passionné par la Cybersécurité (SOC, Blue Team, CTF)",
             "Ingénierie Réseaux (Cisco VPN IPsec, HSRP, VLAN)",
             "Automatisation & Conteneurisation (Proxmox LXC, Python)"
         ];
-        let roleIdx = 0;
-        let charIdx = 0;
-        let isDeleting = false;
+        let roleIdx = 0, charIdx = 0, isDeleting = false;
         const typeEl = document.getElementById('typewriter');
 
         function typeLoop() {
             const current = roles[roleIdx];
             typeEl.textContent = current.substring(0, charIdx);
-
             if (!isDeleting && charIdx < current.length) {
                 charIdx++;
                 setTimeout(typeLoop, 45);
@@ -1641,28 +1753,24 @@ interface: Serial0/0/0
         }
         typeLoop();
 
-        // --- 3. APPARITION FLUIDE AU SCROLL ---
+        // --- 4. APPARITION FLUIDE AU SCROLL ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
             });
         }, { threshold: 0.12 });
-
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // --- 4. LIGHTBOX PLEIN ÉCRAN ---
+        // --- 5. LIGHTBOX PLEIN ÉCRAN ---
         function openLightbox(src) {
             const lb = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
             img.src = src;
             lb.classList.remove('hidden');
         }
-
         function closeLightbox() {
-            const lb = document.getElementById('lightbox');
-            lb.classList.add('hidden');
+            document.getElementById('lightbox').classList.add('hidden');
         }
-
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeLightbox();
@@ -1671,10 +1779,12 @@ interface: Serial0/0/0
             }
         });
 
-        // --- 5. FOND ANIMÉ RÉSEAU CYBER (CANVAS) ---
+        // --- 6. FOND INTERACTIF : SOURIS MAGNETIQUE + ONDES SONAR AU CLIC ---
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
         let particles = [];
+        let ripples = [];
+        let mouse = { x: null, y: null, radius: 170 };
 
         function resizeCanvas() {
             canvas.width = window.innerWidth;
@@ -1683,18 +1793,61 @@ interface: Serial0/0/0
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
-        for (let i = 0; i < 55; i++) {
+        window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+
+        window.addEventListener('mouseout', () => {
+            mouse.x = null;
+            mouse.y = null;
+        });
+
+        // Clic n'importe où : crée une onde radar + 3 nouvelles particules réseau
+        window.addEventListener('click', (e) => {
+            ripples.push({ x: e.clientX, y: e.clientY, r: 5, alpha: 0.85 });
+            for (let i = 0; i < 3; i++) {
+                if (particles.length > 95) particles.shift();
+                particles.push({
+                    x: e.clientX + (Math.random() - 0.5) * 20,
+                    y: e.clientY + (Math.random() - 0.5) * 20,
+                    vx: (Math.random() - 0.5) * 1.4,
+                    vy: (Math.random() - 0.5) * 1.4,
+                    r: Math.random() * 2 + 1.2
+                });
+            }
+        });
+
+        for (let i = 0; i < 65; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.45,
-                vy: (Math.random() - 0.5) * 0.45,
-                r: Math.random() * 1.8 + 0.8
+                vx: (Math.random() - 0.5) * 0.55,
+                vy: (Math.random() - 0.5) * 0.55,
+                r: Math.random() * 1.8 + 0.9
             });
         }
 
         function animateNetwork() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Dessin des ondes radar au clic
+            for (let i = ripples.length - 1; i >= 0; i--) {
+                let rp = ripples[i];
+                rp.r += 3.5;
+                rp.alpha -= 0.018;
+                if (rp.alpha <= 0) {
+                    ripples.splice(i, 1);
+                    continue;
+                }
+                ctx.beginPath();
+                ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
+                ctx.strokeStyle = `rgba(56, 189, 248, ${rp.alpha})`;
+                ctx.lineWidth = 1.8;
+                ctx.stroke();
+            }
+
+            // Dessin des particules et connexions avec la souris
             for (let i = 0; i < particles.length; i++) {
                 let p = particles[i];
                 p.x += p.vx;
@@ -1707,15 +1860,29 @@ interface: Serial0/0/0
                 ctx.fillStyle = '#38bdf8';
                 ctx.fill();
 
+                // Connexion entre particules
                 for (let j = i + 1; j < particles.length; j++) {
                     let p2 = particles[j];
                     let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 135) {
+                    if (dist < 130) {
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.15 * (1 - dist / 135)})`;
+                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.18 * (1 - dist / 130)})`;
                         ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+
+                // Connexion interactive avec le curseur de la souris
+                if (mouse.x !== null && mouse.y !== null) {
+                    let mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
+                    if (mDist < mouse.radius) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(mouse.x, mouse.y);
+                        ctx.strokeStyle = `rgba(16, 185, 129, ${0.45 * (1 - mDist / mouse.radius)})`;
+                        ctx.lineWidth = 1.2;
                         ctx.stroke();
                     }
                 }
