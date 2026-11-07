@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi BEN MOULAY (M3µD1) | Administrateur Systèmes & Réseaux • Cybersécurité</title>
+    <title>Mehdi BEN MOULAY | Administrateur Systèmes & Réseaux • Cybersécurité</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -38,7 +38,6 @@
             overflow-x: hidden;
         }
 
-        /* Canvas Galaxie & Espace Profond */
         #galaxy-canvas {
             position: fixed;
             inset: 0;
@@ -90,12 +89,12 @@
 
         .nav-links {
             display: flex;
-            gap: 20px;
+            gap: 18px;
             align-items: center;
         }
 
         .nav-links a {
-            font-size: 0.85rem;
+            font-size: 0.84rem;
             font-weight: 500;
             color: var(--text-muted);
             transition: 0.25s;
@@ -529,6 +528,99 @@
             box-shadow: 0 0 18px var(--accent-glow);
         }
 
+        /* --- DESIGN SPÉCIFIQUE WRITE-UPS DEEP THREATS (BANNIÈRE DT + 4 CHAPITRES) --- */
+        .dt-banner-card {
+            background: linear-gradient(145deg, rgba(13, 22, 44, 0.88), rgba(7, 12, 26, 0.94));
+            border: 1px solid rgba(56, 189, 248, 0.28);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+        }
+
+        .dt-logo-circle {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #0f172a, #020617);
+            border: 2px solid #38bdf8;
+            box-shadow: 0 0 22px rgba(56, 189, 248, 0.45);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 18px;
+        }
+
+        .dt-logo-text {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 1.55rem;
+            letter-spacing: -1px;
+            color: #ffffff;
+            line-height: 1;
+        }
+
+        .dt-logo-sub {
+            font-size: 0.42rem;
+            letter-spacing: 1.5px;
+            color: #ef4444;
+            font-weight: 700;
+            margin-top: 3px;
+        }
+
+        .chapter-card {
+            background: linear-gradient(160deg, rgba(13, 20, 40, 0.85), rgba(8, 13, 28, 0.92));
+            border: 1px solid rgba(56, 189, 248, 0.22);
+            border-left: 3.5px solid var(--accent);
+            border-radius: 12px;
+            padding: 26px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.28s ease;
+        }
+
+        .chapter-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+            box-shadow: 0 14px 32px rgba(0,0,0,0.5), 0 0 20px rgba(56, 189, 248, 0.15);
+        }
+
+        .chapter-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .chapter-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .chall-count-badge {
+            background: rgba(30, 41, 59, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.3);
+            color: #f8fafc;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 999px;
+        }
+
+        .chapter-card h4 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
         /* --- BADGES ANIMÉS 3D & HOLOGRAPHIQUES --- */
         @keyframes floatBadge {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
@@ -763,7 +855,7 @@
         .tl-sub { font-size: 0.86rem; color: var(--text-dim); font-style: italic; margin-bottom: 8px; }
         .tl-desc { font-size: 0.89rem; color: var(--text-muted); }
 
-        /* --- MODALES RAPPORTS TECHNIQUES COMPLETS --- */
+        /* --- MODALES RAPPORTS TECHNIQUES & WRITE-UPS --- */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -851,7 +943,7 @@
             font-size: 0.92rem;
         }
 
-        .doc-section { margin-bottom: 32px; }
+        .doc-section { margin-bottom: 30px; }
         .doc-section h3 {
             color: var(--accent);
             font-size: 1.15rem;
@@ -872,10 +964,23 @@
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.82rem;
             color: #e2e8f0;
-            margin: 14px 0;
+            margin: 12px 0;
             white-space: pre-wrap;
             border-radius: 6px;
             overflow-x: auto;
+        }
+
+        .flag-pill {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.14);
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            color: #34d399;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 6px;
+            margin-top: 6px;
         }
 
         .doc-img-wrapper {
@@ -963,16 +1068,16 @@
         <button class="btn btn-secondary" style="margin-top: 16px;">✕ Fermer l'aperçu</button>
     </div>
 
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION (SANS ALIAS EN HAUT À GAUCHE) -->
     <nav>
         <div class="nav-brand">
             <span class="status-dot"></span>
-            <span>Mehdi BEN MOULAY (M3µD1) <span style="color:var(--accent);">// ADMINISTRATEUR SYSTÈMES & RÉSEAUX</span></span>
+            <span>Mehdi BEN MOULAY <span style="color:var(--accent);">// ADMINISTRATEUR SYSTÈMES & RÉSEAUX</span></span>
         </div>
         <div class="nav-links">
             <a href="#badges">Badges & Certificats</a>
-            <a href="#projets">Projets & Comptes-Rendus</a>
-            <a href="#competitions">CTF & Forensic</a>
+            <a href="#projets">Projets</a>
+            <a href="#writeups">Write-Ups CTF</a>
             <a href="#veille">Veille Cyber & IA</a>
             <a href="#competences">Compétences</a>
             <a href="#parcours">Parcours</a>
@@ -982,11 +1087,11 @@
 
     <div class="container">
 
-        <!-- HERO SECTION -->
+        <!-- HERO SECTION (SANS ALIAS EN HAUT À GAUCHE) -->
         <header class="hero reveal visible">
             <div>
                 <div class="hero-badge">
-                    <span>🌌 Administrateur Systèmes & Réseaux • Alias : M3µD1 • BTS SIO SISR</span>
+                    <span>🌌 Administrateur Systèmes & Réseaux • BTS SIO SISR (2ème année)</span>
                 </div>
                 <h1>Mehdi BEN MOULAY</h1>
                 <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
@@ -996,8 +1101,8 @@
                 <div class="btn-group">
                     <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="btn btn-primary">📥 Télécharger mon CV (PDF)</a>
                     <a href="#projets" class="btn btn-secondary">🛠️ Comptes-Rendus Projets</a>
-                    <a href="#competitions" class="btn btn-secondary">🚩 CTF & Write-Ups</a>
-                    <a href="https://github.com/m3hdi-sys" target="_blank" class="btn btn-secondary">🐙 GitHub (M3µD1)</a>
+                    <a href="#writeups" class="btn btn-secondary">🚩 Write-Ups Deep Threats (22 Challs)</a>
+                    <a href="https://github.com/m3hdi-sys" target="_blank" class="btn btn-secondary">🐙 GitHub</a>
                     <a href="https://www.linkedin.com/in/mehdi-ben-moulay/" target="_blank" class="btn btn-secondary">🔗 LinkedIn</a>
                 </div>
             </div>
@@ -1010,7 +1115,7 @@
                         <span class="term-dot" style="background:#f59e0b;"></span>
                         <span class="term-dot" style="background:#10b981;"></span>
                     </div>
-                    <span class="term-title">M3µD1@galaxy-node:~ (Console Interactive)</span>
+                    <span class="term-title">mehdi@galaxy-node:~ (Console Interactive)</span>
                 </div>
                 <div class="term-quick-btns">
                     <button class="term-chip" onclick="runTermCmd('status')">$ status</button>
@@ -1020,9 +1125,9 @@
                     <button class="term-chip" onclick="runTermCmd('clear')">$ clear</button>
                 </div>
                 <div class="term-body" id="hero-term-output">
-                    <div style="color:#38bdf8;">[SYS] Connexion établie sur le nœud Mehdi BEN MOULAY (Alias : M3µD1).</div>
+                    <div style="color:#38bdf8;">[SYS] Connexion établie sur le nœud Mehdi BEN MOULAY.</div>
                     <div style="color:#94a3b8; margin-bottom:8px;">Cliquez sur une commande ci-dessus ou tapez <span style="color:#fff;">help</span> :</div>
-                    <div><span style="color:#34d399;">M3µD1@galaxy-node:~$</span> status</div>
+                    <div><span style="color:#34d399;">mehdi@galaxy-node:~$</span> status</div>
                     <div style="color:#e2e8f0; margin-bottom:8px;">
                         • Poste : Administrateur Systèmes & Réseaux (Alternance @ Io.sys 2.21)<br>
                         • Formation : BTS SIO SISR (Ingetis, Paris)<br>
@@ -1030,7 +1135,7 @@
                     </div>
                 </div>
                 <div class="term-input-row">
-                    <span class="term-prompt">M3µD1@galaxy-node:~$</span>
+                    <span class="term-prompt">mehdi@galaxy-node:~$</span>
                     <input type="text" id="hero-term-input" placeholder="Tapez help, status, soc, lxc, ctf, veille..." autocomplete="off">
                 </div>
             </div>
@@ -1147,7 +1252,7 @@
                                 <span class="pill pill-gold">ID-ACRFO8B</span>
                                 <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">22/10/2026</span>
                             </div>
-                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (Alias : M3µD1)</span>
+                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY</span>
                             <h4 style="font-size:1.05rem; margin-bottom:6px; color:#fff;">Certificat CTF « Opération Culot »</h4>
                             <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par <strong>Bpifrance (io.bpifrance.fr)</strong> dans le cadre de BIG 2026. Score : <strong>1900 points</strong> en <strong>4h 08min 18s</strong> (10ème sur 315 au certificat final).</p>
                         </div>
@@ -1165,7 +1270,7 @@
                                 <span class="pill">ID-AB69FFC</span>
                                 <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">20/09/2026</span>
                             </div>
-                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (Alias : M3µD1)</span>
+                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY</span>
                             <h4 style="font-size:1.05rem; margin-bottom:6px; color:#fff;">Certificat CTF Deep Threats</h4>
                             <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par le <strong>Ministère des Armées (DGA)</strong> et le <strong>Campus OSINT</strong> (10 au 13 sept. 2026). Position finale : <strong>184ème sur 487</strong> (626 points).</p>
                         </div>
@@ -1183,7 +1288,7 @@
                                 <span class="pill pill-green">République Française</span>
                                 <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">04/03/2026</span>
                             </div>
-                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (M3µD1)</span>
+                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY</span>
                             <h4 style="font-size:1.05rem; margin-bottom:6px; color:#fff;">SensCyber, PMT 28e RT & Immersion Orion</h4>
                             <ul class="card-list" style="margin-bottom:8px;">
                                 <li><strong>Attestation SensCyber :</strong> Cybermalveillance.gouv.fr (04/03/2026).</li>
@@ -1343,26 +1448,107 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : COMPÉTITIONS CTF & ATELIERS FORENSIC -->
-        <section id="competitions" class="reveal">
+        <!-- SECTION 3 : RAPPORTS D'INVESTIGATION (WRITE-UPS DEEP THREATS EN 4 CHAPITRES + AUTRES CTF) -->
+        <section id="writeups" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 03. Investigation Numérique, OSINT & Forensics</span>
-                <h3 class="section-title">Compétitions CTF & Ateliers Cyber</h3>
+                <span class="section-tag">// 03. Méthodologie détaillée de mes investigations orientée Blue Team, CTI et OSINT</span>
+                <h3 class="section-title">Rapports d'Investigation (Write-Ups)</h3>
             </div>
 
-            <div class="grid-3">
+            <!-- BANNIÈRE PRINCIPALE CTF DEEP THREATS -->
+            <div class="dt-banner-card">
+                <div class="dt-logo-circle">
+                    <span class="dt-logo-text">DT</span>
+                    <span class="dt-logo-sub">DEEP THREATS</span>
+                </div>
+                <h3 style="font-size: 1.7rem; font-weight: 800; color: #fff; margin-bottom: 8px;">
+                    CTF Deep Threats (DGA & Campus OSINT)
+                </h3>
+                <p style="color: var(--text-muted); font-size: 0.98rem;">
+                    Découvrez la résolution pas-à-pas de l'investigation sur l'entreprise <strong>Marinatech Industries</strong> et l'<strong>Institut Lotus</strong>. <strong>(22 challenges résolus — Classé 184e / 487 équipes • 626 pts)</strong>.
+                </p>
+            </div>
+
+            <!-- LES 4 CARTES DE CHAPITRES DEEP THREATS -->
+            <div class="grid-2" style="margin-bottom: 35px;">
+                <div class="chapter-card">
+                    <div>
+                        <div class="chapter-top">
+                            <span class="chapter-label">CHAPITRE 1</span>
+                            <span class="chall-count-badge">3 Challs</span>
+                        </div>
+                        <h4>À vos marques</h4>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
+                            La reconnaissance initiale et le cadre opérationnel de la mission : analyse du règlement d'engagement, ordre de mission DGA et initialisation du système de scoring.
+                        </p>
+                    </div>
+                    <button class="card-btn" onclick="document.getElementById('dt-chap1-modal').classList.remove('hidden')">
+                        Lire le chapitre
+                    </button>
+                </div>
+
+                <div class="chapter-card">
+                    <div>
+                        <div class="chapter-top">
+                            <span class="chapter-label">CHAPITRE 2</span>
+                            <span class="chall-count-badge">9 Challs</span>
+                        </div>
+                        <h4>En eaux troubles</h4>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
+                            Plongée dans l'investigation avancée sur <strong>Marinatech Industries</strong> : profilage des dirigeants (SOCMINT), partenariat <em>AquaVentis</em>, minerai <em>Lantrium</em>, traçage de portefeuilles (<em>Tang Bordel</em>) et analyse d'en-têtes réseau / pixel de tracking (<code>Menace-Enzo.eml</code>).
+                        </p>
+                    </div>
+                    <button class="card-btn" onclick="document.getElementById('dt-chap2-modal').classList.remove('hidden')">
+                        Lire le chapitre
+                    </button>
+                </div>
+
+                <div class="chapter-card">
+                    <div>
+                        <div class="chapter-top">
+                            <span class="chapter-label">CHAPITRE 3</span>
+                            <span class="chall-count-badge">2 Challs</span>
+                        </div>
+                        <h4>What's up doc ?</h4>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
+                            Investigation autour du chercheur Wuan : recherche documentaire (<em>Doctor who</em>) et analyse stéganographique d'une image PNG contenant une archive ZIP cachée après le chunk <code>IEND</code> (<em>Message intime</em> via <code>zsteg</code> et <code>foremost</code>).
+                        </p>
+                    </div>
+                    <button class="card-btn" onclick="document.getElementById('dt-chap3-modal').classList.remove('hidden')">
+                        Lire le chapitre
+                    </button>
+                </div>
+
+                <div class="chapter-card">
+                    <div>
+                        <div class="chapter-top">
+                            <span class="chapter-label">CHAPITRE 4</span>
+                            <span class="chall-count-badge">1 Chall</span>
+                        </div>
+                        <h4>Partenaire particulier</h4>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
+                            Investigation économique et corporative (<em>Capital</em>) sur les liens financiers et structurels entre les partenaires étrangers, l'<strong>Institut Lotus</strong> et Marinatech Industries.
+                        </p>
+                    </div>
+                    <button class="card-btn" onclick="document.getElementById('dt-chap4-modal').classList.remove('hidden')">
+                        Lire le chapitre
+                    </button>
+                </div>
+            </div>
+
+            <!-- AUTRES COMPÉTITIONS CTF -->
+            <div class="grid-2">
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
                             <span class="pill pill-gold">🏆 8e/21 Finale Accor Arena</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">Oct. 2026</span>
                         </div>
-                        <h4>CTF Opération Culot (Bpifrance)</h4>
-                        <p>Participation au challenge national d'investigation OSINT et HUMINT organisé par Bpifrance lors de BIG 2026. <strong>8e/21 en finale présentiel</strong>, <strong>7e/655 Speed Runner</strong> et <strong>10e/655 en ligne</strong> (1900 pts • 0 hint).</p>
+                        <h4>CTF Opération Culot (Bpifrance - BIG 2026)</h4>
+                        <p>Challenge national d'investigation OSINT et HUMINT organisé par Bpifrance. <strong>8e/21 en finale présentiel</strong>, <strong>7e/655 Speed Runner</strong> et <strong>10e/655 en ligne</strong> (1900 pts • 0 hint).</p>
                         <ul class="card-list">
                             <li><strong>Investigation Numérique :</strong> Traçabilité de flux frauduleux, recoupement d'alias et démantèlement de schémas de manipulation.</li>
                             <li><strong>Phase Hybride (HUMINT) :</strong> Collecte d'indices sur le terrain à l'Accor Arena et corrélation numérique sous contrainte de temps.</li>
-                            <li><strong>Précision :</strong> 100 % des challenges validés sans aucun indice (7,41 % de taux d'erreur).</li>
                         </ul>
                     </div>
                     <div>
@@ -1380,32 +1566,6 @@
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
-                            <span class="pill">Ministère des Armées • DGA</span>
-                            <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">Sept. 2026</span>
-                        </div>
-                        <h4>CTF Deep Threats (DGA)</h4>
-                        <p>Participation au challenge de cybersécurité et d'investigation numérique organisé par la Direction Générale de l'Armement (Campus OSINT). <strong>Classé 184e / 487 équipes (626 pts).</strong></p>
-                        <ul class="card-list">
-                            <li><strong>Investigation (OSINT) :</strong> Collecte, croisement et analyse d'informations en sources ouvertes pour traquer des menaces.</li>
-                            <li><strong>Travail d'équipe :</strong> Coordination, répartition des tâches et communication sous contrainte de temps.</li>
-                            <li><strong>Gouvernance & Reporting :</strong> Rédaction de rapports d'incident et propositions de remédiation (Blue Team).</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="tag-group">
-                            <span class="tech-tag">OSINT</span>
-                            <span class="tech-tag">Threat Intelligence</span>
-                            <span class="tech-tag">Cybersécurité</span>
-                        </div>
-                        <button class="card-btn" onclick="document.getElementById('dga-modal').classList.remove('hidden')">
-                            → Lire mon rapport d'investigation (Write-Up DGA)
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
-                        <div class="card-top-meta">
                             <span class="pill pill-green">Forensic & GeoINT</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
                         </div>
@@ -1414,7 +1574,6 @@
                         <ul class="card-list">
                             <li><strong>Investigation numérique :</strong> Traçabilité, analyse d'en-têtes et extraction de métadonnées (Forensic).</li>
                             <li><strong>GeoINT / IMINT :</strong> Géolocalisation précise et analyse d'images satellites.</li>
-                            <li><strong>Rapport d'incident :</strong> Synthèse des découvertes et rédaction de rapports détaillés sur les menaces potentielles.</li>
                         </ul>
                     </div>
                     <div>
@@ -1644,10 +1803,146 @@
     </div>
 
     <!-- =========================================================================
-         MODALES DES COMPTES-RENDUS TECHNIQUES COMPLETS
+         MODALES DES 4 CHAPITRES DU WRITE-UP DEEP THREATS (DGA & CAMPUS OSINT)
          ========================================================================= -->
 
-    <!-- MODAL 1 : COMPTE-RENDU MINI-SOC WAZUH COMPLET -->
+    <!-- CHAPITRE 1 : À VOS MARQUES (3 CHALLS) -->
+    <div id="dt-chap1-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 1 — À VOS MARQUES (3 CHALLS)</span>
+                <button class="modal-close" onclick="document.getElementById('dt-chap1-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 16px;">Chapitre 1 : À vos marques (Reconnaissance initiale & Cadre DGA)</h2>
+                
+                <div class="doc-section">
+                    <h3>Challenge 1.1 — Votre attention s'il vous plaît !</h3>
+                    <p><strong>Objectif :</strong> Identifier la sanction encourue en cas d'action offensive contre les infrastructures du CTF ou les cibles de l'enquête afin de garantir le respect strict du cadre légal OSINT (collecte passive uniquement).</p>
+                    <p><strong>Méthodologie :</strong> Analyse du règlement officiel de la compétition organisée par le Campus OSINT et la Direction Générale de l'Armement (DGA).</p>
+                    <span class="flag-pill">🚩 Flag : bannissement de l'équipe</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 1.2 — Ordre de mission</h3>
+                    <p><strong>Objectif :</strong> Prise de connaissance du briefing opérationnel concernant la PME française de défense navale <strong>Marinatech Industries</strong> et validation du lancement de l'investigation.</p>
+                    <span class="flag-pill">🚩 Flag : GO</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 1.3 — Scoring</h3>
+                    <p><strong>Objectif :</strong> Validation du fonctionnement du système de points dynamiques et déclenchement du chronomètre d'équipe.</p>
+                    <span class="flag-pill">🚩 Flag : J'ai compris ce système et l'accepte</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 2 : EN EAUX TROUBLES (9 CHALLS) -->
+    <div id="dt-chap2-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 2 — EN EAUX TROUBLES (9 CHALLS)</span>
+                <button class="modal-close" onclick="document.getElementById('dt-chap2-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 16px;">Chapitre 2 : En eaux troubles (Marinatech Industries, SOCMINT & Analyse Réseau)</h2>
+
+                <div class="doc-section">
+                    <h3>Challenge 2.1 — Président !</h3>
+                    <p><strong>Contexte :</strong> Avant un entretien prévu avec le président de <em>Marinatech Industries</em>, <strong>Marc-Olivier Chasseneuil</strong>, nous devons identifier le poste qu'il occupait avant de rejoindre l'entreprise.</p>
+                    <p><strong>Résolution (SOCMINT) :</strong> Recherche ciblée sur LinkedIn du profil de Marc-Olivier Chasseneuil et analyse de l'historique de ses expériences professionnelles chez <em>NAVAL GROUP</em>.</p>
+                    <span class="flag-pill">🚩 Flag : Ingénieur naval</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 2.2 — Un nouvel allié</h3>
+                    <p><strong>Contexte :</strong> En 2026, Marinatech Industries a signé un partenariat stratégique pour accélérer son déploiement international. Quelle est la date exacte de signature ?</p>
+                    <p><strong>Résolution (Google Dorks & Web OSINT) :</strong> À partir d'un post LinkedIn mentionnant <em>Jérôme Osfart</em>, président d'<strong>AquaVentis Partners</strong>, utilisation du Google Dork <code>"AquaVentis Partners"</code> pour localiser le site officiel de l'entreprise et l'article de presse <em>« AquaVentis Partners joins Marinatech Industries »</em>.</p>
+                    <span class="flag-pill">🚩 Flag : 20/05/2026</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenges 2.3 à 2.5 — Minerai de Lantrium, Fuite « Tang Bordel » & Traçage de Transactions</h3>
+                    <p><strong>Contexte :</strong> Investigation sur le métal stratégique <strong>Lantrium</strong> (pays fictif de <em>Lianhua</em>) et identification de l'auteur d'une fuite d'informations opérant sous le pseudonyme <strong>Tang Bordel</strong>.</p>
+                    <div class="doc-code">• Recherche encyclopédique sur le wiki de Lianhua pour extraire les propriétés du Lantrium (numéro atomique).
+• Pivot SOCMINT sur le handle "Tang Bordel" menant au profil Mastodon de Tanguy Bordelier.
+• Inspection de l'adresse Ethereum (0x188E7f50B72A0E2cBFb327425D1cFe784428f260) et remontée des 4 transactions initiales pour identifier le commanditaire ayant financé Tanguy Bordelier.</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenges 2.6 à 2.9 — Analyse Forensique d'Email (Menace-Enzo.eml) & Tracking Pixel</h3>
+                    <p><strong>Contexte :</strong> Enzo Riesmeyer reçoit un courriel de menaces anonyme (<code>Menace-Enzo.eml</code>) après s'être intéressé à la disparition de son cousin. Nous devons identifier l'adresse IP de l'expéditeur puis la personne qui se cache derrière ce message.</p>
+                    <div class="doc-code">1. Analyse des en-têtes SMTP (Received chain) du fichier .eml en remontant du bas vers le haut :
+   → Extraction de l'adresse IP d'origine : 47.242.108.213
+
+2. Inspection du code HTML du courriel et découverte d'un pixel de tracking invisible (1x1 px) :
+   → URL : jlekt.eu/pixel/track?uid=riesmeyer&amp;campaign=menace_01&amp;t=1748905831
+   → Pivot vers le domaine interne pxltrakln.int accessible via l'environnement proxy de Lianhua.
+   → Identification du document partagé et extraction de l'identifiant "zhouwenj" sur le réseau Qiao Network.</div>
+                    <span class="flag-pill">🚩 Flags : 47.242.108.213 • Zhou Wenjie</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 3 : WHAT'S UP DOC ? (2 CHALLS) -->
+    <div id="dt-chap3-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 3 — WHAT'S UP DOC ? (2 CHALLS)</span>
+                <button class="modal-close" onclick="document.getElementById('dt-chap3-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 16px;">Chapitre 3 : What's up doc ? (Investigation Chercheur & Stéganographie PNG)</h2>
+
+                <div class="doc-section">
+                    <h3>Challenge 3.1 — Doctor who</h3>
+                    <p><strong>Objectif :</strong> Reconstituer le parcours académique et les publications scientifiques du chercheur <strong>Wuan</strong> travaillant sur les technologies sensibles de Marinatech Industries.</p>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 3.2 — Message intime (Forensic & Stéganographie)</h3>
+                    <p><strong>Contexte :</strong> Les lois de sécurité de Lianhua étant très coercitives envers leurs ressortissants, Wuan avait-il réellement l'intention de détourner la technologie de Marinatech ? Une photo publiée en hommage à son père contient un indice dissimulé.</p>
+                    <p><strong>Résolution technique (<code>zsteg</code> & <code>foremost</code>) :</strong></p>
+                    <div class="doc-code"># 1. Inspection de l'image PNG avec zsteg : détection de données suspectes après le chunk de fin IEND
+$ zsteg photo_wuan.png
+extradata:0 .. file: Zip archive, with extra data (magic bytes PK\x03\x04)
+
+# 2. Extraction automatique de l'archive ZIP dissimulée avec foremost
+$ foremost -i photo_wuan.png -o output_foremost/
+
+# 3. Lecture du message laissé par Wuan à son père confirmant qu'il agissait sous la contrainte</div>
+                    <span class="flag-pill">🚩 Flag : 你深愛的兒子 (Ton fils qui t'aime profondément)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 4 : PARTENAIRE PARTICULIER (1 CHALL) -->
+    <div id="dt-chap4-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 4 — PARTENAIRE PARTICULIER (1 CHALL)</span>
+                <button class="modal-close" onclick="document.getElementById('dt-chap4-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 16px;">Chapitre 4 : Partenaire particulier (Institut Lotus & Renseignement Économique)</h2>
+
+                <div class="doc-section">
+                    <h3>Challenge 4.1 — Capital</h3>
+                    <p><strong>Contexte :</strong> Analyse des ramifications financières et institutionnelles autour de l'<strong>Institut Lotus</strong> et de ses liens avec l'écosystème de Marinatech Industries.</p>
+                    <p><strong>Méthodologie :</strong> Recoupement de registres d'entreprises, analyse des publications de l'Institut Lotus et synthèse globale de la chaîne d'ingérence étrangère visant les technologies navales de Marinatech.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         MODALES DES PROJETS TECHNIQUES (MINI-SOC, VPN, HSRP, PROXMOX, CULOT, FORENSIC)
+         ========================================================================= -->
+
+    <!-- MODAL MINI-SOC WAZUH -->
     <div id="soc-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1666,9 +1961,9 @@
 
                 <div class="doc-section">
                     <h3>1. Contexte & Architecture du Mini-SOC</h3>
-                    <p>L'objectif de ce projet est de concevoir de A à Z une infrastructure centralisée de détection et de réponse aux incidents (SIEM/XDR) capable de surveiller un parc hybride (postes Windows et serveurs Linux), de qualifier les attaques selon le référentiel <strong>MITRE ATT&CK</strong> et d'automatiser la remédiation (SOAR).</p>
+                    <p>Conception de A à Z d'une infrastructure centralisée de détection et de réponse aux incidents (SIEM/XDR) surveillant un parc hybride (postes Windows et serveurs Linux), qualifiant les attaques selon <strong>MITRE ATT&CK</strong> et automatisant la remédiation (SOAR).</p>
                     <div class="doc-code">[Endpoint Windows + Sysmon] ──┐
-                              ├──► [Serveur Wazuh SIEM/XDR] ◄──► [API VirusTotal (Scan Hash FIM)]
+                              ├──► [Serveur Wazuh SIEM/XDR] ◄──► [API VirusTotal (Scan FIM)]
 [Serveur Linux + Auditd/SSH] ─┘              │
                                              ├──► Réponse Active : Bannissement IP (iptables)
                                              └──► Script Python : Alerting temps réel (Webhook Discord)</div>
@@ -1676,9 +1971,7 @@
 
                 <div class="doc-section">
                     <h3>2. Detection Engineering (Règles XML face à Atomic Red Team)</h3>
-                    <p>Pour dépasser les règles par défaut, les agents Windows ont été enrichis avec <strong>Sysmon</strong>. Des simulations d'attaques ont été exécutées via le framework <strong>Atomic Red Team</strong> (exécution de payloads PowerShell, dump mémoire LSASS, création de tâches planifiées) afin de rédiger des règles XML personnalisées dans <code>local_rules.xml</code> :</p>
                     <div class="doc-code">&lt;group name="local,sysmon,mitre_attack,"&gt;
-  &lt;!-- Détection d'exécution PowerShell suspecte (MITRE T1059.001) --&gt;
   &lt;rule id="100110" level="12"&gt;
     &lt;if_group&gt;sysmon_event1&lt;/if_group&gt;
     &lt;field name="win.eventdata.commandLine" type="pcre2"&gt;(?i)(Invoke-AtomicTest|mimikatz|-enc|FromBase64String)&lt;/field&gt;
@@ -1689,25 +1982,14 @@
                 </div>
 
                 <div class="doc-section">
-                    <h3>3. Défense Active (SOAR) : Bannissement dynamique via iptables</h3>
-                    <p>Face aux tentatives d'attaques par force brute (SSH / RDP), le module <strong>Active Response</strong> de Wazuh a été configuré dans <code>ossec.conf</code> pour déclencher automatiquement le script <code>firewall-drop</code> et bloquer l'adresse IP attaquante dans <code>iptables</code> dès que la règle de brute-force est déclenchée :</p>
-                    <div class="doc-code">&lt;active-response&gt;
-  &lt;command&gt;firewall-drop&lt;/command&gt;
-  &lt;location&gt;local&lt;/location&gt;
-  &lt;rules_id&gt;5712, 5720&lt;/rules_id&gt;
-  &lt;timeout&gt;600&lt;/timeout&gt;
-&lt;/active-response&gt;</div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>4. Threat Intelligence (API VirusTotal) & Alerting Webhook Discord</h3>
-                    <p>Le module <strong>FIM (File Integrity Monitoring / Syscheck)</strong> surveille en temps réel les répertoires critiques. À chaque création ou modification d'un fichier, Wazuh interroge automatiquement l'<strong>API VirusTotal</strong>. En parallèle, un script Python sur-mesure (<code>custom-discord.py</code>) envoie un Embed formaté sur un salon Discord d'astreinte SOC avec le niveau de criticité, l'IP source, la technique MITRE ATT&CK et le résultat VirusTotal.</p>
+                    <h3>3. Défense Active (SOAR) & Alerting Webhook Discord</h3>
+                    <p>Bannissement dynamique via <code>iptables</code> (module Active Response <code>firewall-drop</code>) lors de tentatives de brute-force SSH/RDP, vérification automatique des fichiers via l'<strong>API VirusTotal</strong> et notification temps réel sur Discord via script Python.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2 : RAPPORT CISCO VPN IPSEC COMPLET -->
+    <!-- MODAL CISCO VPN IPSEC -->
     <div id="vpn-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1723,10 +2005,6 @@
                     <div class="report-meta-box"><small>Protocoles</small><strong>VPN IPsec / ISAKMP / OSPF</strong></div>
                     <div class="report-meta-box"><small>Liaisons WAN</small><strong>Interfaces Séries HWIC-2T</strong></div>
                 </div>
-
-                <p style="color:var(--text-muted); margin-bottom: 24px;">
-                    <strong>OBJECTIF :</strong> Interconnecter deux réseaux locaux distants (LAN A <code>192.168.1.0/24</code> et LAN C <code>192.168.3.0/24</code>) de manière sécurisée via un tunnel VPN Site-to-Site IPsec traversant un réseau WAN.
-                </p>
 
                 <div class="doc-section">
                     <h3>1. Infrastructure, Module HWIC-2T et Plan d'adressage</h3>
@@ -1745,19 +2023,6 @@
 
                 <div class="doc-section">
                     <h3>2. Activation de la licence SecurityK9 & Configuration du Tunnel IPsec</h3>
-                    <p>Activation de la licence <code>securityk9</code> sur Cisco 1941, définition de l'ACL du trafic intéressant et configuration de la Crypto Map sur l'interface de sortie WAN :</p>
-                    <div class="doc-code">R1(config)# license boot module c1900 technology-package securityk9
-R1(config)# access-list 101 permit ip 192.168.1.0 0.0.0.255 192.168.3.0 0.0.0.255
-R1(config)# crypto isakmp policy 10
-R1(config-isakmp)# encryption aes
-R1(config-isakmp)# authentication pre-share
-R1(config-isakmp)# group 2
-R1(config)# crypto isakmp key VPN_SECRET_KEY address 10.2.2.2
-R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac
-R1(config)# crypto map VPN-MAP 10 ipsec-isakmp
-R1(config-crypto-map)# set peer 10.2.2.2
-R1(config-crypto-map)# set transform-set VPN-SET
-R1(config-crypto-map)# match address 101</div>
                     <div class="doc-img-wrapper">
                         <img src="img/5.png" onerror="this.onerror=null; this.src='img/5.jpg';" class="doc-img" alt="Licence SecurityK9" onclick="openLightbox(this.src)">
                         <p class="img-caption">Capture 5 : Activation de la licence securityk9 sur le routeur Cisco 1941.</p>
@@ -1785,7 +2050,7 @@ R1(config-crypto-map)# match address 101</div>
         </div>
     </div>
 
-    <!-- MODAL 3 : COMPTE-RENDU HAUTE DISPONIBILITÉ (HSRP) COMPLET -->
+    <!-- MODAL HSRP -->
     <div id="hsrp-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1794,21 +2059,8 @@ R1(config-crypto-map)# match address 101</div>
             </div>
             <div class="modal-content">
                 <h2 style="margin-bottom: 15px;">Compte-Rendu : Architecture Réseau Redondante (Protocole Cisco HSRP & Failover Python)</h2>
-                
-                <div class="report-meta-grid">
-                    <div class="report-meta-box"><small>Objectif</small><strong>Disaster Recovery / SLA</strong></div>
-                    <div class="report-meta-box"><small>Protocole</small><strong>Cisco HSRP (Standby v2)</strong></div>
-                    <div class="report-meta-box"><small>Passerelle VIP</small><strong>192.168.10.254/24</strong></div>
-                    <div class="report-meta-box"><small>Automatisation</small><strong>Script Python de test SLA</strong></div>
-                </div>
-
                 <div class="doc-section">
-                    <h3>1. Problématique & Conception Tolérante aux Pannes (Failover)</h3>
-                    <p>Dans un réseau d'entreprise, une passerelle par défaut unique constitue un <strong>SPOF (Single Point of Failure)</strong>. Le déploiement du protocole <strong>HSRP (Hot Standby Router Protocol)</strong> permet de regrouper deux routeurs physiques (R1 Master et R2 Standby) derrière une adresse IP et MAC virtuelle unique (<code>192.168.10.254</code>).</p>
-                </div>
-
-                <div class="doc-section">
-                    <h3>2. Configuration Cisco IOS (Priorités, Préemption & Timers)</h3>
+                    <h3>1. Configuration Cisco IOS (Priorités, Préemption & Passerelle Virtuelle)</h3>
                     <div class="doc-code">! --- Routeur R1 (Active / Master - Priorité 110 + Préemption) ---
 R1(config)# interface GigabitEthernet0/0
 R1(config-if)# ip address 192.168.10.2 255.255.255.0
@@ -1816,35 +2068,23 @@ R1(config-if)# standby version 2
 R1(config-if)# standby 10 ip 192.168.10.254
 R1(config-if)# standby 10 priority 110
 R1(config-if)# standby 10 preempt
-R1(config-if)# standby 10 timers 1 3
 
 ! --- Routeur R2 (Standby / Backup - Priorité par défaut 100) ---
 R2(config)# interface GigabitEthernet0/0
 R2(config-if)# ip address 192.168.10.3 255.255.255.0
 R2(config-if)# standby version 2
 R2(config-if)# standby 10 ip 192.168.10.254
-R2(config-if)# standby 10 preempt
-R2(config-if)# standby 10 timers 1 3</div>
+R2(config-if)# standby 10 preempt</div>
                 </div>
-
                 <div class="doc-section">
-                    <h3>3. Automatisation Python du test de bascule dynamique</h3>
-                    <p>Création d'un script d'audit en Python envoyant des sondes ICMP continues vers la passerelle virtuelle pour vérifier la bascule automatique de R1 vers R2 lors d'une coupure de lien :</p>
-                    <div class="doc-code"># Extrait du script de validation de bascule HSRP
-import subprocess, time
-
-VIP = "192.168.10.254"
-while True:
-    res = subprocess.run(["ping", "-n", "1", "-w", "500", VIP], capture_output=True)
-    status = "UP (Continuité SLA assurée)" if res.returncode == 0 else "BASCULE HSRP EN COURS..."
-    print(f"[{time.strftime('%H:%M:%S')}] Passerelle VIP {VIP} -> {status}")
-    time.sleep(1)</div>
+                    <h3>2. Automatisation Python du test de bascule dynamique (SLA)</h3>
+                    <p>Développement d'un script Python testant en continu la disponibilité de la passerelle virtuelle <code>192.168.10.254</code> lors de la coupure du routeur maître.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 4 : ARCHITECTURE PROXMOX LXC & CHATOPS COMPLET -->
+    <!-- MODAL PROXMOX LXC -->
     <div id="proxmox-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1853,36 +2093,25 @@ while True:
             </div>
             <div class="modal-content">
                 <h2 style="margin-bottom: 15px;">Compte-Rendu : Infrastructure Multi-Serveurs LXC Proxmox & Automatisation ChatOps</h2>
-                
-                <div class="report-meta-grid">
-                    <div class="report-meta-box"><small>Hyperviseur</small><strong>Proxmox VE (5 LXC)</strong></div>
-                    <div class="report-meta-box"><small>Orchestration</small><strong>Bot Discord Python Asyncio</strong></div>
-                    <div class="report-meta-box"><small>Réseau</small><strong>IP Fixes + Tunnel TCP/UDP</strong></div>
-                    <div class="report-meta-box"><small>Résilience</small><strong>Systemd + Backups .tar.gz</strong></div>
-                </div>
-
                 <div class="doc-section">
                     <h3>1. Virtualisation & Micro-Architecture LXC (Proxmox VE)</h3>
-                    <p>Isolation complète de chaque service dans des conteneurs Linux légers (LXC) administrés depuis le nœud maître via l'utilitaire <code>pct</code> :</p>
                     <div class="doc-code">• CT 109 (192.168.0.50/24) : Nœud de contrôle & Bot Discord d'administration (bot-minecraft.service)
 • CT 107, 108, 110, 111 (192.168.0.51 à .54/24) : Instances applicatives isolées (minecraft-bedrock.service)
 • Interconnexion SSH sans mot de passe par clés entre CT 109 et les conteneurs cibles
 • Exposition publique sécurisée sans ouverture de ports FAI (contournement CGNAT via tunneling Playit.gg)</div>
                 </div>
-
                 <div class="doc-section">
                     <h3>2. Automatisation ChatOps (Python Asyncio) & Parsing Journalctl</h3>
                     <div class="doc-code">• Commandes Slash (/mc, /maj) & composants interactifs (Boutons, Menus, Modals, Embeds temps réel)
 • Exécution asynchrone (asyncio.create_subprocess_shell) des ordres systemctl start/stop/restart via SSH
 • Script update_mc_players.py : Parsing Regex de journalctl sur la dernière heure pour extraire les sessions actives
-• Calcul d'uptime dynamique via ActiveEnterTimestamp systemd et extinction automatique en cas d'inactivité
-• Sauvegardes automatisées : Script Bash (backup-world.sh) générant des archives .tar.gz listées dans Discord</div>
+• Extinction automatique en cas d'inactivité et backups/rollbacks automatisés (.tar.gz) toutes les 30 min</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 5 : COMPTE-RENDU OPÉRATION CULOT BPIFRANCE -->
+    <!-- MODAL OPÉRATION CULOT BPIFRANCE -->
     <div id="culot-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1891,64 +2120,20 @@ while True:
             </div>
             <div class="modal-content">
                 <h2 style="margin-bottom: 15px;">Rapport d'Enquête — CTF « Opération Culot » (Bpifrance - BIG 2026)</h2>
-                
-                <div class="report-meta-grid">
-                    <div class="report-meta-box"><small>Finale Accor Arena</small><strong>8e / 21 équipes</strong></div>
-                    <div class="report-meta-box"><small>Speed Runner</small><strong>7e / 655 équipes</strong></div>
-                    <div class="report-meta-box"><small>Classement En Ligne</small><strong>10e / 655 (1900 pts)</strong></div>
-                    <div class="report-meta-box"><small>Précision</small><strong>7,41 % fail • 0 Hint</strong></div>
-                </div>
-
                 <div class="doc-section">
-                    <h3>1. Phase En Ligne : Démantèlement d'une Fraude Financière (OSINT / SOCMINT)</h3>
+                    <h3>1. Phase En Ligne (7e/655 Speed Runner • 10e/655 Général • 1900 pts • 0 Hint)</h3>
                     <div class="doc-code">• Investigation d'un écosystème frauduleux lié à la manipulation financière.
-• Pivot sur pseudonymes, corrélation de comptes sociaux (SOCMINT), analyse de code source web et récupération d'archives (Wayback Machine).
-• Vérification croisée des sources sans utiliser aucun indice (0 hint).</div>
+• Pivot sur pseudonymes, corrélation de comptes sociaux (SOCMINT), analyse de code source web et récupération d'archives (Wayback Machine).</div>
                 </div>
-
                 <div class="doc-section">
-                    <h3>2. Phase Hybride à l'Accor Arena (Paris) : HUMINT & Investigation Terrain</h3>
-                    <div class="doc-code">• Qualification parmi les 21 équipes finalistes présentes le 8 octobre 2026 lors de l'événement BIG de Bpifrance à l'Accor Arena.
-• Collecte d'indices physiques sur le terrain (HUMINT), recoupement avec des éléments numériques et résolution du second chapitre (Badge Finisher).</div>
+                    <h3>2. Finale Hybride à l'Accor Arena (8e / 21 équipes finalistes)</h3>
+                    <div class="doc-code">• Collecte d'indices physiques sur le terrain (HUMINT) lors de BIG 2026 à l'Accor Arena et résolution complète des deux chapitres (Badge Finisher).</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 6 : WRITE-UP CTF DEEP THREATS (DGA) COMPLET -->
-    <div id="dga-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <span>[ WRITE-UP INVESTIGATION ] : CTF_DEEP_THREATS_DGA.md</span>
-                <button class="modal-close" onclick="document.getElementById('dga-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <h2 style="margin-bottom: 15px;">Rapport d'Investigation — CTF Deep Threats (DGA & Campus OSINT)</h2>
-                
-                <div class="report-meta-grid">
-                    <div class="report-meta-box"><small>Organisateur</small><strong>DGA / Ministère des Armées</strong></div>
-                    <div class="report-meta-box"><small>Classement</small><strong>184e / 487 équipes</strong></div>
-                    <div class="report-meta-box"><small>Score validé</small><strong>626 Points</strong></div>
-                    <div class="report-meta-box"><small>Certificat</small><strong>ID-AB69FFC</strong></div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>1. Investigation OSINT & Énumération Web</h3>
-                    <div class="doc-code">• Énumération d'auteurs et d'identifiants sur portails web cibles (requêtes /?author=1 à 9) pour cartographier les membres d'une organisation fictive.
-• Recherche avancée en sources ouvertes, croisement d'identités numériques et suivi de traces publiques.
-• Pivot SOCMINT multi-plateformes et reconstitution chronologique des déplacements d'une cible (GeoINT).</div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>2. Gouvernance, Analyse d'En-têtes & Rapport de Remédiation (Blue Team)</h3>
-                    <div class="doc-code">• Analyse forensique d'en-têtes SMTP pour identifier le serveur d'origine d'un courriel malveillant.
-• Rédaction d'un rapport d'incident structuré incluant des mesures de remédiation Blue Team (durcissement des enregistrements DNS SPF/DKIM/DMARC, réduction de la surface d'exposition publique et politique d'hygiène numérique).</div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL 7 : ATELIER FORENSIC (CYBERSUP) COMPLET -->
+    <!-- MODAL FORENSIC CYBERSUP -->
     <div id="forensic-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1957,38 +2142,27 @@ while True:
             </div>
             <div class="modal-content">
                 <h2 style="margin-bottom: 15px;">Compte-Rendu : Atelier Forensic & GeoINT (CyberSup Puteaux)</h2>
-                
-                <div class="report-meta-grid">
-                    <div class="report-meta-box"><small>Domaine</small><strong>Digital Forensics & GeoINT</strong></div>
-                    <div class="report-meta-box"><small>Format</small><strong>Présentiel (Puteaux)</strong></div>
-                    <div class="report-meta-box"><small>Techniques</small><strong>EXIF, Headers, IMINT</strong></div>
-                    <div class="report-meta-box"><small>Livrable</small><strong>Rapport d'Incident</strong></div>
-                </div>
-
                 <div class="doc-section">
                     <h3>1. Investigation Numérique & Extraction de Métadonnées (Forensic)</h3>
                     <div class="doc-code">• Inspection approfondie de fichiers numériques (extraction de métadonnées EXIF, identification des équipements de prise de vue, horodatages et coordonnées GPS résiduelles).
 • Analyse d'en-têtes (headers) et traçabilité des preuves numériques.</div>
                 </div>
-
                 <div class="doc-section">
-                    <h3>2. GeoINT / IMINT & Synthèse des Menaces</h3>
-                    <div class="doc-code">• Géolocalisation précise à partir d'indices visuels (architecture, topographie, végétation, signalétique routière) croisés avec l'imagerie satellite (Google Earth Pro, Overpass Turbo).
-• Rédaction d'un rapport d'investigation synthétisant la chaîne de preuves et qualifiant le niveau de menace.</div>
+                    <h3>2. GeoINT / IMINT & Rapport d'Incident</h3>
+                    <div class="doc-code">• Géolocalisation précise à partir d'indices visuels croisés avec l'imagerie satellite et rédaction d'un rapport d'incident détaillé.</div>
                 </div>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 Mehdi BEN MOULAY (M3µD1) • Paris / Île-de-France • Administrateur Systèmes & Réseaux • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
+        <p>© 2026 Mehdi BEN MOULAY • Paris / Île-de-France • Administrateur Systèmes & Réseaux • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
         <div class="vibe-badge">
             <span>⚡ Portfolio Vibe Codé</span>
         </div>
     </footer>
 
     <script>
-        // --- 1. GESTION AUTOMATIQUE DES EXTENSIONS (.jpg / .png) POUR TES VRAIS CERTIFICATS ---
         const culotImg = document.getElementById('cert-img-culot');
         const dgaImg = document.getElementById('cert-img-dga');
 
@@ -2002,16 +2176,15 @@ while True:
             else if (this.src.endsWith('.png')) this.src = 'img/certificat-deepthreats.jpeg';
         };
 
-        // --- 2. CONSOLE INTERACTIVE DU HERO ---
         const termOutput = document.getElementById('hero-term-output');
         const termInput = document.getElementById('hero-term-input');
 
         const cmdResponses = {
             'help': `Commandes disponibles : <span style="color:#38bdf8;">status</span>, <span style="color:#38bdf8;">soc</span>, <span style="color:#38bdf8;">lxc</span>, <span style="color:#38bdf8;">ctf</span>, <span style="color:#38bdf8;">veille</span>, <span style="color:#38bdf8;">clear</span>`,
-            'status': `• Opérateur : <strong>Mehdi BEN MOULAY (Alias : M3µD1)</strong><br>• Poste : <strong>Administrateur Systèmes & Réseaux</strong> (Alternance @ Io.sys 2.21)<br>• Formation : BTS SIO SISR (Ingetis, Paris)`,
+            'status': `• Opérateur : <strong>Mehdi BEN MOULAY</strong><br>• Poste : <strong>Administrateur Systèmes & Réseaux</strong> (Alternance @ Io.sys 2.21)<br>• Formation : BTS SIO SISR (Ingetis, Paris)`,
             'soc': `🛡️ <strong>Mini-SOC Wazuh & Blue Team :</strong><br>• Detection Engineering : Règles XML sur-mesure (Atomic Red Team / MITRE ATT&CK)<br>• Défense Active : Bannissement dynamique via iptables (anti brute-force)<br>• Alerting & CTI : API VirusTotal + Script Python Webhook Discord`,
             'lxc': `🐳 <strong>Homelab Proxmox VE (5 conteneurs LXC) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord Python (boutons d'allumage, SSH par clés)<br>• CT 107, 108, 110, 111 : Instances isolées, arrêt auto sur inactivité & rollbacks .tar.gz`,
-            'ctf': `🏆 <strong>Palmarès CTF & Forensic (Team DGSI) :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• CTF Deep Threats (DGA) : 184e/487 (OSINT, Threat Intel, Reporting Blue Team)<br>• Atelier Forensic (CyberSup) : Métadonnées, en-têtes & GeoINT satellite`,
+            'ctf': `🏆 <strong>Palmarès CTF & Write-Ups :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• CTF Deep Threats (DGA) : 22 challenges résolus en 4 chapitres (Marinatech Industries & Institut Lotus)<br>• Atelier Forensic (CyberSup) : Métadonnées, en-têtes & GeoINT satellite`,
             'veille': `📡 <strong>Veille Technologique Active :</strong><br>• Axe 1 (Cyber) : CVE critiques, règles Wazuh & MITRE ATT&CK<br>• Axe 2 (IA) : Workflows N8N + LLM pour l'automatisation IT & SecOps<br>• Axe 3 (Infra) : Proxmox VE, conteneurs LXC & pipelines GitLab CI/CD`
         };
 
@@ -2022,7 +2195,7 @@ while True:
                 return;
             }
             const line = document.createElement('div');
-            line.innerHTML = `<span style="color:#34d399;">M3µD1@galaxy-node:~$</span> ${raw}`;
+            line.innerHTML = `<span style="color:#34d399;">mehdi@galaxy-node:~$</span> ${raw}`;
             termOutput.appendChild(line);
 
             const resp = document.createElement('div');
@@ -2040,9 +2213,8 @@ while True:
             }
         });
 
-        // --- 3. EFFET MACHINE À ÉCRIRE ---
         const roles = [
-            "Administrateur Systèmes & Réseaux (Alias : M3µD1)",
+            "Administrateur Systèmes & Réseaux",
             "Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)",
             "Ingénierie Réseaux (Cisco VPN IPsec, HSRP Failover)",
             "Automatisation & Conteneurisation (Proxmox LXC, Python)"
@@ -2067,7 +2239,6 @@ while True:
         }
         typeLoop();
 
-        // --- 4. APPARITION FLUIDE AU SCROLL ---
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) entry.target.classList.add('visible');
@@ -2075,7 +2246,6 @@ while True:
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // --- 5. LIGHTBOX PLEIN ÉCRAN ---
         function openLightbox(src) {
             const lb = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
@@ -2092,7 +2262,7 @@ while True:
             }
         });
 
-        // --- 6. MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
+        // --- MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
         const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
