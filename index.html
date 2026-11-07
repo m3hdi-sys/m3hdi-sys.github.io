@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mehdi BEN MOULAY | Portfolio Systèmes, Réseaux & Cybersécurité</title>
+    <title>Mehdi BEN MOULAY (M3µD1) | Administrateur Systèmes & Réseaux • Cybersécurité</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #060b14;
-            --bg-panel: #0f172a;
-            --bg-card: rgba(15, 23, 42, 0.72);
-            --bg-card-hover: rgba(30, 41, 59, 0.92);
+            --bg-space: #03040b;
+            --bg-panel: rgba(11, 15, 32, 0.85);
+            --bg-card: rgba(13, 18, 38, 0.68);
+            --bg-card-hover: rgba(20, 28, 56, 0.88);
             --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.35);
+            --accent-glow: rgba(56, 189, 248, 0.38);
             --accent-secondary: #10b981;
+            --nebula-purple: #a855f7;
             --gold: #f59e0b;
             --text-main: #f8fafc;
             --text-muted: #cbd5e1;
@@ -31,14 +32,14 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-dark);
+            background-color: var(--bg-space);
             color: var(--text-main);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Canvas interactif en arrière-plan */
-        #bg-canvas {
+        /* Canvas Galaxie & Espace Profond */
+        #galaxy-canvas {
             position: fixed;
             inset: 0;
             width: 100%;
@@ -54,14 +55,14 @@
         nav {
             position: fixed;
             top: 0; width: 100%;
-            background: rgba(6, 11, 20, 0.82);
-            backdrop-filter: blur(16px);
+            background: rgba(3, 4, 11, 0.82);
+            backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 6%;
+            padding: 15px 5%;
         }
 
         .nav-brand {
@@ -69,7 +70,7 @@
             align-items: center;
             gap: 12px;
             font-weight: 800;
-            font-size: 1.05rem;
+            font-size: 0.98rem;
             letter-spacing: 0.5px;
         }
 
@@ -89,12 +90,12 @@
 
         .nav-links {
             display: flex;
-            gap: 24px;
+            gap: 20px;
             align-items: center;
         }
 
         .nav-links a {
-            font-size: 0.88rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-muted);
             transition: 0.25s;
@@ -103,10 +104,10 @@
         .nav-links a:hover { color: var(--accent); }
 
         .nav-cta {
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.18), rgba(16, 185, 129, 0.18));
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2));
             color: var(--accent) !important;
             border: 1px solid var(--border-hover);
-            padding: 8px 16px;
+            padding: 8px 15px;
             border-radius: 8px;
             font-weight: 700 !important;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
@@ -114,7 +115,7 @@
 
         .nav-cta:hover {
             background: var(--accent);
-            color: var(--bg-dark) !important;
+            color: var(--bg-space) !important;
             box-shadow: 0 0 25px var(--accent-glow);
         }
 
@@ -127,7 +128,6 @@
             z-index: 2;
         }
 
-        /* Animations au scroll */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
@@ -164,11 +164,11 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+            font-size: clamp(2.3rem, 4.3vw, 3.4rem);
             font-weight: 800;
             line-height: 1.1;
             margin-bottom: 12px;
-            background: linear-gradient(90deg, #ffffff, #93c5fd, #38bdf8);
+            background: linear-gradient(90deg, #ffffff, #bae6fd, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -217,14 +217,14 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, #38bdf8, #0284c7);
+            background: linear-gradient(135deg, #38bdf8, #6366f1);
             color: #fff;
             box-shadow: 0 6px 20px var(--accent-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 28px rgba(56, 189, 248, 0.5);
+            box-shadow: 0 10px 28px rgba(99, 102, 241, 0.55);
         }
 
         .btn-secondary {
@@ -239,19 +239,19 @@
             transform: translateY(-3px);
         }
 
-        /* --- TERMINAL INTERACTIF À DROITE DU HERO --- */
+        /* --- TERMINAL INTERACTIF --- */
         .cyber-terminal {
-            background: rgba(9, 14, 26, 0.92);
+            background: rgba(7, 10, 22, 0.9);
             border: 1px solid rgba(56, 189, 248, 0.35);
             border-radius: 14px;
-            box-shadow: 0 20px 45px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.12);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.7), 0 0 25px rgba(168, 85, 247, 0.15);
             overflow: hidden;
             font-family: 'JetBrains Mono', monospace;
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
         }
 
         .term-topbar {
-            background: #162238;
+            background: rgba(18, 25, 52, 0.9);
             padding: 10px 16px;
             display: flex;
             justify-content: space-between;
@@ -280,7 +280,7 @@
             flex-wrap: wrap;
             gap: 6px;
             padding: 10px 14px;
-            background: rgba(15, 23, 42, 0.7);
+            background: rgba(11, 15, 32, 0.75);
             border-bottom: 1px solid var(--border);
         }
 
@@ -298,7 +298,7 @@
 
         .term-chip:hover {
             background: var(--accent);
-            color: #060b14;
+            color: #03040b;
             font-weight: 700;
         }
 
@@ -316,7 +316,7 @@
             align-items: center;
             padding: 10px 16px;
             border-top: 1px solid var(--border);
-            background: rgba(6, 11, 20, 0.85);
+            background: rgba(4, 6, 14, 0.9);
         }
 
         .term-prompt {
@@ -394,7 +394,7 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px);
             position: relative;
             overflow: hidden;
         }
@@ -404,7 +404,7 @@
             position: absolute;
             top: 0; left: -100%;
             width: 100%; height: 2px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            background: linear-gradient(90deg, transparent, var(--accent), var(--nebula-purple), transparent);
             transition: 0.6s;
         }
 
@@ -414,7 +414,7 @@
             background: var(--bg-card-hover);
             border-color: var(--border-hover);
             transform: translateY(-6px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.55), 0 0 25px rgba(56, 189, 248, 0.12);
         }
 
         .card-top-meta {
@@ -448,37 +448,44 @@
             border-color: rgba(16, 185, 129, 0.4);
         }
 
+        .pill-purple {
+            background: rgba(168, 85, 247, 0.15);
+            color: #c084fc;
+            border-color: rgba(168, 85, 247, 0.4);
+        }
+
         .card h4 {
-            font-size: 1.2rem;
+            font-size: 1.22rem;
             font-weight: 700;
-            margin-bottom: 8px;
-            color: var(--text-main);
+            margin-bottom: 10px;
+            color: var(--accent);
         }
 
         .card p {
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: var(--text-muted);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
         }
 
         .card-list {
             list-style: none;
-            margin-bottom: 18px;
-            font-size: 0.88rem;
+            margin-bottom: 16px;
+            font-size: 0.86rem;
             color: var(--text-muted);
         }
 
         .card-list li {
             position: relative;
-            padding-left: 16px;
-            margin-bottom: 6px;
+            padding-left: 20px;
+            margin-bottom: 8px;
         }
 
         .card-list li::before {
-            content: "▹";
+            content: "→";
             position: absolute;
             left: 0;
             color: var(--accent);
+            font-weight: bold;
         }
 
         .tag-group {
@@ -491,13 +498,13 @@
         }
 
         .tech-tag {
-            background: #163247;
-            color: #e2e8f0;
-            font-size: 0.74rem;
+            background: rgba(22, 50, 71, 0.75);
+            color: #38bdf8;
+            font-size: 0.73rem;
             font-weight: 600;
             padding: 4px 10px;
             border-radius: 5px;
-            border: 1px solid rgba(56, 189, 248, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.25);
         }
 
         .card-btn {
@@ -518,7 +525,7 @@
 
         .card-btn:hover {
             background: var(--accent);
-            color: var(--bg-dark);
+            color: var(--bg-space);
             box-shadow: 0 0 18px var(--accent-glow);
         }
 
@@ -534,7 +541,7 @@
         }
 
         .badge-card {
-            background: linear-gradient(155deg, rgba(22, 34, 56, 0.92), rgba(11, 17, 32, 0.96));
+            background: linear-gradient(155deg, rgba(18, 25, 52, 0.88), rgba(8, 12, 26, 0.94));
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 24px;
@@ -556,14 +563,12 @@
             transition: 0.65s;
             pointer-events: none;
         }
-        .badge-card:hover::after {
-            left: 130%;
-        }
+        .badge-card:hover::after { left: 130%; }
 
         .badge-card:hover {
             border-color: var(--accent);
             transform: translateY(-6px) scale(1.01);
-            box-shadow: 0 18px 38px rgba(0,0,0,0.5), 0 0 25px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 18px 38px rgba(0,0,0,0.6), 0 0 25px rgba(56, 189, 248, 0.2);
         }
 
         .badge-header {
@@ -590,7 +595,7 @@
             position: absolute;
             inset: -3px;
             border-radius: 50%;
-            background: conic-gradient(from 0deg, var(--accent), var(--accent-secondary), var(--gold), var(--accent));
+            background: conic-gradient(from 0deg, var(--accent), var(--nebula-purple), var(--gold), var(--accent));
             animation: spinGlow 6s linear infinite;
             z-index: 0;
             opacity: 0.75;
@@ -600,7 +605,7 @@
             width: 90px;
             height: 90px;
             border-radius: 50%;
-            background: #0b1120;
+            background: #060916;
             z-index: 1;
             display: flex;
             align-items: center;
@@ -617,11 +622,9 @@
             transition: transform 0.3s ease;
         }
 
-        .badge-card:hover .badge-orb-inner img {
-            transform: scale(1.1);
-        }
+        .badge-card:hover .badge-orb-inner img { transform: scale(1.1); }
 
-        .crypto-proof {
+        .verified-pill {
             font-family: 'JetBrains Mono', monospace;
             font-size: 0.68rem;
             color: #34d399;
@@ -663,17 +666,18 @@
             display: flex;
             flex-direction: column;
             transition: all 0.3s ease;
+            backdrop-filter: blur(12px);
         }
 
         .cert-visual-card:hover {
             border-color: var(--accent);
             transform: translateY(-6px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.45);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         }
 
         .cert-thumb {
             height: 220px;
-            background: #090e1a;
+            background: #060916;
             border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
@@ -690,9 +694,7 @@
             transition: transform 0.35s ease;
         }
 
-        .cert-visual-card:hover .cert-thumb img {
-            transform: scale(1.04);
-        }
+        .cert-visual-card:hover .cert-thumb img { transform: scale(1.04); }
 
         .holder-tag {
             background: rgba(16, 185, 129, 0.1);
@@ -729,6 +731,7 @@
             padding: 20px 24px;
             border-radius: 12px;
             transition: 0.25s;
+            backdrop-filter: blur(10px);
         }
         .tl-item:hover { border-color: var(--border-hover); }
         .tl-item:last-child { margin-bottom: 0; }
@@ -741,7 +744,7 @@
             width: 12px;
             height: 12px;
             border-radius: 50%;
-            background: var(--bg-dark);
+            background: var(--bg-space);
             border: 2.5px solid var(--accent);
             box-shadow: 0 0 10px var(--accent);
         }
@@ -760,12 +763,12 @@
         .tl-sub { font-size: 0.86rem; color: var(--text-dim); font-style: italic; margin-bottom: 8px; }
         .tl-desc { font-size: 0.89rem; color: var(--text-muted); }
 
-        /* --- MODALES RAPPORTS TECHNIQUES --- */
+        /* --- MODALES RAPPORTS TECHNIQUES COMPLETS --- */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(5, 10, 20, 0.88);
-            backdrop-filter: blur(8px);
+            background: rgba(3, 5, 14, 0.88);
+            backdrop-filter: blur(10px);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -776,20 +779,20 @@
         .hidden { display: none !important; }
 
         .modal-box {
-            background: #0f172a;
+            background: #0b1021;
             border: 1px solid var(--accent);
             border-radius: 14px;
             width: 100%;
-            max-width: 940px;
+            max-width: 960px;
             height: 88vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.75);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 30px rgba(56, 189, 248, 0.2);
         }
 
         .modal-header {
-            background: var(--bg-panel);
+            background: #111833;
             border-bottom: 1px solid var(--border);
             padding: 16px 24px;
             display: flex;
@@ -816,12 +819,39 @@
         .modal-close:hover { background: #ef4444; color: #fff; }
 
         .modal-content {
-            padding: 30px;
+            padding: 32px;
             overflow-y: auto;
             flex: 1;
         }
 
-        .doc-section { margin-bottom: 34px; }
+        .report-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 26px;
+        }
+
+        .report-meta-box {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid var(--border);
+            padding: 12px 16px;
+            border-radius: 8px;
+        }
+
+        .report-meta-box small {
+            display: block;
+            font-size: 0.72rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .report-meta-box strong {
+            color: var(--accent);
+            font-size: 0.92rem;
+        }
+
+        .doc-section { margin-bottom: 32px; }
         .doc-section h3 {
             color: var(--accent);
             font-size: 1.15rem;
@@ -829,8 +859,13 @@
             padding-bottom: 8px;
             margin-bottom: 14px;
         }
+        .doc-section p {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            margin-bottom: 10px;
+        }
         .doc-code {
-            background: #060a12;
+            background: #050811;
             border: 1px solid #1e293b;
             border-left: 3px solid var(--accent);
             padding: 16px;
@@ -844,7 +879,7 @@
         }
 
         .doc-img-wrapper {
-            background: #060a12;
+            background: #050811;
             border: 1px solid var(--border);
             padding: 12px;
             border-radius: 8px;
@@ -865,7 +900,7 @@
         #lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(4, 7, 14, 0.95);
+            background: rgba(3, 5, 12, 0.95);
             z-index: 5000;
             display: flex;
             flex-direction: column;
@@ -902,7 +937,7 @@
             margin-top: 12px;
             padding: 6px 16px;
             border-radius: 999px;
-            background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(16, 185, 129, 0.14));
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.14), rgba(168, 85, 247, 0.18));
             border: 1px solid rgba(56, 189, 248, 0.35);
             color: var(--text-main);
             font-family: 'JetBrains Mono', monospace;
@@ -919,8 +954,8 @@
 </head>
 <body>
 
-    <!-- CANVAS INTERACTIF RÉSEAU & ONDES RADAR -->
-    <canvas id="bg-canvas"></canvas>
+    <!-- FOND GALAXIE, NÉBULEUSES & ÉTOILES FILANTES -->
+    <canvas id="galaxy-canvas"></canvas>
 
     <!-- LIGHTBOX ZOOM IMAGE -->
     <div id="lightbox" class="hidden" onclick="closeLightbox()">
@@ -932,12 +967,13 @@
     <nav>
         <div class="nav-brand">
             <span class="status-dot"></span>
-            <span>Mehdi BEN MOULAY <span style="color:var(--accent);">// SYS & CYBER</span></span>
+            <span>Mehdi BEN MOULAY (M3µD1) <span style="color:var(--accent);">// ADMINISTRATEUR SYSTÈMES & RÉSEAUX</span></span>
         </div>
         <div class="nav-links">
             <a href="#badges">Badges & Certificats</a>
-            <a href="#projets">Projets</a>
-            <a href="#competitions">Compétitions CTF</a>
+            <a href="#projets">Projets & Comptes-Rendus</a>
+            <a href="#competitions">CTF & Forensic</a>
+            <a href="#veille">Veille Cyber & IA</a>
             <a href="#competences">Compétences</a>
             <a href="#parcours">Parcours</a>
             <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="nav-cta">📄 CV PDF</a>
@@ -950,17 +986,18 @@
         <header class="hero reveal visible">
             <div>
                 <div class="hero-badge">
-                    <span>🛡️ BTS SIO option SISR (2ème année) • Alternant chez Io.sys 2.21</span>
+                    <span>🌌 Administrateur Systèmes & Réseaux • Alias : M3µD1 • BTS SIO SISR</span>
                 </div>
                 <h1>Mehdi BEN MOULAY</h1>
                 <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
                 <p>
-                    Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (supervision SOC, haute disponibilité HSRP, tunnels VPN) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
+                    Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (Mini-SOC Wazuh, haute disponibilité HSRP, tunnels VPN IPsec) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
                 </p>
                 <div class="btn-group">
                     <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="btn btn-primary">📥 Télécharger mon CV (PDF)</a>
-                    <a href="#badges" class="btn btn-secondary">🏅 Badges & Certificats</a>
-                    <a href="https://github.com/m3hdi-sys" target="_blank" class="btn btn-secondary">🐙 GitHub</a>
+                    <a href="#projets" class="btn btn-secondary">🛠️ Comptes-Rendus Projets</a>
+                    <a href="#competitions" class="btn btn-secondary">🚩 CTF & Write-Ups</a>
+                    <a href="https://github.com/m3hdi-sys" target="_blank" class="btn btn-secondary">🐙 GitHub (M3µD1)</a>
                     <a href="https://www.linkedin.com/in/mehdi-ben-moulay/" target="_blank" class="btn btn-secondary">🔗 LinkedIn</a>
                 </div>
             </div>
@@ -973,28 +1010,28 @@
                         <span class="term-dot" style="background:#f59e0b;"></span>
                         <span class="term-dot" style="background:#10b981;"></span>
                     </div>
-                    <span class="term-title">mehdi@sys-node:~ (Console Interactive)</span>
+                    <span class="term-title">M3µD1@galaxy-node:~ (Console Interactive)</span>
                 </div>
                 <div class="term-quick-btns">
                     <button class="term-chip" onclick="runTermCmd('status')">$ status</button>
-                    <button class="term-chip" onclick="runTermCmd('ctf')">$ ctf --rank</button>
+                    <button class="term-chip" onclick="runTermCmd('soc')">$ soc --wazuh</button>
                     <button class="term-chip" onclick="runTermCmd('lxc')">$ lxc --list</button>
-                    <button class="term-chip" onclick="runTermCmd('pmt')">$ pmt --info</button>
+                    <button class="term-chip" onclick="runTermCmd('ctf')">$ ctf --challs</button>
                     <button class="term-chip" onclick="runTermCmd('clear')">$ clear</button>
                 </div>
                 <div class="term-body" id="hero-term-output">
-                    <div style="color:#38bdf8;">[SYS] Connexion établie sur le nœud Mehdi BEN MOULAY.</div>
+                    <div style="color:#38bdf8;">[SYS] Connexion établie sur le nœud Mehdi BEN MOULAY (Alias : M3µD1).</div>
                     <div style="color:#94a3b8; margin-bottom:8px;">Cliquez sur une commande ci-dessus ou tapez <span style="color:#fff;">help</span> :</div>
-                    <div><span style="color:#34d399;">mehdi@sys-node:~$</span> status</div>
+                    <div><span style="color:#34d399;">M3µD1@galaxy-node:~$</span> status</div>
                     <div style="color:#e2e8f0; margin-bottom:8px;">
+                        • Poste : Administrateur Systèmes & Réseaux (Alternance @ Io.sys 2.21)<br>
                         • Formation : BTS SIO SISR (Ingetis, Paris)<br>
-                        • Poste : Alternant Technicien IT @ Io.sys 2.21<br>
-                        • Focus : Admin Sys/Réseaux, Proxmox LXC & SOC Wazuh
+                        • Spécialités : Proxmox LXC, Mini-SOC Wazuh, HSRP & VPN IPsec
                     </div>
                 </div>
                 <div class="term-input-row">
-                    <span class="term-prompt">mehdi@sys-node:~$</span>
-                    <input type="text" id="hero-term-input" placeholder="Tapez help, ctf, lxc, pmt..." autocomplete="off">
+                    <span class="term-prompt">M3µD1@galaxy-node:~$</span>
+                    <input type="text" id="hero-term-input" placeholder="Tapez help, status, soc, lxc, ctf, veille..." autocomplete="off">
                 </div>
             </div>
         </header>
@@ -1002,16 +1039,15 @@
         <!-- SECTION 1 : BADGES ANIMÉS & CERTIFICATS ORIGINAUX -->
         <section id="badges" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 01. Preuves Cryptographiques & Diplômes</span>
+                <span class="section-tag">// 01. Distinctions & Diplômes</span>
                 <h3 class="section-title">OpenBadges & Certificats Officiels</h3>
             </div>
 
             <h4 style="color:var(--text-muted); margin-bottom: 18px; font-size: 1rem;">
-                🎖️ OpenBadges v3.0 Animés & Vérifiables (Cliquez sur un badge pour l'agrandir ou sur le bouton pour vérifier sur Badgify)
+                🎖️ OpenBadges v3.0 Officiels & Vérifiables (Cliquez sur un badge pour l'agrandir ou sur le bouton pour vérifier sur Badgify)
             </h4>
 
             <div class="grid-3" style="margin-bottom: 45px;">
-                <!-- BADGE 1 : FINISHER -->
                 <div class="badge-card">
                     <div>
                         <div class="badge-header">
@@ -1021,7 +1057,7 @@
                                 </div>
                             </div>
                             <div>
-                                <span class="crypto-proof">✓ EdDSA-JCS-2022 Verified</span>
+                                <span class="verified-pill">✓ OpenBadge v3.0 Vérifié</span>
                                 <div class="badge-title">Opération Culot 2026 – Finisher</div>
                                 <span class="badge-issuer">BIG 2026 • Bpifrance</span>
                             </div>
@@ -1039,7 +1075,6 @@
                     </div>
                 </div>
 
-                <!-- BADGE 2 : PRÉSENTIEL ACCOR ARENA -->
                 <div class="badge-card">
                     <div>
                         <div class="badge-header">
@@ -1049,7 +1084,7 @@
                                 </div>
                             </div>
                             <div>
-                                <span class="crypto-proof">✓ EdDSA-JCS-2022 Verified</span>
+                                <span class="verified-pill">✓ OpenBadge v3.0 Vérifié</span>
                                 <div class="badge-title">Opération Culot 2026 – Présentiel</div>
                                 <span class="badge-issuer">08/10/2026 • Accor Arena</span>
                             </div>
@@ -1068,7 +1103,6 @@
                     </div>
                 </div>
 
-                <!-- BADGE 3 : PARTICIPANT -->
                 <div class="badge-card">
                     <div>
                         <div class="badge-header">
@@ -1078,12 +1112,12 @@
                                 </div>
                             </div>
                             <div>
-                                <span class="crypto-proof">✓ EdDSA-JCS-2022 Verified</span>
+                                <span class="verified-pill">✓ OpenBadge v3.0 Vérifié</span>
                                 <div class="badge-title">Opération Culot 2026 – Participant</div>
                                 <span class="badge-issuer">Oct. 2026 • Badgify</span>
                             </div>
                         </div>
-                        <p class="badge-desc">Enquête immersive consacrée aux mécanismes de manipulation et aux fraudes financières liées aux cryptomonnaies.</p>
+                        <p class="badge-desc">Enquête immersive consacrée aux mécanismes de manipulation et aux fraudes financières en ligne.</p>
                     </div>
                     <div>
                         <div class="tag-group" style="border:none; padding-top:0;">
@@ -1097,13 +1131,12 @@
                 </div>
             </div>
 
-            <!-- VRAIS CERTIFICATS ORIGINAUX DU DOSSIER IMG/ -->
+            <!-- VRAIS CERTIFICATS ORIGINAUX -->
             <h4 style="color:var(--text-muted); margin-bottom: 18px; font-size: 1rem;">
                 📜 Certificats & Attestations Officielles (Documents originaux — Cliquez pour agrandir en plein écran)
             </h4>
 
             <div class="grid-3">
-                <!-- CERTIFICAT 1 : BPIFRANCE OPÉRATION CULOT (VRAI FICHIER img/certificat-culot.jpg) -->
                 <div class="cert-visual-card">
                     <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-culot').src)">
                         <img id="cert-img-culot" src="img/certificat-culot.jpg" alt="Certificat original Opération Culot Bpifrance">
@@ -1114,15 +1147,14 @@
                                 <span class="pill pill-gold">ID-ACRFO8B</span>
                                 <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">22/10/2026</span>
                             </div>
-                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (Pseudo CTF : K@K@R07)</span>
-                            <h4 style="font-size:1.05rem; margin-bottom:6px;">Certificat CTF « Opération Culot »</h4>
+                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (Alias : M3µD1)</span>
+                            <h4 style="font-size:1.05rem; margin-bottom:6px; color:#fff;">Certificat CTF « Opération Culot »</h4>
                             <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par <strong>Bpifrance (io.bpifrance.fr)</strong> dans le cadre de BIG 2026. Score : <strong>1900 points</strong> en <strong>4h 08min 18s</strong> (10ème sur 315 au certificat final).</p>
                         </div>
                         <button class="card-btn" onclick="openLightbox(document.getElementById('cert-img-culot').src)">🔍 Agrandir le certificat original</button>
                     </div>
                 </div>
 
-                <!-- CERTIFICAT 2 : DEEP THREATS DGA (VRAI FICHIER img/certificat-deepthreats.jpg) -->
                 <div class="cert-visual-card">
                     <div class="cert-thumb" onclick="openLightbox(document.getElementById('cert-img-dga').src)">
                         <img id="cert-img-dga" src="img/certificat-deepthreats.jpg" alt="Certificat original Deep Threats DGA">
@@ -1133,15 +1165,14 @@
                                 <span class="pill">ID-AB69FFC</span>
                                 <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">20/09/2026</span>
                             </div>
-                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (Pseudo CTF : KAKAROTTO)</span>
-                            <h4 style="font-size:1.05rem; margin-bottom:6px;">Certificat CTF Deep Threats</h4>
+                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (Alias : M3µD1)</span>
+                            <h4 style="font-size:1.05rem; margin-bottom:6px; color:#fff;">Certificat CTF Deep Threats</h4>
                             <p style="font-size:0.86rem; color:var(--text-muted);">Délivré par le <strong>Ministère des Armées (DGA)</strong> et le <strong>Campus OSINT</strong> (10 au 13 sept. 2026). Position finale : <strong>184ème sur 487</strong> (626 points).</p>
                         </div>
                         <button class="card-btn" onclick="openLightbox(document.getElementById('cert-img-dga').src)">🔍 Agrandir le certificat original</button>
                     </div>
                 </div>
 
-                <!-- CERTIFICAT 3 : ATTESTATION SENSCYBER PDF OFFICIEL (img/Attestation-Sens-Cyber.pdf) -->
                 <div class="cert-visual-card">
                     <div class="cert-thumb" style="padding:0;">
                         <embed src="img/Attestation-Sens-Cyber.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" width="100%" height="100%" style="pointer-events: none;" />
@@ -1152,8 +1183,8 @@
                                 <span class="pill pill-green">République Française</span>
                                 <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">04/03/2026</span>
                             </div>
-                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY</span>
-                            <h4 style="font-size:1.05rem; margin-bottom:6px;">SensCyber, PMT 28e RT & Immersion Orion</h4>
+                            <span class="holder-tag">👤 Titulaire : Mehdi BEN MOULAY (M3µD1)</span>
+                            <h4 style="font-size:1.05rem; margin-bottom:6px; color:#fff;">SensCyber, PMT 28e RT & Immersion Orion</h4>
                             <ul class="card-list" style="margin-bottom:8px;">
                                 <li><strong>Attestation SensCyber :</strong> Cybermalveillance.gouv.fr (04/03/2026).</li>
                                 <li><strong>PMT 28e RT (Oct. 2026) :</strong> Immersion militaire de 5 jours (Transmissions).</li>
@@ -1166,147 +1197,183 @@
             </div>
         </section>
 
-        <!-- SECTION 2 : PROJETS TECHNIQUES -->
+        <!-- SECTION 2 : PROJETS TECHNIQUES & COMPTES-RENDUS DÉTAILLÉS -->
         <section id="projets" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 02. Réalisations & Architectures</span>
+                <span class="section-tag">// 02. Réalisations, Architectures & Rapports Techniques</span>
                 <h3 class="section-title">Projets Techniques</h3>
             </div>
 
             <div class="grid-2">
-                <!-- PROJET 1 : PROXMOX & CHATOPS -->
+                <!-- PROJET 1 : DÉPLOIEMENT MINI-SOC (WAZUH) -->
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
-                            <span class="pill">Homelab & Production</span>
+                            <span class="pill pill-green">Blue Team • SIEM & SOAR</span>
+                            <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
+                        </div>
+                        <h4>Déploiement Mini-SOC (Wazuh)</h4>
+                        <p>Création d'une infrastructure de détection et réponse aux incidents de A à Z sur un parc hybride (Windows/Linux) avec Wazuh et Sysmon.</p>
+                        <ul class="card-list">
+                            <li><strong>Detection Engineering :</strong> Création de règles XML sur-mesure face aux simulations d'attaques (<em>Atomic Red Team / MITRE ATT&CK</em>).</li>
+                            <li><strong>Défense Active (SOAR) :</strong> Bannissement dynamique via <code>iptables</code> lors de tentatives de brute-force.</li>
+                            <li><strong>Alerting & CTI :</strong> Intégration de l'API <strong>VirusTotal</strong> et développement d'un script Python pour notifier les équipes via un <strong>Webhook Discord</strong>.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="tag-group">
+                            <span class="tech-tag">Blue Team</span>
+                            <span class="tech-tag">SIEM / Wazuh</span>
+                            <span class="tech-tag">Sysmon</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <button class="card-btn" onclick="document.getElementById('soc-modal').classList.remove('hidden')">
+                            → Consulter le compte-rendu technique complet
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROJET 2 : INFRASTRUCTURE LXC PROXMOX & CHATOPS -->
+                <div class="card">
+                    <div>
+                        <div class="card-top-meta">
+                            <span class="pill pill-purple">Homelab & ChatOps</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
                         </div>
                         <h4>Infrastructure LXC Proxmox & Automatisation ChatOps</h4>
                         <p>Architecture multi-serveurs conteneurisée sous Proxmox VE pilotée à distance via un Bot Discord d'administration en Python.</p>
                         <ul class="card-list">
-                            <li><strong>Virtualisation LXC :</strong> Isolation de 5 conteneurs Debian (CT 107 à 111) gérés via <code>pct</code>, IP statiques et exposition sécurisée par tunneling TCP/UDP (Playit.gg).</li>
-                            <li><strong>Bot Discord ChatOps (Python) :</strong> Exécution SSH asynchrone (<code>asyncio</code>) par clés asymétriques pour allumer/éteindre les services en un clic.</li>
-                            <li><strong>MCO & Supervision :</strong> Démons <code>systemd</code>, parsing temps réel des logs <code>journalctl</code> par Regex, coupure auto sur inactivité et backups <code>.tar.gz</code>.</li>
+                            <li><strong>Virtualisation LXC :</strong> Isolation de 5 conteneurs Debian (CT 107 à 111) gérés via <code>pct</code>, IP statiques et exposition par tunneling TCP/UDP (Playit.gg).</li>
+                            <li><strong>Bot Discord ChatOps (Python) :</strong> Boutons Discord exécutant des commandes SSH asynchrones (<code>asyncio</code>) par clés pour allumer/éteindre les mondes à la demande.</li>
+                            <li><strong>MCO & Rollback 30 min :</strong> Démons <code>systemd</code>, suivi des joueurs en ligne (parsing <code>journalctl</code> par Regex), extinction auto sur inactivité et backups/rollbacks <code>.tar.gz</code>.</li>
                         </ul>
                     </div>
                     <div>
                         <div class="tag-group">
-                            <span class="tech-tag">Proxmox VE</span>
-                            <span class="tech-tag">LXC (pct)</span>
-                            <span class="tech-tag">Python (Asyncio/Regex)</span>
+                            <span class="tech-tag">Proxmox VE / LXC</span>
+                            <span class="tech-tag">Python Asyncio</span>
                             <span class="tech-tag">Systemd / Journalctl</span>
                             <span class="tech-tag">SSH / Bash</span>
                         </div>
                         <button class="card-btn" onclick="document.getElementById('proxmox-modal').classList.remove('hidden')">
-                            🔍 Consulter l'Architecture Détaillée (CT 107–111)
+                            → Consulter le détail du projet (CT 107–111)
                         </button>
                     </div>
                 </div>
 
-                <!-- PROJET 2 : CI/CD GITLAB -->
+                <!-- PROJET 3 : VPN SITE-TO-SITE (IPSEC) & OSPF -->
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
-                            <span class="pill">DevOps & Automatisation</span>
+                            <span class="pill">Ingénierie Réseau Cisco</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
                         </div>
-                        <h4>Pipeline CI/CD & Mise en Production Automatisée</h4>
-                        <p>Développement d'applications web métiers et orchestration complète du cycle de déploiement continu sous GitLab.</p>
+                        <h4>VPN Site-to-Site (IPsec) & Routage OSPF</h4>
+                        <p>Configuration d'un réseau privé virtuel (VPN) sous Cisco Packet Tracer pour interconnecter deux réseaux locaux distants (LAN A et LAN C) à travers un réseau WAN.</p>
                         <ul class="card-list">
-                            <li><strong>Déploiement Continu :</strong> Mise en place de pipelines GitLab CI/CD pour automatiser les mises en production dès la validation du code.</li>
-                            <li><strong>Haute Disponibilité & Rollback :</strong> Mécanisme de retour arrière automatique en cas d'erreur détectée au démarrage des conteneurs.</li>
-                            <li><strong>Traçabilité :</strong> Centralisation et suivi des journaux d'événements (logs applicatifs et système) pour accélérer le diagnostic.</li>
+                            <li><strong>Configuration Cisco IOS :</strong> Activation du package <code>securityk9</code> sur routeurs Cisco 1941 et mise en place des phases IKE/ISAKMP et IPsec.</li>
+                            <li><strong>Architecture Réseau :</strong> Déploiement de tunnels sécurisés inter-sites sur interfaces séries (<code>HWIC-2T</code>) et routage dynamique OSPF.</li>
+                            <li><strong>Analyse de trafic :</strong> Vérification de l'encapsulation et de la décapsulation des paquets ICMP (<code>show crypto ipsec sa</code>).</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="tag-group">
+                            <span class="tech-tag">Networking</span>
+                            <span class="tech-tag">Security</span>
+                            <span class="tech-tag">Cisco IPsec</span>
+                            <span class="tech-tag">OSPF</span>
+                        </div>
+                        <button class="card-btn" onclick="document.getElementById('vpn-modal').classList.remove('hidden')">
+                            → Consulter le détail du projet (Compte-rendu & 8 Captures)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROJET 4 : HAUTE DISPONIBILITÉ (HSRP) -->
+                <div class="card">
+                    <div>
+                        <div class="card-top-meta">
+                            <span class="pill">Résilience Réseau & Scripting</span>
+                            <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
+                        </div>
+                        <h4>Haute Disponibilité (HSRP)</h4>
+                        <p>Déploiement d'une architecture réseau redondante sous Cisco Packet Tracer, implémentant le protocole HSRP pour assurer la continuité de service.</p>
+                        <ul class="card-list">
+                            <li><strong>Résilience (Disaster Recovery) :</strong> Conception d'une infrastructure tolérante aux pannes (<em>Failover</em>).</li>
+                            <li><strong>Routage avancé :</strong> Configuration de passerelles virtuelles pour éviter les interruptions de service (SLA).</li>
+                            <li><strong>Automatisation :</strong> Scripting Python pour tester dynamiquement la bascule en cas de coupure de lien.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="tag-group">
+                            <span class="tech-tag">Networking</span>
+                            <span class="tech-tag">Automation</span>
+                            <span class="tech-tag">Cisco HSRP</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                        <button class="card-btn" onclick="document.getElementById('hsrp-modal').classList.remove('hidden')">
+                            → Consulter le détail du projet HSRP
+                        </button>
+                    </div>
+                </div>
+
+                <!-- PROJET 5 : PIPELINE CI/CD GITLAB -->
+                <div class="card" style="grid-column: 1 / -1;">
+                    <div>
+                        <div class="card-top-meta">
+                            <span class="pill pill-gold">DevOps & Mise en Production</span>
+                            <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
+                        </div>
+                        <h4>Pipeline CI/CD & Mise en Production Automatisée (GitLab)</h4>
+                        <p>Développement d'applications web métiers et automatisation complète de la chaîne de déploiement continu sur serveur de production.</p>
+                        <ul class="card-list">
+                            <li><strong>Mises à jour automatiques :</strong> Déploiement continu déclenché automatiquement sur GitLab à chaque validation sur la branche de production.</li>
+                            <li><strong>Système de Rollback automatique :</strong> Retour en arrière immédiat sur la version stable précédente en cas d'erreur détectée au lancement.</li>
+                            <li><strong>Centralisation des Logs :</strong> Suivi en temps réel des journaux d'exécution et d'erreurs pour accélérer le diagnostic.</li>
                         </ul>
                     </div>
                     <div class="tag-group">
                         <span class="tech-tag">GitLab CI/CD</span>
                         <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Auto-Rollback</span>
                         <span class="tech-tag">Linux Debian</span>
-                        <span class="tech-tag">Rollback Auto</span>
-                        <span class="tech-tag">Python / JS</span>
-                    </div>
-                </div>
-
-                <!-- PROJET 3 : SOC & BLUE TEAM -->
-                <div class="card">
-                    <div>
-                        <div class="card-top-meta">
-                            <span class="pill pill-green">Cybersécurité • Blue Team</span>
-                            <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
-                        </div>
-                        <h4>Supervision SOC & Détection d'Incidents</h4>
-                        <p>Déploiement d'une infrastructure de surveillance de sécurité et d'analyse de journaux d'événements pour la détection d'intrusions.</p>
-                        <ul class="card-list">
-                            <li><strong>Collecte & Télémétrie :</strong> Déploiement d'agents et remontée des événements systèmes avancés via <code>Sysmon</code> vers un serveur central <strong>Wazuh</strong>.</li>
-                            <li><strong>Qualification MITRE ATT&CK :</strong> Configuration de règles de détection sur-mesure alignées sur la matrice MITRE ATT&CK.</li>
-                            <li><strong>Réponse & Alerting :</strong> Automatisation de la remontée d'alertes critiques pour réduire le temps de réaction face aux anomalies.</li>
-                        </ul>
-                    </div>
-                    <div class="tag-group">
-                        <span class="tech-tag">Wazuh (SIEM/XDR)</span>
-                        <span class="tech-tag">Sysmon</span>
-                        <span class="tech-tag">MITRE ATT&CK</span>
-                        <span class="tech-tag">Analyse de Logs</span>
-                    </div>
-                </div>
-
-                <!-- PROJET 4 : CISCO VPN & HSRP -->
-                <div class="card">
-                    <div>
-                        <div class="card-top-meta">
-                            <span class="pill">Ingénierie Réseau</span>
-                            <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
-                        </div>
-                        <h4>Architecture Réseau HSRP & Tunnel VPN IPsec Site-to-Site</h4>
-                        <p>Interconnexion chiffrée de réseaux locaux distants (LAN A et LAN C) à travers un réseau WAN non sécurisé et redondance de passerelle.</p>
-                        <ul class="card-list">
-                            <li><strong>Haute Disponibilité :</strong> Mise en œuvre du protocole <strong>HSRP</strong> pour garantir la continuité de service en cas de panne d'un routeur.</li>
-                            <li><strong>Chiffrement IPsec (Cisco 1941) :</strong> Activation de la licence <code>securityk9</code>, négociation IKE Phase 1 (ISAKMP AES / Pre-shared key / DH Group 2) et Phase 2 (Transform-Set ESP, Crypto Map).</li>
-                            <li><strong>Validation :</strong> Routage dynamique OSPF et vérification de l'encapsulation/décapsulation des paquets ICMP.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="tag-group">
-                            <span class="tech-tag">Cisco IOS</span>
-                            <span class="tech-tag">VPN IPsec / ISAKMP</span>
-                            <span class="tech-tag">HSRP</span>
-                            <span class="tech-tag">OSPF</span>
-                        </div>
-                        <button class="card-btn" onclick="document.getElementById('vpn-modal').classList.remove('hidden')">
-                            📄 Ouvrir le Compte-Rendu & Captures Cisco (Images 1 à 8)
-                        </button>
+                        <span class="tech-tag">Python / JS / SQL</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3 : COMPÉTITIONS CYBER & VEILLE -->
+        <!-- SECTION 3 : COMPÉTITIONS CTF & ATELIERS FORENSIC -->
         <section id="competitions" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 03. Performances & Classements</span>
-                <h3 class="section-title">Compétitions CTF & Veille Technologique</h3>
+                <span class="section-tag">// 03. Investigation Numérique, OSINT & Forensics</span>
+                <h3 class="section-title">Compétitions CTF & Ateliers Cyber</h3>
             </div>
 
             <div class="grid-3">
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
-                            <span class="pill pill-gold">🏆 Top 8 Finale Accor Arena</span>
+                            <span class="pill pill-gold">🏆 8e/21 Finale Accor Arena</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">Oct. 2026</span>
                         </div>
-                        <h4>CTF Opération Culot (Bpifrance - BIG 2026)</h4>
-                        <p>Compétition nationale d'investigation en sources ouvertes (OSINT) et HUMINT en 3 phases sur les mécanismes de manipulation et fraudes financières.</p>
+                        <h4>CTF Opération Culot (Bpifrance)</h4>
+                        <p>Participation au challenge national d'investigation OSINT et HUMINT organisé par Bpifrance lors de BIG 2026. <strong>8e/21 en finale présentiel</strong>, <strong>7e/655 Speed Runner</strong> et <strong>10e/655 en ligne</strong> (1900 pts • 0 hint).</p>
                         <ul class="card-list">
-                            <li><strong>Présentiel Hybride (Accor Arena) :</strong> <strong>8e / 21 équipes</strong> finalistes.</li>
-                            <li><strong>Classement Speed Runner :</strong> <strong>7e / 655 équipes</strong>.</li>
-                            <li><strong>Phase en ligne :</strong> <strong>10e / 655</strong> (1900 pts • 4h 08m 18s • 7,41 % de taux d'erreur • 0 indice utilisé).</li>
+                            <li><strong>Investigation Numérique :</strong> Traçabilité de flux frauduleux, recoupement d'alias et démantèlement de schémas de manipulation.</li>
+                            <li><strong>Phase Hybride (HUMINT) :</strong> Collecte d'indices sur le terrain à l'Accor Arena et corrélation numérique sous contrainte de temps.</li>
+                            <li><strong>Précision :</strong> 100 % des challenges validés sans aucun indice (7,41 % de taux d'erreur).</li>
                         </ul>
                     </div>
-                    <div class="tag-group">
-                        <span class="tech-tag">OSINT</span>
-                        <span class="tech-tag">HUMINT</span>
-                        <span class="tech-tag">Recoupement d'indices</span>
-                        <span class="tech-tag">Crypto-fraudes</span>
+                    <div>
+                        <div class="tag-group">
+                            <span class="tech-tag">OSINT</span>
+                            <span class="tech-tag">HUMINT</span>
+                            <span class="tech-tag">Investigation</span>
+                        </div>
+                        <button class="card-btn" onclick="document.getElementById('culot-modal').classList.remove('hidden')">
+                            → Lire le compte-rendu d'enquête (Opération Culot)
+                        </button>
                     </div>
                 </div>
 
@@ -1316,48 +1383,134 @@
                             <span class="pill">Ministère des Armées • DGA</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">Sept. 2026</span>
                         </div>
-                        <h4>CTF Deep Threats (DGA & Campus OSINT)</h4>
-                        <p>Compétition nationale organisée du 10 au 13 septembre 2026 par la Direction Générale de l'Armement (DGA) et le Campus OSINT.</p>
+                        <h4>CTF Deep Threats (DGA)</h4>
+                        <p>Participation au challenge de cybersécurité et d'investigation numérique organisé par la Direction Générale de l'Armement (Campus OSINT). <strong>Classé 184e / 487 équipes (626 pts).</strong></p>
                         <ul class="card-list">
-                            <li><strong>Position finale :</strong> <strong>184e / 491 équipes</strong> (Certificat officiel 184e/487).</li>
-                            <li><strong>Score validé :</strong> 626 points.</li>
-                            <li>Investigation numérique, analyse d'images (GEOINT) et renseignement d'intérêt cyber.</li>
+                            <li><strong>Investigation (OSINT) :</strong> Collecte, croisement et analyse d'informations en sources ouvertes pour traquer des menaces.</li>
+                            <li><strong>Travail d'équipe :</strong> Coordination, répartition des tâches et communication sous contrainte de temps.</li>
+                            <li><strong>Gouvernance & Reporting :</strong> Rédaction de rapports d'incident et propositions de remédiation (Blue Team).</li>
                         </ul>
                     </div>
-                    <div class="tag-group">
-                        <span class="tech-tag">DGA</span>
-                        <span class="tech-tag">Campus OSINT</span>
-                        <span class="tech-tag">GEOINT</span>
+                    <div>
+                        <div class="tag-group">
+                            <span class="tech-tag">OSINT</span>
+                            <span class="tech-tag">Threat Intelligence</span>
+                            <span class="tech-tag">Cybersécurité</span>
+                        </div>
+                        <button class="card-btn" onclick="document.getElementById('dga-modal').classList.remove('hidden')">
+                            → Lire mon rapport d'investigation (Write-Up DGA)
+                        </button>
                     </div>
                 </div>
 
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
-                            <span class="pill">Défense & Écoles Cyber</span>
+                            <span class="pill pill-green">Forensic & GeoINT</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
                         </div>
-                        <h4>CTF GMP, CTF CyberSup & Veille Active</h4>
-                        <p>Participation régulière aux challenges techniques et maintien d'une veille opérationnelle continue.</p>
+                        <h4>Atelier Forensic (CyberSup) & CTF GMP</h4>
+                        <p>Résolution d'enquêtes numériques via la collecte d'informations en sources ouvertes (OSINT), la géolocalisation d'images (GeoINT) à Puteaux et participation au CTF du Gouvernement Militaire de Paris.</p>
                         <ul class="card-list">
-                            <li><strong>CTF du Gouvernement Militaire de Paris (GMP) :</strong> Épreuve en ligne (2026).</li>
-                            <li><strong>CTF CyberSup (Puteaux) :</strong> Compétition en présentiel et atelier Cyber Forensic.</li>
-                            <li><strong>Veille Cyber & IA :</strong> Suivi actif des vulnérabilités (CVE), flux RSS spécialisés et innovations IA.</li>
+                            <li><strong>Investigation numérique :</strong> Traçabilité, analyse d'en-têtes et extraction de métadonnées (Forensic).</li>
+                            <li><strong>GeoINT / IMINT :</strong> Géolocalisation précise et analyse d'images satellites.</li>
+                            <li><strong>Rapport d'incident :</strong> Synthèse des découvertes et rédaction de rapports détaillés sur les menaces potentielles.</li>
                         </ul>
                     </div>
-                    <div class="tag-group">
-                        <span class="tech-tag">Forensic</span>
-                        <span class="tech-tag">Veille CVE</span>
-                        <span class="tech-tag">TryHackMe</span>
+                    <div>
+                        <div class="tag-group">
+                            <span class="tech-tag">Forensic</span>
+                            <span class="tech-tag">OSINT</span>
+                            <span class="tech-tag">GeoINT</span>
+                        </div>
+                        <button class="card-btn" onclick="document.getElementById('forensic-modal').classList.remove('hidden')">
+                            → Consulter le détail du projet Forensic
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 4 : COMPÉTENCES TECHNIQUES -->
+        <!-- SECTION 4 : VEILLE TECHNOLOGIQUE (CYBERSÉCURITÉ, IA & INFRA) -->
+        <section id="veille" class="reveal">
+            <div class="section-header">
+                <span class="section-tag">// 04. Veille Technologique Active (BTS SIO SISR)</span>
+                <h3 class="section-title">Veille Cybersécurité, Intelligence Artificielle & Tech</h3>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <div>
+                        <div class="card-top-meta">
+                            <span class="pill pill-green">Axe 1 • Cybersécurité & Vulnérabilités</span>
+                            <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">Quotidien</span>
+                        </div>
+                        <h4>Suivi des CVE, Threat Intel & Blue Team</h4>
+                        <p>Surveillance continue des nouvelles failles critiques (0-day, élévation de privilèges, équipements réseaux) pour sécuriser proactivement les serveurs et pare-feux.</p>
+                        <ul class="card-list">
+                            <li><strong>Vulnérabilités Critiques (CVE) :</strong> Suivi des failles sur les hyperviseurs, distributions Linux (Debian/Ubuntu), Windows Server et équipements VPN/Firewalls.</li>
+                            <li><strong>Détection & TTPs :</strong> Veille sur les nouvelles règles de détection Sigma/Wazuh et l'évolution des matrices <strong>MITRE ATT&CK</strong>.</li>
+                            <li><strong>Sources suivies :</strong> Flux RSS spécialisés, <em>The Hacker News</em>, <em>BleepingComputer</em>, <em>CVE Details</em>.</li>
+                        </ul>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tech-tag">CVE / 0-Day</span>
+                        <span class="tech-tag">Règles Wazuh</span>
+                        <span class="tech-tag">MITRE ATT&CK</span>
+                        <span class="tech-tag">Patch Management</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-top-meta">
+                            <span class="pill pill-purple">Axe 2 • Intelligence Artificielle & Automatisation</span>
+                            <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">Continu</span>
+                        </div>
+                        <h4>IA Générative, Agents Autonomes & SecOps</h4>
+                        <p>Étude de l'intégration des modèles de langage (LLM) dans les workflows d'administration système, le tri d'alertes SOC et le développement assisté.</p>
+                        <ul class="card-list">
+                            <li><strong>Orchestration IA & Workflows :</strong> Automatisation de processus métiers et techniques via <strong>N8N</strong> couplé aux API LLM (analyse automatique de documents et de logs).</li>
+                            <li><strong>IA pour le SOC & le Code :</strong> Pré-qualification d'alertes de sécurité, génération de Regex/scripts d'administration Bash/Python et approche <em>Vibe Coding</em> sécurisée.</li>
+                            <li><strong>Sécurité de l'IA :</strong> Sensibilisation aux risques de <em>Prompt Injection</em> et fuite de données (OWASP Top 10 for LLM).</li>
+                        </ul>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tech-tag">Workflows N8N + IA</span>
+                        <span class="tech-tag">LLM / API</span>
+                        <span class="tech-tag">SecOps Automation</span>
+                        <span class="tech-tag">OWASP LLM</span>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div>
+                        <div class="card-top-meta">
+                            <span class="pill">Axe 3 • Infrastructure & Conteneurisation</span>
+                            <span class="mono" style="font-size:0.75rem; color:var(--text-dim);">Continu</span>
+                        </div>
+                        <h4>Écosystème Proxmox VE, LXC & DevSecOps</h4>
+                        <p>Veille technique sur l'évolution de la virtualisation open-source (alternative à VMware), l'isolation par conteneurs et le déploiement continu.</p>
+                        <ul class="card-list">
+                            <li><strong>Virtualisation & LXC :</strong> Nouveautés de <strong>Proxmox VE</strong>, gestion avancée des snapshots, Proxmox Backup Server et durcissement des conteneurs Linux non-privilégiés.</li>
+                            <li><strong>CI/CD & ChatOps :</strong> Bonnes pratiques des runners <strong>GitLab CI/CD</strong>, stratégies de rollback automatisé et pilotage d'infrastructures par API.</li>
+                            <li><strong>Méthodologie (Pull & Push) :</strong> Agrégation centralisée de flux RSS techniques et tests pratiques immédiats sur mon Homelab Proxmox.</li>
+                        </ul>
+                    </div>
+                    <div class="tag-group">
+                        <span class="tech-tag">Proxmox VE / LXC</span>
+                        <span class="tech-tag">GitLab CI/CD</span>
+                        <span class="tech-tag">Flux RSS</span>
+                        <span class="tech-tag">Lab Testing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5 : COMPÉTENCES TECHNIQUES -->
         <section id="competences" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 04. Stack Technique</span>
+                <span class="section-tag">// 05. Stack Technique</span>
                 <h3 class="section-title">Compétences Opérationnelles</h3>
             </div>
 
@@ -1372,7 +1525,7 @@
                         <span class="tech-tag">Systemd / Journalctl</span>
                         <span class="tech-tag">Windows Server / 11</span>
                         <span class="tech-tag">VMware / Hyper-V</span>
-                        <span class="tech-tag">Wazuh / Sysmon</span>
+                        <span class="tech-tag">Wazuh / Sysmon / VirusTotal API</span>
                     </div>
                 </div>
 
@@ -1381,11 +1534,11 @@
                     <p>Conception d'architectures résilientes, interconnexion de sites et filtrage.</p>
                     <div class="tag-group">
                         <span class="tech-tag">Architecture TCP/IP & OSI</span>
-                        <span class="tech-tag">Routage / HSRP</span>
+                        <span class="tech-tag">Routage / HSRP (Failover)</span>
                         <span class="tech-tag">VLAN</span>
-                        <span class="tech-tag">pfSense</span>
+                        <span class="tech-tag">pfSense / iptables</span>
                         <span class="tech-tag">VPN (IPsec / OSPF)</span>
-                        <span class="tech-tag">SSH (Clés asymétriques)</span>
+                        <span class="tech-tag">SSH (Clés)</span>
                         <span class="tech-tag">Tunneling TCP/UDP</span>
                     </div>
                 </div>
@@ -1394,7 +1547,7 @@
                     <h4>⚙️ Dev, Automatisation & ChatOps</h4>
                     <p>Développement d'outils d'orchestration, pipelines CI/CD et workflows intelligents.</p>
                     <div class="tag-group">
-                        <span class="tech-tag">Python (Asyncio, Regex, discord.py)</span>
+                        <span class="tech-tag">Python (Asyncio, Regex, Webhooks)</span>
                         <span class="tech-tag">Bash / Shell</span>
                         <span class="tech-tag">GitLab CI/CD</span>
                         <span class="tech-tag">Docker</span>
@@ -1406,10 +1559,10 @@
             </div>
         </section>
 
-        <!-- SECTION 5 : PARCOURS PROFESSIONNEL & ACADÉMIQUE -->
+        <!-- SECTION 6 : PARCOURS PROFESSIONNEL & ACADÉMIQUE -->
         <section id="parcours" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 05. Expériences & Formations</span>
+                <span class="section-tag">// 06. Expériences & Formations</span>
                 <h3 class="section-title">Parcours Professionnel & Académique</h3>
             </div>
 
@@ -1419,11 +1572,11 @@
                     <div class="timeline">
                         <div class="tl-item">
                             <div class="tl-head">
-                                <span class="tl-title">Technicien Informatique (Alternance)</span>
+                                <span class="tl-title">Administrateur Systèmes & Réseaux (Alternance)</span>
                                 <span class="tl-date">2025 - 2027</span>
                             </div>
                             <div class="tl-sub">Io.sys 2.21, Paris</div>
-                            <div class="tl-desc">Administration systèmes et réseaux, déploiement de pipelines CI/CD (GitLab/Docker), gestion de serveurs et automatisation des processus métiers via N8N.</div>
+                            <div class="tl-desc">Administration systèmes et réseaux, déploiement de pipelines CI/CD (GitLab/Docker), gestion d'infrastructures serveurs et automatisation des processus métiers via N8N.</div>
                         </div>
 
                         <div class="tl-item">
@@ -1490,46 +1643,71 @@
 
     </div>
 
-    <!-- MODAL 1 : ARCHITECTURE PROXMOX LXC & CHATOPS -->
-    <div id="proxmox-modal" class="modal-overlay hidden">
+    <!-- =========================================================================
+         MODALES DES COMPTES-RENDUS TECHNIQUES COMPLETS
+         ========================================================================= -->
+
+    <!-- MODAL 1 : COMPTE-RENDU MINI-SOC WAZUH COMPLET -->
+    <div id="soc-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <span>[ DOSSIER TECHNIQUE ] : ARCHITECTURE_PROXMOX_CHATOPS.md</span>
-                <button class="modal-close" onclick="document.getElementById('proxmox-modal').classList.add('hidden')">✕ FERMER</button>
+                <span>[ COMPTE-RENDU TECHNIQUE ] : DEPLOIEMENT_MINI_SOC_WAZUH.md</span>
+                <button class="modal-close" onclick="document.getElementById('soc-modal').classList.add('hidden')">✕ FERMER</button>
             </div>
             <div class="modal-content">
-                <h2 style="margin-bottom: 15px;">Déploiement & Automatisation d'une Infrastructure Multi-Serveurs Conteneurisée</h2>
-                <p style="color:var(--text-muted); margin-bottom: 25px;">
-                    Conception d'un cluster de conteneurs Linux légers (LXC) sous <strong>Proxmox VE</strong> piloté à distance via une interface <strong>ChatOps (Bot Discord en Python)</strong>.
-                </p>
-
-                <div class="doc-section">
-                    <h3>1. Virtualisation & Micro-Architecture LXC (Proxmox VE)</h3>
-                    <p>Chaque instance applicative est isolée dans son propre conteneur Debian/Ubuntu avec adressage IPv4 statique dédié :</p>
-                    <div class="doc-code">• CT 109 (192.168.0.50/24) : Nœud de contrôle & Bot Discord d'administration (bot-minecraft.service)
-• CT 107, 108, 110, 111 (192.168.0.51 à .54/24) : Instances applicatives isolées (minecraft-bedrock.service)
-• Administration depuis l'hôte Proxmox : pct exec, pct enter, pct push</div>
+                <h2 style="margin-bottom: 14px;">Compte-Rendu : Déploiement d'un Mini-SOC Hybride (Wazuh, Sysmon, VirusTotal & SOAR)</h2>
+                
+                <div class="report-meta-grid">
+                    <div class="report-meta-box"><small>Domaine</small><strong>Blue Team / SIEM / SOAR</strong></div>
+                    <div class="report-meta-box"><small>Parc supervisé</small><strong>Windows & Linux Debian</strong></div>
+                    <div class="report-meta-box"><small>Télémétrie</small><strong>Sysmon & Auditd</strong></div>
+                    <div class="report-meta-box"><small>Threat Intel</small><strong>API VirusTotal + Discord</strong></div>
                 </div>
 
                 <div class="doc-section">
-                    <h3>2. Réseau, Clés SSH Asymétriques & Tunneling TCP/UDP</h3>
-                    <p>Le conteneur d'administration (CT 109) dialogue avec les conteneurs cibles via <strong>SSH par clés asymétriques sans mot de passe</strong>. L'exposition publique sécurisée (contournement CGNAT sans ouverture de ports FAI) est assurée par des tunnels TCP/UDP <strong>Playit.gg</strong>.</p>
+                    <h3>1. Contexte & Architecture du Mini-SOC</h3>
+                    <p>L'objectif de ce projet est de concevoir de A à Z une infrastructure centralisée de détection et de réponse aux incidents (SIEM/XDR) capable de surveiller un parc hybride (postes Windows et serveurs Linux), de qualifier les attaques selon le référentiel <strong>MITRE ATT&CK</strong> et d'automatiser la remédiation (SOAR).</p>
+                    <div class="doc-code">[Endpoint Windows + Sysmon] ──┐
+                              ├──► [Serveur Wazuh SIEM/XDR] ◄──► [API VirusTotal (Scan Hash FIM)]
+[Serveur Linux + Auditd/SSH] ─┘              │
+                                             ├──► Réponse Active : Bannissement IP (iptables)
+                                             └──► Script Python : Alerting temps réel (Webhook Discord)</div>
                 </div>
 
                 <div class="doc-section">
-                    <h3>3. Automatisation ChatOps (Python Asyncio) & Parsing Journalctl</h3>
-                    <p>Développement d'un Bot Discord (<code>discord.py</code>) exécuté dans un environnement virtuel isolé (<code>venv</code>) :</p>
-                    <div class="doc-code">• Commandes Slash (/mc, /maj) & composants interactifs (Boutons, Menus, Modals, Embeds temps réel)
-• Exécution asynchrone (asyncio.create_subprocess_shell) des ordres systemctl start/stop/restart via SSH
-• Script update_mc_players.py : Parsing Regex de journalctl sur la dernière heure pour extraire les sessions actives
-• Calcul d'uptime dynamique via ActiveEnterTimestamp systemd et extinction automatique en cas d'inactivité
-• Sauvegardes automatisées : Script Bash (backup-world.sh) générant des archives .tar.gz listées dans Discord</div>
+                    <h3>2. Detection Engineering (Règles XML face à Atomic Red Team)</h3>
+                    <p>Pour dépasser les règles par défaut, les agents Windows ont été enrichis avec <strong>Sysmon</strong>. Des simulations d'attaques ont été exécutées via le framework <strong>Atomic Red Team</strong> (exécution de payloads PowerShell, dump mémoire LSASS, création de tâches planifiées) afin de rédiger des règles XML personnalisées dans <code>local_rules.xml</code> :</p>
+                    <div class="doc-code">&lt;group name="local,sysmon,mitre_attack,"&gt;
+  &lt;!-- Détection d'exécution PowerShell suspecte (MITRE T1059.001) --&gt;
+  &lt;rule id="100110" level="12"&gt;
+    &lt;if_group&gt;sysmon_event1&lt;/if_group&gt;
+    &lt;field name="win.eventdata.commandLine" type="pcre2"&gt;(?i)(Invoke-AtomicTest|mimikatz|-enc|FromBase64String)&lt;/field&gt;
+    &lt;description&gt;[SOC ALERTE] Exécution PowerShell malveillante détectée (MITRE T1059.001)&lt;/description&gt;
+    &lt;mitre&gt;&lt;id&gt;T1059.001&lt;/id&gt;&lt;/mitre&gt;
+  &lt;/rule&gt;
+&lt;/group&gt;</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>3. Défense Active (SOAR) : Bannissement dynamique via iptables</h3>
+                    <p>Face aux tentatives d'attaques par force brute (SSH / RDP), le module <strong>Active Response</strong> de Wazuh a été configuré dans <code>ossec.conf</code> pour déclencher automatiquement le script <code>firewall-drop</code> et bloquer l'adresse IP attaquante dans <code>iptables</code> dès que la règle de brute-force est déclenchée :</p>
+                    <div class="doc-code">&lt;active-response&gt;
+  &lt;command&gt;firewall-drop&lt;/command&gt;
+  &lt;location&gt;local&lt;/location&gt;
+  &lt;rules_id&gt;5712, 5720&lt;/rules_id&gt;
+  &lt;timeout&gt;600&lt;/timeout&gt;
+&lt;/active-response&gt;</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>4. Threat Intelligence (API VirusTotal) & Alerting Webhook Discord</h3>
+                    <p>Le module <strong>FIM (File Integrity Monitoring / Syscheck)</strong> surveille en temps réel les répertoires critiques. À chaque création ou modification d'un fichier, Wazuh interroge automatiquement l'<strong>API VirusTotal</strong>. En parallèle, un script Python sur-mesure (<code>custom-discord.py</code>) envoie un Embed formaté sur un salon Discord d'astreinte SOC avec le niveau de criticité, l'IP source, la technique MITRE ATT&CK et le résultat VirusTotal.</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL 2 : RAPPORT CISCO VPN IPSEC (RELIÉ À TES VRAIES IMAGES img/1 à img/8) -->
+    <!-- MODAL 2 : RAPPORT CISCO VPN IPSEC COMPLET -->
     <div id="vpn-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1537,15 +1715,21 @@
                 <button class="modal-close" onclick="document.getElementById('vpn-modal').classList.add('hidden')">✕ FERMER</button>
             </div>
             <div class="modal-content">
-                <h2 style="margin-bottom: 12px;">Compte-rendu : VPN Site-to-Site IPsec (Cisco)</h2>
+                <h2 style="margin-bottom: 12px;">Compte-Rendu : VPN Site-to-Site IPsec & Routage OSPF (Cisco)</h2>
+                
+                <div class="report-meta-grid">
+                    <div class="report-meta-box"><small>Domaine</small><strong>Ingénierie & Sécurité Réseau</strong></div>
+                    <div class="report-meta-box"><small>Équipements</small><strong>3x Routeurs Cisco 1941</strong></div>
+                    <div class="report-meta-box"><small>Protocoles</small><strong>VPN IPsec / ISAKMP / OSPF</strong></div>
+                    <div class="report-meta-box"><small>Liaisons WAN</small><strong>Interfaces Séries HWIC-2T</strong></div>
+                </div>
+
                 <p style="color:var(--text-muted); margin-bottom: 24px;">
-                    <strong>OBJECTIF :</strong> Interconnecter deux réseaux locaux distants (LAN A <code>192.168.1.0/24</code> et LAN C <code>192.168.3.0/24</code>) de manière sécurisée via un tunnel chiffré traversant un réseau WAN non sécurisé (Internet/ISP).
+                    <strong>OBJECTIF :</strong> Interconnecter deux réseaux locaux distants (LAN A <code>192.168.1.0/24</code> et LAN C <code>192.168.3.0/24</code>) de manière sécurisée via un tunnel VPN Site-to-Site IPsec traversant un réseau WAN.
                 </p>
 
                 <div class="doc-section">
                     <h3>1. Infrastructure, Module HWIC-2T et Plan d'adressage</h3>
-                    <p>L'architecture repose sur trois routeurs <strong>Cisco 1941</strong> équipés de modules séries <code>HWIC-2T</code>. Le routeur <strong>R2</strong> simule l'opérateur WAN (ISP), tandis que <strong>R1</strong> et <strong>R3</strong> sont les passerelles de sécurité des deux sites distants :</p>
-                    
                     <div class="doc-img-wrapper">
                         <img src="img/1.png" onerror="this.onerror=null; this.src='img/1.jpg';" class="doc-img" alt="Module HWIC-2T" onclick="openLightbox(this.src)">
                         <p class="img-caption">Capture 1 : Vue physique du routeur R1 avec le module HWIC-2T installé (Cliquez pour zoomer).</p>
@@ -1560,8 +1744,20 @@
                 </div>
 
                 <div class="doc-section">
-                    <h3>2. Activation de la licence SecurityK9 & Configuration IPsec</h3>
-                    <p>Activation du package technologique cryptographique <code>securityk9</code> requis sur Cisco ISR 1941, puis configuration des phases IKE Phase 1 et Phase 2 :</p>
+                    <h3>2. Activation de la licence SecurityK9 & Configuration du Tunnel IPsec</h3>
+                    <p>Activation de la licence <code>securityk9</code> sur Cisco 1941, définition de l'ACL du trafic intéressant et configuration de la Crypto Map sur l'interface de sortie WAN :</p>
+                    <div class="doc-code">R1(config)# license boot module c1900 technology-package securityk9
+R1(config)# access-list 101 permit ip 192.168.1.0 0.0.0.255 192.168.3.0 0.0.0.255
+R1(config)# crypto isakmp policy 10
+R1(config-isakmp)# encryption aes
+R1(config-isakmp)# authentication pre-share
+R1(config-isakmp)# group 2
+R1(config)# crypto isakmp key VPN_SECRET_KEY address 10.2.2.2
+R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac
+R1(config)# crypto map VPN-MAP 10 ipsec-isakmp
+R1(config-crypto-map)# set peer 10.2.2.2
+R1(config-crypto-map)# set transform-set VPN-SET
+R1(config-crypto-map)# match address 101</div>
                     <div class="doc-img-wrapper">
                         <img src="img/5.png" onerror="this.onerror=null; this.src='img/5.jpg';" class="doc-img" alt="Licence SecurityK9" onclick="openLightbox(this.src)">
                         <p class="img-caption">Capture 5 : Activation de la licence securityk9 sur le routeur Cisco 1941.</p>
@@ -1569,8 +1765,7 @@
                 </div>
 
                 <div class="doc-section">
-                    <h3>3. Validation et Preuve de Chiffrement (Encapsulation / Décapsulation)</h3>
-                    <p>Test de connectivité (Ping ICMP) entre <strong>PC-A (192.168.1.3)</strong> et <strong>PC-C (192.168.3.3)</strong> et analyse des compteurs de sécurité IPsec :</p>
+                    <h3>3. Validation du Tunnel (Encapsulation / Décapsulation des paquets)</h3>
                     <div class="grid-2" style="margin: 14px 0;">
                         <div class="doc-img-wrapper" style="margin:0;">
                             <img src="img/6.png" onerror="this.onerror=null; this.src='img/6.jpg';" class="doc-img" alt="PC-A IP" onclick="openLightbox(this.src)">
@@ -1590,8 +1785,203 @@
         </div>
     </div>
 
+    <!-- MODAL 3 : COMPTE-RENDU HAUTE DISPONIBILITÉ (HSRP) COMPLET -->
+    <div id="hsrp-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ DOSSIER TECHNIQUE ] : HAUTE_DISPONIBILITE_HSRP.md</span>
+                <button class="modal-close" onclick="document.getElementById('hsrp-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 15px;">Compte-Rendu : Architecture Réseau Redondante (Protocole Cisco HSRP & Failover Python)</h2>
+                
+                <div class="report-meta-grid">
+                    <div class="report-meta-box"><small>Objectif</small><strong>Disaster Recovery / SLA</strong></div>
+                    <div class="report-meta-box"><small>Protocole</small><strong>Cisco HSRP (Standby v2)</strong></div>
+                    <div class="report-meta-box"><small>Passerelle VIP</small><strong>192.168.10.254/24</strong></div>
+                    <div class="report-meta-box"><small>Automatisation</small><strong>Script Python de test SLA</strong></div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>1. Problématique & Conception Tolérante aux Pannes (Failover)</h3>
+                    <p>Dans un réseau d'entreprise, une passerelle par défaut unique constitue un <strong>SPOF (Single Point of Failure)</strong>. Le déploiement du protocole <strong>HSRP (Hot Standby Router Protocol)</strong> permet de regrouper deux routeurs physiques (R1 Master et R2 Standby) derrière une adresse IP et MAC virtuelle unique (<code>192.168.10.254</code>).</p>
+                </div>
+
+                <div class="doc-section">
+                    <h3>2. Configuration Cisco IOS (Priorités, Préemption & Timers)</h3>
+                    <div class="doc-code">! --- Routeur R1 (Active / Master - Priorité 110 + Préemption) ---
+R1(config)# interface GigabitEthernet0/0
+R1(config-if)# ip address 192.168.10.2 255.255.255.0
+R1(config-if)# standby version 2
+R1(config-if)# standby 10 ip 192.168.10.254
+R1(config-if)# standby 10 priority 110
+R1(config-if)# standby 10 preempt
+R1(config-if)# standby 10 timers 1 3
+
+! --- Routeur R2 (Standby / Backup - Priorité par défaut 100) ---
+R2(config)# interface GigabitEthernet0/0
+R2(config-if)# ip address 192.168.10.3 255.255.255.0
+R2(config-if)# standby version 2
+R2(config-if)# standby 10 ip 192.168.10.254
+R2(config-if)# standby 10 preempt
+R2(config-if)# standby 10 timers 1 3</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>3. Automatisation Python du test de bascule dynamique</h3>
+                    <p>Création d'un script d'audit en Python envoyant des sondes ICMP continues vers la passerelle virtuelle pour vérifier la bascule automatique de R1 vers R2 lors d'une coupure de lien :</p>
+                    <div class="doc-code"># Extrait du script de validation de bascule HSRP
+import subprocess, time
+
+VIP = "192.168.10.254"
+while True:
+    res = subprocess.run(["ping", "-n", "1", "-w", "500", VIP], capture_output=True)
+    status = "UP (Continuité SLA assurée)" if res.returncode == 0 else "BASCULE HSRP EN COURS..."
+    print(f"[{time.strftime('%H:%M:%S')}] Passerelle VIP {VIP} -> {status}")
+    time.sleep(1)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4 : ARCHITECTURE PROXMOX LXC & CHATOPS COMPLET -->
+    <div id="proxmox-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ DOSSIER TECHNIQUE ] : ARCHITECTURE_PROXMOX_CHATOPS.md</span>
+                <button class="modal-close" onclick="document.getElementById('proxmox-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 15px;">Compte-Rendu : Infrastructure Multi-Serveurs LXC Proxmox & Automatisation ChatOps</h2>
+                
+                <div class="report-meta-grid">
+                    <div class="report-meta-box"><small>Hyperviseur</small><strong>Proxmox VE (5 LXC)</strong></div>
+                    <div class="report-meta-box"><small>Orchestration</small><strong>Bot Discord Python Asyncio</strong></div>
+                    <div class="report-meta-box"><small>Réseau</small><strong>IP Fixes + Tunnel TCP/UDP</strong></div>
+                    <div class="report-meta-box"><small>Résilience</small><strong>Systemd + Backups .tar.gz</strong></div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>1. Virtualisation & Micro-Architecture LXC (Proxmox VE)</h3>
+                    <p>Isolation complète de chaque service dans des conteneurs Linux légers (LXC) administrés depuis le nœud maître via l'utilitaire <code>pct</code> :</p>
+                    <div class="doc-code">• CT 109 (192.168.0.50/24) : Nœud de contrôle & Bot Discord d'administration (bot-minecraft.service)
+• CT 107, 108, 110, 111 (192.168.0.51 à .54/24) : Instances applicatives isolées (minecraft-bedrock.service)
+• Interconnexion SSH sans mot de passe par clés entre CT 109 et les conteneurs cibles
+• Exposition publique sécurisée sans ouverture de ports FAI (contournement CGNAT via tunneling Playit.gg)</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>2. Automatisation ChatOps (Python Asyncio) & Parsing Journalctl</h3>
+                    <div class="doc-code">• Commandes Slash (/mc, /maj) & composants interactifs (Boutons, Menus, Modals, Embeds temps réel)
+• Exécution asynchrone (asyncio.create_subprocess_shell) des ordres systemctl start/stop/restart via SSH
+• Script update_mc_players.py : Parsing Regex de journalctl sur la dernière heure pour extraire les sessions actives
+• Calcul d'uptime dynamique via ActiveEnterTimestamp systemd et extinction automatique en cas d'inactivité
+• Sauvegardes automatisées : Script Bash (backup-world.sh) générant des archives .tar.gz listées dans Discord</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 5 : COMPTE-RENDU OPÉRATION CULOT BPIFRANCE -->
+    <div id="culot-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ DOSSIER D'INVESTIGATION ] : CTF_OPERATION_CULOT_BPIFRANCE.md</span>
+                <button class="modal-close" onclick="document.getElementById('culot-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 15px;">Rapport d'Enquête — CTF « Opération Culot » (Bpifrance - BIG 2026)</h2>
+                
+                <div class="report-meta-grid">
+                    <div class="report-meta-box"><small>Finale Accor Arena</small><strong>8e / 21 équipes</strong></div>
+                    <div class="report-meta-box"><small>Speed Runner</small><strong>7e / 655 équipes</strong></div>
+                    <div class="report-meta-box"><small>Classement En Ligne</small><strong>10e / 655 (1900 pts)</strong></div>
+                    <div class="report-meta-box"><small>Précision</small><strong>7,41 % fail • 0 Hint</strong></div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>1. Phase En Ligne : Démantèlement d'une Fraude Financière (OSINT / SOCMINT)</h3>
+                    <div class="doc-code">• Investigation d'un écosystème frauduleux lié à la manipulation financière.
+• Pivot sur pseudonymes, corrélation de comptes sociaux (SOCMINT), analyse de code source web et récupération d'archives (Wayback Machine).
+• Vérification croisée des sources sans utiliser aucun indice (0 hint).</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>2. Phase Hybride à l'Accor Arena (Paris) : HUMINT & Investigation Terrain</h3>
+                    <div class="doc-code">• Qualification parmi les 21 équipes finalistes présentes le 8 octobre 2026 lors de l'événement BIG de Bpifrance à l'Accor Arena.
+• Collecte d'indices physiques sur le terrain (HUMINT), recoupement avec des éléments numériques et résolution du second chapitre (Badge Finisher).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 6 : WRITE-UP CTF DEEP THREATS (DGA) COMPLET -->
+    <div id="dga-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ WRITE-UP INVESTIGATION ] : CTF_DEEP_THREATS_DGA.md</span>
+                <button class="modal-close" onclick="document.getElementById('dga-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 15px;">Rapport d'Investigation — CTF Deep Threats (DGA & Campus OSINT)</h2>
+                
+                <div class="report-meta-grid">
+                    <div class="report-meta-box"><small>Organisateur</small><strong>DGA / Ministère des Armées</strong></div>
+                    <div class="report-meta-box"><small>Classement</small><strong>184e / 487 équipes</strong></div>
+                    <div class="report-meta-box"><small>Score validé</small><strong>626 Points</strong></div>
+                    <div class="report-meta-box"><small>Certificat</small><strong>ID-AB69FFC</strong></div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>1. Investigation OSINT & Énumération Web</h3>
+                    <div class="doc-code">• Énumération d'auteurs et d'identifiants sur portails web cibles (requêtes /?author=1 à 9) pour cartographier les membres d'une organisation fictive.
+• Recherche avancée en sources ouvertes, croisement d'identités numériques et suivi de traces publiques.
+• Pivot SOCMINT multi-plateformes et reconstitution chronologique des déplacements d'une cible (GeoINT).</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>2. Gouvernance, Analyse d'En-têtes & Rapport de Remédiation (Blue Team)</h3>
+                    <div class="doc-code">• Analyse forensique d'en-têtes SMTP pour identifier le serveur d'origine d'un courriel malveillant.
+• Rédaction d'un rapport d'incident structuré incluant des mesures de remédiation Blue Team (durcissement des enregistrements DNS SPF/DKIM/DMARC, réduction de la surface d'exposition publique et politique d'hygiène numérique).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 7 : ATELIER FORENSIC (CYBERSUP) COMPLET -->
+    <div id="forensic-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <span>[ DOSSIER FORENSIC ] : ATELIER_FORENSIC_CYBERSUP.md</span>
+                <button class="modal-close" onclick="document.getElementById('forensic-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <h2 style="margin-bottom: 15px;">Compte-Rendu : Atelier Forensic & GeoINT (CyberSup Puteaux)</h2>
+                
+                <div class="report-meta-grid">
+                    <div class="report-meta-box"><small>Domaine</small><strong>Digital Forensics & GeoINT</strong></div>
+                    <div class="report-meta-box"><small>Format</small><strong>Présentiel (Puteaux)</strong></div>
+                    <div class="report-meta-box"><small>Techniques</small><strong>EXIF, Headers, IMINT</strong></div>
+                    <div class="report-meta-box"><small>Livrable</small><strong>Rapport d'Incident</strong></div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>1. Investigation Numérique & Extraction de Métadonnées (Forensic)</h3>
+                    <div class="doc-code">• Inspection approfondie de fichiers numériques (extraction de métadonnées EXIF, identification des équipements de prise de vue, horodatages et coordonnées GPS résiduelles).
+• Analyse d'en-têtes (headers) et traçabilité des preuves numériques.</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>2. GeoINT / IMINT & Synthèse des Menaces</h3>
+                    <div class="doc-code">• Géolocalisation précise à partir d'indices visuels (architecture, topographie, végétation, signalétique routière) croisés avec l'imagerie satellite (Google Earth Pro, Overpass Turbo).
+• Rédaction d'un rapport d'investigation synthétisant la chaîne de preuves et qualifiant le niveau de menace.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>© 2026 Mehdi BEN MOULAY • Paris / Île-de-France • BTS SIO SISR • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
+        <p>© 2026 Mehdi BEN MOULAY (M3µD1) • Paris / Île-de-France • Administrateur Systèmes & Réseaux • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
         <div class="vibe-badge">
             <span>⚡ Portfolio Vibe Codé</span>
         </div>
@@ -1617,11 +2007,12 @@
         const termInput = document.getElementById('hero-term-input');
 
         const cmdResponses = {
-            'help': `Commandes disponibles : <span style="color:#38bdf8;">status</span>, <span style="color:#38bdf8;">ctf</span>, <span style="color:#38bdf8;">lxc</span>, <span style="color:#38bdf8;">pmt</span>, <span style="color:#38bdf8;">clear</span>`,
-            'status': `• Opérateur : <strong>Mehdi BEN MOULAY</strong><br>• Formation : BTS SIO SISR (Ingetis, Paris)<br>• Alternance : Io.sys 2.21<br>• Spécialités : Admin Sys/Réseaux, Proxmox LXC & SOC Wazuh`,
-            'ctf': `🏆 <strong>Palmarès CTF 2026 :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• DGA Deep Threats : 184e/491 (626 pts)<br>• CTF GMP & CTF CyberSup Puteaux`,
-            'lxc': `🖥️ <strong>Cluster Proxmox VE (5 conteneurs LXC actifs) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord ChatOps (Python Asyncio)<br>• CT 107, 108, 110, 111 : Instances isolées + Backups .tar.gz`,
-            'pmt': `🎖️ <strong>Immersion Militaire (Octobre 2026) :</strong><br>• 28e Régiment de Transmissions (5 jours)<br>• Systèmes d'information et communications tactiques`
+            'help': `Commandes disponibles : <span style="color:#38bdf8;">status</span>, <span style="color:#38bdf8;">soc</span>, <span style="color:#38bdf8;">lxc</span>, <span style="color:#38bdf8;">ctf</span>, <span style="color:#38bdf8;">veille</span>, <span style="color:#38bdf8;">clear</span>`,
+            'status': `• Opérateur : <strong>Mehdi BEN MOULAY (Alias : M3µD1)</strong><br>• Poste : <strong>Administrateur Systèmes & Réseaux</strong> (Alternance @ Io.sys 2.21)<br>• Formation : BTS SIO SISR (Ingetis, Paris)`,
+            'soc': `🛡️ <strong>Mini-SOC Wazuh & Blue Team :</strong><br>• Detection Engineering : Règles XML sur-mesure (Atomic Red Team / MITRE ATT&CK)<br>• Défense Active : Bannissement dynamique via iptables (anti brute-force)<br>• Alerting & CTI : API VirusTotal + Script Python Webhook Discord`,
+            'lxc': `🐳 <strong>Homelab Proxmox VE (5 conteneurs LXC) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord Python (boutons d'allumage, SSH par clés)<br>• CT 107, 108, 110, 111 : Instances isolées, arrêt auto sur inactivité & rollbacks .tar.gz`,
+            'ctf': `🏆 <strong>Palmarès CTF & Forensic (Team DGSI) :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• CTF Deep Threats (DGA) : 184e/487 (OSINT, Threat Intel, Reporting Blue Team)<br>• Atelier Forensic (CyberSup) : Métadonnées, en-têtes & GeoINT satellite`,
+            'veille': `📡 <strong>Veille Technologique Active :</strong><br>• Axe 1 (Cyber) : CVE critiques, règles Wazuh & MITRE ATT&CK<br>• Axe 2 (IA) : Workflows N8N + LLM pour l'automatisation IT & SecOps<br>• Axe 3 (Infra) : Proxmox VE, conteneurs LXC & pipelines GitLab CI/CD`
         };
 
         window.runTermCmd = function(raw) {
@@ -1631,7 +2022,7 @@
                 return;
             }
             const line = document.createElement('div');
-            line.innerHTML = `<span style="color:#34d399;">mehdi@sys-node:~$</span> ${raw}`;
+            line.innerHTML = `<span style="color:#34d399;">M3µD1@galaxy-node:~$</span> ${raw}`;
             termOutput.appendChild(line);
 
             const resp = document.createElement('div');
@@ -1651,9 +2042,9 @@
 
         // --- 3. EFFET MACHINE À ÉCRIRE ---
         const roles = [
-            "Technicien Support IT & Administrateur Systèmes",
-            "Passionné par la Cybersécurité (SOC, Blue Team, CTF)",
-            "Ingénierie Réseaux (Cisco VPN IPsec, HSRP, VLAN)",
+            "Administrateur Systèmes & Réseaux (Alias : M3µD1)",
+            "Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)",
+            "Ingénierie Réseaux (Cisco VPN IPsec, HSRP Failover)",
             "Automatisation & Conteneurisation (Proxmox LXC, Python)"
         ];
         let roleIdx = 0, charIdx = 0, isDeleting = false;
@@ -1697,117 +2088,164 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeLightbox();
-                document.getElementById('proxmox-modal').classList.add('hidden');
-                document.getElementById('vpn-modal').classList.add('hidden');
+                document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden'));
             }
         });
 
-        // --- 6. FOND INTERACTIF : SOURIS MAGNÉTIQUE + ONDES SONAR AU CLIC ---
-        const canvas = document.getElementById('bg-canvas');
+        // --- 6. MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
+        const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
-        let ripples = [];
-        let mouse = { x: null, y: null, radius: 170 };
+        let stars = [];
+        let shootingStars = [];
+        let burstParticles = [];
+        let nebulae = [];
+        let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, targetX: window.innerWidth / 2, targetY: window.innerHeight / 2 };
 
-        function resizeCanvas() {
+        function initGalaxy() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            stars = [];
+            nebulae = [
+                { x: canvas.width * 0.2, y: canvas.height * 0.25, r: 340, color: 'rgba(88, 28, 135, 0.16)' },
+                { x: canvas.width * 0.8, y: canvas.height * 0.65, r: 400, color: 'rgba(14, 116, 144, 0.14)' },
+                { x: canvas.width * 0.5, y: canvas.height * 0.45, r: 300, color: 'rgba(30, 58, 138, 0.15)' }
+            ];
+
+            const starColors = ['#ffffff', '#bae6fd', '#e9d5ff', '#fde68a', '#93c5fd'];
+            for (let i = 0; i < 220; i++) {
+                const depth = Math.random() * 2.5 + 0.5;
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    size: Math.random() * 1.7 + 0.3,
+                    depth: depth,
+                    color: starColors[Math.floor(Math.random() * starColors.length)],
+                    twinkleSpeed: Math.random() * 0.03 + 0.008,
+                    twinklePhase: Math.random() * Math.PI * 2
+                });
+            }
         }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
+
+        window.addEventListener('resize', initGalaxy);
+        initGalaxy();
 
         window.addEventListener('mousemove', (e) => {
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
-        });
-
-        window.addEventListener('mouseout', () => {
-            mouse.x = null;
-            mouse.y = null;
+            mouse.targetX = e.clientX;
+            mouse.targetY = e.clientY;
         });
 
         window.addEventListener('click', (e) => {
-            ripples.push({ x: e.clientX, y: e.clientY, r: 5, alpha: 0.85 });
-            for (let i = 0; i < 3; i++) {
-                if (particles.length > 95) particles.shift();
-                particles.push({
-                    x: e.clientX + (Math.random() - 0.5) * 20,
-                    y: e.clientY + (Math.random() - 0.5) * 20,
-                    vx: (Math.random() - 0.5) * 1.4,
-                    vy: (Math.random() - 0.5) * 1.4,
-                    r: Math.random() * 2 + 1.2
+            const colors = ['#38bdf8', '#c084fc', '#fbbf24', '#ffffff'];
+            for (let i = 0; i < 18; i++) {
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 3.2 + 0.8;
+                burstParticles.push({
+                    x: e.clientX,
+                    y: e.clientY,
+                    vx: Math.cos(angle) * speed,
+                    vy: Math.sin(angle) * speed,
+                    r: Math.random() * 2.2 + 0.8,
+                    alpha: 1,
+                    color: colors[Math.floor(Math.random() * colors.length)]
                 });
             }
         });
 
-        for (let i = 0; i < 65; i++) {
-            particles.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.55,
-                vy: (Math.random() - 0.5) * 0.55,
-                r: Math.random() * 1.8 + 0.9
-            });
+        function spawnShootingStar() {
+            if (Math.random() < 0.015 && shootingStars.length < 2) {
+                shootingStars.push({
+                    x: Math.random() * canvas.width * 0.8,
+                    y: Math.random() * canvas.height * 0.35,
+                    len: Math.random() * 90 + 50,
+                    speed: Math.random() * 9 + 7,
+                    alpha: 1
+                });
+            }
         }
 
-        function animateNetwork() {
+        function animateGalaxy() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            for (let i = ripples.length - 1; i >= 0; i--) {
-                let rp = ripples[i];
-                rp.r += 3.5;
-                rp.alpha -= 0.018;
-                if (rp.alpha <= 0) {
-                    ripples.splice(i, 1);
+            mouse.x += (mouse.targetX - mouse.x) * 0.05;
+            mouse.y += (mouse.targetY - mouse.y) * 0.05;
+            const offsetX = (mouse.x - canvas.width / 2) * 0.025;
+            const offsetY = (mouse.y - canvas.height / 2) * 0.025;
+
+            nebulae.forEach((n, idx) => {
+                const nx = n.x - offsetX * (idx + 1) * 0.4;
+                const ny = n.y - offsetY * (idx + 1) * 0.4;
+                const grad = ctx.createRadialGradient(nx, ny, 10, nx, ny, n.r);
+                grad.addColorStop(0, n.color);
+                grad.addColorStop(1, 'rgba(3, 4, 11, 0)');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(nx, ny, n.r, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            stars.forEach(s => {
+                s.twinklePhase += s.twinkleSpeed;
+                const alpha = 0.35 + Math.sin(s.twinklePhase) * 0.55;
+                let sx = (s.x - offsetX * s.depth) % canvas.width;
+                let sy = (s.y - offsetY * s.depth) % canvas.height;
+                if (sx < 0) sx += canvas.width;
+                if (sy < 0) sy += canvas.height;
+
+                ctx.save();
+                ctx.globalAlpha = Math.max(0.1, Math.min(1, alpha));
+                ctx.fillStyle = s.color;
+                ctx.beginPath();
+                ctx.arc(sx, sy, s.size, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.restore();
+            });
+
+            spawnShootingStar();
+            for (let i = shootingStars.length - 1; i >= 0; i--) {
+                let st = shootingStars[i];
+                st.x += st.speed;
+                st.y += st.speed * 0.45;
+                st.alpha -= 0.016;
+
+                if (st.alpha <= 0) {
+                    shootingStars.splice(i, 1);
                     continue;
                 }
-                ctx.beginPath();
-                ctx.arc(rp.x, rp.y, rp.r, 0, Math.PI * 2);
-                ctx.strokeStyle = `rgba(56, 189, 248, ${rp.alpha})`;
+
+                const grad = ctx.createLinearGradient(st.x, st.y, st.x - st.len, st.y - st.len * 0.45);
+                grad.addColorStop(0, `rgba(255, 255, 255, ${st.alpha})`);
+                grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
+                ctx.strokeStyle = grad;
                 ctx.lineWidth = 1.8;
+                ctx.beginPath();
+                ctx.moveTo(st.x, st.y);
+                ctx.lineTo(st.x - st.len, st.y - st.len * 0.45);
                 ctx.stroke();
             }
 
-            for (let i = 0; i < particles.length; i++) {
-                let p = particles[i];
-                p.x += p.vx;
-                p.y += p.vy;
-                if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
-
+            for (let i = burstParticles.length - 1; i >= 0; i--) {
+                let bp = burstParticles[i];
+                bp.x += bp.vx;
+                bp.y += bp.vy;
+                bp.alpha -= 0.022;
+                if (bp.alpha <= 0) {
+                    burstParticles.splice(i, 1);
+                    continue;
+                }
+                ctx.save();
+                ctx.globalAlpha = bp.alpha;
+                ctx.fillStyle = bp.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = bp.color;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = '#38bdf8';
+                ctx.arc(bp.x, bp.y, bp.r, 0, Math.PI * 2);
                 ctx.fill();
-
-                for (let j = i + 1; j < particles.length; j++) {
-                    let p2 = particles[j];
-                    let dist = Math.hypot(p.x - p2.x, p.y - p2.y);
-                    if (dist < 130) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(p2.x, p2.y);
-                        ctx.strokeStyle = `rgba(56, 189, 248, ${0.18 * (1 - dist / 130)})`;
-                        ctx.lineWidth = 0.8;
-                        ctx.stroke();
-                    }
-                }
-
-                if (mouse.x !== null && mouse.y !== null) {
-                    let mDist = Math.hypot(p.x - mouse.x, p.y - mouse.y);
-                    if (mDist < mouse.radius) {
-                        ctx.beginPath();
-                        ctx.moveTo(p.x, p.y);
-                        ctx.lineTo(mouse.x, mouse.y);
-                        ctx.strokeStyle = `rgba(16, 185, 129, ${0.45 * (1 - mDist / mouse.radius)})`;
-                        ctx.lineWidth = 1.2;
-                        ctx.stroke();
-                    }
-                }
+                ctx.restore();
             }
-            requestAnimationFrame(animateNetwork);
+
+            requestAnimationFrame(animateGalaxy);
         }
-        animateNetwork();
+        animateGalaxy();
     </script>
 </body>
 </html>
