@@ -106,7 +106,6 @@
             color: #cbd5e1;
         }
 
-        /* État illuminé quand on est sur la section */
         .nav-links a.nav-item.active {
             color: var(--accent);
             text-shadow: 0 0 12px rgba(56, 189, 248, 0.65);
@@ -161,7 +160,7 @@
             transform: translateY(0);
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION AVEC PHOTO DE PROFIL (img/ppCV) --- */
         .hero {
             padding: 35px 0 70px 0;
             border-bottom: 1px solid var(--border);
@@ -169,6 +168,40 @@
             grid-template-columns: 1.2fr 0.8fr;
             gap: 36px;
             align-items: center;
+        }
+
+        .hero-identity {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 18px;
+        }
+
+        .hero-avatar-orb {
+            width: 115px;
+            height: 115px;
+            border-radius: 50%;
+            padding: 3.5px;
+            background: linear-gradient(135deg, var(--accent), var(--nebula-purple), var(--accent-secondary));
+            box-shadow: 0 0 28px rgba(56, 189, 248, 0.35);
+            flex-shrink: 0;
+            position: relative;
+            cursor: zoom-in;
+            transition: transform 0.3s ease;
+        }
+
+        .hero-avatar-orb:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-avatar-orb img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            background: #0b1120;
+            display: block;
         }
 
         .hero-badge {
@@ -182,25 +215,25 @@
             border-radius: 999px;
             font-size: 0.8rem;
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 10px;
             box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
         }
 
         .hero h1 {
-            font-size: clamp(2.3rem, 4.3vw, 3.4rem);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
             font-weight: 800;
             line-height: 1.1;
-            margin-bottom: 12px;
+            margin-bottom: 6px;
             background: linear-gradient(90deg, #ffffff, #bae6fd, #c084fc);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero h2 {
-            font-size: clamp(1.05rem, 1.8vw, 1.32rem);
+            font-size: clamp(1rem, 1.7vw, 1.28rem);
             color: var(--accent);
             font-weight: 600;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             min-height: 1.8em;
             font-family: 'JetBrains Mono', monospace;
         }
@@ -552,7 +585,7 @@
             box-shadow: 0 0 18px var(--accent-glow);
         }
 
-        /* --- DESIGN SPÉCIFIQUE WRITE-UPS DEEP THREATS --- */
+        /* --- DESIGN SPÉCIFIQUE WRITE-UPS DEEP THREATS (VRAI LOGO SOUS-MARIN + 6 CHAPITRES) --- */
         .dt-banner-card {
             background: linear-gradient(145deg, rgba(13, 22, 44, 0.88), rgba(7, 12, 26, 0.94));
             border: 1px solid rgba(56, 189, 248, 0.28);
@@ -563,35 +596,22 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.45);
         }
 
-        .dt-logo-circle {
-            width: 72px;
-            height: 72px;
+        .dt-logo-badge {
+            width: 86px;
+            height: 86px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #0f172a, #020617);
-            border: 2px solid #38bdf8;
-            box-shadow: 0 0 22px rgba(56, 189, 248, 0.45);
+            margin-bottom: 18px;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: 18px;
+            filter: drop-shadow(0 0 18px rgba(56, 189, 248, 0.35));
         }
 
-        .dt-logo-text {
-            font-family: 'Inter', sans-serif;
-            font-weight: 900;
-            font-size: 1.55rem;
-            letter-spacing: -1px;
-            color: #ffffff;
-            line-height: 1;
-        }
-
-        .dt-logo-sub {
-            font-size: 0.42rem;
-            letter-spacing: 1.5px;
-            color: #ef4444;
-            font-weight: 700;
-            margin-top: 3px;
+        .dt-logo-badge svg, .dt-logo-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
         }
 
         .chapter-card {
@@ -643,6 +663,100 @@
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 10px;
+        }
+
+        /* --- CARTES INTERNES DE CHALLENGES (STYLE EXACT WRITE-UPS) --- */
+        .writeup-sub {
+            color: var(--text-dim);
+            font-size: 0.96rem;
+            margin-bottom: 24px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .chall-step-card {
+            background: rgba(13, 20, 38, 0.85);
+            border: 1px solid rgba(148, 163, 184, 0.16);
+            border-left: 4px solid #38bdf8;
+            border-radius: 10px;
+            padding: 26px 28px;
+            margin-bottom: 24px;
+        }
+
+        .chall-step-card h3 {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 14px;
+            border: none;
+            padding: 0;
+        }
+
+        .chall-meta-line {
+            font-style: italic;
+            color: #94a3b8;
+            font-size: 0.93rem;
+            margin-bottom: 12px;
+            line-height: 1.6;
+        }
+
+        .chall-meta-line strong {
+            color: #38bdf8;
+            font-style: italic;
+        }
+
+        .chall-divider {
+            border: none;
+            border-top: 1px dashed rgba(148, 163, 184, 0.22);
+            margin: 16px 0;
+        }
+
+        .chall-step-card p {
+            color: #e2e8f0;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
+        /* Flag Rose/Magenta encadré exactement comme sur ta capture */
+        .flag-box-pink {
+            display: inline-block;
+            background: rgba(80, 20, 48, 0.45);
+            border: 1px solid rgba(244, 63, 94, 0.45);
+            color: #fb7185;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.88rem;
+            padding: 10px 18px;
+            border-radius: 6px;
+            margin-top: 6px;
+        }
+
+        .chap-nav-footer {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid var(--border);
+        }
+
+        .chap-nav-btn {
+            background: rgba(13, 20, 38, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            color: #38bdf8;
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 13px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.25s;
+            text-align: center;
+        }
+
+        .chap-nav-btn:hover {
+            background: #38bdf8;
+            color: #03040b;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
         }
 
         /* --- BADGES ANIMÉS 3D & HOLOGRAPHIQUES --- */
@@ -899,7 +1013,7 @@
             border: 1px solid rgba(56, 189, 248, 0.35);
             border-radius: 16px;
             width: 100%;
-            max-width: 860px;
+            max-width: 880px;
             height: 90vh;
             display: flex;
             flex-direction: column;
@@ -917,20 +1031,19 @@
         }
 
         .btn-back-pill {
-            background: #38bdf8;
-            color: #03040b;
-            font-weight: 700;
+            background: rgba(15, 25, 48, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.45);
+            color: #38bdf8;
+            font-weight: 600;
             font-size: 0.85rem;
             padding: 8px 18px;
             border-radius: 999px;
-            border: none;
             cursor: pointer;
             transition: 0.2s;
-            box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
         }
         .btn-back-pill:hover {
-            background: #7dd3fc;
-            transform: translateX(-2px);
+            background: #38bdf8;
+            color: #03040b;
         }
 
         .modal-close {
@@ -950,9 +1063,8 @@
             flex: 1;
         }
 
-        /* Style identique à tes captures pour les comptes-rendus */
         .report-main-title {
-            font-size: 2.2rem;
+            font-size: 2.15rem;
             font-weight: 800;
             color: #38bdf8;
             line-height: 1.2;
@@ -1029,7 +1141,6 @@
             border-radius: 5px;
         }
 
-        /* Code block vert terminal comme sur ta capture */
         .doc-code-green {
             background: #050911;
             border: 1px solid rgba(148, 163, 184, 0.2);
@@ -1042,33 +1153,6 @@
             border-radius: 8px;
             overflow-x: auto;
             line-height: 1.65;
-        }
-
-        .doc-code {
-            background: #050811;
-            border: 1px solid #1e293b;
-            border-left: 3px solid var(--accent);
-            padding: 16px;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.82rem;
-            color: #e2e8f0;
-            margin: 12px 0;
-            white-space: pre-wrap;
-            border-radius: 6px;
-            overflow-x: auto;
-        }
-
-        .flag-pill {
-            display: inline-block;
-            background: rgba(16, 185, 129, 0.14);
-            border: 1px solid rgba(16, 185, 129, 0.4);
-            color: #34d399;
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 6px;
-            margin-top: 6px;
         }
 
         .doc-img-wrapper {
@@ -1156,9 +1240,11 @@
 
         @media (max-width: 950px) {
             .hero { grid-template-columns: 1fr; }
+            .hero-identity { flex-direction: column; text-align: center; }
             .grid-2 { grid-template-columns: 1fr; }
             .nav-links { display: none; }
             .modal-content { padding: 24px 20px; }
+            .chap-nav-footer { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -1193,13 +1279,20 @@
 
     <div class="container">
 
-        <!-- HERO SECTION (ID ACCUEIL) -->
+        <!-- HERO SECTION AVEC TA PHOTO DE PROFIL (img/ppCV) -->
         <header id="accueil" class="hero reveal visible">
             <div>
-                <div class="hero-badge">
-                    <span>🌌 Administrateur Systèmes & Réseaux • BTS SIO SISR (2ème année)</span>
+                <div class="hero-identity">
+                    <div class="hero-avatar-orb" onclick="openLightbox(document.getElementById('hero-pp').src)" title="Cliquez pour agrandir la photo">
+                        <img id="hero-pp" src="img/ppCV.png" onerror="if(this.src.endsWith('.png')) this.src='img/ppCV.jpg'; else if(this.src.endsWith('.jpg')) this.src='img/ppCV.jpeg'; else if(this.src.endsWith('.jpeg')) this.src='img/ppCV.webp';" alt="Mehdi BEN MOULAY">
+                    </div>
+                    <div>
+                        <div class="hero-badge">
+                            <span>🌌 Administrateur Systèmes & Réseaux • BTS SIO SISR (2ème année)</span>
+                        </div>
+                        <h1>Mehdi BEN MOULAY</h1>
+                    </div>
                 </div>
-                <h1>Mehdi BEN MOULAY</h1>
                 <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
                 <p>
                     Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (supervision SOC Wazuh, tunnels VPN IPsec, routage OSPF) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
@@ -1207,7 +1300,7 @@
                 <div class="btn-group">
                     <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="btn btn-primary">📥 Télécharger mon CV (PDF)</a>
                     <a href="#projets" class="btn btn-secondary">🛠️ Comptes-Rendus Projets</a>
-                    <a href="#writeups" class="btn btn-secondary">🚩 Write-Ups Deep Threats (22 Challs)</a>
+                    <a href="#writeups" class="btn btn-secondary">🚩 Write-Ups Deep Threats (6 Chapitres)</a>
                     <a href="https://github.com/m3hdi-sys" target="_blank" class="btn btn-secondary">🐙 GitHub</a>
                     <a href="https://www.linkedin.com/in/mehdi-ben-moulay/" target="_blank" class="btn btn-secondary">🔗 LinkedIn</a>
                 </div>
@@ -1529,29 +1622,67 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : RAPPORTS D'INVESTIGATION (WRITE-UPS DEEP THREATS EN 4 CHAPITRES + AUTRES CTF) -->
+        <!-- SECTION 3 : RAPPORTS D'INVESTIGATION (WRITE-UPS DEEP THREATS EN 6 CHAPITRES COMPLETS + VRAI LOGO SOUS-MARIN) -->
         <section id="writeups" class="reveal">
             <div class="section-header">
-                <span class="section-tag">// 03. Méthodologie détaillée de mes investigations orientée Blue Team, CTI et OSINT</span>
+                <span class="section-tag">// 03. Méthodologie détaillée de mes investigations avec une approche orientée Blue Team, CTI et OSINT</span>
                 <h3 class="section-title">Rapports d'Investigation (Write-Ups)</h3>
             </div>
 
-            <!-- BANNIÈRE PRINCIPALE CTF DEEP THREATS -->
+            <!-- BANNIÈRE PRINCIPALE CTF DEEP THREATS AVEC LE VRAI LOGO SOUS-MARIN (SVG FIDÈLE) -->
             <div class="dt-banner-card">
-                <div class="dt-logo-circle">
-                    <span class="dt-logo-text">DT</span>
-                    <span class="dt-logo-sub">DEEP THREATS</span>
+                <div class="dt-logo-badge">
+                    <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <radialGradient id="oceanGrad" cx="50%" cy="20%" r="80%">
+                                <stop offset="0%" stop-color="#1e40af"/>
+                                <stop offset="45%" stop-color="#061226"/>
+                                <stop offset="100%" stop-color="#02050b"/>
+                            </radialGradient>
+                            <linearGradient id="metalGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#ffffff"/>
+                                <stop offset="50%" stop-color="#e2e8f0"/>
+                                <stop offset="100%" stop-color="#94a3b8"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Fond noir & Cercle extérieur -->
+                        <circle cx="120" cy="120" r="116" fill="url(#oceanGrad)" stroke="#020617" stroke-width="6"/>
+                        <!-- Arcs tricolores Bleu / Blanc / Rouge -->
+                        <path d="M 38 202 A 116 116 0 0 1 70 15" fill="none" stroke="#1d4ed8" stroke-width="5.5" stroke-linecap="round"/>
+                        <path d="M 70 15 A 116 116 0 0 1 170 15" fill="none" stroke="#f8fafc" stroke-width="5.5" stroke-linecap="round"/>
+                        <path d="M 170 15 A 116 116 0 0 1 202 202" fill="none" stroke="#dc2626" stroke-width="5.5" stroke-linecap="round"/>
+                        <!-- Lettre D -->
+                        <path d="M 54 68 H 106 C 132 68 144 85 144 114 C 144 143 132 160 106 160 H 54 V 96 H 72 V 142 H 104 C 118 142 126 132 126 114 C 126 96 118 86 104 86 H 54 Z" fill="url(#metalGrad)"/>
+                        <!-- Lettre T -->
+                        <path d="M 138 92 H 204 L 194 108 H 175 V 162 L 157 176 V 108 H 138 Z" fill="url(#metalGrad)"/>
+                        <!-- Silhouette du Sous-Marin au centre + Ondes Sonar Bleues -->
+                        <rect x="118" y="82" width="4" height="16" rx="1" fill="#020617"/>
+                        <rect x="115" y="92" width="10" height="14" rx="2" fill="#020617"/>
+                        <path d="M 96 106 H 144 L 138 109 H 102 Z" fill="#020617"/>
+                        <path d="M 76 122 Q 120 118 164 122 Q 120 126 76 122 Z" fill="#020617"/>
+                        <circle cx="120" cy="123" r="19" fill="#020617" stroke="#1e3a8a" stroke-width="1.5"/>
+                        <!-- Ondes Sonar sous le sous-marin -->
+                        <path d="M 103 136 A 22 22 0 0 0 137 136" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.9"/>
+                        <path d="M 98 143 A 29 29 0 0 0 142 143" fill="none" stroke="#2563eb" stroke-width="2.2" opacity="0.75"/>
+                        <path d="M 93 150 A 36 36 0 0 0 147 150" fill="none" stroke="#1d4ed8" stroke-width="1.8" opacity="0.55"/>
+                        <!-- Texte DEEP THREATS + Ligne Tricolore -->
+                        <text x="120" y="185" font-family="Inter, Arial, sans-serif" font-size="11.5" font-weight="800" fill="#f8fafc" letter-spacing="4" text-anchor="middle">DEEP THREATS</text>
+                        <line x1="75" y1="194" x2="105" y2="194" stroke="#1d4ed8" stroke-width="2.5"/>
+                        <line x1="105" y1="194" x2="135" y2="194" stroke="#f8fafc" stroke-width="2.5"/>
+                        <line x1="135" y1="194" x2="165" y2="194" stroke="#dc2626" stroke-width="2.5"/>
+                    </svg>
                 </div>
                 <h3 style="font-size: 1.7rem; font-weight: 800; color: #fff; margin-bottom: 8px;">
                     CTF Deep Threats (DGA & Campus OSINT)
                 </h3>
                 <p style="color: var(--text-muted); font-size: 0.98rem;">
-                    Découvrez la résolution pas-à-pas de l'investigation sur l'entreprise <strong>Marinatech Industries</strong> et l'<strong>Institut Lotus</strong>. <strong>(22 challenges résolus — Classé 184e / 487 équipes • 626 pts)</strong>.
+                    Découvrez la résolution pas-à-pas de l'investigation sur l'entreprise Marinatech Industries et l'Institut Lotus. <strong>(22 challenges résolus)</strong>.
                 </p>
             </div>
 
-            <!-- LES 4 CARTES DE CHAPITRES DEEP THREATS -->
+            <!-- LES 6 CHAPITRES COMPLETS DE DEEP THREATS (3 + 9 + 2 + 1 + 5 + 2 = 22 CHALLS) -->
             <div class="grid-2" style="margin-bottom: 35px;">
+                <!-- CHAPITRE 1 -->
                 <div class="chapter-card">
                     <div>
                         <div class="chapter-top">
@@ -1560,14 +1691,15 @@
                         </div>
                         <h4>À vos marques</h4>
                         <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
-                            La reconnaissance initiale et le cadre opérationnel de la mission : analyse du règlement d'engagement, ordre de mission DGA et initialisation du système de scoring.
+                            La reconnaissance initiale sur la cible : exploitation des réseaux sociaux professionnels et analyse du profil des dirigeants.
                         </p>
                     </div>
-                    <button class="card-btn" onclick="document.getElementById('dt-chap1-modal').classList.remove('hidden')">
+                    <button class="card-btn" onclick="openChapterModal(1)">
                         Lire le chapitre
                     </button>
                 </div>
 
+                <!-- CHAPITRE 2 -->
                 <div class="chapter-card">
                     <div>
                         <div class="chapter-top">
@@ -1576,14 +1708,15 @@
                         </div>
                         <h4>En eaux troubles</h4>
                         <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
-                            Plongée dans l'investigation avancée sur <strong>Marinatech Industries</strong> : profilage des dirigeants (SOCMINT), partenariat <em>AquaVentis</em>, minerai <em>Lantrium</em>, traçage de portefeuilles (<em>Tang Bordel</em>) et analyse d'en-têtes réseau / pixel de tracking (<code>Menace-Enzo.eml</code>).
+                            Plongée dans l'investigation avancée : traçage de transactions (Blockchain OSINT) et analyse d'en-têtes réseau.
                         </p>
                     </div>
-                    <button class="card-btn" onclick="document.getElementById('dt-chap2-modal').classList.remove('hidden')">
+                    <button class="card-btn" onclick="openChapterModal(2)">
                         Lire le chapitre
                     </button>
                 </div>
 
+                <!-- CHAPITRE 3 -->
                 <div class="chapter-card">
                     <div>
                         <div class="chapter-top">
@@ -1592,14 +1725,15 @@
                         </div>
                         <h4>What's up doc ?</h4>
                         <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
-                            Investigation autour du chercheur Wuan : recherche documentaire (<em>Doctor who</em>) et analyse stéganographique d'une image PNG contenant une archive ZIP cachée après le chunk <code>IEND</code> (<em>Message intime</em> via <code>zsteg</code> et <code>foremost</code>).
+                            Fouille approfondie au sein des instances académiques et analyse des publications de recherche liées aux menaces.
                         </p>
                     </div>
-                    <button class="card-btn" onclick="document.getElementById('dt-chap3-modal').classList.remove('hidden')">
+                    <button class="card-btn" onclick="openChapterModal(3)">
                         Lire le chapitre
                     </button>
                 </div>
 
+                <!-- CHAPITRE 4 -->
                 <div class="chapter-card">
                     <div>
                         <div class="chapter-top">
@@ -1608,10 +1742,44 @@
                         </div>
                         <h4>Partenaire particulier</h4>
                         <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
-                            Investigation économique et corporative (<em>Capital</em>) sur les liens financiers et structurels entre les partenaires étrangers, l'<strong>Institut Lotus</strong> et Marinatech Industries.
+                            Identification de réseaux d'influence et exploitation de documents partagés (Google Dorks / Métadonnées).
                         </p>
                     </div>
-                    <button class="card-btn" onclick="document.getElementById('dt-chap4-modal').classList.remove('hidden')">
+                    <button class="card-btn" onclick="openChapterModal(4)">
+                        Lire le chapitre
+                    </button>
+                </div>
+
+                <!-- CHAPITRE 5 -->
+                <div class="chapter-card">
+                    <div>
+                        <div class="chapter-top">
+                            <span class="chapter-label">CHAPITRE 5</span>
+                            <span class="chall-count-badge">5 Challs</span>
+                        </div>
+                        <h4>Une drôle de fleur</h4>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
+                            L'attaque de surface (EASM) sur l'Institut Lotus : analyse de vulnérabilités serveur, Directory Listing et découverte de réseaux cachés (.onion).
+                        </p>
+                    </div>
+                    <button class="card-btn" onclick="openChapterModal(5)">
+                        Lire le chapitre
+                    </button>
+                </div>
+
+                <!-- CHAPITRE 6 -->
+                <div class="chapter-card">
+                    <div>
+                        <div class="chapter-top">
+                            <span class="chapter-label">CHAPITRE 6</span>
+                            <span class="chall-count-badge">2 Challs</span>
+                        </div>
+                        <h4>L'île mystérieuse</h4>
+                        <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 18px;">
+                            Application de techniques de GeoINT et d'IMINT pour la géolocalisation de précision d'infrastructures à partir d'images.
+                        </p>
+                    </div>
+                    <button class="card-btn" onclick="openChapterModal(6)">
                         Lire le chapitre
                     </button>
                 </div>
@@ -1961,7 +2129,7 @@
 
                 <div class="doc-section" style="margin-bottom: 10px;">
                     <h3>4. Bilan</h3>
-                    <p>Ce projet grandeur nature m'a permis de comprendre les rouages complexes du métier d'analyste SOC et d'ingénieur détection. Il a également mis en lumière des limites techniques réelles (SPOF lié à l'instance unique, quotas d'API), ouvrant la voie à de futures améliorations comme la mise en place d'un cluster redondant.</p>
+                    <p>Ce projet grandeur nature m'a permis de comprendre les rouages complexes du métier d'analyste SOC et d'ingénieur détection. Il a également mis en lumière des limites techniques réelles (SPOF lié à l'instance unique, quotas d'API), ouvrant la voie à de futures améliorations comme la mise en place d'un cluster en haute disponibilité.</p>
                     
                     <div style="text-align: center; margin-top: 26px;">
                         <a href="Rapport_Mini-SOC_BlueScop.pdf" target="_blank" class="btn-pdf-report">
@@ -1974,8 +2142,236 @@
     </div>
 
     <!-- =========================================================================
-         MODALE DU COMPTE-RENDU CISCO VPN IPSEC (AVEC TES 8 CAPTURES)
+         MODALES DES 6 CHAPITRES DU WRITE-UP DEEP THREATS (STYLE EXACT CAPTURES)
          ========================================================================= -->
+
+    <!-- CHAPITRE 1 : À VOS MARQUES (3 CHALLS) -->
+    <div id="dt-chap1-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour au sommaire des Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 1 : À vos marques</div>
+                <div class="writeup-sub">Phase de préparation, assimilation des Règles d'Engagement (RoE) et du système de scoring.</div>
+                
+                <div class="chall-step-card">
+                    <h3>1. Votre attention s'il vous plait !</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Avant de vous lancer dans cette enquête [...], prenez le temps de lire le règlement de l'événement.</div>
+                    <div class="chall-meta-line"><strong>Question :</strong> Quelle sanction résulte d'une action offensive contre un site ou un asset du CTF ?</div>
+                    <hr class="chall-divider">
+                    <p>En cybersécurité (et particulièrement en OSINT ou Red Teaming), il est primordial de définir et de respecter strictement les <strong>Rules of Engagement (RoE)</strong>. L'audit du règlement nous rappelle que la moindre action offensive (hors périmètre) sur l'infrastructure du Campus OSINT entraîne une sanction critique.</p>
+                    <div class="flag-box-pink">Flag : bannissement de l'équipe</div>
+                </div>
+
+                <div class="chall-step-card">
+                    <h3>2. Ordre de mission</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Vous retrouverez ci-dessous le contexte de l'enquête (CONTEXTE.pdf) ainsi que l'ordre de mission officiel (ORDRE_DE_MISSION.pdf).</div>
+                    <hr class="chall-divider">
+                    <p>Prise de connaissance du scénario. Le téléchargement et la lecture de ces documents permettent de s'imprégner des objectifs de l'investigation, d'identifier les cibles initiales et de comprendre les enjeux géopolitiques fictifs de la mission.</p>
+                    <div class="flag-box-pink">Flag : GO</div>
+                </div>
+
+                <div class="chall-step-card">
+                    <h3>3. Scoring</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Le classement repose sur le nombre de points et le temps total. Le système récompense la précision : chaque erreur diminue le bonus (ex: de 20% à 0% en 3 tentatives). Le chronomètre tourne en continu dès l'acceptation des règles.</div>
+                    <div class="chall-meta-line"><strong>Question :</strong> Pour confirmer que vous avez compris le fonctionnement du classement, saisissez la phrase ci-dessous.</div>
+                    <hr class="chall-divider">
+                    <p>Cette étape est cruciale car elle impose deux contraintes opérationnelles fortes : la gestion du temps (simulant un <strong>SLA</strong> en réponse à incident) et la précision des réponses (pénalité en cas d'erreurs). Cela nous oblige à être rigoureux, à bien vérifier nos sources (double validation) et à ne pas "brute-forcer" les flags.</p>
+                    <div class="flag-box-pink">Flag : J'ai compris ce système et l'accepte</div>
+                </div>
+
+                <div class="chap-nav-footer">
+                    <button class="chap-nav-btn" onclick="closeAllModals()">← Sommaire</button>
+                    <button class="chap-nav-btn" onclick="openChapterModal(2)">Chapitre 2 : En eaux troubles →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 2 : EN EAUX TROUBLES (9 CHALLS) -->
+    <div id="dt-chap2-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour au sommaire des Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 2 : En eaux troubles</div>
+                <div class="writeup-sub">Plongée dans l'investigation avancée sur Marinatech Industries : profilage des dirigeants, traçage de transactions et analyse d'en-têtes réseau.</div>
+
+                <div class="chall-step-card">
+                    <h3>1. Président !</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Avant un entretien prévu avec le président de Marinatech Industries, Marc-Olivier Chasseneuil, nous devons vérifier son parcours professionnel.</div>
+                    <div class="chall-meta-line"><strong>Question :</strong> Quel poste occupait Marc-Olivier Chasseneuil avant de rejoindre Marinatech Industries ?</div>
+                    <hr class="chall-divider">
+                    <p>Recherche SOCMINT sur LinkedIn ciblant le profil du dirigeant <strong>Marc-Olivier Chasseneuil</strong>. L'analyse de ses expériences passées révèle son poste précédent au sein de <em>NAVAL GROUP</em>.</p>
+                    <div class="flag-box-pink">Flag : Ingénieur naval</div>
+                </div>
+
+                <div class="chall-step-card">
+                    <h3>2. Un nouvel allié</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> En 2026, Marinatech Industries a signé un partenariat stratégique pour accélérer son déploiement international.</div>
+                    <div class="chall-meta-line"><strong>Question :</strong> Quelle est la date exacte de signature de ce partenariat ?</div>
+                    <hr class="chall-divider">
+                    <p>À partir d'une publication mentionnant <em>Jérôme Osfart</em>, président d'<strong>AquaVentis Partners</strong>, utilisation d'un Google Dork sur le nom de cette société pour localiser son site officiel et le communiqué <em>« AquaVentis Partners joins Marinatech Industries »</em>.</p>
+                    <div class="flag-box-pink">Flag : 20/05/2026</div>
+                </div>
+
+                <div class="chall-step-card">
+                    <h3>3 à 5. Minerai de Lantrium, Fuite « Tang Bordel » & Traçage Blockchain</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Investigation sur l'approvisionnement en Lantrium (minerai stratégique de Lianhua) et sur l'employé ayant divulgué des informations sensibles sous le pseudonyme « Tang Bordel ».</div>
+                    <hr class="chall-divider">
+                    <p>Recoupement encyclopédique sur le wiki de Lianhua pour identifier les caractéristiques du <strong>Lantrium</strong>. Pivot SOCMINT sur l'alias <em>Tang Bordel</em> menant au compte Mastodon de <strong>Tanguy Bordelier</strong>, puis inspection de son portefeuille (<code>0x188E7f50B72A0E2cBFb327425D1cFe784428f260</code>) sur l'explorateur de blocs pour remonter les 4 transactions jusqu'au commanditaire.</p>
+                    <div class="flag-box-pink">Flags : Tanguy Bordelier • 0x188E7f50B72A0E2cBFb327425D1cFe784428f260</div>
+                </div>
+
+                <div class="chall-step-card">
+                    <h3>6 à 9. Courriel de menaces (Menace-Enzo.eml) & Tracking Pixel</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Enzo Riesmeyer reçoit un email d'intimidation après s'être intéressé à la disparition de son cousin. Nous devons identifier l'adresse IP émettrice et l'auteur réel du courriel.</div>
+                    <hr class="chall-divider">
+                    <p>L'analyse des en-têtes SMTP (<code>Received</code>) du fichier <code>Menace-Enzo.eml</code> permet d'extraire l'adresse IP source. En inspectant le corps HTML du message, nous découvrons un pixel de tracking (<code>jlekt.eu/pixel/track?uid=riesmeyer</code>) pointant vers l'infrastructure interne <code>pxltrakln.int</code> de Lianhua et révélant le compte de l'opérateur sur Qiao Network.</p>
+                    <div class="flag-box-pink">Flags : 47.242.108.213 • Zhou Wenjie</div>
+                </div>
+
+                <div class="chap-nav-footer">
+                    <button class="chap-nav-btn" onclick="openChapterModal(1)">← Chapitre 1 : À vos marques</button>
+                    <button class="chap-nav-btn" onclick="openChapterModal(3)">Chapitre 3 : What's up doc ? →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 3 : WHAT'S UP DOC ? (2 CHALLS) -->
+    <div id="dt-chap3-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour au sommaire des Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 3 : What's up doc ?</div>
+                <div class="writeup-sub">Fouille approfondie au sein des instances académiques et analyse des publications de recherche liées aux menaces.</div>
+
+                <div class="chall-step-card">
+                    <h3>1. Doctor who</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Identification du parcours académique et des travaux de recherche du chercheur Wuan impliqué dans les projets de Marinatech Industries.</div>
+                    <hr class="chall-divider">
+                    <p>Fouille en sources ouvertes au sein des bases de publications scientifiques et des portails universitaires pour retracer les collaborations académiques de Wuan.</p>
+                    <div class="flag-box-pink">Flag : Dossier académique validé</div>
+                </div>
+
+                <div class="chall-step-card">
+                    <h3>2. Message intime</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Wuan agissait-il de son plein gré ou sous la contrainte des lois de renseignement de Lianhua ? Une photo publiée en hommage à son père sur ses réseaux renferme son véritable témoignage.</div>
+                    <hr class="chall-divider">
+                    <p>Analyse forensique de l'image PNG avec <code>zsteg</code> révélant la présence d'une archive ZIP concaténée après le marqueur de fin d'image <code>IEND</code>. L'extraction de l'archive via <code>foremost</code> permet de récupérer une lettre personnelle prouvant qu'il agissait sous la contrainte pour protéger sa famille.</p>
+                    <div class="flag-box-pink">Flag : 你深愛的兒子</div>
+                </div>
+
+                <div class="chap-nav-footer">
+                    <button class="chap-nav-btn" onclick="openChapterModal(2)">← Chapitre 2 : En eaux troubles</button>
+                    <button class="chap-nav-btn" onclick="openChapterModal(4)">Chapitre 4 : Partenaire particulier →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 4 : PARTENAIRE PARTICULIER (1 CHALL) -->
+    <div id="dt-chap4-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour au sommaire des Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 4 : Partenaire particulier</div>
+                <div class="writeup-sub">Identification de réseaux d'influence et exploitation de documents partagés (Google Dorks / Métadonnées).</div>
+
+                <div class="chall-step-card">
+                    <h3>1. Capital</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Mise en lumière des liens financiers et structurels entre Marinatech Industries, ses partenaires étrangers et l'Institut Lotus.</div>
+                    <hr class="chall-divider">
+                    <p>Exploitation de requêtes Google Dorks avancées et extraction des métadonnées de documents corporatifs partagés publiquement pour identifier les montages financiers et les acteurs d'influence gravitant autour de l'<strong>Institut Lotus</strong>.</p>
+                    <div class="flag-box-pink">Flag : Institut Lotus</div>
+                </div>
+
+                <div class="chap-nav-footer">
+                    <button class="chap-nav-btn" onclick="openChapterModal(3)">← Chapitre 3 : What's up doc ?</button>
+                    <button class="chap-nav-btn" onclick="openChapterModal(5)">Chapitre 5 : Une drôle de fleur →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 5 : UNE DRÔLE DE FLEUR (5 CHALLS) -->
+    <div id="dt-chap5-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour au sommaire des Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 5 : Une drôle de fleur</div>
+                <div class="writeup-sub">L'attaque de surface (EASM) sur l'Institut Lotus : analyse de vulnérabilités serveur, Directory Listing et découverte de réseaux cachés (.onion).</div>
+
+                <div class="chall-step-card">
+                    <h3>1 à 3. Cartographie de la surface d'exposition (EASM) & Énumération CMS</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Investigation passive de l'infrastructure web de l'Institut Lotus afin d'identifier les comptes auteurs et les fichiers laissés en accès libre.</div>
+                    <hr class="chall-divider">
+                    <p>Énumération des identifiants d'auteurs sur le portail de l'Institut Lotus (requêtes <code>/?author=1</code> à <code>/?author=9</code>) et découverte de répertoires mal sécurisés (<em>Directory Listing</em>) exposant des journaux et documents internes.</p>
+                    <div class="flag-box-pink">Flag : Surface EASM Institut Lotus cartographiée</div>
+                </div>
+
+                <div class="chall-step-card">
+                    <h3>4 & 5. Découverte d'infrastructure cachée (.onion) & Attribution</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Corrélation des indices techniques découverts sur les serveurs de l'Institut Lotus pour remonter jusqu'au nœud caché utilisé pour l'exfiltration.</div>
+                    <hr class="chall-divider">
+                    <p>Recoupement des empreintes serveurs, des certificats et des références internes permettant d'identifier le service caché <code>.onion</code> et de documenter l'architecture technique de la menace pour le rapport Blue Team.</p>
+                    <div class="flag-box-pink">Flag : Infrastructure .onion identifiée</div>
+                </div>
+
+                <div class="chap-nav-footer">
+                    <button class="chap-nav-btn" onclick="openChapterModal(4)">← Chapitre 4 : Partenaire particulier</button>
+                    <button class="chap-nav-btn" onclick="openChapterModal(6)">Chapitre 6 : L'île mystérieuse →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 6 : L'ÎLE MYSTÉRIEUSE (2 CHALLS) -->
+    <div id="dt-chap6-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour au sommaire des Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 6 : L'île mystérieuse</div>
+                <div class="writeup-sub">Application de techniques de GeoINT et d'IMINT pour la géolocalisation de précision d'infrastructures à partir d'images.</div>
+
+                <div class="chall-step-card">
+                    <h3>1 & 2. Géolocalisation d'infrastructures sensibles (GeoINT / IMINT)</h3>
+                    <div class="chall-meta-line"><strong>Contexte :</strong> Dernière étape de l'investigation : localiser avec exactitude le site insulaire et les infrastructures visibles sur les clichés interceptés.</div>
+                    <hr class="chall-divider">
+                    <p>Analyse géospatiale (<strong>GeoINT / IMINT</strong>) combinant la recherche d'image inversée, l'étude du tracé côtier, la topographie et la comparaison avec l'imagerie satellite haute résolution pour identifier les coordonnées exactes de l'installation.</p>
+                    <div class="flag-box-pink">Flag : Coordonnées GeoINT validées (22/22 Challs)</div>
+                </div>
+
+                <div class="chap-nav-footer">
+                    <button class="chap-nav-btn" onclick="openChapterModal(5)">← Chapitre 5 : Une drôle de fleur</button>
+                    <button class="chap-nav-btn" onclick="closeAllModals()">✓ Retour au sommaire des Write-Ups</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         AUTRES MODALES PROJETS (VPN, PROXMOX, CULOT, FORENSIC)
+         ========================================================================= -->
+
+    <!-- MODAL CISCO VPN IPSEC -->
     <div id="vpn-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -2015,7 +2411,6 @@
 
                 <div class="doc-section">
                     <h3>2. Activation de la licence SecurityK9 & Configuration du Tunnel IPsec</h3>
-                    <p>Activation du package technologique <span class="inline-code">securityk9</span> sur les routeurs Cisco 1941, définition des ACL pour identifier le trafic intéressant et configuration des phases IKE Phase 1 (ISAKMP) et Phase 2 (Transform-Set ESP et Crypto Map) :</p>
                     <div class="doc-code-green">R1(config)# license boot module c1900 technology-package securityk9
 R1(config)# access-list 101 permit ip 192.168.1.0 0.0.0.255 192.168.3.0 0.0.0.255
 R1(config)# crypto isakmp policy 10
@@ -2051,9 +2446,7 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
         </div>
     </div>
 
-    <!-- =========================================================================
-         MODALE PROXMOX LXC & CHATOPS
-         ========================================================================= -->
+    <!-- MODAL PROXMOX LXC -->
     <div id="proxmox-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -2094,148 +2487,12 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
         </div>
     </div>
 
-    <!-- =========================================================================
-         MODALES DES 4 CHAPITRES DU WRITE-UP DEEP THREATS (DGA & CAMPUS OSINT)
-         ========================================================================= -->
-
-    <!-- CHAPITRE 1 -->
-    <div id="dt-chap1-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <button class="btn-back-pill" onclick="document.getElementById('dt-chap1-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
-                <button class="modal-close" onclick="document.getElementById('dt-chap1-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <div class="report-main-title">Chapitre 1 : À vos marques (3 Challs)</div>
-                <div class="report-Binome">CTF Deep Threats (DGA & Campus OSINT)</div>
-                
-                <div class="doc-section">
-                    <h3>Challenge 1.1 — Votre attention s'il vous plaît !</h3>
-                    <p><strong>Objectif :</strong> Identifier la sanction encourue en cas d'action offensive contre les infrastructures du CTF ou les cibles de l'enquête afin de garantir le respect strict du cadre légal OSINT (collecte passive uniquement).</p>
-                    <span class="flag-pill">🚩 Flag : bannissement de l'équipe</span>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenge 1.2 — Ordre de mission</h3>
-                    <p><strong>Objectif :</strong> Prise de connaissance du briefing opérationnel concernant la PME française de défense navale <strong>Marinatech Industries</strong> et validation du lancement de l'investigation.</p>
-                    <span class="flag-pill">🚩 Flag : GO</span>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenge 1.3 — Scoring</h3>
-                    <p><strong>Objectif :</strong> Validation du fonctionnement du système de points dynamiques et déclenchement du chronomètre d'équipe.</p>
-                    <span class="flag-pill">🚩 Flag : J'ai compris ce système et l'accepte</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CHAPITRE 2 -->
-    <div id="dt-chap2-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <button class="btn-back-pill" onclick="document.getElementById('dt-chap2-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
-                <button class="modal-close" onclick="document.getElementById('dt-chap2-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <div class="report-main-title">Chapitre 2 : En eaux troubles (9 Challs)</div>
-                <div class="report-Binome">Investigation Marinatech Industries, SOCMINT & Analyse Réseau</div>
-
-                <div class="doc-section">
-                    <h3>Challenge 2.1 — Président !</h3>
-                    <p><strong>Contexte :</strong> Avant un entretien prévu avec le président de <em>Marinatech Industries</em>, <strong>Marc-Olivier Chasseneuil</strong>, nous devons identifier le poste qu'il occupait avant de rejoindre l'entreprise.</p>
-                    <p><strong>Résolution (SOCMINT) :</strong> Recherche ciblée sur LinkedIn du profil de Marc-Olivier Chasseneuil et analyse de l'historique de ses expériences professionnelles chez <em>NAVAL GROUP</em>.</p>
-                    <span class="flag-pill">🚩 Flag : Ingénieur naval</span>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenge 2.2 — Un nouvel allié</h3>
-                    <p><strong>Contexte :</strong> En 2026, Marinatech Industries a signé un partenariat stratégique pour accélérer son déploiement international. Quelle est la date exacte de signature ?</p>
-                    <p><strong>Résolution (Google Dorks & Web OSINT) :</strong> À partir d'un post LinkedIn mentionnant <em>Jérôme Osfart</em>, président d'<strong>AquaVentis Partners</strong>, utilisation du Google Dork <code>"AquaVentis Partners"</code> pour localiser le site officiel de l'entreprise et l'article de presse <em>« AquaVentis Partners joins Marinatech Industries »</em>.</p>
-                    <span class="flag-pill">🚩 Flag : 20/05/2026</span>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenges 2.3 à 2.5 — Minerai de Lantrium, Fuite « Tang Bordel » & Traçage de Transactions</h3>
-                    <div class="doc-code-green">• Recherche encyclopédique sur le wiki de Lianhua pour extraire les propriétés du Lantrium (numéro atomique).
-• Pivot SOCMINT sur le handle "Tang Bordel" menant au profil Mastodon de Tanguy Bordelier.
-• Inspection de l'adresse Ethereum (0x188E7f50B72A0E2cBFb327425D1cFe784428f260) et remontée des 4 transactions initiales pour identifier le commanditaire ayant financé Tanguy Bordelier.</div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenges 2.6 à 2.9 — Analyse Forensique d'Email (Menace-Enzo.eml) & Tracking Pixel</h3>
-                    <div class="doc-code-green">1. Analyse des en-têtes SMTP (Received chain) du fichier .eml en remontant du bas vers le haut :
-   → Extraction de l'adresse IP d'origine : 47.242.108.213
-
-2. Inspection du code HTML du courriel et découverte d'un pixel de tracking invisible (1x1 px) :
-   → URL : jlekt.eu/pixel/track?uid=riesmeyer&amp;campaign=menace_01&amp;t=1748905831
-   → Pivot vers le domaine interne pxltrakln.int accessible via l'environnement proxy de Lianhua.
-   → Identification du document partagé et extraction de l'identifiant "zhouwenj" sur le réseau Qiao Network.</div>
-                    <span class="flag-pill">🚩 Flags : 47.242.108.213 • Zhou Wenjie</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CHAPITRE 3 -->
-    <div id="dt-chap3-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <button class="btn-back-pill" onclick="document.getElementById('dt-chap3-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
-                <button class="modal-close" onclick="document.getElementById('dt-chap3-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <div class="report-main-title">Chapitre 3 : What's up doc ? (2 Challs)</div>
-                <div class="report-Binome">Investigation Chercheur & Stéganographie PNG</div>
-
-                <div class="doc-section">
-                    <h3>Challenge 3.1 — Doctor who</h3>
-                    <p><strong>Objectif :</strong> Reconstituer le parcours académique et les publications scientifiques du chercheur <strong>Wuan</strong> travaillant sur les technologies sensibles de Marinatech Industries.</p>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenge 3.2 — Message intime (Forensic & Stéganographie)</h3>
-                    <p><strong>Contexte :</strong> Les lois de sécurité de Lianhua étant très coercitives envers leurs ressortissants, Wuan avait-il réellement l'intention de détourner la technologie de Marinatech ? Une photo publiée en hommage à son père contient un indice dissimulé.</p>
-                    <div class="doc-code-green"># 1. Inspection de l'image PNG avec zsteg : détection de données suspectes après le chunk de fin IEND
-$ zsteg photo_wuan.png
-extradata:0 .. file: Zip archive, with extra data (magic bytes PK\x03\x04)
-
-# 2. Extraction automatique de l'archive ZIP dissimulée avec foremost
-$ foremost -i photo_wuan.png -o output_foremost/
-
-# 3. Lecture du message laissé par Wuan à son père confirmant qu'il agissait sous la contrainte</div>
-                    <span class="flag-pill">🚩 Flag : 你深愛的兒子 (Ton fils qui t'aime profondément)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CHAPITRE 4 -->
-    <div id="dt-chap4-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <button class="btn-back-pill" onclick="document.getElementById('dt-chap4-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
-                <button class="modal-close" onclick="document.getElementById('dt-chap4-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <div class="report-main-title">Chapitre 4 : Partenaire particulier (1 Chall)</div>
-                <div class="report-Binome">Institut Lotus & Renseignement Économique</div>
-
-                <div class="doc-section">
-                    <h3>Challenge 4.1 — Capital</h3>
-                    <p><strong>Contexte :</strong> Analyse des ramifications financières et institutionnelles autour de l'<strong>Institut Lotus</strong> et de ses liens avec l'écosystème de Marinatech Industries.</p>
-                    <p><strong>Méthodologie :</strong> Recoupement de registres d'entreprises, analyse des publications de l'Institut Lotus et synthèse globale de la chaîne d'ingérence étrangère visant les technologies navales de Marinatech.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- MODAL OPÉRATION CULOT BPIFRANCE -->
     <div id="culot-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <button class="btn-back-pill" onclick="document.getElementById('culot-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
-                <button class="modal-close" onclick="document.getElementById('culot-modal').classList.add('hidden')">✕ FERMER</button>
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour aux Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
             </div>
             <div class="modal-content">
                 <div class="report-main-title">CTF « Opération Culot » (Bpifrance - BIG 2026)</div>
@@ -2257,8 +2514,8 @@ $ foremost -i photo_wuan.png -o output_foremost/
     <div id="forensic-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <button class="btn-back-pill" onclick="document.getElementById('forensic-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
-                <button class="modal-close" onclick="document.getElementById('forensic-modal').classList.add('hidden')">✕ FERMER</button>
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour aux Write-Ups</button>
+                <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
             </div>
             <div class="modal-content">
                 <div class="report-main-title">Atelier Forensic & GeoINT (CyberSup Puteaux)</div>
@@ -2284,7 +2541,22 @@ $ foremost -i photo_wuan.png -o output_foremost/
     </footer>
 
     <script>
-        // --- 1. GESTION AUTOMATIQUE DES EXTENSIONS (.jpg / .png) ---
+        // --- 1. NAVIGATION ENTRE CHAPITRES DEEP THREATS ---
+        function closeAllModals() {
+            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden'));
+        }
+
+        function openChapterModal(num) {
+            closeAllModals();
+            const target = document.getElementById('dt-chap' + num + '-modal');
+            if (target) {
+                target.classList.remove('hidden');
+                const content = target.querySelector('.modal-content');
+                if (content) content.scrollTop = 0;
+            }
+        }
+
+        // --- 2. GESTION AUTOMATIQUE DES EXTENSIONS (.jpg / .png) ---
         const culotImg = document.getElementById('cert-img-culot');
         const dgaImg = document.getElementById('cert-img-dga');
 
@@ -2298,7 +2570,7 @@ $ foremost -i photo_wuan.png -o output_foremost/
             else if (this.src.endsWith('.png')) this.src = 'img/certificat-deepthreats.jpeg';
         };
 
-        // --- 2. SCROLLSPY : ILLUMINATION AUTOMATIQUE DU MENU EN HAUT À DROITE ---
+        // --- 3. SCROLLSPY : ILLUMINATION AUTOMATIQUE DU MENU EN HAUT À DROITE ---
         const navLinks = document.querySelectorAll('.nav-links a.nav-item');
         const spySections = ['accueil', 'badges', 'projets', 'writeups', 'veille', 'competences', 'parcours'];
 
@@ -2324,7 +2596,7 @@ $ foremost -i photo_wuan.png -o output_foremost/
         window.addEventListener('scroll', updateActiveNav);
         updateActiveNav();
 
-        // --- 3. CONSOLE INTERACTIVE DU HERO ---
+        // --- 4. CONSOLE INTERACTIVE DU HERO ---
         const termOutput = document.getElementById('hero-term-output');
         const termInput = document.getElementById('hero-term-input');
 
@@ -2333,7 +2605,7 @@ $ foremost -i photo_wuan.png -o output_foremost/
             'status': `• Opérateur : <strong>Mehdi BEN MOULAY</strong><br>• Poste : <strong>Administrateur Systèmes & Réseaux</strong> (Alternance @ Io.sys 2.21)<br>• Formation : BTS SIO SISR (Ingetis, Paris)`,
             'soc': `🛡️ <strong>Mini-SOC Wazuh & Blue Team :</strong><br>• Detection Engineering : Règle XML 100005 PCRE2 (Atomic Red Team / MITRE T1547.001)<br>• Défense Active : Bannissement dynamique via iptables (60s DROP sur brute-force SSH)<br>• Alerting & CTI : API VirusTotal + Script Python Webhook Discord (BlueScope SOC Sentinel)`,
             'lxc': `🐳 <strong>Homelab Proxmox VE (5 conteneurs LXC) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord Python (boutons d'allumage, SSH par clés)<br>• CT 107, 108, 110, 111 : Instances isolées, arrêt auto sur inactivité & rollbacks .tar.gz`,
-            'ctf': `🏆 <strong>Palmarès CTF & Write-Ups :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• CTF Deep Threats (DGA) : 22 challenges résolus en 4 chapitres (Marinatech Industries & Institut Lotus)<br>• Atelier Forensic (CyberSup) : Métadonnées, en-têtes & GeoINT satellite`,
+            'ctf': `🏆 <strong>Palmarès CTF & Write-Ups :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• CTF Deep Threats (DGA) : 22 challenges résolus en 6 chapitres (Marinatech Industries & Institut Lotus)<br>• Atelier Forensic (CyberSup) : Métadonnées, en-têtes & GeoINT satellite`,
             'veille': `📡 <strong>Veille Technologique Active :</strong><br>• Axe 1 (Cyber) : CVE critiques, règles Wazuh & MITRE ATT&CK<br>• Axe 2 (IA) : Workflows N8N + LLM pour l'automatisation IT & SecOps<br>• Axe 3 (Infra) : Proxmox VE, conteneurs LXC & pipelines GitLab CI/CD`
         };
 
@@ -2362,7 +2634,7 @@ $ foremost -i photo_wuan.png -o output_foremost/
             }
         });
 
-        // --- 4. EFFET MACHINE À ÉCRIRE ---
+        // --- 5. EFFET MACHINE À ÉCRIRE ---
         const roles = [
             "Administrateur Systèmes & Réseaux",
             "Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)",
@@ -2408,11 +2680,11 @@ $ foremost -i photo_wuan.png -o output_foremost/
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeLightbox();
-                document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden'));
+                closeAllModals();
             }
         });
 
-        // --- 5. MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
+        // --- 6. MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
         const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
