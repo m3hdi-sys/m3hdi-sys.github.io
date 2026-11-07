@@ -50,18 +50,18 @@
         a { text-decoration: none; color: inherit; }
         code, .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* --- NAVIGATION --- */
+        /* --- NAVIGATION AVEC SCROLLSPY LUMINEUX --- */
         nav {
             position: fixed;
             top: 0; width: 100%;
-            background: rgba(3, 4, 11, 0.82);
+            background: rgba(3, 4, 11, 0.85);
             backdrop-filter: blur(18px);
             border-bottom: 1px solid var(--border);
             z-index: 1000;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 5%;
+            padding: 14px 5%;
         }
 
         .nav-brand {
@@ -93,14 +93,36 @@
             align-items: center;
         }
 
-        .nav-links a {
+        .nav-links a.nav-item {
             font-size: 0.84rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: 0.25s;
+            font-weight: 600;
+            color: #64748b;
+            transition: all 0.3s ease;
+            padding: 6px 4px;
+            position: relative;
         }
 
-        .nav-links a:hover { color: var(--accent); }
+        .nav-links a.nav-item:hover {
+            color: #cbd5e1;
+        }
+
+        /* État illuminé quand on est sur la section */
+        .nav-links a.nav-item.active {
+            color: var(--accent);
+            text-shadow: 0 0 12px rgba(56, 189, 248, 0.65);
+        }
+
+        .nav-links a.nav-item.active::after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+            border-radius: 2px;
+        }
 
         .nav-cta {
             background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2));
@@ -109,7 +131,9 @@
             padding: 8px 15px;
             border-radius: 8px;
             font-weight: 700 !important;
+            font-size: 0.84rem;
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+            transition: 0.25s;
         }
 
         .nav-cta:hover {
@@ -528,7 +552,7 @@
             box-shadow: 0 0 18px var(--accent-glow);
         }
 
-        /* --- DESIGN SPÉCIFIQUE WRITE-UPS DEEP THREATS (BANNIÈRE DT + 4 CHAPITRES) --- */
+        /* --- DESIGN SPÉCIFIQUE WRITE-UPS DEEP THREATS --- */
         .dt-banner-card {
             background: linear-gradient(145deg, rgba(13, 22, 44, 0.88), rgba(7, 12, 26, 0.94));
             border: 1px solid rgba(56, 189, 248, 0.28);
@@ -871,32 +895,42 @@
         .hidden { display: none !important; }
 
         .modal-box {
-            background: #0b1021;
-            border: 1px solid var(--accent);
-            border-radius: 14px;
+            background: #091122;
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            border-radius: 16px;
             width: 100%;
-            max-width: 960px;
-            height: 88vh;
+            max-width: 860px;
+            height: 90vh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 30px rgba(56, 189, 248, 0.2);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.85), 0 0 30px rgba(56, 189, 248, 0.15);
         }
 
         .modal-header {
-            background: #111833;
+            background: #0d172e;
             border-bottom: 1px solid var(--border);
-            padding: 16px 24px;
+            padding: 16px 28px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .modal-header span {
-            font-family: 'JetBrains Mono', monospace;
+        .btn-back-pill {
+            background: #38bdf8;
+            color: #03040b;
             font-weight: 700;
-            color: var(--accent);
-            font-size: 0.92rem;
+            font-size: 0.85rem;
+            padding: 8px 18px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
+        }
+        .btn-back-pill:hover {
+            background: #7dd3fc;
+            transform: translateX(-2px);
         }
 
         .modal-close {
@@ -911,51 +945,105 @@
         .modal-close:hover { background: #ef4444; color: #fff; }
 
         .modal-content {
-            padding: 32px;
+            padding: 38px 42px;
             overflow-y: auto;
             flex: 1;
         }
 
-        .report-meta-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin-bottom: 26px;
+        /* Style identique à tes captures pour les comptes-rendus */
+        .report-main-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #38bdf8;
+            line-height: 1.2;
+            margin-bottom: 8px;
         }
 
-        .report-meta-box {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid var(--border);
-            padding: 12px 16px;
-            border-radius: 8px;
+        .report-Binome {
+            font-style: italic;
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
         }
 
-        .report-meta-box small {
-            display: block;
-            font-size: 0.72rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            font-family: 'JetBrains Mono', monospace;
+        .report-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
         }
 
-        .report-meta-box strong {
-            color: var(--accent);
-            font-size: 0.92rem;
+        .objective-callout {
+            background: rgba(15, 25, 48, 0.85);
+            border-left: 4px solid #38bdf8;
+            padding: 18px 22px;
+            border-radius: 6px;
+            margin-bottom: 32px;
+            font-size: 0.96rem;
+            color: #e2e8f0;
         }
 
-        .doc-section { margin-bottom: 30px; }
+        .objective-callout strong {
+            color: #38bdf8;
+        }
+
+        .doc-section { margin-bottom: 34px; }
         .doc-section h3 {
-            color: var(--accent);
-            font-size: 1.15rem;
+            color: #ffffff;
+            font-size: 1.45rem;
+            font-weight: 800;
             border-bottom: 1px solid var(--border);
-            padding-bottom: 8px;
-            margin-bottom: 14px;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
         }
-        .doc-section p {
-            color: var(--text-muted);
-            font-size: 0.92rem;
+        .doc-section h4 {
+            color: #38bdf8;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-top: 18px;
             margin-bottom: 10px;
         }
+        .doc-section p {
+            color: #cbd5e1;
+            font-size: 0.96rem;
+            line-height: 1.7;
+            margin-bottom: 12px;
+        }
+        .doc-section ul {
+            margin-left: 20px;
+            margin-bottom: 16px;
+            color: #cbd5e1;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .doc-section ul li {
+            margin-bottom: 10px;
+        }
+        .inline-code {
+            background: rgba(15, 23, 42, 0.95);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: #38bdf8;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+
+        /* Code block vert terminal comme sur ta capture */
+        .doc-code-green {
+            background: #050911;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: #a3e635;
+            margin: 16px 0;
+            white-space: pre-wrap;
+            border-radius: 8px;
+            overflow-x: auto;
+            line-height: 1.65;
+        }
+
         .doc-code {
             background: #050811;
             border: 1px solid #1e293b;
@@ -984,22 +1072,38 @@
         }
 
         .doc-img-wrapper {
-            background: #050811;
-            border: 1px solid var(--border);
-            padding: 12px;
-            border-radius: 8px;
-            margin: 14px 0;
+            margin: 22px 0;
             text-align: center;
         }
         .doc-img {
             max-width: 100%;
             height: auto;
-            border-radius: 4px;
+            border-radius: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.25);
             cursor: zoom-in;
             transition: 0.2s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         }
         .doc-img:hover { transform: scale(1.01); }
-        .img-caption { font-size: 0.8rem; color: var(--text-dim); margin-top: 8px; font-style: italic; }
+        .img-caption { font-size: 0.84rem; color: var(--text-dim); margin-top: 10px; font-style: italic; }
+
+        .btn-pdf-report {
+            display: inline-block;
+            background: #38bdf8;
+            color: #03040b;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 14px 32px;
+            border-radius: 999px;
+            margin-top: 12px;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
+            transition: 0.25s;
+        }
+        .btn-pdf-report:hover {
+            background: #7dd3fc;
+            transform: translateY(-2px);
+            box-shadow: 0 0 35px rgba(56, 189, 248, 0.7);
+        }
 
         /* --- LIGHTBOX PLEIN ÉCRAN --- */
         #lightbox {
@@ -1054,6 +1158,7 @@
             .hero { grid-template-columns: 1fr; }
             .grid-2 { grid-template-columns: 1fr; }
             .nav-links { display: none; }
+            .modal-content { padding: 24px 20px; }
         }
     </style>
 </head>
@@ -1068,27 +1173,28 @@
         <button class="btn btn-secondary" style="margin-top: 16px;">✕ Fermer l'aperçu</button>
     </div>
 
-    <!-- NAVIGATION (SANS ALIAS EN HAUT À GAUCHE) -->
+    <!-- NAVIGATION AVEC ACCUEIL & ILLUMINATION AUTOMATIQUE (SCROLLSPY) -->
     <nav>
         <div class="nav-brand">
             <span class="status-dot"></span>
             <span>Mehdi BEN MOULAY <span style="color:var(--accent);">// ADMINISTRATEUR SYSTÈMES & RÉSEAUX</span></span>
         </div>
         <div class="nav-links">
-            <a href="#badges">Badges & Certificats</a>
-            <a href="#projets">Projets</a>
-            <a href="#writeups">Write-Ups CTF</a>
-            <a href="#veille">Veille Cyber & IA</a>
-            <a href="#competences">Compétences</a>
-            <a href="#parcours">Parcours</a>
+            <a href="#accueil" class="nav-item active">Accueil</a>
+            <a href="#badges" class="nav-item">Badges & Certificats</a>
+            <a href="#projets" class="nav-item">Projets</a>
+            <a href="#writeups" class="nav-item">Write-Ups CTF</a>
+            <a href="#veille" class="nav-item">Veille Cyber & IA</a>
+            <a href="#competences" class="nav-item">Compétences</a>
+            <a href="#parcours" class="nav-item">Parcours</a>
             <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="nav-cta">📄 CV PDF</a>
         </div>
     </nav>
 
     <div class="container">
 
-        <!-- HERO SECTION (SANS ALIAS EN HAUT À GAUCHE) -->
-        <header class="hero reveal visible">
+        <!-- HERO SECTION (ID ACCUEIL) -->
+        <header id="accueil" class="hero reveal visible">
             <div>
                 <div class="hero-badge">
                     <span>🌌 Administrateur Systèmes & Réseaux • BTS SIO SISR (2ème année)</span>
@@ -1096,7 +1202,7 @@
                 <h1>Mehdi BEN MOULAY</h1>
                 <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
                 <p>
-                    Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (Mini-SOC Wazuh, haute disponibilité HSRP, tunnels VPN IPsec) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
+                    Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (supervision SOC Wazuh, tunnels VPN IPsec, routage OSPF) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
                 </p>
                 <div class="btn-group">
                     <a href="CV-Mehdi-BENMOULAY-BTS.pdf" target="_blank" class="btn btn-primary">📥 Télécharger mon CV (PDF)</a>
@@ -1131,7 +1237,7 @@
                     <div style="color:#e2e8f0; margin-bottom:8px;">
                         • Poste : Administrateur Systèmes & Réseaux (Alternance @ Io.sys 2.21)<br>
                         • Formation : BTS SIO SISR (Ingetis, Paris)<br>
-                        • Spécialités : Proxmox LXC, Mini-SOC Wazuh, HSRP & VPN IPsec
+                        • Spécialités : Proxmox LXC, Mini-SOC Wazuh, VPN IPsec & GitLab CI/CD
                     </div>
                 </div>
                 <div class="term-input-row">
@@ -1302,7 +1408,7 @@
             </div>
         </section>
 
-        <!-- SECTION 2 : PROJETS TECHNIQUES & COMPTES-RENDUS DÉTAILLÉS -->
+        <!-- SECTION 2 : PROJETS TECHNIQUES & COMPTES-RENDUS (SANS HSRP) -->
         <section id="projets" class="reveal">
             <div class="section-header">
                 <span class="section-tag">// 02. Réalisations, Architectures & Rapports Techniques</span>
@@ -1314,15 +1420,15 @@
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
-                            <span class="pill pill-green">Blue Team • SIEM & SOAR</span>
+                            <span class="pill pill-green">Blue Team • SIEM & SOAR-lite</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
                         </div>
                         <h4>Déploiement Mini-SOC (Wazuh)</h4>
-                        <p>Création d'une infrastructure de détection et réponse aux incidents de A à Z sur un parc hybride (Windows/Linux) avec Wazuh et Sysmon.</p>
+                        <p>Création d'une infrastructure de détection et réponse aux incidents de A à Z sur un parc hybride (Windows 11 / Debian 13) avec Wazuh et Sysmon.</p>
                         <ul class="card-list">
-                            <li><strong>Detection Engineering :</strong> Création de règles XML sur-mesure face aux simulations d'attaques (<em>Atomic Red Team / MITRE ATT&CK</em>).</li>
-                            <li><strong>Défense Active (SOAR) :</strong> Bannissement dynamique via <code>iptables</code> lors de tentatives de brute-force.</li>
-                            <li><strong>Alerting & CTI :</strong> Intégration de l'API <strong>VirusTotal</strong> et développement d'un script Python pour notifier les équipes via un <strong>Webhook Discord</strong>.</li>
+                            <li><strong>Detection Engineering :</strong> Création de règles XML sur-mesure (<code>PCRE2</code>) face aux simulations d'attaques (<em>Atomic Red Team / MITRE ATT&CK</em>).</li>
+                            <li><strong>Défense Active (SOAR-lite) :</strong> Bannissement dynamique via <code>iptables</code> (Action DROP) lors de tentatives de brute-force SSH.</li>
+                            <li><strong>Alerting & CTI :</strong> Intégration de l'API <strong>VirusTotal</strong> et développement d'un script Python pour notifier les équipes via un <strong>Webhook Discord</strong> (<em>BlueScope SOC Sentinel</em>).</li>
                         </ul>
                     </div>
                     <div>
@@ -1333,40 +1439,15 @@
                             <span class="tech-tag">Python</span>
                         </div>
                         <button class="card-btn" onclick="document.getElementById('soc-modal').classList.remove('hidden')">
-                            → Consulter le compte-rendu technique complet
+                            → Consulter le compte-rendu technique
                         </button>
+                        <a href="Rapport_Mini-SOC_BlueScop.pdf" target="_blank" class="card-btn" style="margin-top:8px; border-color:rgba(148,163,184,0.35); color:#cbd5e1;">
+                            📄 Voir le rapport complet (PDF)
+                        </a>
                     </div>
                 </div>
 
-                <!-- PROJET 2 : INFRASTRUCTURE LXC PROXMOX & CHATOPS -->
-                <div class="card">
-                    <div>
-                        <div class="card-top-meta">
-                            <span class="pill pill-purple">Homelab & ChatOps</span>
-                            <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
-                        </div>
-                        <h4>Infrastructure LXC Proxmox & Automatisation ChatOps</h4>
-                        <p>Architecture multi-serveurs conteneurisée sous Proxmox VE pilotée à distance via un Bot Discord d'administration en Python.</p>
-                        <ul class="card-list">
-                            <li><strong>Virtualisation LXC :</strong> Isolation de 5 conteneurs Debian (CT 107 à 111) gérés via <code>pct</code>, IP statiques et exposition par tunneling TCP/UDP (Playit.gg).</li>
-                            <li><strong>Bot Discord ChatOps (Python) :</strong> Boutons Discord exécutant des commandes SSH asynchrones (<code>asyncio</code>) par clés pour allumer/éteindre les mondes à la demande.</li>
-                            <li><strong>MCO & Rollback 30 min :</strong> Démons <code>systemd</code>, suivi des joueurs en ligne (parsing <code>journalctl</code> par Regex), extinction auto sur inactivité et backups/rollbacks <code>.tar.gz</code>.</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <div class="tag-group">
-                            <span class="tech-tag">Proxmox VE / LXC</span>
-                            <span class="tech-tag">Python Asyncio</span>
-                            <span class="tech-tag">Systemd / Journalctl</span>
-                            <span class="tech-tag">SSH / Bash</span>
-                        </div>
-                        <button class="card-btn" onclick="document.getElementById('proxmox-modal').classList.remove('hidden')">
-                            → Consulter le détail du projet (CT 107–111)
-                        </button>
-                    </div>
-                </div>
-
-                <!-- PROJET 3 : VPN SITE-TO-SITE (IPSEC) & OSPF -->
+                <!-- PROJET 2 : VPN SITE-TO-SITE (IPSEC) & OSPF -->
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
@@ -1394,36 +1475,36 @@
                     </div>
                 </div>
 
-                <!-- PROJET 4 : HAUTE DISPONIBILITÉ (HSRP) -->
+                <!-- PROJET 3 : INFRASTRUCTURE LXC PROXMOX & CHATOPS -->
                 <div class="card">
                     <div>
                         <div class="card-top-meta">
-                            <span class="pill">Résilience Réseau & Scripting</span>
+                            <span class="pill pill-purple">Homelab & ChatOps</span>
                             <span class="mono" style="font-size:0.8rem; color:var(--text-dim);">2026</span>
                         </div>
-                        <h4>Haute Disponibilité (HSRP)</h4>
-                        <p>Déploiement d'une architecture réseau redondante sous Cisco Packet Tracer, implémentant le protocole HSRP pour assurer la continuité de service.</p>
+                        <h4>Infrastructure LXC Proxmox & Automatisation ChatOps</h4>
+                        <p>Architecture multi-serveurs conteneurisée sous Proxmox VE pilotée à distance via un Bot Discord d'administration en Python.</p>
                         <ul class="card-list">
-                            <li><strong>Résilience (Disaster Recovery) :</strong> Conception d'une infrastructure tolérante aux pannes (<em>Failover</em>).</li>
-                            <li><strong>Routage avancé :</strong> Configuration de passerelles virtuelles pour éviter les interruptions de service (SLA).</li>
-                            <li><strong>Automatisation :</strong> Scripting Python pour tester dynamiquement la bascule en cas de coupure de lien.</li>
+                            <li><strong>Virtualisation LXC :</strong> Isolation de 5 conteneurs Debian (CT 107 à 111) gérés via <code>pct</code>, IP statiques et exposition par tunneling TCP/UDP (Playit.gg).</li>
+                            <li><strong>Bot Discord ChatOps (Python) :</strong> Boutons Discord exécutant des commandes SSH asynchrones (<code>asyncio</code>) par clés pour allumer/éteindre les mondes à la demande.</li>
+                            <li><strong>MCO & Rollback 30 min :</strong> Démons <code>systemd</code>, suivi des joueurs en ligne (parsing <code>journalctl</code> par Regex), extinction auto sur inactivité et backups/rollbacks <code>.tar.gz</code>.</li>
                         </ul>
                     </div>
                     <div>
                         <div class="tag-group">
-                            <span class="tech-tag">Networking</span>
-                            <span class="tech-tag">Automation</span>
-                            <span class="tech-tag">Cisco HSRP</span>
-                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Proxmox VE / LXC</span>
+                            <span class="tech-tag">Python Asyncio</span>
+                            <span class="tech-tag">Systemd / Journalctl</span>
+                            <span class="tech-tag">SSH / Bash</span>
                         </div>
-                        <button class="card-btn" onclick="document.getElementById('hsrp-modal').classList.remove('hidden')">
-                            → Consulter le détail du projet HSRP
+                        <button class="card-btn" onclick="document.getElementById('proxmox-modal').classList.remove('hidden')">
+                            → Consulter le détail du projet (CT 107–111)
                         </button>
                     </div>
                 </div>
 
-                <!-- PROJET 5 : PIPELINE CI/CD GITLAB -->
-                <div class="card" style="grid-column: 1 / -1;">
+                <!-- PROJET 4 : PIPELINE CI/CD GITLAB -->
+                <div class="card">
                     <div>
                         <div class="card-top-meta">
                             <span class="pill pill-gold">DevOps & Mise en Production</span>
@@ -1690,13 +1771,13 @@
 
                 <div class="card">
                     <h4>🌐 Réseaux & Sécurité Périmétrique</h4>
-                    <p>Conception d'architectures résilientes, interconnexion de sites et filtrage.</p>
+                    <p>Conception d'architectures réseau, interconnexion de sites et filtrage.</p>
                     <div class="tag-group">
                         <span class="tech-tag">Architecture TCP/IP & OSI</span>
-                        <span class="tech-tag">Routage / HSRP (Failover)</span>
+                        <span class="tech-tag">Routage OSPF</span>
                         <span class="tech-tag">VLAN</span>
                         <span class="tech-tag">pfSense / iptables</span>
-                        <span class="tech-tag">VPN (IPsec / OSPF)</span>
+                        <span class="tech-tag">VPN (IPsec)</span>
                         <span class="tech-tag">SSH (Clés)</span>
                         <span class="tech-tag">Tunneling TCP/UDP</span>
                     </div>
@@ -1776,7 +1857,7 @@
                                 <span class="tl-date">2025 - 2027</span>
                             </div>
                             <div class="tl-sub">Ingetis, Paris</div>
-                            <div class="tl-desc">Solutions d'Infrastructure, Systèmes et Réseaux : administration Linux/Windows Server, virtualisation, cybersécurité, routage et haute disponibilité.</div>
+                            <div class="tl-desc">Solutions d'Infrastructure, Systèmes et Réseaux : administration Linux/Windows Server, virtualisation, cybersécurité et routage réseau.</div>
                         </div>
 
                         <div class="tl-item">
@@ -1803,211 +1884,122 @@
     </div>
 
     <!-- =========================================================================
-         MODALES DES 4 CHAPITRES DU WRITE-UP DEEP THREATS (DGA & CAMPUS OSINT)
+         MODALE DU VRAI COMPTE-RENDU MINI-SOC WAZUH (AVEC TES IMAGES & TON PDF)
          ========================================================================= -->
-
-    <!-- CHAPITRE 1 : À VOS MARQUES (3 CHALLS) -->
-    <div id="dt-chap1-modal" class="modal-overlay hidden">
+    <div id="soc-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 1 — À VOS MARQUES (3 CHALLS)</span>
-                <button class="modal-close" onclick="document.getElementById('dt-chap1-modal').classList.add('hidden')">✕ FERMER</button>
+                <button class="btn-back-pill" onclick="document.getElementById('soc-modal').classList.add('hidden')">← Retour aux projets</button>
+                <button class="modal-close" onclick="document.getElementById('soc-modal').classList.add('hidden')">✕ FERMER</button>
             </div>
             <div class="modal-content">
-                <h2 style="margin-bottom: 16px;">Chapitre 1 : À vos marques (Reconnaissance initiale & Cadre DGA)</h2>
-                
-                <div class="doc-section">
-                    <h3>Challenge 1.1 — Votre attention s'il vous plaît !</h3>
-                    <p><strong>Objectif :</strong> Identifier la sanction encourue en cas d'action offensive contre les infrastructures du CTF ou les cibles de l'enquête afin de garantir le respect strict du cadre légal OSINT (collecte passive uniquement).</p>
-                    <p><strong>Méthodologie :</strong> Analyse du règlement officiel de la compétition organisée par le Campus OSINT et la Direction Générale de l'Armement (DGA).</p>
-                    <span class="flag-pill">🚩 Flag : bannissement de l'équipe</span>
+                <div class="report-main-title">Déploiement d'un Mini-SOC Wazuh</div>
+                <div class="report-Binome">Projet réalisé en binôme avec Lauryn HECQUE--NASCIMENTO</div>
+
+                <div class="report-tags">
+                    <span class="tech-tag">Blue Team</span>
+                    <span class="tech-tag">SIEM / XDR</span>
+                    <span class="tech-tag">Detection Engineering</span>
+                    <span class="tech-tag">MITRE ATT&CK</span>
+                    <span class="tech-tag">SOAR-lite</span>
+                </div>
+
+                <div class="objective-callout">
+                    <strong>OBJECTIF :</strong> Concevoir et déployer une infrastructure complète de surveillance, de détection et de réponse aux incidents (SOC) sur un parc hybride, afin de contrer des attaques réalistes.
                 </div>
 
                 <div class="doc-section">
-                    <h3>Challenge 1.2 — Ordre de mission</h3>
-                    <p><strong>Objectif :</strong> Prise de connaissance du briefing opérationnel concernant la PME française de défense navale <strong>Marinatech Industries</strong> et validation du lancement de l'investigation.</p>
-                    <span class="flag-pill">🚩 Flag : GO</span>
+                    <h3>1. Architecture & Télémétrie Avancée</h3>
+                    <p>Le projet repose sur un cluster <strong>Wazuh</strong> (Manager, Indexer, Dashboard) déployé sur Ubuntu Server, chargé de superviser des endpoints Windows 11 et Debian 13.</p>
+                    
+                    <h4>La Télémétrie Windows (Sysmon)</h4>
+                    <p>Les journaux Windows classiques manquant de granularité, nous avons déployé <strong>Sysmon</strong> avec la configuration recommandée par l'industrie (<em>SwiftOnSecurity</em>). Cela permet au SIEM d'ingérer des logs bas-niveau cruciaux, notamment la création de processus avec arguments (Event ID 1) et l'accès à la mémoire LSASS (Event ID 10).</p>
+
+                    <div class="doc-img-wrapper">
+                        <img src="img/wazuhdashboard.png" onerror="if(this.src.endsWith('.png')) this.src='img/wazuhdashboard.jpg'; else if(this.src.endsWith('.jpg')) this.src='img/wazuhdashboard.jpeg';" class="doc-img" alt="Dashboard Wazuh" onclick="openLightbox(this.src)">
+                        <p class="img-caption">Validation de l'enrôlement des agents Windows et Debian sur le Dashboard Wazuh.</p>
+                    </div>
                 </div>
 
                 <div class="doc-section">
-                    <h3>Challenge 1.3 — Scoring</h3>
-                    <p><strong>Objectif :</strong> Validation du fonctionnement du système de points dynamiques et déclenchement du chronomètre d'équipe.</p>
-                    <span class="flag-pill">🚩 Flag : J'ai compris ce système et l'accepte</span>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <h3>2. Ingénierie de Détection (Detection Engineering)</h3>
+                    
+                    <h4>Simulation d'Attaque (Atomic Red Team)</h4>
+                    <p>Pour tester l'efficacité du SOC, nous avons utilisé le framework <strong>Atomic Red Team</strong> afin d'émuler des comportements adverses concrets, alignés sur le standard <strong>MITRE ATT&CK</strong>.</p>
 
-    <!-- CHAPITRE 2 : EN EAUX TROUBLES (9 CHALLS) -->
-    <div id="dt-chap2-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 2 — EN EAUX TROUBLES (9 CHALLS)</span>
-                <button class="modal-close" onclick="document.getElementById('dt-chap2-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <h2 style="margin-bottom: 16px;">Chapitre 2 : En eaux troubles (Marinatech Industries, SOCMINT & Analyse Réseau)</h2>
+                    <h4>Création de Règle Sur-Mesure</h4>
+                    <p>Suite à la simulation d'une attaque de persistance (T1547.001 - Registry Run Keys), nous avons rédigé une règle de détection personnalisée en XML, exploitant le moteur d'expressions régulières <span class="inline-code">PCRE2</span> pour déclencher une alerte critique :</p>
 
-                <div class="doc-section">
-                    <h3>Challenge 2.1 — Président !</h3>
-                    <p><strong>Contexte :</strong> Avant un entretien prévu avec le président de <em>Marinatech Industries</em>, <strong>Marc-Olivier Chasseneuil</strong>, nous devons identifier le poste qu'il occupait avant de rejoindre l'entreprise.</p>
-                    <p><strong>Résolution (SOCMINT) :</strong> Recherche ciblée sur LinkedIn du profil de Marc-Olivier Chasseneuil et analyse de l'historique de ses expériences professionnelles chez <em>NAVAL GROUP</em>.</p>
-                    <span class="flag-pill">🚩 Flag : Ingénieur naval</span>
+                    <div class="doc-code-green">&lt;!-- Règle de détection SOC personnalisée : Persistance Run --&gt;
+&lt;rule id="100005" level="12"&gt;
+  &lt;if_sid&gt;61613, 61614, 61615&lt;/if_sid&gt;
+  &lt;field name="win.eventdata.targetObject" type="pcre2"&gt;(?i)CurrentVersion.*Run&lt;/field&gt;
+  &lt;description&gt;ALERTE SOC : Tentative de persistance detectee dans la cle de registre Run&lt;/description&gt;
+  &lt;mitre&gt;
+    &lt;id&gt;T1547.001&lt;/id&gt;
+  &lt;/mitre&gt;
+&lt;/rule&gt;</div>
                 </div>
 
                 <div class="doc-section">
-                    <h3>Challenge 2.2 — Un nouvel allié</h3>
-                    <p><strong>Contexte :</strong> En 2026, Marinatech Industries a signé un partenariat stratégique pour accélérer son déploiement international. Quelle est la date exacte de signature ?</p>
-                    <p><strong>Résolution (Google Dorks & Web OSINT) :</strong> À partir d'un post LinkedIn mentionnant <em>Jérôme Osfart</em>, président d'<strong>AquaVentis Partners</strong>, utilisation du Google Dork <code>"AquaVentis Partners"</code> pour localiser le site officiel de l'entreprise et l'article de presse <em>« AquaVentis Partners joins Marinatech Industries »</em>.</p>
-                    <span class="flag-pill">🚩 Flag : 20/05/2026</span>
+                    <h3>3. Défense Active & Threat Intelligence</h3>
+
+                    <h4>Automatisation de la Réponse (SOAR-lite)</h4>
+                    <p>Pour sortir d'une posture purement passive, nous avons configuré le module <strong>Active Response</strong> de Wazuh. Lors d'une tentative de brute-force SSH sur le serveur Debian, le SIEM ordonne dynamiquement l'ajout de l'IP attaquante dans la table de filtrage <span class="inline-code">iptables</span> (Action DROP) pour une durée de 60 secondes.</p>
+
+                    <h4>Intégration CTI & Alerting</h4>
+                    <ul>
+                        <li><strong>VirusTotal :</strong> Corrélation en temps réel des hashs de fichiers suspects (via File Integrity Monitoring) avec l'API publique de VirusTotal.</li>
+                        <li><strong>Chaîne d'Astreinte (Discord) :</strong> Développement d'un script d'intégration en <strong>Python</strong> qui parse les alertes critiques (JSON) générées par Wazuh, et les transmet en temps réel via un Webhook sur un canal Discord d'astreinte.</li>
+                    </ul>
+
+                    <div class="doc-img-wrapper">
+                        <img src="img/attackdiscord.png" onerror="if(this.src.endsWith('.png')) this.src='img/attackdiscord.jpg'; else if(this.src.endsWith('.jpg')) this.src='img/attackdiscord.jpeg';" class="doc-img" alt="Alerte Discord BlueScope SOC Sentinel" onclick="openLightbox(this.src)">
+                        <p class="img-caption">Notification Rich Embed envoyée dynamiquement par le script Python sur le canal de réponse à incident.</p>
+                    </div>
                 </div>
 
-                <div class="doc-section">
-                    <h3>Challenges 2.3 à 2.5 — Minerai de Lantrium, Fuite « Tang Bordel » & Traçage de Transactions</h3>
-                    <p><strong>Contexte :</strong> Investigation sur le métal stratégique <strong>Lantrium</strong> (pays fictif de <em>Lianhua</em>) et identification de l'auteur d'une fuite d'informations opérant sous le pseudonyme <strong>Tang Bordel</strong>.</p>
-                    <div class="doc-code">• Recherche encyclopédique sur le wiki de Lianhua pour extraire les propriétés du Lantrium (numéro atomique).
-• Pivot SOCMINT sur le handle "Tang Bordel" menant au profil Mastodon de Tanguy Bordelier.
-• Inspection de l'adresse Ethereum (0x188E7f50B72A0E2cBFb327425D1cFe784428f260) et remontée des 4 transactions initiales pour identifier le commanditaire ayant financé Tanguy Bordelier.</div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenges 2.6 à 2.9 — Analyse Forensique d'Email (Menace-Enzo.eml) & Tracking Pixel</h3>
-                    <p><strong>Contexte :</strong> Enzo Riesmeyer reçoit un courriel de menaces anonyme (<code>Menace-Enzo.eml</code>) après s'être intéressé à la disparition de son cousin. Nous devons identifier l'adresse IP de l'expéditeur puis la personne qui se cache derrière ce message.</p>
-                    <div class="doc-code">1. Analyse des en-têtes SMTP (Received chain) du fichier .eml en remontant du bas vers le haut :
-   → Extraction de l'adresse IP d'origine : 47.242.108.213
-
-2. Inspection du code HTML du courriel et découverte d'un pixel de tracking invisible (1x1 px) :
-   → URL : jlekt.eu/pixel/track?uid=riesmeyer&amp;campaign=menace_01&amp;t=1748905831
-   → Pivot vers le domaine interne pxltrakln.int accessible via l'environnement proxy de Lianhua.
-   → Identification du document partagé et extraction de l'identifiant "zhouwenj" sur le réseau Qiao Network.</div>
-                    <span class="flag-pill">🚩 Flags : 47.242.108.213 • Zhou Wenjie</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CHAPITRE 3 : WHAT'S UP DOC ? (2 CHALLS) -->
-    <div id="dt-chap3-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 3 — WHAT'S UP DOC ? (2 CHALLS)</span>
-                <button class="modal-close" onclick="document.getElementById('dt-chap3-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <h2 style="margin-bottom: 16px;">Chapitre 3 : What's up doc ? (Investigation Chercheur & Stéganographie PNG)</h2>
-
-                <div class="doc-section">
-                    <h3>Challenge 3.1 — Doctor who</h3>
-                    <p><strong>Objectif :</strong> Reconstituer le parcours académique et les publications scientifiques du chercheur <strong>Wuan</strong> travaillant sur les technologies sensibles de Marinatech Industries.</p>
-                </div>
-
-                <div class="doc-section">
-                    <h3>Challenge 3.2 — Message intime (Forensic & Stéganographie)</h3>
-                    <p><strong>Contexte :</strong> Les lois de sécurité de Lianhua étant très coercitives envers leurs ressortissants, Wuan avait-il réellement l'intention de détourner la technologie de Marinatech ? Une photo publiée en hommage à son père contient un indice dissimulé.</p>
-                    <p><strong>Résolution technique (<code>zsteg</code> & <code>foremost</code>) :</strong></p>
-                    <div class="doc-code"># 1. Inspection de l'image PNG avec zsteg : détection de données suspectes après le chunk de fin IEND
-$ zsteg photo_wuan.png
-extradata:0 .. file: Zip archive, with extra data (magic bytes PK\x03\x04)
-
-# 2. Extraction automatique de l'archive ZIP dissimulée avec foremost
-$ foremost -i photo_wuan.png -o output_foremost/
-
-# 3. Lecture du message laissé par Wuan à son père confirmant qu'il agissait sous la contrainte</div>
-                    <span class="flag-pill">🚩 Flag : 你深愛的兒子 (Ton fils qui t'aime profondément)</span>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- CHAPITRE 4 : PARTENAIRE PARTICULIER (1 CHALL) -->
-    <div id="dt-chap4-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <span>[ WRITE-UP DEEP THREATS ] : CHAPITRE 4 — PARTENAIRE PARTICULIER (1 CHALL)</span>
-                <button class="modal-close" onclick="document.getElementById('dt-chap4-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <h2 style="margin-bottom: 16px;">Chapitre 4 : Partenaire particulier (Institut Lotus & Renseignement Économique)</h2>
-
-                <div class="doc-section">
-                    <h3>Challenge 4.1 — Capital</h3>
-                    <p><strong>Contexte :</strong> Analyse des ramifications financières et institutionnelles autour de l'<strong>Institut Lotus</strong> et de ses liens avec l'écosystème de Marinatech Industries.</p>
-                    <p><strong>Méthodologie :</strong> Recoupement de registres d'entreprises, analyse des publications de l'Institut Lotus et synthèse globale de la chaîne d'ingérence étrangère visant les technologies navales de Marinatech.</p>
+                <div class="doc-section" style="margin-bottom: 10px;">
+                    <h3>4. Bilan</h3>
+                    <p>Ce projet grandeur nature m'a permis de comprendre les rouages complexes du métier d'analyste SOC et d'ingénieur détection. Il a également mis en lumière des limites techniques réelles (SPOF lié à l'instance unique, quotas d'API), ouvrant la voie à de futures améliorations comme la mise en place d'un cluster redondant.</p>
+                    
+                    <div style="text-align: center; margin-top: 26px;">
+                        <a href="Rapport_Mini-SOC_BlueScop.pdf" target="_blank" class="btn-pdf-report">
+                            Consulter le rapport technique complet (PDF)
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- =========================================================================
-         MODALES DES PROJETS TECHNIQUES (MINI-SOC, VPN, HSRP, PROXMOX, CULOT, FORENSIC)
+         MODALE DU COMPTE-RENDU CISCO VPN IPSEC (AVEC TES 8 CAPTURES)
          ========================================================================= -->
-
-    <!-- MODAL MINI-SOC WAZUH -->
-    <div id="soc-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <span>[ COMPTE-RENDU TECHNIQUE ] : DEPLOIEMENT_MINI_SOC_WAZUH.md</span>
-                <button class="modal-close" onclick="document.getElementById('soc-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <h2 style="margin-bottom: 14px;">Compte-Rendu : Déploiement d'un Mini-SOC Hybride (Wazuh, Sysmon, VirusTotal & SOAR)</h2>
-                
-                <div class="report-meta-grid">
-                    <div class="report-meta-box"><small>Domaine</small><strong>Blue Team / SIEM / SOAR</strong></div>
-                    <div class="report-meta-box"><small>Parc supervisé</small><strong>Windows & Linux Debian</strong></div>
-                    <div class="report-meta-box"><small>Télémétrie</small><strong>Sysmon & Auditd</strong></div>
-                    <div class="report-meta-box"><small>Threat Intel</small><strong>API VirusTotal + Discord</strong></div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>1. Contexte & Architecture du Mini-SOC</h3>
-                    <p>Conception de A à Z d'une infrastructure centralisée de détection et de réponse aux incidents (SIEM/XDR) surveillant un parc hybride (postes Windows et serveurs Linux), qualifiant les attaques selon <strong>MITRE ATT&CK</strong> et automatisant la remédiation (SOAR).</p>
-                    <div class="doc-code">[Endpoint Windows + Sysmon] ──┐
-                              ├──► [Serveur Wazuh SIEM/XDR] ◄──► [API VirusTotal (Scan FIM)]
-[Serveur Linux + Auditd/SSH] ─┘              │
-                                             ├──► Réponse Active : Bannissement IP (iptables)
-                                             └──► Script Python : Alerting temps réel (Webhook Discord)</div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>2. Detection Engineering (Règles XML face à Atomic Red Team)</h3>
-                    <div class="doc-code">&lt;group name="local,sysmon,mitre_attack,"&gt;
-  &lt;rule id="100110" level="12"&gt;
-    &lt;if_group&gt;sysmon_event1&lt;/if_group&gt;
-    &lt;field name="win.eventdata.commandLine" type="pcre2"&gt;(?i)(Invoke-AtomicTest|mimikatz|-enc|FromBase64String)&lt;/field&gt;
-    &lt;description&gt;[SOC ALERTE] Exécution PowerShell malveillante détectée (MITRE T1059.001)&lt;/description&gt;
-    &lt;mitre&gt;&lt;id&gt;T1059.001&lt;/id&gt;&lt;/mitre&gt;
-  &lt;/rule&gt;
-&lt;/group&gt;</div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>3. Défense Active (SOAR) & Alerting Webhook Discord</h3>
-                    <p>Bannissement dynamique via <code>iptables</code> (module Active Response <code>firewall-drop</code>) lors de tentatives de brute-force SSH/RDP, vérification automatique des fichiers via l'<strong>API VirusTotal</strong> et notification temps réel sur Discord via script Python.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL CISCO VPN IPSEC -->
     <div id="vpn-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <span>[ RAPPORT TECHNIQUE ] : CONFIGURATION_VPN_SITE_TO_SITE_IPSEC.pdf</span>
+                <button class="btn-back-pill" onclick="document.getElementById('vpn-modal').classList.add('hidden')">← Retour aux projets</button>
                 <button class="modal-close" onclick="document.getElementById('vpn-modal').classList.add('hidden')">✕ FERMER</button>
             </div>
             <div class="modal-content">
-                <h2 style="margin-bottom: 12px;">Compte-Rendu : VPN Site-to-Site IPsec & Routage OSPF (Cisco)</h2>
-                
-                <div class="report-meta-grid">
-                    <div class="report-meta-box"><small>Domaine</small><strong>Ingénierie & Sécurité Réseau</strong></div>
-                    <div class="report-meta-box"><small>Équipements</small><strong>3x Routeurs Cisco 1941</strong></div>
-                    <div class="report-meta-box"><small>Protocoles</small><strong>VPN IPsec / ISAKMP / OSPF</strong></div>
-                    <div class="report-meta-box"><small>Liaisons WAN</small><strong>Interfaces Séries HWIC-2T</strong></div>
+                <div class="report-main-title">Déploiement d'un VPN Site-to-Site IPsec (Cisco)</div>
+                <div class="report-Binome">Infrastructure Réseau & Interconnexion Sécurisée</div>
+
+                <div class="report-tags">
+                    <span class="tech-tag">Networking</span>
+                    <span class="tech-tag">Cisco IOS</span>
+                    <span class="tech-tag">VPN IPsec / ISAKMP</span>
+                    <span class="tech-tag">OSPF</span>
+                </div>
+
+                <div class="objective-callout">
+                    <strong>OBJECTIF :</strong> Interconnecter deux réseaux locaux distants (LAN A <code>192.168.1.0/24</code> et LAN C <code>192.168.3.0/24</code>) de manière sécurisée via un tunnel VPN Site-to-Site IPsec traversant un réseau WAN non sécurisé.
                 </div>
 
                 <div class="doc-section">
                     <h3>1. Infrastructure, Module HWIC-2T et Plan d'adressage</h3>
+                    <p>L'architecture repose sur trois routeurs <strong>Cisco 1941</strong> équipés de cartes séries <span class="inline-code">HWIC-2T</span>. Le routeur R2 simule l'opérateur WAN (ISP), tandis que R1 et R3 agissent comme passerelles de sécurité des deux sites distants.</p>
                     <div class="doc-img-wrapper">
                         <img src="img/1.png" onerror="this.onerror=null; this.src='img/1.jpg';" class="doc-img" alt="Module HWIC-2T" onclick="openLightbox(this.src)">
                         <p class="img-caption">Capture 1 : Vue physique du routeur R1 avec le module HWIC-2T installé (Cliquez pour zoomer).</p>
@@ -2023,6 +2015,15 @@ $ foremost -i photo_wuan.png -o output_foremost/
 
                 <div class="doc-section">
                     <h3>2. Activation de la licence SecurityK9 & Configuration du Tunnel IPsec</h3>
+                    <p>Activation du package technologique <span class="inline-code">securityk9</span> sur les routeurs Cisco 1941, définition des ACL pour identifier le trafic intéressant et configuration des phases IKE Phase 1 (ISAKMP) et Phase 2 (Transform-Set ESP et Crypto Map) :</p>
+                    <div class="doc-code-green">R1(config)# license boot module c1900 technology-package securityk9
+R1(config)# access-list 101 permit ip 192.168.1.0 0.0.0.255 192.168.3.0 0.0.0.255
+R1(config)# crypto isakmp policy 10
+R1(config-isakmp)# encryption aes
+R1(config-isakmp)# authentication pre-share
+R1(config-isakmp)# group 2
+R1(config)# crypto isakmp key VPN_SECRET_KEY address 10.2.2.2
+R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
                     <div class="doc-img-wrapper">
                         <img src="img/5.png" onerror="this.onerror=null; this.src='img/5.jpg';" class="doc-img" alt="Licence SecurityK9" onclick="openLightbox(this.src)">
                         <p class="img-caption">Capture 5 : Activation de la licence securityk9 sur le routeur Cisco 1941.</p>
@@ -2050,62 +2051,180 @@ $ foremost -i photo_wuan.png -o output_foremost/
         </div>
     </div>
 
-    <!-- MODAL HSRP -->
-    <div id="hsrp-modal" class="modal-overlay hidden">
-        <div class="modal-box">
-            <div class="modal-header">
-                <span>[ DOSSIER TECHNIQUE ] : HAUTE_DISPONIBILITE_HSRP.md</span>
-                <button class="modal-close" onclick="document.getElementById('hsrp-modal').classList.add('hidden')">✕ FERMER</button>
-            </div>
-            <div class="modal-content">
-                <h2 style="margin-bottom: 15px;">Compte-Rendu : Architecture Réseau Redondante (Protocole Cisco HSRP & Failover Python)</h2>
-                <div class="doc-section">
-                    <h3>1. Configuration Cisco IOS (Priorités, Préemption & Passerelle Virtuelle)</h3>
-                    <div class="doc-code">! --- Routeur R1 (Active / Master - Priorité 110 + Préemption) ---
-R1(config)# interface GigabitEthernet0/0
-R1(config-if)# ip address 192.168.10.2 255.255.255.0
-R1(config-if)# standby version 2
-R1(config-if)# standby 10 ip 192.168.10.254
-R1(config-if)# standby 10 priority 110
-R1(config-if)# standby 10 preempt
-
-! --- Routeur R2 (Standby / Backup - Priorité par défaut 100) ---
-R2(config)# interface GigabitEthernet0/0
-R2(config-if)# ip address 192.168.10.3 255.255.255.0
-R2(config-if)# standby version 2
-R2(config-if)# standby 10 ip 192.168.10.254
-R2(config-if)# standby 10 preempt</div>
-                </div>
-                <div class="doc-section">
-                    <h3>2. Automatisation Python du test de bascule dynamique (SLA)</h3>
-                    <p>Développement d'un script Python testant en continu la disponibilité de la passerelle virtuelle <code>192.168.10.254</code> lors de la coupure du routeur maître.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL PROXMOX LXC -->
+    <!-- =========================================================================
+         MODALE PROXMOX LXC & CHATOPS
+         ========================================================================= -->
     <div id="proxmox-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <span>[ DOSSIER TECHNIQUE ] : ARCHITECTURE_PROXMOX_CHATOPS.md</span>
+                <button class="btn-back-pill" onclick="document.getElementById('proxmox-modal').classList.add('hidden')">← Retour aux projets</button>
                 <button class="modal-close" onclick="document.getElementById('proxmox-modal').classList.add('hidden')">✕ FERMER</button>
             </div>
             <div class="modal-content">
-                <h2 style="margin-bottom: 15px;">Compte-Rendu : Infrastructure Multi-Serveurs LXC Proxmox & Automatisation ChatOps</h2>
+                <div class="report-main-title">Infrastructure Multi-Serveurs LXC Proxmox & ChatOps</div>
+                <div class="report-Binome">Homelab de Production • Automatisation Python & Systemd</div>
+
+                <div class="report-tags">
+                    <span class="tech-tag">Proxmox VE</span>
+                    <span class="tech-tag">LXC (pct)</span>
+                    <span class="tech-tag">Python Asyncio</span>
+                    <span class="tech-tag">Systemd / Journalctl</span>
+                    <span class="tech-tag">SSH / Bash</span>
+                </div>
+
+                <div class="objective-callout">
+                    <strong>OBJECTIF :</strong> Isoler 5 serveurs applicatifs dans des conteneurs Linux légers (LXC) sous Proxmox VE et développer un Bot Discord en Python permettant aux utilisateurs d'allumer un monde à la demande, de surveiller l'activité en temps réel et de gérer les sauvegardes/rollbacks.
+                </div>
+
                 <div class="doc-section">
                     <h3>1. Virtualisation & Micro-Architecture LXC (Proxmox VE)</h3>
-                    <div class="doc-code">• CT 109 (192.168.0.50/24) : Nœud de contrôle & Bot Discord d'administration (bot-minecraft.service)
+                    <div class="doc-code-green">• CT 109 (192.168.0.50/24) : Nœud de contrôle & Bot Discord d'administration (bot-minecraft.service)
 • CT 107, 108, 110, 111 (192.168.0.51 à .54/24) : Instances applicatives isolées (minecraft-bedrock.service)
 • Interconnexion SSH sans mot de passe par clés entre CT 109 et les conteneurs cibles
 • Exposition publique sécurisée sans ouverture de ports FAI (contournement CGNAT via tunneling Playit.gg)</div>
                 </div>
                 <div class="doc-section">
                     <h3>2. Automatisation ChatOps (Python Asyncio) & Parsing Journalctl</h3>
-                    <div class="doc-code">• Commandes Slash (/mc, /maj) & composants interactifs (Boutons, Menus, Modals, Embeds temps réel)
+                    <div class="doc-code-green">• Commandes Slash (/mc, /maj) & composants interactifs (Boutons, Menus, Modals, Embeds temps réel)
 • Exécution asynchrone (asyncio.create_subprocess_shell) des ordres systemctl start/stop/restart via SSH
 • Script update_mc_players.py : Parsing Regex de journalctl sur la dernière heure pour extraire les sessions actives
 • Extinction automatique en cas d'inactivité et backups/rollbacks automatisés (.tar.gz) toutes les 30 min</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =========================================================================
+         MODALES DES 4 CHAPITRES DU WRITE-UP DEEP THREATS (DGA & CAMPUS OSINT)
+         ========================================================================= -->
+
+    <!-- CHAPITRE 1 -->
+    <div id="dt-chap1-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="document.getElementById('dt-chap1-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
+                <button class="modal-close" onclick="document.getElementById('dt-chap1-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 1 : À vos marques (3 Challs)</div>
+                <div class="report-Binome">CTF Deep Threats (DGA & Campus OSINT)</div>
+                
+                <div class="doc-section">
+                    <h3>Challenge 1.1 — Votre attention s'il vous plaît !</h3>
+                    <p><strong>Objectif :</strong> Identifier la sanction encourue en cas d'action offensive contre les infrastructures du CTF ou les cibles de l'enquête afin de garantir le respect strict du cadre légal OSINT (collecte passive uniquement).</p>
+                    <span class="flag-pill">🚩 Flag : bannissement de l'équipe</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 1.2 — Ordre de mission</h3>
+                    <p><strong>Objectif :</strong> Prise de connaissance du briefing opérationnel concernant la PME française de défense navale <strong>Marinatech Industries</strong> et validation du lancement de l'investigation.</p>
+                    <span class="flag-pill">🚩 Flag : GO</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 1.3 — Scoring</h3>
+                    <p><strong>Objectif :</strong> Validation du fonctionnement du système de points dynamiques et déclenchement du chronomètre d'équipe.</p>
+                    <span class="flag-pill">🚩 Flag : J'ai compris ce système et l'accepte</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 2 -->
+    <div id="dt-chap2-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="document.getElementById('dt-chap2-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
+                <button class="modal-close" onclick="document.getElementById('dt-chap2-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 2 : En eaux troubles (9 Challs)</div>
+                <div class="report-Binome">Investigation Marinatech Industries, SOCMINT & Analyse Réseau</div>
+
+                <div class="doc-section">
+                    <h3>Challenge 2.1 — Président !</h3>
+                    <p><strong>Contexte :</strong> Avant un entretien prévu avec le président de <em>Marinatech Industries</em>, <strong>Marc-Olivier Chasseneuil</strong>, nous devons identifier le poste qu'il occupait avant de rejoindre l'entreprise.</p>
+                    <p><strong>Résolution (SOCMINT) :</strong> Recherche ciblée sur LinkedIn du profil de Marc-Olivier Chasseneuil et analyse de l'historique de ses expériences professionnelles chez <em>NAVAL GROUP</em>.</p>
+                    <span class="flag-pill">🚩 Flag : Ingénieur naval</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 2.2 — Un nouvel allié</h3>
+                    <p><strong>Contexte :</strong> En 2026, Marinatech Industries a signé un partenariat stratégique pour accélérer son déploiement international. Quelle est la date exacte de signature ?</p>
+                    <p><strong>Résolution (Google Dorks & Web OSINT) :</strong> À partir d'un post LinkedIn mentionnant <em>Jérôme Osfart</em>, président d'<strong>AquaVentis Partners</strong>, utilisation du Google Dork <code>"AquaVentis Partners"</code> pour localiser le site officiel de l'entreprise et l'article de presse <em>« AquaVentis Partners joins Marinatech Industries »</em>.</p>
+                    <span class="flag-pill">🚩 Flag : 20/05/2026</span>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenges 2.3 à 2.5 — Minerai de Lantrium, Fuite « Tang Bordel » & Traçage de Transactions</h3>
+                    <div class="doc-code-green">• Recherche encyclopédique sur le wiki de Lianhua pour extraire les propriétés du Lantrium (numéro atomique).
+• Pivot SOCMINT sur le handle "Tang Bordel" menant au profil Mastodon de Tanguy Bordelier.
+• Inspection de l'adresse Ethereum (0x188E7f50B72A0E2cBFb327425D1cFe784428f260) et remontée des 4 transactions initiales pour identifier le commanditaire ayant financé Tanguy Bordelier.</div>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenges 2.6 à 2.9 — Analyse Forensique d'Email (Menace-Enzo.eml) & Tracking Pixel</h3>
+                    <div class="doc-code-green">1. Analyse des en-têtes SMTP (Received chain) du fichier .eml en remontant du bas vers le haut :
+   → Extraction de l'adresse IP d'origine : 47.242.108.213
+
+2. Inspection du code HTML du courriel et découverte d'un pixel de tracking invisible (1x1 px) :
+   → URL : jlekt.eu/pixel/track?uid=riesmeyer&amp;campaign=menace_01&amp;t=1748905831
+   → Pivot vers le domaine interne pxltrakln.int accessible via l'environnement proxy de Lianhua.
+   → Identification du document partagé et extraction de l'identifiant "zhouwenj" sur le réseau Qiao Network.</div>
+                    <span class="flag-pill">🚩 Flags : 47.242.108.213 • Zhou Wenjie</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 3 -->
+    <div id="dt-chap3-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="document.getElementById('dt-chap3-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
+                <button class="modal-close" onclick="document.getElementById('dt-chap3-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 3 : What's up doc ? (2 Challs)</div>
+                <div class="report-Binome">Investigation Chercheur & Stéganographie PNG</div>
+
+                <div class="doc-section">
+                    <h3>Challenge 3.1 — Doctor who</h3>
+                    <p><strong>Objectif :</strong> Reconstituer le parcours académique et les publications scientifiques du chercheur <strong>Wuan</strong> travaillant sur les technologies sensibles de Marinatech Industries.</p>
+                </div>
+
+                <div class="doc-section">
+                    <h3>Challenge 3.2 — Message intime (Forensic & Stéganographie)</h3>
+                    <p><strong>Contexte :</strong> Les lois de sécurité de Lianhua étant très coercitives envers leurs ressortissants, Wuan avait-il réellement l'intention de détourner la technologie de Marinatech ? Une photo publiée en hommage à son père contient un indice dissimulé.</p>
+                    <div class="doc-code-green"># 1. Inspection de l'image PNG avec zsteg : détection de données suspectes après le chunk de fin IEND
+$ zsteg photo_wuan.png
+extradata:0 .. file: Zip archive, with extra data (magic bytes PK\x03\x04)
+
+# 2. Extraction automatique de l'archive ZIP dissimulée avec foremost
+$ foremost -i photo_wuan.png -o output_foremost/
+
+# 3. Lecture du message laissé par Wuan à son père confirmant qu'il agissait sous la contrainte</div>
+                    <span class="flag-pill">🚩 Flag : 你深愛的兒子 (Ton fils qui t'aime profondément)</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHAPITRE 4 -->
+    <div id="dt-chap4-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <button class="btn-back-pill" onclick="document.getElementById('dt-chap4-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
+                <button class="modal-close" onclick="document.getElementById('dt-chap4-modal').classList.add('hidden')">✕ FERMER</button>
+            </div>
+            <div class="modal-content">
+                <div class="report-main-title">Chapitre 4 : Partenaire particulier (1 Chall)</div>
+                <div class="report-Binome">Institut Lotus & Renseignement Économique</div>
+
+                <div class="doc-section">
+                    <h3>Challenge 4.1 — Capital</h3>
+                    <p><strong>Contexte :</strong> Analyse des ramifications financières et institutionnelles autour de l'<strong>Institut Lotus</strong> et de ses liens avec l'écosystème de Marinatech Industries.</p>
+                    <p><strong>Méthodologie :</strong> Recoupement de registres d'entreprises, analyse des publications de l'Institut Lotus et synthèse globale de la chaîne d'ingérence étrangère visant les technologies navales de Marinatech.</p>
                 </div>
             </div>
         </div>
@@ -2115,19 +2234,20 @@ R2(config-if)# standby 10 preempt</div>
     <div id="culot-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <span>[ DOSSIER D'INVESTIGATION ] : CTF_OPERATION_CULOT_BPIFRANCE.md</span>
+                <button class="btn-back-pill" onclick="document.getElementById('culot-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
                 <button class="modal-close" onclick="document.getElementById('culot-modal').classList.add('hidden')">✕ FERMER</button>
             </div>
             <div class="modal-content">
-                <h2 style="margin-bottom: 15px;">Rapport d'Enquête — CTF « Opération Culot » (Bpifrance - BIG 2026)</h2>
+                <div class="report-main-title">CTF « Opération Culot » (Bpifrance - BIG 2026)</div>
+                <div class="report-Binome">8e/21 Finale Accor Arena • 7e/655 Speed Runner • 10e/655 En ligne (1900 pts, 0 Hint)</div>
                 <div class="doc-section">
-                    <h3>1. Phase En Ligne (7e/655 Speed Runner • 10e/655 Général • 1900 pts • 0 Hint)</h3>
-                    <div class="doc-code">• Investigation d'un écosystème frauduleux lié à la manipulation financière.
+                    <h3>1. Phase En Ligne : Démantèlement d'une Fraude Financière</h3>
+                    <div class="doc-code-green">• Investigation d'un écosystème frauduleux lié à la manipulation financière.
 • Pivot sur pseudonymes, corrélation de comptes sociaux (SOCMINT), analyse de code source web et récupération d'archives (Wayback Machine).</div>
                 </div>
                 <div class="doc-section">
                     <h3>2. Finale Hybride à l'Accor Arena (8e / 21 équipes finalistes)</h3>
-                    <div class="doc-code">• Collecte d'indices physiques sur le terrain (HUMINT) lors de BIG 2026 à l'Accor Arena et résolution complète des deux chapitres (Badge Finisher).</div>
+                    <div class="doc-code-green">• Collecte d'indices physiques sur le terrain (HUMINT) lors de BIG 2026 à l'Accor Arena et résolution complète des deux chapitres (Badge Finisher).</div>
                 </div>
             </div>
         </div>
@@ -2137,19 +2257,20 @@ R2(config-if)# standby 10 preempt</div>
     <div id="forensic-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <span>[ DOSSIER FORENSIC ] : ATELIER_FORENSIC_CYBERSUP.md</span>
+                <button class="btn-back-pill" onclick="document.getElementById('forensic-modal').classList.add('hidden')">← Retour aux Write-Ups</button>
                 <button class="modal-close" onclick="document.getElementById('forensic-modal').classList.add('hidden')">✕ FERMER</button>
             </div>
             <div class="modal-content">
-                <h2 style="margin-bottom: 15px;">Compte-Rendu : Atelier Forensic & GeoINT (CyberSup Puteaux)</h2>
+                <div class="report-main-title">Atelier Forensic & GeoINT (CyberSup Puteaux)</div>
+                <div class="report-Binome">Investigation Numérique, Métadonnées EXIF & Imagerie Satellite</div>
                 <div class="doc-section">
                     <h3>1. Investigation Numérique & Extraction de Métadonnées (Forensic)</h3>
-                    <div class="doc-code">• Inspection approfondie de fichiers numériques (extraction de métadonnées EXIF, identification des équipements de prise de vue, horodatages et coordonnées GPS résiduelles).
+                    <div class="doc-code-green">• Inspection approfondie de fichiers numériques (extraction de métadonnées EXIF, identification des équipements de prise de vue, horodatages et coordonnées GPS résiduelles).
 • Analyse d'en-têtes (headers) et traçabilité des preuves numériques.</div>
                 </div>
                 <div class="doc-section">
                     <h3>2. GeoINT / IMINT & Rapport d'Incident</h3>
-                    <div class="doc-code">• Géolocalisation précise à partir d'indices visuels croisés avec l'imagerie satellite et rédaction d'un rapport d'incident détaillé.</div>
+                    <div class="doc-code-green">• Géolocalisation précise à partir d'indices visuels croisés avec l'imagerie satellite et rédaction d'un rapport d'incident détaillé.</div>
                 </div>
             </div>
         </div>
@@ -2163,6 +2284,7 @@ R2(config-if)# standby 10 preempt</div>
     </footer>
 
     <script>
+        // --- 1. GESTION AUTOMATIQUE DES EXTENSIONS (.jpg / .png) ---
         const culotImg = document.getElementById('cert-img-culot');
         const dgaImg = document.getElementById('cert-img-dga');
 
@@ -2176,13 +2298,40 @@ R2(config-if)# standby 10 preempt</div>
             else if (this.src.endsWith('.png')) this.src = 'img/certificat-deepthreats.jpeg';
         };
 
+        // --- 2. SCROLLSPY : ILLUMINATION AUTOMATIQUE DU MENU EN HAUT À DROITE ---
+        const navLinks = document.querySelectorAll('.nav-links a.nav-item');
+        const spySections = ['accueil', 'badges', 'projets', 'writeups', 'veille', 'competences', 'parcours'];
+
+        function updateActiveNav() {
+            let currentSection = 'accueil';
+            const scrollPos = window.scrollY + 220;
+
+            for (const id of spySections) {
+                const el = document.getElementById(id);
+                if (el && scrollPos >= el.offsetTop) {
+                    currentSection = id;
+                }
+            }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
+
+        // --- 3. CONSOLE INTERACTIVE DU HERO ---
         const termOutput = document.getElementById('hero-term-output');
         const termInput = document.getElementById('hero-term-input');
 
         const cmdResponses = {
             'help': `Commandes disponibles : <span style="color:#38bdf8;">status</span>, <span style="color:#38bdf8;">soc</span>, <span style="color:#38bdf8;">lxc</span>, <span style="color:#38bdf8;">ctf</span>, <span style="color:#38bdf8;">veille</span>, <span style="color:#38bdf8;">clear</span>`,
             'status': `• Opérateur : <strong>Mehdi BEN MOULAY</strong><br>• Poste : <strong>Administrateur Systèmes & Réseaux</strong> (Alternance @ Io.sys 2.21)<br>• Formation : BTS SIO SISR (Ingetis, Paris)`,
-            'soc': `🛡️ <strong>Mini-SOC Wazuh & Blue Team :</strong><br>• Detection Engineering : Règles XML sur-mesure (Atomic Red Team / MITRE ATT&CK)<br>• Défense Active : Bannissement dynamique via iptables (anti brute-force)<br>• Alerting & CTI : API VirusTotal + Script Python Webhook Discord`,
+            'soc': `🛡️ <strong>Mini-SOC Wazuh & Blue Team :</strong><br>• Detection Engineering : Règle XML 100005 PCRE2 (Atomic Red Team / MITRE T1547.001)<br>• Défense Active : Bannissement dynamique via iptables (60s DROP sur brute-force SSH)<br>• Alerting & CTI : API VirusTotal + Script Python Webhook Discord (BlueScope SOC Sentinel)`,
             'lxc': `🐳 <strong>Homelab Proxmox VE (5 conteneurs LXC) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord Python (boutons d'allumage, SSH par clés)<br>• CT 107, 108, 110, 111 : Instances isolées, arrêt auto sur inactivité & rollbacks .tar.gz`,
             'ctf': `🏆 <strong>Palmarès CTF & Write-Ups :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• CTF Deep Threats (DGA) : 22 challenges résolus en 4 chapitres (Marinatech Industries & Institut Lotus)<br>• Atelier Forensic (CyberSup) : Métadonnées, en-têtes & GeoINT satellite`,
             'veille': `📡 <strong>Veille Technologique Active :</strong><br>• Axe 1 (Cyber) : CVE critiques, règles Wazuh & MITRE ATT&CK<br>• Axe 2 (IA) : Workflows N8N + LLM pour l'automatisation IT & SecOps<br>• Axe 3 (Infra) : Proxmox VE, conteneurs LXC & pipelines GitLab CI/CD`
@@ -2213,10 +2362,11 @@ R2(config-if)# standby 10 preempt</div>
             }
         });
 
+        // --- 4. EFFET MACHINE À ÉCRIRE ---
         const roles = [
             "Administrateur Systèmes & Réseaux",
             "Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)",
-            "Ingénierie Réseaux (Cisco VPN IPsec, HSRP Failover)",
+            "Ingénierie Réseaux (Cisco VPN IPsec, OSPF, VLAN)",
             "Automatisation & Conteneurisation (Proxmox LXC, Python)"
         ];
         let roleIdx = 0, charIdx = 0, isDeleting = false;
@@ -2262,7 +2412,7 @@ R2(config-if)# standby 10 preempt</div>
             }
         });
 
-        // --- MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
+        // --- 5. MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
         const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
         let stars = [];
