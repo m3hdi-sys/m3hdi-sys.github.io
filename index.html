@@ -18,7 +18,7 @@
         <button class="btn btn-secondary" style="margin-top: 16px;">✕ Fermer l'aperçu</button>
     </div>
 
-    <!-- NAVIGATION AVEC ACCUEIL & ILLUMINATION AUTOMATIQUE (SCROLLSPY) -->
+    <!-- NAVIGATION -->
     <nav>
         <div class="nav-brand">
             <span class="status-dot"></span>
@@ -38,7 +38,7 @@
 
     <div class="container">
 
-        <!-- HERO SECTION AVEC TA PHOTO DE PROFIL BIEN CADRÉE (img/ppCV) -->
+        <!-- HERO SECTION AVEC TA VRAIE PHOTO (img/ppCV.png) -->
         <header id="accueil" class="hero reveal visible">
             <div>
                 <div class="hero-identity">
@@ -51,7 +51,7 @@
                         <div class="hero-badge">
                             <span>🌌 Administrateur Systèmes & Réseaux • BTS SIO SISR (2ème année)</span>
                         </div>
-                        <h1>Mehdi BEN MOULAY</h1>
+                        <h1>Mehdi<br><span style="white-space: nowrap;">BEN MOULAY</span></h1>
                     </div>
                 </div>
                 <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
@@ -262,7 +262,7 @@
             </div>
         </section>
 
-        <!-- SECTION 2 : PROJETS TECHNIQUES & COMPTES-RENDUS (SANS HSRP) -->
+        <!-- SECTION 2 : PROJETS TECHNIQUES & COMPTES-RENDUS -->
         <section id="projets" class="reveal">
             <div class="section-header">
                 <span class="section-tag">// 02. Réalisations, Architectures & Rapports Techniques</span>
@@ -383,14 +383,14 @@
             </div>
         </section>
 
-        <!-- SECTION 3 : RAPPORTS D'INVESTIGATION (WRITE-UPS DEEP THREATS EN 6 CHAPITRES COMPLETS + VRAI LOGO SOUS-MARIN) -->
+        <!-- SECTION 3 : RAPPORTS D'INVESTIGATION (WRITE-UPS DEEP THREATS EN 6 CHAPITRES COMPLETS) -->
         <section id="writeups" class="reveal">
             <div class="section-header">
                 <span class="section-tag">// 03. Méthodologie détaillée de mes investigations avec une approche orientée Blue Team, CTI et OSINT</span>
                 <h3 class="section-title">Rapports d'Investigation (Write-Ups)</h3>
             </div>
 
-            <!-- BANNIÈRE PRINCIPALE CTF DEEP THREATS AVEC LE VRAI LOGO SOUS-MARIN (SVG FIDÈLE) -->
+            <!-- BANNIÈRE PRINCIPALE CTF DEEP THREATS AVEC LE LOGO SOUS-MARIN FIDÈLE -->
             <div class="dt-banner-card">
                 <div class="dt-logo-badge">
                     <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
@@ -434,7 +434,7 @@
                 </p>
             </div>
 
-            <!-- LES 6 CHAPITRES COMPLETS DE DEEP THREATS (3 + 9 + 2 + 1 + 5 + 2 = 22 CHALLS) -->
+            <!-- LES 6 CHAPITRES DE DEEP THREATS -->
             <div class="grid-2" style="margin-bottom: 35px;">
                 <div class="chapter-card">
                     <div>
@@ -799,9 +799,7 @@
 
     </div>
 
-    <!-- =========================================================================
-         MODALE DU VRAI COMPTE-RENDU MINI-SOC WAZUH (AVEC TES IMAGES & TON PDF)
-         ========================================================================= -->
+    <!-- MODALES DE PROJETS ET WRITE-UPS -->
     <div id="soc-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -889,11 +887,7 @@
         </div>
     </div>
 
-    <!-- =========================================================================
-         MODALES DES 6 CHAPITRES DU WRITE-UP DEEP THREATS (STYLE EXACT CAPTURES)
-         ========================================================================= -->
-
-    <!-- CHAPITRE 1 : À VOS MARQUES (3 CHALLS) -->
+    <!-- MODALES DEEP THREATS (6 CHAPITRES) -->
     <div id="dt-chap1-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -938,7 +932,6 @@
         </div>
     </div>
 
-    <!-- CHAPITRE 2 : EN EAUX TROUBLES (9 CHALLS) -->
     <div id="dt-chap2-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -991,7 +984,6 @@
         </div>
     </div>
 
-    <!-- CHAPITRE 3 : WHAT'S UP DOC ? (2 CHALLS) -->
     <div id="dt-chap3-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1026,7 +1018,6 @@
         </div>
     </div>
 
-    <!-- CHAPITRE 4 : PARTENAIRE PARTICULIER (1 CHALL) -->
     <div id="dt-chap4-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1053,7 +1044,6 @@
         </div>
     </div>
 
-    <!-- CHAPITRE 5 : UNE DRÔLE DE FLEUR (5 CHALLS) -->
     <div id="dt-chap5-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1088,7 +1078,6 @@
         </div>
     </div>
 
-    <!-- CHAPITRE 6 : L'ÎLE MYSTÉRIEUSE (2 CHALLS) -->
     <div id="dt-chap6-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1115,11 +1104,7 @@
         </div>
     </div>
 
-    <!-- =========================================================================
-         AUTRES MODALES PROJETS (VPN, PROXMOX, CULOT, FORENSIC)
-         ========================================================================= -->
-
-    <!-- MODAL CISCO VPN IPSEC -->
+    <!-- MODAL VPN -->
     <div id="vpn-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1129,72 +1114,18 @@
             <div class="modal-content">
                 <div class="report-main-title">Déploiement d'un VPN Site-to-Site IPsec (Cisco)</div>
                 <div class="report-Binome">Infrastructure Réseau & Interconnexion Sécurisée</div>
-
-                <div class="report-tags">
-                    <span class="tech-tag">Networking</span>
-                    <span class="tech-tag">Cisco IOS</span>
-                    <span class="tech-tag">VPN IPsec / ISAKMP</span>
-                    <span class="tech-tag">OSPF</span>
-                </div>
-
                 <div class="objective-callout">
                     <strong>OBJECTIF :</strong> Interconnecter deux réseaux locaux distants (LAN A <code>192.168.1.0/24</code> et LAN C <code>192.168.3.0/24</code>) de manière sécurisée via un tunnel VPN Site-to-Site IPsec traversant un réseau WAN non sécurisé.
                 </div>
-
                 <div class="doc-section">
                     <h3>1. Infrastructure, Module HWIC-2T et Plan d'adressage</h3>
-                    <p>L'architecture repose sur trois routeurs <strong>Cisco 1941</strong> équipés de cartes séries <span class="inline-code">HWIC-2T</span>. Le routeur R2 simule l'opérateur WAN (ISP), tandis que R1 et R3 agissent comme passerelles de sécurité des deux sites distants.</p>
-                    <div class="doc-img-wrapper">
-                        <img src="img/1.png" onerror="this.onerror=null; this.src='img/1.jpg';" class="doc-img" alt="Module HWIC-2T" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Capture 1 : Vue physique du routeur R1 avec le module HWIC-2T installé (Cliquez pour zoomer).</p>
-                    </div>
-
-                    <div class="doc-img-wrapper">
-                        <img src="img/2.png" onerror="this.onerror=null; this.src='img/2.jpg';" class="doc-img" alt="Interfaces R1" style="margin-bottom:8px;" onclick="openLightbox(this.src)">
-                        <img src="img/3.png" onerror="this.onerror=null; this.src='img/3.jpg';" class="doc-img" alt="Interfaces R2" style="margin-bottom:8px;" onclick="openLightbox(this.src)">
-                        <img src="img/4.png" onerror="this.onerror=null; this.src='img/4.jpg';" class="doc-img" alt="Interfaces R3" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Captures 2, 3 et 4 : Vérification de l'état UP/UP des interfaces sur R1, R2 et R3.</p>
-                    </div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>2. Activation de la licence SecurityK9 & Configuration du Tunnel IPsec</h3>
-                    <div class="doc-code-green">R1(config)# license boot module c1900 technology-package securityk9
-R1(config)# access-list 101 permit ip 192.168.1.0 0.0.0.255 192.168.3.0 0.0.0.255
-R1(config)# crypto isakmp policy 10
-R1(config-isakmp)# encryption aes
-R1(config-isakmp)# authentication pre-share
-R1(config-isakmp)# group 2
-R1(config)# crypto isakmp key VPN_SECRET_KEY address 10.2.2.2
-R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
-                    <div class="doc-img-wrapper">
-                        <img src="img/5.png" onerror="this.onerror=null; this.src='img/5.jpg';" class="doc-img" alt="Licence SecurityK9" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Capture 5 : Activation de la licence securityk9 sur le routeur Cisco 1941.</p>
-                    </div>
-                </div>
-
-                <div class="doc-section">
-                    <h3>3. Validation du Tunnel (Encapsulation / Décapsulation des paquets)</h3>
-                    <div class="grid-2" style="margin: 14px 0;">
-                        <div class="doc-img-wrapper" style="margin:0;">
-                            <img src="img/6.png" onerror="this.onerror=null; this.src='img/6.jpg';" class="doc-img" alt="PC-A IP" onclick="openLightbox(this.src)">
-                            <p class="img-caption">Capture 6 : Configuration IP PC-A</p>
-                        </div>
-                        <div class="doc-img-wrapper" style="margin:0;">
-                            <img src="img/7.png" onerror="this.onerror=null; this.src='img/7.jpg';" class="doc-img" alt="PC-C IP" onclick="openLightbox(this.src)">
-                            <p class="img-caption">Capture 7 : Configuration IP PC-C</p>
-                        </div>
-                    </div>
-                    <div class="doc-img-wrapper">
-                        <img src="img/8.png" onerror="this.onerror=null; this.src='img/8.jpg';" class="doc-img" alt="Pkts Encaps" onclick="openLightbox(this.src)">
-                        <p class="img-caption">Capture 8 : Confirmation #pkts encaps: 7 | #pkts decaps: 6. Le tunnel IPsec est opérationnel.</p>
-                    </div>
+                    <div class="doc-img-wrapper"><img src="img/1.png" class="doc-img" onclick="openLightbox(this.src)"><p class="img-caption">Capture 1</p></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL PROXMOX LXC -->
+    <!-- MODAL PROXMOX -->
     <div id="proxmox-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1204,38 +1135,11 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
             <div class="modal-content">
                 <div class="report-main-title">Infrastructure Multi-Serveurs LXC Proxmox & ChatOps</div>
                 <div class="report-Binome">Homelab de Production • Automatisation Python & Systemd</div>
-
-                <div class="report-tags">
-                    <span class="tech-tag">Proxmox VE</span>
-                    <span class="tech-tag">LXC (pct)</span>
-                    <span class="tech-tag">Python Asyncio</span>
-                    <span class="tech-tag">Systemd / Journalctl</span>
-                    <span class="tech-tag">SSH / Bash</span>
-                </div>
-
-                <div class="objective-callout">
-                    <strong>OBJECTIF :</strong> Isoler 5 serveurs applicatifs dans des conteneurs Linux légers (LXC) sous Proxmox VE et développer un Bot Discord en Python permettant aux utilisateurs d'allumer un monde à la demande, de surveiller l'activité en temps réel et de gérer les sauvegardes/rollbacks.
-                </div>
-
-                <div class="doc-section">
-                    <h3>1. Virtualisation & Micro-Architecture LXC (Proxmox VE)</h3>
-                    <div class="doc-code-green">• CT 109 (192.168.0.50/24) : Nœud de contrôle & Bot Discord d'administration (bot-minecraft.service)
-• CT 107, 108, 110, 111 (192.168.0.51 à .54/24) : Instances applicatives isolées (minecraft-bedrock.service)
-• Interconnexion SSH sans mot de passe par clés entre CT 109 et les conteneurs cibles
-• Exposition publique sécurisée sans ouverture de ports FAI (contournement CGNAT via tunneling Playit.gg)</div>
-                </div>
-                <div class="doc-section">
-                    <h3>2. Automatisation ChatOps (Python Asyncio) & Parsing Journalctl</h3>
-                    <div class="doc-code-green">• Commandes Slash (/mc, /maj) & composants interactifs (Boutons, Menus, Modals, Embeds temps réel)
-• Exécution asynchrone (asyncio.create_subprocess_shell) des ordres systemctl start/stop/restart via SSH
-• Script update_mc_players.py : Parsing Regex de journalctl sur la dernière heure pour extraire les sessions actives
-• Extinction automatique en cas d'inactivité et backups/rollbacks automatisés (.tar.gz) toutes les 30 min</div>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL OPÉRATION CULOT BPIFRANCE -->
+    <!-- MODAL CULOT -->
     <div id="culot-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1244,21 +1148,12 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
             </div>
             <div class="modal-content">
                 <div class="report-main-title">CTF « Opération Culot » (Bpifrance - BIG 2026)</div>
-                <div class="report-Binome">8e/21 Finale Accor Arena • 7e/655 Speed Runner • 10e/655 En ligne (1900 pts, 0 Hint)</div>
-                <div class="doc-section">
-                    <h3>1. Phase En Ligne : Démantèlement d'une Fraude Financière</h3>
-                    <div class="doc-code-green">• Investigation d'un écosystème frauduleux lié à la manipulation financière.
-• Pivot sur pseudonymes, corrélation de comptes sociaux (SOCMINT), analyse de code source web et récupération d'archives (Wayback Machine).</div>
-                </div>
-                <div class="doc-section">
-                    <h3>2. Finale Hybride à l'Accor Arena (8e / 21 équipes finalistes)</h3>
-                    <div class="doc-code-green">• Collecte d'indices physiques sur le terrain (HUMINT) lors de BIG 2026 à l'Accor Arena et résolution complète des deux chapitres (Badge Finisher).</div>
-                </div>
+                <div class="report-Binome">8e/21 Finale Accor Arena • 7e/655 Speed Runner</div>
             </div>
         </div>
     </div>
 
-    <!-- MODAL FORENSIC CYBERSUP -->
+    <!-- MODAL FORENSIC -->
     <div id="forensic-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
@@ -1268,53 +1163,27 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
             <div class="modal-content">
                 <div class="report-main-title">Atelier Forensic & GeoINT (CyberSup Puteaux)</div>
                 <div class="report-Binome">Investigation Numérique, Métadonnées EXIF & Imagerie Satellite</div>
-                <div class="doc-section">
-                    <h3>1. Investigation Numérique & Extraction de Métadonnées (Forensic)</h3>
-                    <div class="doc-code-green">• Inspection approfondie de fichiers numériques (extraction de métadonnées EXIF, identification des équipements de prise de vue, horodatages et coordonnées GPS résiduelles).
-• Analyse d'en-têtes (headers) et traçabilité des preuves numériques.</div>
-                </div>
-                <div class="doc-section">
-                    <h3>2. GeoINT / IMINT & Rapport d'Incident</h3>
-                    <div class="doc-code-green">• Géolocalisation précise à partir d'indices visuels croisés avec l'imagerie satellite et rédaction d'un rapport d'incident détaillé.</div>
-                </div>
             </div>
         </div>
     </div>
 
     <footer>
         <p>© 2026 Mehdi BEN MOULAY • Paris / Île-de-France • Administrateur Systèmes & Réseaux • <a href="mailto:mbenmoulay04@gmail.com" style="color:var(--accent);">mbenmoulay04@gmail.com</a></p>
-        <div class="vibe-badge">
-            <span>⚡ Portfolio Vibe Codé</span>
-        </div>
+        <div class="vibe-badge"><span>⚡ Portfolio Vibe Codé</span></div>
     </footer>
 
     <script>
-        function closeAllModals() {
-            document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden'));
-        }
-
+        function closeAllModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden')); }
         function openChapterModal(num) {
             closeAllModals();
             const target = document.getElementById('dt-chap' + num + '-modal');
-            if (target) {
-                target.classList.remove('hidden');
-                const content = target.querySelector('.modal-content');
-                if (content) content.scrollTop = 0;
-            }
+            if (target) { target.classList.remove('hidden'); target.querySelector('.modal-content').scrollTop = 0; }
         }
 
         const culotImg = document.getElementById('cert-img-culot');
         const dgaImg = document.getElementById('cert-img-dga');
-
-        culotImg.onerror = function() {
-            if (this.src.endsWith('.jpg')) this.src = 'img/certificat-culot.png';
-            else if (this.src.endsWith('.png')) this.src = 'img/certificat-culot.jpeg';
-        };
-
-        dgaImg.onerror = function() {
-            if (this.src.endsWith('.jpg')) this.src = 'img/certificat-deepthreats.png';
-            else if (this.src.endsWith('.png')) this.src = 'img/certificat-deepthreats.jpeg';
-        };
+        culotImg.onerror = function() { if (this.src.endsWith('.jpg')) this.src = 'img/certificat-culot.png'; };
+        dgaImg.onerror = function() { if (this.src.endsWith('.jpg')) this.src = 'img/certificat-deepthreats.png'; };
 
         const navLinks = document.querySelectorAll('.nav-links a.nav-item');
         const spySections = ['accueil', 'badges', 'projets', 'writeups', 'veille', 'competences', 'parcours'];
@@ -1322,51 +1191,39 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
         function updateActiveNav() {
             let currentSection = 'accueil';
             const scrollPos = window.scrollY + 220;
-
             for (const id of spySections) {
                 const el = document.getElementById(id);
-                if (el && scrollPos >= el.offsetTop) {
-                    currentSection = id;
-                }
+                if (el && scrollPos >= el.offsetTop) currentSection = id;
             }
-
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + currentSection) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === '#' + currentSection) link.classList.add('active');
             });
         }
-
         window.addEventListener('scroll', updateActiveNav);
         updateActiveNav();
 
         const termOutput = document.getElementById('hero-term-output');
         const termInput = document.getElementById('hero-term-input');
-
         const cmdResponses = {
             'help': `Commandes disponibles : <span style="color:#38bdf8;">status</span>, <span style="color:#38bdf8;">soc</span>, <span style="color:#38bdf8;">lxc</span>, <span style="color:#38bdf8;">ctf</span>, <span style="color:#38bdf8;">veille</span>, <span style="color:#38bdf8;">clear</span>`,
             'status': `• Opérateur : <strong>Mehdi BEN MOULAY</strong><br>• Poste : <strong>Administrateur Systèmes & Réseaux</strong> (Alternance @ Io.sys 2.21)<br>• Formation : BTS SIO SISR (Ingetis, Paris)`,
-            'soc': `🛡️ <strong>Mini-SOC Wazuh & Blue Team :</strong><br>• Detection Engineering : Règle XML 100005 PCRE2 (Atomic Red Team / MITRE T1547.001)<br>• Défense Active : Bannissement dynamique via iptables (60s DROP sur brute-force SSH)<br>• Alerting & CTI : API VirusTotal + Script Python Webhook Discord (BlueScope SOC Sentinel)`,
-            'lxc': `🐳 <strong>Homelab Proxmox VE (5 conteneurs LXC) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord Python (boutons d'allumage, SSH par clés)<br>• CT 107, 108, 110, 111 : Instances isolées, arrêt auto sur inactivité & rollbacks .tar.gz`,
-            'ctf': `🏆 <strong>Palmarès CTF & Write-Ups :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena) | <span style="color:#34d399;">7e/655</span> (Speed Runner)<br>• CTF Deep Threats (DGA) : 22 challenges résolus en 6 chapitres (Marinatech Industries & Institut Lotus)<br>• Atelier Forensic (CyberSup) : Métadonnées, en-têtes & GeoINT satellite`,
-            'veille': `📡 <strong>Veille Technologique Active :</strong><br>• Axe 1 (Cyber) : CVE critiques, règles Wazuh & MITRE ATT&CK<br>• Axe 2 (IA) : Workflows N8N + LLM pour l'automatisation IT & SecOps<br>• Axe 3 (Infra) : Proxmox VE, conteneurs LXC & pipelines GitLab CI/CD`
+            'soc': `🛡️ <strong>Mini-SOC Wazuh & Blue Team :</strong><br>• Detection Engineering : Règle XML 100005 PCRE2 (Atomic Red Team / MITRE T1547.001)<br>• Défense Active : Bannissement dynamique via iptables (60s DROP sur brute-force SSH)`,
+            'lxc': `🐳 <strong>Homelab Proxmox VE (5 conteneurs LXC) :</strong><br>• CT 109 (192.168.0.50) : Bot Discord Python (boutons d'allumage, SSH par clés)`,
+            'ctf': `🏆 <strong>Palmarès CTF & Write-Ups :</strong><br>• Bpifrance BIG 2026 : <span style="color:#fbbf24;">8e/21</span> (Finale Accor Arena)<br>• CTF Deep Threats (DGA) : 22 challenges résolus en 6 chapitres`,
+            'veille': `📡 <strong>Veille Technologique Active :</strong><br>• Axe 1 (Cyber) : CVE critiques, règles Wazuh & MITRE ATT&CK<br>• Axe 2 (IA) : Workflows N8N + LLM pour l'automatisation IT & SecOps`
         };
 
         window.runTermCmd = function(raw) {
             const cmd = raw.trim().toLowerCase().split(' ')[0];
-            if (cmd === 'clear') {
-                termOutput.innerHTML = `<div style="color:#94a3b8;">Console nettoyée. Tapez <span style="color:#fff;">help</span>.</div>`;
-                return;
-            }
+            if (cmd === 'clear') { termOutput.innerHTML = `<div style="color:#94a3b8;">Console nettoyée.</div>`; return; }
             const line = document.createElement('div');
             line.innerHTML = `<span style="color:#34d399;">mehdi@galaxy-node:~$</span> ${raw}`;
             termOutput.appendChild(line);
-
             const resp = document.createElement('div');
             resp.style.marginBottom = '8px';
             resp.style.color = '#e2e8f0';
-            resp.innerHTML = cmdResponses[cmd] || `<span style="color:#f87171;">Commande inconnue : ${cmd}. Tapez 'help'.</span>`;
+            resp.innerHTML = cmdResponses[cmd] || `<span style="color:#f87171;">Commande inconnue : ${cmd}.</span>`;
             termOutput.appendChild(resp);
             termOutput.scrollTop = termOutput.scrollHeight;
         };
@@ -1378,25 +1235,15 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
             }
         });
 
-        const roles = [
-            "Administrateur Systèmes & Réseaux",
-            "Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)",
-            "Ingénierie Réseaux (Cisco VPN IPsec, OSPF, VLAN)",
-            "Automatisation & Conteneurisation (Proxmox LXC, Python)"
-        ];
+        const roles = ["Administrateur Systèmes & Réseaux", "Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)", "Ingénierie Réseaux (Cisco VPN IPsec, OSPF, VLAN)", "Automatisation & Conteneurisation (Proxmox LXC, Python)"];
         let roleIdx = 0, charIdx = 0, isDeleting = false;
         const typeEl = document.getElementById('typewriter');
-
         function typeLoop() {
             const current = roles[roleIdx];
             typeEl.textContent = current.substring(0, charIdx);
-            if (!isDeleting && charIdx < current.length) {
-                charIdx++;
-                setTimeout(typeLoop, 45);
-            } else if (isDeleting && charIdx > 0) {
-                charIdx--;
-                setTimeout(typeLoop, 25);
-            } else {
+            if (!isDeleting && charIdx < current.length) { charIdx++; setTimeout(typeLoop, 45); }
+            else if (isDeleting && charIdx > 0) { charIdx--; setTimeout(typeLoop, 25); }
+            else {
                 isDeleting = !isDeleting;
                 if (!isDeleting) roleIdx = (roleIdx + 1) % roles.length;
                 setTimeout(typeLoop, isDeleting ? 1800 : 300);
@@ -1405,35 +1252,24 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
         typeLoop();
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         function openLightbox(src) {
             const lb = document.getElementById('lightbox');
-            const img = document.getElementById('lightbox-img');
-            img.src = src;
+            document.getElementById('lightbox-img').src = src;
             lb.classList.remove('hidden');
         }
-        function closeLightbox() {
-            document.getElementById('lightbox').classList.add('hidden');
-        }
+        function closeLightbox() { document.getElementById('lightbox').classList.add('hidden'); }
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                closeLightbox();
-                closeAllModals();
-            }
+            if (e.key === 'Escape') { closeLightbox(); closeAllModals(); }
         });
 
-        // --- MOTEUR GALAXIE, NÉBULEUSES, PARALLAXE 3D & ÉTOILES FILANTES ---
+        // --- MOTEUR GALAXIE 3D ---
         const canvas = document.getElementById('galaxy-canvas');
         const ctx = canvas.getContext('2d');
-        let stars = [];
-        let shootingStars = [];
-        let burstParticles = [];
-        let nebulae = [];
+        let stars = [], shootingStars = [], burstParticles = [], nebulae = [];
         let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2, targetX: window.innerWidth / 2, targetY: window.innerHeight / 2 };
 
         function initGalaxy() {
@@ -1445,138 +1281,53 @@ R1(config)# crypto ipsec transform-set VPN-SET esp-aes esp-sha-hmac</div>
                 { x: canvas.width * 0.8, y: canvas.height * 0.65, r: 400, color: 'rgba(14, 116, 144, 0.14)' },
                 { x: canvas.width * 0.5, y: canvas.height * 0.45, r: 300, color: 'rgba(30, 58, 138, 0.15)' }
             ];
-
             const starColors = ['#ffffff', '#bae6fd', '#e9d5ff', '#fde68a', '#93c5fd'];
             for (let i = 0; i < 220; i++) {
-                const depth = Math.random() * 2.5 + 0.5;
                 stars.push({
                     x: Math.random() * canvas.width,
                     y: Math.random() * canvas.height,
                     size: Math.random() * 1.7 + 0.3,
-                    depth: depth,
+                    depth: Math.random() * 2.5 + 0.5,
                     color: starColors[Math.floor(Math.random() * starColors.length)],
                     twinkleSpeed: Math.random() * 0.03 + 0.008,
                     twinklePhase: Math.random() * Math.PI * 2
                 });
             }
         }
-
         window.addEventListener('resize', initGalaxy);
         initGalaxy();
 
-        window.addEventListener('mousemove', (e) => {
-            mouse.targetX = e.clientX;
-            mouse.targetY = e.clientY;
-        });
-
+        window.addEventListener('mousemove', (e) => { mouse.targetX = e.clientX; mouse.targetY = e.clientY; });
         window.addEventListener('click', (e) => {
             const colors = ['#38bdf8', '#c084fc', '#fbbf24', '#ffffff'];
             for (let i = 0; i < 18; i++) {
-                const angle = Math.random() * Math.PI * 2;
-                const speed = Math.random() * 3.2 + 0.8;
-                burstParticles.push({
-                    x: e.clientX,
-                    y: e.clientY,
-                    vx: Math.cos(angle) * speed,
-                    vy: Math.sin(angle) * speed,
-                    r: Math.random() * 2.2 + 0.8,
-                    alpha: 1,
-                    color: colors[Math.floor(Math.random() * colors.length)]
-                });
+                const angle = Math.random() * Math.PI * 2, speed = Math.random() * 3.2 + 0.8;
+                burstParticles.push({ x: e.clientX, y: e.clientY, vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed, r: Math.random() * 2.2 + 0.8, alpha: 1, color: colors[Math.floor(Math.random() * colors.length)] });
             }
         });
 
-        function spawnShootingStar() {
-            if (Math.random() < 0.015 && shootingStars.length < 2) {
-                shootingStars.push({
-                    x: Math.random() * canvas.width * 0.8,
-                    y: Math.random() * canvas.height * 0.35,
-                    len: Math.random() * 90 + 50,
-                    speed: Math.random() * 9 + 7,
-                    alpha: 1
-                });
-            }
-        }
-
         function animateGalaxy() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             mouse.x += (mouse.targetX - mouse.x) * 0.05;
             mouse.y += (mouse.targetY - mouse.y) * 0.05;
             const offsetX = (mouse.x - canvas.width / 2) * 0.025;
             const offsetY = (mouse.y - canvas.height / 2) * 0.025;
 
             nebulae.forEach((n, idx) => {
-                const nx = n.x - offsetX * (idx + 1) * 0.4;
-                const ny = n.y - offsetY * (idx + 1) * 0.4;
+                const nx = n.x - offsetX * (idx + 1) * 0.4, ny = n.y - offsetY * (idx + 1) * 0.4;
                 const grad = ctx.createRadialGradient(nx, ny, 10, nx, ny, n.r);
-                grad.addColorStop(0, n.color);
-                grad.addColorStop(1, 'rgba(3, 4, 11, 0)');
-                ctx.fillStyle = grad;
-                ctx.beginPath();
-                ctx.arc(nx, ny, n.r, 0, Math.PI * 2);
-                ctx.fill();
+                grad.addColorStop(0, n.color); grad.addColorStop(1, 'rgba(3, 4, 11, 0)');
+                ctx.fillStyle = grad; ctx.beginPath(); ctx.arc(nx, ny, n.r, 0, Math.PI * 2); ctx.fill();
             });
 
             stars.forEach(s => {
                 s.twinklePhase += s.twinkleSpeed;
                 const alpha = 0.35 + Math.sin(s.twinklePhase) * 0.55;
-                let sx = (s.x - offsetX * s.depth) % canvas.width;
-                let sy = (s.y - offsetY * s.depth) % canvas.height;
-                if (sx < 0) sx += canvas.width;
-                if (sy < 0) sy += canvas.height;
-
-                ctx.save();
-                ctx.globalAlpha = Math.max(0.1, Math.min(1, alpha));
-                ctx.fillStyle = s.color;
-                ctx.beginPath();
-                ctx.arc(sx, sy, s.size, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
+                let sx = (s.x - offsetX * s.depth) % canvas.width, sy = (s.y - offsetY * s.depth) % canvas.height;
+                if (sx < 0) sx += canvas.width; if (sy < 0) sy += canvas.height;
+                ctx.save(); ctx.globalAlpha = Math.max(0.1, Math.min(1, alpha));
+                ctx.fillStyle = s.color; ctx.beginPath(); ctx.arc(sx, sy, s.size, 0, Math.PI * 2); ctx.fill(); ctx.restore();
             });
-
-            spawnShootingStar();
-            for (let i = shootingStars.length - 1; i >= 0; i--) {
-                let st = shootingStars[i];
-                st.x += st.speed;
-                st.y += st.speed * 0.45;
-                st.alpha -= 0.016;
-
-                if (st.alpha <= 0) {
-                    shootingStars.splice(i, 1);
-                    continue;
-                }
-
-                const grad = ctx.createLinearGradient(st.x, st.y, st.x - st.len, st.y - st.len * 0.45);
-                grad.addColorStop(0, `rgba(255, 255, 255, ${st.alpha})`);
-                grad.addColorStop(1, 'rgba(56, 189, 248, 0)');
-                ctx.strokeStyle = grad;
-                ctx.lineWidth = 1.8;
-                ctx.beginPath();
-                ctx.moveTo(st.x, st.y);
-                ctx.lineTo(st.x - st.len, st.y - st.len * 0.45);
-                ctx.stroke();
-            }
-
-            for (let i = burstParticles.length - 1; i >= 0; i--) {
-                let bp = burstParticles[i];
-                bp.x += bp.vx;
-                bp.y += bp.vy;
-                bp.alpha -= 0.022;
-                if (bp.alpha <= 0) {
-                    burstParticles.splice(i, 1);
-                    continue;
-                }
-                ctx.save();
-                ctx.globalAlpha = bp.alpha;
-                ctx.fillStyle = bp.color;
-                ctx.shadowBlur = 8;
-                ctx.shadowColor = bp.color;
-                ctx.beginPath();
-                ctx.arc(bp.x, bp.y, bp.r, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
 
             requestAnimationFrame(animateGalaxy);
         }
