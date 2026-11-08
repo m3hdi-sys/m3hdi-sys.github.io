@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mehdi BEN MOULAY | Administrateur Systèmes & Réseaux • Cybersécurité</title>
     <!-- Favicon / Icône pour l'onglet de la page -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230b1120' stroke='%2338bdf8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/><path d='M9 12l2 2 4-4' stroke='%2310b981'/></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2338bdf8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -40,32 +40,22 @@
 
     <div class="container">
 
-        <!-- HERO SECTION : GRANDE PHOTO COMME SUR LE CV + NOM ALIGNÉ SUR 1 LIGNE -->
+        <!-- HERO SECTION AVEC LA PHOTO BIEN CENTRÉE ET LE NOM ALIGNÉ -->
         <header id="accueil" class="hero reveal visible">
             <div>
                 <div class="hero-identity">
-                    <div class="hero-avatar-wrapper">
-                        <div class="hero-avatar-orb" onclick="openLightbox(document.getElementById('hero-pp').src)" title="Cliquez pour agrandir la photo">
+                    <div class="hero-avatar-orb" onclick="openLightbox(document.getElementById('hero-pp').src)" title="Cliquez pour agrandir la photo">
+                        <div class="hero-avatar-orb-inner">
                             <img id="hero-pp" src="img/ppCV.png" onerror="if(this.src.endsWith('.png')) this.src='img/ppCV.jpg'; else if(this.src.endsWith('.jpg')) this.src='img/ppCV.jpeg'; else if(this.src.endsWith('.jpeg')) this.src='img/ppCV.webp';" alt="Mehdi BEN MOULAY">
                         </div>
-                        <!-- Barre d'ajustement rapide au survol si tu veux monter/descendre ou zoomer ta photo -->
-                        <div class="avatar-adjust-bar" title="Ajuster le cadrage de la photo">
-                            <button onclick="adjustAvatar(0, -4)" title="Monter">⬆️</button>
-                            <button onclick="adjustAvatar(0, 4)" title="Descendre">⬇️</button>
-                            <button onclick="adjustAvatar(0.08, 0)" title="Zoomer">🔍+</button>
-                            <button onclick="adjustAvatar(-0.08, 0)" title="Dézoomer">🔍-</button>
-                        </div>
                     </div>
-
                     <div class="hero-text-block">
                         <div class="hero-badge">
-                            <span>🌌 BTS SIO SISR (2ème année) • Alternant chez Io.sys 2.21</span>
+                            <span>🌌 Administrateur Systèmes & Réseaux • BTS SIO SISR (2ème année)</span>
                         </div>
-                        <h1>MEHDI BEN MOULAY</h1>
-                        <div class="hero-subtitle-role">ADMINISTRATEUR SYSTÈMES & RÉSEAUX</div>
+                        <h1>Mehdi<br><span style="white-space: nowrap;">BEN MOULAY</span></h1>
                     </div>
                 </div>
-
                 <h2><span id="typewriter"></span><span class="cursor">&nbsp;</span></h2>
                 <p>
                     Passionné par la cybersécurité et l'administration systèmes et réseaux, je me spécialise dans la sécurisation et la conteneurisation des infrastructures. Je conçois et déploie des architectures fiables (supervision SOC Wazuh, tunnels VPN IPsec, routage OSPF) tout en automatisant le maintien en condition opérationnelle des serveurs (Proxmox LXC, scripts Python/Bash, GitLab CI/CD, N8N).
@@ -1155,7 +1145,7 @@
     <div id="culot-modal" class="modal-overlay hidden">
         <div class="modal-box">
             <div class="modal-header">
-                <button class="btn-back-pill" onclick="closeAllModals()">← Retour aux Write-Ups</button>
+                <button class="btn-back-pill" onclick="closeAllModals()">← Retour au sommaire des Write-Ups</button>
                 <button class="modal-close" onclick="closeAllModals()">✕ FERMER</button>
             </div>
             <div class="modal-content">
@@ -1185,27 +1175,6 @@
     </footer>
 
     <script>
-        // --- AJUSTEMENT INTERACTIF DE LA PHOTO DE PROFIL (AVEC SAUVEGARDE LOCALE) ---
-        let ppScale = parseFloat(localStorage.getItem('mehdi_pp_scale')) || 1.42;
-        let ppPosY = parseFloat(localStorage.getItem('mehdi_pp_posy')) || 38;
-        const heroPp = document.getElementById('hero-pp');
-
-        function applyAvatarStyle() {
-            if (!heroPp) return;
-            heroPp.style.objectPosition = `50% ${ppPosY}%`;
-            heroPp.style.transformOrigin = `50% ${ppPosY}%`;
-            heroPp.style.transform = `scale(${ppScale})`;
-        }
-        applyAvatarStyle();
-
-        window.adjustAvatar = function(dScale, dPosY) {
-            ppScale = Math.min(2.4, Math.max(1.0, +(ppScale + dScale).toFixed(2)));
-            ppPosY = Math.min(85, Math.max(5, ppPosY + dPosY));
-            localStorage.setItem('mehdi_pp_scale', ppScale);
-            localStorage.setItem('mehdi_pp_posy', ppPosY);
-            applyAvatarStyle();
-        };
-
         function closeAllModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.classList.add('hidden')); }
         function openChapterModal(num) {
             closeAllModals();
@@ -1268,7 +1237,7 @@
             }
         });
 
-        const roles = ["Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)", "Ingénierie Réseaux (Cisco VPN IPsec, OSPF, VLAN)", "Automatisation & Conteneurisation (Proxmox LXC, Python)", "Pipelines GitLab CI/CD & Workflows N8N"];
+        const roles = ["Administrateur Systèmes & Réseaux", "Déploiement Mini-SOC (Wazuh, Sysmon, VirusTotal API)", "Ingénierie Réseaux (Cisco VPN IPsec, OSPF, VLAN)", "Automatisation & Conteneurisation (Proxmox LXC, Python)"];
         let roleIdx = 0, charIdx = 0, isDeleting = false;
         const typeEl = document.getElementById('typewriter');
         function typeLoop() {
