@@ -135,7 +135,7 @@ nav {
 
 /* --- CONTENEUR --- */
 .container {
-    max-width: 1200px;
+    max-width: 1260px;
     margin: 0 auto;
     padding: 115px 24px 60px 24px;
     position: relative;
@@ -152,56 +152,48 @@ nav {
     transform: translateY(0);
 }
 
-/* --- HERO SECTION AVEC ALIGNEMENT VERTICAL PARFAIT --- */
+/* --- HERO SECTION : GRAND MÉDAILLON 210PX + NOM ALIGNÉ SUR 1 LIGNE --- */
 .hero {
     padding: 35px 0 70px 0;
     border-bottom: 1px solid var(--border);
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 36px;
+    grid-template-columns: 1.32fr 0.68fr;
+    gap: 32px;
     align-items: center;
 }
 
 .hero-identity {
     display: flex;
     align-items: center;
-    gap: 24px;
-    margin-bottom: 20px;
+    gap: 28px;
+    margin-bottom: 24px;
 }
 
 .hero-avatar-orb {
-    width: 155px;
-    height: 155px;
+    width: 210px;
+    height: 210px;
     border-radius: 50%;
-    padding: 4px;
-    background: linear-gradient(135deg, var(--accent), var(--nebula-purple), var(--accent-secondary));
-    box-shadow: 0 0 32px rgba(56, 189, 248, 0.4);
+    border: 4.5px solid #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.65), 0 0 32px rgba(56, 189, 248, 0.4);
     flex-shrink: 0;
+    overflow: hidden;
+    background: #b8b3ac;
     position: relative;
     cursor: zoom-in;
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-avatar-orb:hover {
-    transform: scale(1.04);
-}
-
-.hero-avatar-orb-inner {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    overflow: hidden;
-    background: #0b1120;
-    position: relative;
+    transform: scale(1.03);
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.8), 0 0 42px rgba(56, 189, 248, 0.65);
 }
 
 .hero-avatar-orb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
-    transform: scale(1.18);
+    object-position: center 50%;
+    transform: scale(1.38) translateY(-10%);
     transform-origin: center center;
     display: block;
 }
@@ -210,6 +202,8 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    min-width: 0;
 }
 
 .hero-badge {
@@ -223,22 +217,33 @@ nav {
     border-radius: 999px;
     font-size: 0.78rem;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     box-shadow: 0 0 20px rgba(56, 189, 248, 0.12);
-    width: fit-content;
 }
 
 .hero h1 {
-    font-size: clamp(2.1rem, 3.8vw, 3rem);
+    font-size: clamp(1.75rem, 2.45vw, 2.55rem);
     font-weight: 800;
-    line-height: 1.08;
+    line-height: 1.1;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-bottom: 8px;
     background: linear-gradient(90deg, #ffffff, #bae6fd, #c084fc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+.hero-subtitle-role {
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #cbd5e1;
+}
+
 .hero h2 {
-    font-size: clamp(1rem, 1.7vw, 1.28rem);
+    font-size: clamp(1rem, 1.6vw, 1.22rem);
     color: var(--accent);
     font-weight: 600;
     margin-bottom: 16px;
@@ -256,9 +261,9 @@ nav {
 
 .hero p {
     color: var(--text-muted);
-    font-size: 0.98rem;
+    font-size: 0.96rem;
     margin-bottom: 26px;
-    max-width: 650px;
+    max-width: 680px;
 }
 
 .btn-group {
@@ -1245,9 +1250,11 @@ footer {
     box-shadow: 0 0 18px rgba(56, 189, 248, 0.15);
 }
 
-@media (max-width: 950px) {
+@media (max-width: 1020px) {
     .hero { grid-template-columns: 1fr; }
     .hero-identity { flex-direction: column; text-align: center; }
+    .hero-text-block { align-items: center; }
+    .hero h1 { white-space: normal; }
     .grid-2 { grid-template-columns: 1fr; }
     .nav-links { display: none; }
     .modal-content { padding: 24px 20px; }
