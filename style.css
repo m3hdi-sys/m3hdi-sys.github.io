@@ -42,7 +42,7 @@ body {
 a { text-decoration: none; color: inherit; }
 code, .mono { font-family: 'JetBrains Mono', monospace; }
 
-/* --- NAVIGATION CORRIGÉE : 1 SEULE LIGNE DROITE SANS ÉCART --- */
+/* --- NAVIGATION SUR 1 SEULE LIGNE DROITE SANS ÉCART --- */
 nav {
     position: fixed;
     top: 0;
@@ -163,7 +163,7 @@ nav {
     transform: translateY(0);
 }
 
-/* --- HERO SECTION : CADRE 260PX + VISAGE REDESCENDU ET CENTRÉ --- */
+/* --- HERO SECTION : CADRE 260PX + VISAGE REMONTÉ COMME SUR LE CV --- */
 .hero {
     padding: 30px 0 70px 0;
     border-bottom: 1px solid var(--border);
@@ -211,14 +211,14 @@ nav {
     background: #b8b3ac !important;
 }
 
-/* Cadrage corrigé : top: -4% laisse respirer tes cheveux en haut et centre tes yeux pile au milieu */
+/* Cadrage identique à ton CV : top: -36% remonte ta tête pour éliminer le mur gris et afficher le col de ta chemise */
 .hero-avatar-orb img {
     position: absolute !important;
-    width: 132% !important;
+    width: 145% !important;
     height: auto !important;
     max-width: none !important;
     left: 50% !important;
-    top: -4% !important;
+    top: -36% !important;
     transform: translateX(-50%) !important;
     display: block !important;
 }

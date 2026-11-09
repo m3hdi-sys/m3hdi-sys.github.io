@@ -7,8 +7,8 @@
     <!-- Favicon / Icône pour l'onglet de la page -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%230b1120' stroke='%2338bdf8' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/><path d='M9 12l2 2 4-4' stroke='%2310b981'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- ?v=7 force le navigateur à appliquer le menu sur 1 ligne et le nouveau centrage de la tête -->
-    <link rel="stylesheet" href="style.css?v=7">
+    <!-- ?v=8 force le navigateur à recharger le nouveau cadrage de la photo -->
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -41,13 +41,13 @@
 
     <div class="container">
 
-        <!-- HERO SECTION : GRAND CADRE PHOTO (260PX) + TÊTE BIEN CENTRÉE + MEHDI BEN MOULAY -->
+        <!-- HERO SECTION : GRAND CADRE PHOTO (260PX) + TÊTE BIEN CENTRÉE COMME SUR LE CV -->
         <header id="accueil" class="hero reveal visible">
             <div>
                 <div class="hero-identity">
                     <div class="hero-avatar-orb" onclick="openLightbox(document.getElementById('hero-pp').src)" title="Cliquez pour agrandir la photo">
                         <div class="hero-avatar-orb-inner">
-                            <img id="hero-pp" src="img/ppCV.png" onerror="if(this.src.endsWith('.png')) this.src='img/ppCV.jpg'; else if(this.src.endsWith('.jpg')) this.src='img/ppCV.jpeg'; else if(this.src.endsWith('.jpeg')) this.src='img/ppCV.webp';" alt="Mehdi BEN MOULAY">
+                            <img id="hero-pp" src="img/ppCV.png" style="position:absolute; width:145%; height:auto; max-width:none; left:50%; top:-36%; transform:translateX(-50%);" onerror="if(this.src.endsWith('.png')) this.src='img/ppCV.jpg'; else if(this.src.endsWith('.jpg')) this.src='img/ppCV.jpeg'; else if(this.src.endsWith('.jpeg')) this.src='img/ppCV.webp';" alt="Mehdi BEN MOULAY">
                         </div>
                     </div>
 
