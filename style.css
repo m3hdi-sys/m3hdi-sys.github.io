@@ -163,7 +163,7 @@ nav {
     transform: translateY(0);
 }
 
-/* --- HERO SECTION : CADRE 260PX + VISAGE REMONTÉ COMME SUR LE CV --- */
+/* --- HERO SECTION : CADRE 260PX + VISAGE PARFAITEMENT CENTRÉ HORIZONTALEMENT & VERTICALEMENT --- */
 .hero {
     padding: 30px 0 70px 0;
     border-bottom: 1px solid var(--border);
@@ -211,13 +211,13 @@ nav {
     background: #b8b3ac !important;
 }
 
-/* Cadrage identique à ton CV : top: -36% remonte ta tête pour éliminer le mur gris et afficher le col de ta chemise */
+/* left: 54% recentre ton visage légèrement vers la droite pour qu'il soit pile au milieu du rond */
 .hero-avatar-orb img {
     position: absolute !important;
     width: 145% !important;
     height: auto !important;
     max-width: none !important;
-    left: 50% !important;
+    left: 54% !important;
     top: -36% !important;
     transform: translateX(-50%) !important;
     display: block !important;
