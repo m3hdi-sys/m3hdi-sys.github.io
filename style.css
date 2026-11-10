@@ -163,7 +163,7 @@ nav {
     transform: translateY(0);
 }
 
-/* --- HERO SECTION : CADRE 260PX + VISAGE PARFAITEMENT CENTRÉ HORIZONTALEMENT & VERTICALEMENT --- */
+/* --- HERO SECTION : CADRE 260PX + DÉZOOM LÉGER POUR VOIR LA CHEMISE --- */
 .hero {
     padding: 30px 0 70px 0;
     border-bottom: 1px solid var(--border);
@@ -211,14 +211,14 @@ nav {
     background: #b8b3ac !important;
 }
 
-/* left: 54% recentre ton visage légèrement vers la droite pour qu'il soit pile au milieu du rond */
+/* Dézoomé à 122% et top: -26% pour bien faire apparaître le col et le haut de ta chemise noire */
 .hero-avatar-orb img {
     position: absolute !important;
-    width: 145% !important;
+    width: 122% !important;
     height: auto !important;
     max-width: none !important;
-    left: 54% !important;
-    top: -36% !important;
+    left: 53% !important;
+    top: -26% !important;
     transform: translateX(-50%) !important;
     display: block !important;
 }
